@@ -12,7 +12,7 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>morefocus-admin</name>
+    <name>MF-ERP-ADMIN</name>
 
     <dependencies>
 

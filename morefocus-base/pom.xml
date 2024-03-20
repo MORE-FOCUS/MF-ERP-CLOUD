@@ -11,7 +11,7 @@
     <artifactId>morefocus-base</artifactId>
     <version>1.0.0</version>
 
-    <name>morefocus-base</name>
+    <name>MF-ERP-BASE</name>
 
     <dependencies>
 
