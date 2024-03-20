@@ -1,2 +1,2 @@
 # MF-ERP-CLOUD
-ERP
+专注 ERP

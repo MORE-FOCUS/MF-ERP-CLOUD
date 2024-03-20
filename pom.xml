@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.morefocus</groupId>
-    <artifactId>MF-BOOT</artifactId>
-    <version>3.0.0</version>
+    <artifactId>MF-ERP-CLOUD</artifactId>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <name>more-focus</name>

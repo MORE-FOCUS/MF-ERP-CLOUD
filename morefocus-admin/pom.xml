@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.morefocus</groupId>
-        <artifactId>MF-BOOT</artifactId>
-        <version>3.0.0</version>
+        <artifactId>MF-ERP-CLOUD</artifactId>
+        <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>morefocus-admin</artifactId>
-    <version>3.0.0</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>morefocus-admin</name>
@@ -19,7 +19,7 @@
         <dependency>
             <groupId>cn.morefocus</groupId>
             <artifactId>morefocus-base</artifactId>
-            <version>3.0.0</version>
+            <version>1.0.0</version>
         </dependency>
 
     </dependencies>
