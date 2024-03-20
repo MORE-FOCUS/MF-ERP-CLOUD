@@ -1,0 +1,104 @@
+package ${packageName};
+
+#foreach ($importClass in $importPackageList)
+$importClass
+#end
+import cn.morefocus.base.common.domain.R;
+import cn.morefocus.base.common.util.LocalBeanUtil;
+import cn.morefocus.base.common.util.PageUtil;
+import cn.morefocus.base.common.domain.PageResult;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.commons.collections4.CollectionUtils;
+
+/**
+ * ${basic.description} Service
+ *
+ * @author ${basic.backendAuthor}
+ * @date ${basic.backendDate}
+ */
+@Service
+public class ${name.upperCamel}Service {
+
+    @Resource
+    private ${name.upperCamel}Mapper ${name.lowerCamel}Mapper;
+
+    /**
+     * 分页查询
+     *
+     * @param queryForm
+     * @return
+     */
+    public PageResult<${name.upperCamel}VO> queryPage(${name.upperCamel}QueryForm queryForm) {
+        Page<?> page = PageUtil.convert2PageQuery(queryForm);
+        List<${name.upperCamel}VO> list = ${name.lowerCamel}Mapper.queryPage(page, queryForm);
+        PageResult<${name.upperCamel}VO> pageResult = PageUtil.convert2PageResult(page, list);
+        return pageResult;
+    }
+
+#if($insertAndUpdate.isSupportInsertAndUpdate)
+    /**
+     * 添加
+     */
+    public R<String> add(${name.upperCamel}AddForm addForm) {
+        ${name.upperCamel}Entity ${name.lowerCamel}Entity = LocalBeanUtil.copy(addForm, ${name.upperCamel}Entity.class);
+        ${name.lowerCamel}Mapper.insert(${name.lowerCamel}Entity);
+        return R.ok();
+    }
+
+    /**
+     * 更新
+     *
+     * @param updateForm
+     * @return
+     */
+    public R<String> update(${name.upperCamel}UpdateForm updateForm) {
+        ${name.upperCamel}Entity ${name.lowerCamel}Entity = LocalBeanUtil.copy(updateForm, ${name.upperCamel}Entity.class);
+        ${name.lowerCamel}Mapper.updateById(${name.lowerCamel}Entity);
+        return R.ok();
+    }
+#end
+
+#if($deleteInfo.isSupportDelete)
+    #if($deleteInfo.deleteEnum == "BATCH" || $deleteInfo.deleteEnum == "SingleAndBatch")
+    /**
+     * 批量删除
+     *
+     * @param idList
+     * @return
+     */
+    public R<String> batchDelete(List<${primaryKeyJavaType}> idList) {
+        if (CollectionUtils.isEmpty(idList)){
+            return R.ok();
+        }
+
+### 真删除 or 假删除
+#if(!${deleteInfo.isPhysicallyDeleted})
+        ${name.lowerCamel}Mapper.batchUpdateDeleted(idList, true);
+#else
+        ${name.lowerCamel}Mapper.deleteBatchIds(idList);
+#end
+        return R.ok();
+    }
+    #end
+
+    #if($deleteInfo.deleteEnum == "Single" || $deleteInfo.deleteEnum == "SingleAndBatch")
+    /**
+     * 单个删除
+     */
+    public R<String> delete(${primaryKeyJavaType} ${primaryKeyFieldName}) {
+        if (null == ${primaryKeyFieldName}){
+            return R.ok();
+        }
+
+### 真删除 or 假删除
+#if(!${deleteInfo.isPhysicallyDeleted})
+        ${name.lowerCamel}Mapper.updateDeleted(${primaryKeyFieldName},true);
+#end
+#if(${deleteInfo.isPhysicallyDeleted})
+        ${name.lowerCamel}Mapper.deleteById(${primaryKeyFieldName});
+#end
+        return R.ok();
+    }
+    #end
+#end
+}

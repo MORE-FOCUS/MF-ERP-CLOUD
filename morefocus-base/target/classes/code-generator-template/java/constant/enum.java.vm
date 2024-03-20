@@ -1,0 +1,21 @@
+package ${packageName};
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+/**
+ * ${enumDesc}
+ *
+ * @author ${basic.backendAuthor}
+ * @date ${basic.backendDate}
+ */
+@AllArgsConstructor
+@Getter
+public enum ${enumName} implements BaseEnum {
+
+    ;
+
+    private final ${enumJavaType} value;
+
+    private final String desc;
+}

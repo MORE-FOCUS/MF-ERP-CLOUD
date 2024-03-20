@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.morefocus.base.module.support.dict.mapper.DictValueMapper">
+
+    <update id="updateDeletedFlagByIdList">
+        update t_dict_value set delete_flag = #{deleteFlag} where dict_value_id in
+        <foreach collection="dictValueIdList" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </update>
+
+    <select id="query" resultType="cn.morefocus.base.module.support.dict.domain.vo.DictValueVO">
+        SELECT * FROM t_dict_value
+        <where>
+            <if test="query.dictKeyId != null">
+                AND dict_key_id = #{query.dictKeyId}
+            </if>
+            <if test="query.searchWord != null and query.searchWord !=''">
+                AND (INSTR(value_code,#{query.searchWord}) or INSTR(value_name,#{query.searchWord}))
+            </if>
+            <if test="query.deleteFlag != null">
+                AND delete_flag = #{query.deleteFlag}
+            </if>
+        </where>
+        <if test="query.sortItemList == null or query.sortItemList.size == 0">
+            ORDER BY sort,dict_value_id DESC
+        </if>
+    </select>
+
+    <select id="selectByCode"
+            resultType="cn.morefocus.base.module.support.dict.domain.entity.DictValueEntity">
+        select * from t_dict_value where value_code = #{valueCode} and delete_flag = #{deleteFlag}
+    </select>
+
+    <select id="selectByDeletedFlag"
+            resultType="cn.morefocus.base.module.support.dict.domain.entity.DictValueEntity">
+        select * from t_dict_value where delete_flag = #{deleteFlag} order by sort_value;
+    </select>
+    <select id="selectByDeletedFlagAndKeyId"
+            resultType="cn.morefocus.base.module.support.dict.domain.entity.DictValueEntity">
+        select * from t_dict_value where dict_key_id = #{dictKeyId} and delete_flag = #{deleteFlag}
+    </select>
+
+</mapper>
