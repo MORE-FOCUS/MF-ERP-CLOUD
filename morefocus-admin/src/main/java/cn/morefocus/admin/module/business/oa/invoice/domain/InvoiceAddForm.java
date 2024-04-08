@@ -9,8 +9,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * OA发票信息新建
- *
- * @author loki
  */
 @Data
 public class InvoiceAddForm {

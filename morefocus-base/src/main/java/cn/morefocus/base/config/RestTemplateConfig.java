@@ -29,7 +29,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * http请求配置
  *
- * @author loki
+ *
  */
 @Configuration
 public class RestTemplateConfig {

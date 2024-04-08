@@ -5,8 +5,6 @@ import lombok.Data;
 
 /**
  * 类目 基础属性 DTO 类
- *
- * @author loki
  */
 @Data
 public class CategorySimpleDTO {

@@ -7,8 +7,6 @@ import java.lang.annotation.Target;
 
 /**
  * 加密注解
- *
- * @author loki
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})

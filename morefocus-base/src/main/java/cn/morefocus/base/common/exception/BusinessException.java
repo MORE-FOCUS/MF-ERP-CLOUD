@@ -5,7 +5,7 @@ import cn.morefocus.base.common.code.ErrorCode;
 /**
  * 业务逻辑异常,全局异常拦截后统一返回ResponseCodeConst.SYSTEM_ERROR
  *
- * @author loki
+ *
  */
 public class BusinessException extends RuntimeException {
 

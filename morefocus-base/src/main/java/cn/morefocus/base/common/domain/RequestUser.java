@@ -5,7 +5,7 @@ import cn.morefocus.base.common.enumeration.UserTypeEnum;
 /**
  * 请求用户
  *
- * @author loki
+ *
  */
 public interface RequestUser {
 

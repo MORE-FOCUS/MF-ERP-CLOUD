@@ -9,8 +9,6 @@ import java.util.List;
 
 /**
  * 员工更新角色
- *
- * @author loki
  */
 @Data
 public class EmployeeUpdateRoleForm {

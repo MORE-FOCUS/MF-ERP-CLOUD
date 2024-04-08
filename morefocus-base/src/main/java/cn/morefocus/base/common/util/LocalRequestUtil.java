@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 请求用户  工具类
  *
- * @author loki
+ *
  */
 @Slf4j
 public class LocalRequestUtil {

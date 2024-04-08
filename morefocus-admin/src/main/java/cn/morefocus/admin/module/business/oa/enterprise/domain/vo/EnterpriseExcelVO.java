@@ -5,8 +5,6 @@ import lombok.Data;
 
 /**
  * 企业信息
- *
- * @author loki
  */
 @Data
 public class EnterpriseExcelVO {

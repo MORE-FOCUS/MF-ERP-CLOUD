@@ -6,7 +6,7 @@ import lombok.Getter;
 /**
  * 用户级别的错误码（用户引起的错误返回码，可以不用关注）
  *
- * @author loki
+ *
  */
 @Getter
 @AllArgsConstructor

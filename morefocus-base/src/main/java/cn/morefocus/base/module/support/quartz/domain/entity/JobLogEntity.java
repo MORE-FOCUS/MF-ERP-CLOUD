@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 /**
  * 定时任务调度日志表
  *
- * @author loki
+ *
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

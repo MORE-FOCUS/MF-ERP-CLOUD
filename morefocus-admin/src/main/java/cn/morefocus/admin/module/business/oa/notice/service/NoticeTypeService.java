@@ -1,9 +1,9 @@
 package cn.morefocus.admin.module.business.oa.notice.service;
 
 import cn.hutool.core.util.StrUtil;
-import cn.morefocus.admin.module.business.oa.notice.mapper.NoticeTypeMapper;
 import cn.morefocus.admin.module.business.oa.notice.domain.entity.NoticeTypeEntity;
 import cn.morefocus.admin.module.business.oa.notice.domain.vo.NoticeTypeVO;
+import cn.morefocus.admin.module.business.oa.notice.mapper.NoticeTypeMapper;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import org.apache.commons.collections4.CollectionUtils;
@@ -16,8 +16,6 @@ import java.util.stream.Collectors;
 
 /**
  * 通知。公告 类型
- *
- * @author loki
  */
 @Service
 public class NoticeTypeService {

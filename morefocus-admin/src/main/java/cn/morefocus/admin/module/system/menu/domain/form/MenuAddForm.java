@@ -5,8 +5,6 @@ import lombok.Data;
 
 /**
  * 菜单 添加表单
- *
- * @author loki
  */
 @Data
 public class MenuAddForm extends MenuBaseForm {

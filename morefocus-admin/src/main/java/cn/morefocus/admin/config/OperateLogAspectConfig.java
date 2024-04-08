@@ -6,8 +6,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 操作日志切面 配置
- *
- * @author loki
  */
 @Configuration
 public class OperateLogAspectConfig extends OperateLogAspect {

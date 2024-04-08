@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * 单据序列号 基于mysql锁实现
  *
- * @author loki
+ *
  */
 @Slf4j
 public class SerialNumberMysqlService extends SerialNumberBaseService {

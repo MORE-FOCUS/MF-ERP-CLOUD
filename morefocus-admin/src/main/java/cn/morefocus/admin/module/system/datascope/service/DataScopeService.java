@@ -15,8 +15,6 @@ import java.util.List;
 
 /**
  * 数据范围 保存
- *
- * @author loki
  */
 @Service
 public class DataScopeService {

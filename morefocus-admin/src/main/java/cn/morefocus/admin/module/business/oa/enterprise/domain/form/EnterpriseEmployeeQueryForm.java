@@ -9,8 +9,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 查询企业员工
- *
- * @author loki
  */
 @Data
 public class EnterpriseEmployeeQueryForm extends PageParam {

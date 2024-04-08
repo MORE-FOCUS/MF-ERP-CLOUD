@@ -6,8 +6,6 @@ import lombok.Data;
 
 /**
  * 登录查询日志
- *
- * @author loki
  */
 @Data
 public class LoginLogQueryForm extends PageParam {

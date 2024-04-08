@@ -11,8 +11,6 @@ import java.time.LocalDateTime;
 
 /**
  * 通知公告 详情
- *
- * @author loki
  */
 @Data
 public class NoticeDetailVO {

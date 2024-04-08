@@ -12,8 +12,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 类目 添加
- *
- * @author loki
  */
 @Data
 public class CategoryAddForm {

@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * 文件元数据
  *
- * @author loki
+ *
  */
 @Data
 public class FileMetadataVO {

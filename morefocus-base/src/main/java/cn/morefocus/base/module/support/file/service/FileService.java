@@ -6,16 +6,16 @@ import cn.morefocus.base.common.constant.StringConst;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.RequestUser;
-import cn.morefocus.base.common.util.LocalStringUtils;
 import cn.morefocus.base.common.util.LocalEnumUtil;
+import cn.morefocus.base.common.util.LocalStringUtils;
 import cn.morefocus.base.common.util.PageUtil;
 import cn.morefocus.base.module.support.file.constant.FileFolderTypeEnum;
-import cn.morefocus.base.module.support.file.mapper.FileMapper;
 import cn.morefocus.base.module.support.file.domain.entity.FileEntity;
 import cn.morefocus.base.module.support.file.domain.form.FileQueryForm;
 import cn.morefocus.base.module.support.file.domain.vo.FileDownloadVO;
 import cn.morefocus.base.module.support.file.domain.vo.FileUploadVO;
 import cn.morefocus.base.module.support.file.domain.vo.FileVO;
+import cn.morefocus.base.module.support.file.mapper.FileMapper;
 import cn.morefocus.base.module.support.file.strategy.IFileStorageService;
 import cn.morefocus.base.module.support.redis.RedisService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
 /**
  * 文件服务
  *
- * @author loki
+ *
  */
 @Service
 public class FileService {

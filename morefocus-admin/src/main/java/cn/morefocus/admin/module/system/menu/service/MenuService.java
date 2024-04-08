@@ -2,13 +2,13 @@ package cn.morefocus.admin.module.system.menu.service;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.morefocus.admin.module.system.menu.constant.MenuTypeEnum;
-import cn.morefocus.admin.module.system.menu.mapper.MenuMapper;
 import cn.morefocus.admin.module.system.menu.domain.entity.MenuEntity;
 import cn.morefocus.admin.module.system.menu.domain.form.MenuAddForm;
 import cn.morefocus.admin.module.system.menu.domain.form.MenuBaseForm;
 import cn.morefocus.admin.module.system.menu.domain.form.MenuUpdateForm;
 import cn.morefocus.admin.module.system.menu.domain.vo.MenuTreeVO;
 import cn.morefocus.admin.module.system.menu.domain.vo.MenuVO;
+import cn.morefocus.admin.module.system.menu.mapper.MenuMapper;
 import cn.morefocus.base.common.code.SystemErrorCode;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.RequestUrlVO;
@@ -25,8 +25,6 @@ import java.util.stream.Collectors;
 
 /**
  * 菜单
- *
- * @author loki
  */
 @Service
 public class MenuService {
@@ -81,7 +79,6 @@ public class MenuService {
         menuMapper.updateById(menuEntity);
         return R.ok();
     }
-
 
     /**
      * 批量删除菜单

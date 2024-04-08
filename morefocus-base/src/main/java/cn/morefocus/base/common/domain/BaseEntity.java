@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 /**
  * 实体对象基类
  * 所有的实体类都需要包括该字段
- *
- * @author loki
  */
 @Data
 public class BaseEntity {

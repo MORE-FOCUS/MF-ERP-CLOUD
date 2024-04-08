@@ -5,7 +5,7 @@ import cn.morefocus.base.common.enumeration.BaseEnum;
 /**
  * 查询条件类型
  *
- * @author loki
+ *
  */
 public enum CodeQueryFieldQueryTypeEnum implements BaseEnum {
 

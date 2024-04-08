@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 代码生成 增加、修改的字段 模型
  *
- * @author loki
+ *
  */
 
 @Data

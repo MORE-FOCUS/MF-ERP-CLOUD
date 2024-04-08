@@ -8,11 +8,11 @@ import cn.morefocus.base.common.util.LocalStringUtils;
 import cn.morefocus.base.config.FileConfig;
 import cn.morefocus.base.constant.RedisKeyConst;
 import cn.morefocus.base.module.support.file.constant.FileFolderTypeEnum;
-import cn.morefocus.base.module.support.file.mapper.FileMapper;
 import cn.morefocus.base.module.support.file.domain.vo.FileDownloadVO;
 import cn.morefocus.base.module.support.file.domain.vo.FileMetadataVO;
 import cn.morefocus.base.module.support.file.domain.vo.FileUploadVO;
 import cn.morefocus.base.module.support.file.domain.vo.FileVO;
+import cn.morefocus.base.module.support.file.mapper.FileMapper;
 import cn.morefocus.base.module.support.redis.RedisService;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
@@ -41,7 +41,7 @@ import java.util.UUID;
 /**
  * 云计算 实现
  *
- * @author loki
+ *
  */
 @Slf4j
 public class FileStorageCloudServiceImpl implements IFileStorageService {

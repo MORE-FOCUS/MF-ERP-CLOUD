@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
  * reload结果 <br>
  * t_reload_result 数据表 实体类
  *
- * @author loki
+ *
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

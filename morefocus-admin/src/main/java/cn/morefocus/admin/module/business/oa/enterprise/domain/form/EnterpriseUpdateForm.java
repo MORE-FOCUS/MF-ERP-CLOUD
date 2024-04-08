@@ -7,8 +7,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * OA企业模块编辑
- *
- * @author loki
  */
 @Data
 public class EnterpriseUpdateForm extends EnterpriseCreateForm {

@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 /**
  * 枚举工具类
  *
- * @author loki
+ *
  */
 public class LocalEnumUtil {
 

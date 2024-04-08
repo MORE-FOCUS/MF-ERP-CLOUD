@@ -14,8 +14,6 @@ import java.util.List;
 
 /**
  * 通知公告 添加表单
- *
- * @author loki
  */
 @Data
 public class NoticeAddForm {

@@ -8,8 +8,6 @@ import java.time.LocalDateTime;
 
 /**
  * 菜单
- *
- * @author loki
  */
 @Data
 public class MenuVO extends MenuBaseForm {

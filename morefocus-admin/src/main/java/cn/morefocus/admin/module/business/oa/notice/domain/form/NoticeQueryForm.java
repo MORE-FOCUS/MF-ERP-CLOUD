@@ -8,8 +8,6 @@ import java.time.LocalDate;
 
 /**
  * 通知公告 管理查询表单
- *
- * @author loki
  */
 @Data
 public class NoticeQueryForm extends PageParam {

@@ -4,8 +4,6 @@ import cn.morefocus.base.common.enumeration.BaseEnum;
 
 /**
  * 页面类型
- *
- * @author loki
  */
 public enum CodeGeneratorPageTypeEnum implements BaseEnum {
 

@@ -1,14 +1,14 @@
 package cn.morefocus.admin.module.business.oa.bank.controler;
 
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
-import cn.morefocus.admin.module.business.oa.bank.service.BankService;
 import cn.morefocus.admin.module.business.oa.bank.domain.BankCreateForm;
 import cn.morefocus.admin.module.business.oa.bank.domain.BankQueryForm;
 import cn.morefocus.admin.module.business.oa.bank.domain.BankUpdateForm;
 import cn.morefocus.admin.module.business.oa.bank.domain.BankVO;
+import cn.morefocus.admin.module.business.oa.bank.service.BankService;
 import cn.morefocus.base.common.domain.PageResult;
-import cn.morefocus.base.common.domain.RequestUser;
 import cn.morefocus.base.common.domain.R;
+import cn.morefocus.base.common.domain.RequestUser;
 import cn.morefocus.base.common.util.LocalRequestUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,8 +20,6 @@ import java.util.List;
 
 /**
  * OA办公-OA银行信息
- *
- * @author loki
  */
 @RestController
 @Tag(name = AdminSwaggerTagConst.Business.OA_BANK)

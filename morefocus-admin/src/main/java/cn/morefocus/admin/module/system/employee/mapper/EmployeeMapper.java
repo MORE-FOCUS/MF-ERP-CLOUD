@@ -14,8 +14,6 @@ import java.util.List;
 
 /**
  * 员工 mapper
- *
- * @author loki
  */
 @Mapper
 @Component
@@ -30,19 +28,16 @@ public interface EmployeeMapper extends BaseMapper<EmployeeEntity> {
      */
     List<EmployeeVO> selectEmployeeByDisabledAndDeleted(@Param("disabledFlag") Boolean disabledFlag, @Param("deleteFlag") Boolean deleteFlag);
 
-
     /**
      * 更新单个
      */
     void updateDisableFlag(@Param("employeeId") Long employeeId, @Param("disabledFlag") Boolean disabledFlag);
-
 
     /**
      * 通过登录名查询
      */
     EmployeeEntity getByLoginName(@Param("loginName") String loginName,
                                   @Param("disabledFlag") Boolean disabledFlag);
-
 
     /**
      * 通过姓名查询
@@ -71,24 +66,20 @@ public interface EmployeeMapper extends BaseMapper<EmployeeEntity> {
      */
     List<EmployeeVO> getEmployeeByIds(@Param("employeeIds") Collection<Long> employeeIds);
 
-
     /**
      * 查询单个员工信息
      */
     EmployeeVO getEmployeeById(@Param("employeeId") Long employeeId);
-
 
     /**
      * 获取某个部门的员工
      */
     List<EmployeeEntity> selectByDepartmentId(@Param("deptId") Long deptId, @Param("disabledFlag") Boolean disabledFlag);
 
-
     /**
      * 查询某些部门下用户名是xxx的员工
      */
     List<EmployeeEntity> selectByActualName(@Param("deptIdList") List<Long> deptIdList, @Param("actualName") String actualName, @Param("disabledFlag") Boolean disabledFlag);
-
 
     /**
      * 获取某批部门的员工Id

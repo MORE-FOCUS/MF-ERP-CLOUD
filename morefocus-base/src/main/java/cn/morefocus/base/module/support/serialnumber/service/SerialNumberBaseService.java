@@ -4,9 +4,9 @@ import cn.morefocus.base.common.exception.BusinessException;
 import cn.morefocus.base.common.util.LocalEnumUtil;
 import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberIdEnum;
 import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberRuleTypeEnum;
+import cn.morefocus.base.module.support.serialnumber.domain.*;
 import cn.morefocus.base.module.support.serialnumber.mapper.SerialNumberMapper;
 import cn.morefocus.base.module.support.serialnumber.mapper.SerialNumberRecordMapper;
-import cn.morefocus.base.module.support.serialnumber.domain.*;
 import cn.morefocus.base.module.support.serialnumber.strategy.SerialNumberService;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.RandomUtils;
@@ -22,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 单据序列号 基类
  *
- * @author loki
+ *
  */
 public abstract class SerialNumberBaseService implements SerialNumberService {
 

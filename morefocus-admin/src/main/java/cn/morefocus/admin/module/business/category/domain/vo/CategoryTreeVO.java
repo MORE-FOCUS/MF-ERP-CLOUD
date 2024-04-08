@@ -7,8 +7,6 @@ import java.util.List;
 
 /**
  * 类目 层级树 vo
- *
- * @author loki
  */
 @Data
 public class CategoryTreeVO {

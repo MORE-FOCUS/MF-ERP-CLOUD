@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * 帮助文档
  *
- * @author loki
+ *
  */
 @Tag(name = SwaggerTagConst.Support.HELP_DOC)
 @RestController
@@ -39,7 +39,7 @@ public class HelpDocController extends SupportBaseController {
 
     // --------------------- 帮助文档 【目录】 -------------------------
 
-    @Operation(summary = "帮助文档目录-获取全部 @author loki")
+    @Operation(summary = "帮助文档目录-获取全部 ")
     @GetMapping("/helpDoc/helpDocCatalog/getAll")
     public R<List<HelpDocCatalogVO>> getAll() {
         return R.ok(helpDocCatalogService.getAll());
@@ -47,7 +47,7 @@ public class HelpDocController extends SupportBaseController {
 
     // --------------------- 帮助文档 【用户】-------------------------
 
-    @Operation(summary = "【用户】帮助文档-查看详情 @author loki")
+    @Operation(summary = "【用户】帮助文档-查看详情 ")
     @GetMapping("/helpDoc/user/view/{helpDocId}")
     @RepeatSubmit
     public R<HelpDocDetailVO> view(@PathVariable Long helpDocId, HttpServletRequest request) {
@@ -56,15 +56,14 @@ public class HelpDocController extends SupportBaseController {
                 helpDocId);
     }
 
-    @Operation(summary = "【用户】帮助文档-查询全部 @author loki")
+    @Operation(summary = "【用户】帮助文档-查询全部 ")
     @GetMapping("/helpDoc/user/queryAllHelpDocList")
     @RepeatSubmit
     public R<List<HelpDocVO>> queryAllHelpDocList() {
         return helpDocUserService.queryAllHelpDocList();
     }
 
-
-    @Operation(summary = "【用户】帮助文档-查询 查看记录 @author loki")
+    @Operation(summary = "【用户】帮助文档-查询 查看记录 ")
     @PostMapping("/helpDoc/user/queryViewRecord")
     @RepeatSubmit
     public R<PageResult<HelpDocViewRecordVO>> queryViewRecord(@RequestBody @Valid HelpDocViewRecordQueryForm helpDocViewRecordQueryForm) {

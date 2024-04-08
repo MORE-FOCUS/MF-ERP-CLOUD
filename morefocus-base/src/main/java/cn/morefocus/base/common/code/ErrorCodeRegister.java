@@ -7,8 +7,6 @@ import static cn.morefocus.base.common.code.ErrorCodeRangeContainer.register;
  * ps：为什么要在此处不那么优雅的手动注册？
  * 主要是为了能统一、清晰、浏览当前定义的所有状态码
  * 方便后续维护
- *
- * @author loki
  */
 public class ErrorCodeRegister {
 

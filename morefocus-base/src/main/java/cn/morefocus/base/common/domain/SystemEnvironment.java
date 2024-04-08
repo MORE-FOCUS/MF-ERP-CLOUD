@@ -7,8 +7,6 @@ import lombok.Getter;
 
 /**
  * 系统环境
- *
- * @author loki
  */
 @AllArgsConstructor
 @Getter

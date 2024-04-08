@@ -9,8 +9,6 @@ import java.time.LocalDate;
 
 /**
  * OA办公-OA银行信息查询
- *
- * @author loki
  */
 @Data
 public class BankQueryForm extends PageParam {

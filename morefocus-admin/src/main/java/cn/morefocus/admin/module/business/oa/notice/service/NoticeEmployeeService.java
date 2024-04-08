@@ -1,10 +1,10 @@
 package cn.morefocus.admin.module.business.oa.notice.service;
 
 import cn.morefocus.admin.module.business.oa.notice.constant.NoticeVisibleRangeDataTypeEnum;
-import cn.morefocus.admin.module.business.oa.notice.mapper.NoticeMapper;
 import cn.morefocus.admin.module.business.oa.notice.domain.form.NoticeEmployeeQueryForm;
 import cn.morefocus.admin.module.business.oa.notice.domain.form.NoticeViewRecordQueryForm;
 import cn.morefocus.admin.module.business.oa.notice.domain.vo.*;
+import cn.morefocus.admin.module.business.oa.notice.mapper.NoticeMapper;
 import cn.morefocus.admin.module.system.department.service.DepartmentService;
 import cn.morefocus.admin.module.system.employee.domain.entity.EmployeeEntity;
 import cn.morefocus.admin.module.system.employee.service.EmployeeService;
@@ -21,11 +21,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-
 /**
  * 员工查看 通知。公告
- *
- * @author loki
  */
 @Service
 public class NoticeEmployeeService {
@@ -82,7 +79,6 @@ public class NoticeEmployeeService {
 
         return R.ok(PageUtil.convert2PageResult(page, noticeList));
     }
-
 
     /**
      * 查询我的 待查看的 通知、公告清单

@@ -1,10 +1,9 @@
 package cn.morefocus.admin.module.system.employee.manager;
 
-
-import cn.morefocus.admin.module.system.employee.mapper.EmployeeMapper;
 import cn.morefocus.admin.module.system.employee.domain.entity.EmployeeEntity;
-import cn.morefocus.admin.module.system.role.mapper.RoleEmployeeMapper;
+import cn.morefocus.admin.module.system.employee.mapper.EmployeeMapper;
 import cn.morefocus.admin.module.system.role.domain.entity.RoleEmployeeEntity;
+import cn.morefocus.admin.module.system.role.mapper.RoleEmployeeMapper;
 import cn.morefocus.admin.module.system.role.service.RoleEmployeeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.collections4.CollectionUtils;
@@ -17,8 +16,6 @@ import java.util.stream.Collectors;
 
 /**
  * 员工 manager
- *
- * @author loki
  */
 @Service
 public class EmployeeManager extends ServiceImpl<EmployeeMapper, EmployeeEntity> {

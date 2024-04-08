@@ -22,8 +22,6 @@ import java.util.Objects;
 
 /**
  * OA办公-OA银行信息
- *
- * @author loki
  */
 @Service
 @Slf4j
@@ -123,7 +121,6 @@ public class BankService {
         dataTracerService.addTrace(enterpriseId, DataTracerTypeEnum.OA_ENTERPRISE, "更新银行:" + DataTracerConst.HTML_BR + dataTracerService.getChangeContent(bankDetail, updateBank));
         return R.ok();
     }
-
 
     /**
      * 删除银行信息

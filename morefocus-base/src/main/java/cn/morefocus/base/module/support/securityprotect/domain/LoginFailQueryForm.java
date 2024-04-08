@@ -8,8 +8,6 @@ import java.time.LocalDate;
 
 /**
  * 登录失败 分页查询表单
- *
- * @author loki
  */
 
 @Data

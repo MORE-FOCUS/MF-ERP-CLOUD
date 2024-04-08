@@ -2,8 +2,6 @@ package cn.morefocus.base.common.enumeration;
 
 /**
  * 用户类型
- *
- * @author loki
  */
 public enum UserTypeEnum implements BaseEnum {
 

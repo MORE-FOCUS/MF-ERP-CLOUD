@@ -16,7 +16,7 @@ import java.io.IOException;
 /**
  * 初初始化ip工具类
  *
- * @author loki
+ *
  */
 @Order(value = LoggingApplicationListener.DEFAULT_ORDER)
 @Slf4j

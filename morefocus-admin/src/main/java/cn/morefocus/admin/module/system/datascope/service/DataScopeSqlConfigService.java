@@ -28,8 +28,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * sql配置
- *
- * @author loki
  */
 @Slf4j
 @Service
@@ -49,7 +47,6 @@ public class DataScopeSqlConfigService {
 
     @Resource
     private ApplicationContext applicationContext;
-
 
     @PostConstruct
     private void initDataScopeMethodMap() {

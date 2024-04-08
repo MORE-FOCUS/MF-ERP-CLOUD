@@ -17,8 +17,6 @@ import java.lang.reflect.Method;
 
 /**
  * 重复提交 aop切口
- *
- * @author loki
  */
 @Aspect
 @Slf4j

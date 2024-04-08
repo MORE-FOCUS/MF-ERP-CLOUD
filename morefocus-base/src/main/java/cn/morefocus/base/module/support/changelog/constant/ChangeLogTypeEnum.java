@@ -7,7 +7,7 @@ import lombok.Getter;
 /**
  * 更新类型:[1:特大版本功能更新;2:功能更新;3:bug修复]
  *
- * @author loki
+ *
  */
 
 @AllArgsConstructor

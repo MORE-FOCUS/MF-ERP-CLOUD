@@ -1,7 +1,7 @@
 package cn.morefocus.admin.module.system.role.manager;
 
-import cn.morefocus.admin.module.system.role.mapper.RoleEmployeeMapper;
 import cn.morefocus.admin.module.system.role.domain.entity.RoleEmployeeEntity;
+import cn.morefocus.admin.module.system.role.mapper.RoleEmployeeMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
@@ -11,8 +11,6 @@ import java.util.List;
 
 /**
  * 角色员工 manager
- *
- * @author loki
  */
 @Service
 public class RoleEmployeeManager extends ServiceImpl<RoleEmployeeMapper, RoleEmployeeEntity> {

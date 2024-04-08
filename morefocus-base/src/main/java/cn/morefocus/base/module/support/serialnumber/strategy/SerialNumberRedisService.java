@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * 单据序列号 基于redis锁实现
  *
- * @author loki
+ *
  */
 @Slf4j
 public class SerialNumberRedisService extends SerialNumberBaseService {

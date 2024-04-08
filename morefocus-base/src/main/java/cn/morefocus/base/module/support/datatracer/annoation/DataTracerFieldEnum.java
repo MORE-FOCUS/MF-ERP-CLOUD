@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 /**
  * 字段枚举
  *
- * @author loki
+ *
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)

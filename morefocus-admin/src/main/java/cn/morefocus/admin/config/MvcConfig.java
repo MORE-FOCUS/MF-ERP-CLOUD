@@ -11,15 +11,12 @@ import javax.annotation.Resource;
 
 /**
  * web相关配置
- *
- * @author loki
  */
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
     @Resource
     private AdminInterceptor adminInterceptor;
-
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

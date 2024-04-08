@@ -9,8 +9,6 @@ import java.util.List;
 
 /**
  * 角色的数据范围更新
- *
- * @author loki
  */
 @Data
 public class RoleDataScopeUpdateForm {
@@ -22,7 +20,6 @@ public class RoleDataScopeUpdateForm {
     @Schema(description = "设置信息")
     @Valid
     private List<RoleUpdateDataScopeListFormItem> dataScopeItemList;
-
 
     @Data
     public static class RoleUpdateDataScopeListFormItem {

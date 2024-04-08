@@ -12,8 +12,6 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * 员工登录
- *
- * @author loki
  */
 @Data
 public class LoginForm extends CaptchaForm {

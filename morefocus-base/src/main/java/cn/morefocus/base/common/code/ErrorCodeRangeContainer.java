@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 /**
  * 错误码 注册容器
  *
- * @author loki
+ *
  */
 class ErrorCodeRangeContainer {
 

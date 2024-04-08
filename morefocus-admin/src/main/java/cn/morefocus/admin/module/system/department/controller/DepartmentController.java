@@ -18,8 +18,6 @@ import java.util.List;
 
 /**
  * 部门
- *
- * @author loki
  */
 @RestController
 @Tag(name = AdminSwaggerTagConst.System.SYSTEM_DEPARTMENT)
@@ -28,34 +26,34 @@ public class DepartmentController {
     @Resource
     private DepartmentService departmentService;
 
-    @Operation(summary = "查询部门树形列表 @author loki")
+    @Operation(summary = "查询部门树形列表 ")
     @GetMapping("/department/treeList")
     public R<List<DepartmentTreeVO>> departmentTree() {
         return departmentService.departmentTree();
     }
 
-    @Operation(summary = "添加部门 @author loki")
+    @Operation(summary = "添加部门 ")
     @PostMapping("/department/add")
     @SaCheckPermission("system:department:add")
     public R<String> addDepartment(@Valid @RequestBody DepartmentAddForm createDTO) {
         return departmentService.addDepartment(createDTO);
     }
 
-    @Operation(summary = "更新部门 @author loki")
+    @Operation(summary = "更新部门 ")
     @PostMapping("/department/update")
     @SaCheckPermission("system:department:update")
     public R<String> updateDepartment(@Valid @RequestBody DepartmentUpdateForm updateDTO) {
         return departmentService.updateDepartment(updateDTO);
     }
 
-    @Operation(summary = "删除部门 @author loki")
+    @Operation(summary = "删除部门 ")
     @GetMapping("/department/delete/{deptId}")
     @SaCheckPermission("system:department:delete")
     public R<String> deleteDepartment(@PathVariable Long deptId) {
         return departmentService.deleteDepartment(deptId);
     }
 
-    @Operation(summary = "查询部门列表 @author loki")
+    @Operation(summary = "查询部门列表 ")
     @GetMapping("/department/listAll")
     public R<List<DepartmentVO>> listAll() {
         return R.ok(departmentService.listAll());

@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 /**
  * 枚举类校验器
  *
- * @author loki
+ *
  */
 public class EnumValidator implements ConstraintValidator<CheckEnum, Object> {
 

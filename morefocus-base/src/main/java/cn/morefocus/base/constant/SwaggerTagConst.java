@@ -3,7 +3,7 @@ package cn.morefocus.base.constant;
 /**
  * swagger
  *
- * @author loki
+ *
  */
 public class SwaggerTagConst {
 

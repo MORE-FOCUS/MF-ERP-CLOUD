@@ -14,15 +14,11 @@ import java.net.URLEncoder;
 
 /**
  * 返回工具栏
- *
- * @author loki
  */
-
 @Slf4j
-public class LocalResponseUtil {
+public class ResponseUtil {
 
     public static void write(HttpServletResponse response, R<?> r) {
-        // 重置response
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
 
@@ -56,6 +52,5 @@ public class LocalResponseUtil {
             throw new RuntimeException(e);
         }
     }
-
 
 }

@@ -8,8 +8,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 通知公告 阅读记录查询
- *
- * @author loki
  */
 @Data
 public class NoticeViewRecordQueryForm extends PageParam {
@@ -23,6 +21,5 @@ public class NoticeViewRecordQueryForm extends PageParam {
 
     @Schema(description = "关键字")
     private String keywords;
-
 
 }

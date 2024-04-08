@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 单据序列号 基于内存锁实现
  *
- * @author loki
+ *
  */
 @Service
 public class SerialNumberInternService extends SerialNumberBaseService {

@@ -19,8 +19,6 @@ import javax.validation.Valid;
 
 /**
  * 文件服务
- *
- * @author loki
  */
 @RestController
 @Tag(name = SwaggerTagConst.Support.FILE)

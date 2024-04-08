@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 /**
  * redis配置
  *
- * @author loki
+ *
  */
 @Configuration
 public class RedisConfig {

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 /**
  * 帮助文档目录
  *
- * @author loki
+ *
  */
 @Mapper
 @Component

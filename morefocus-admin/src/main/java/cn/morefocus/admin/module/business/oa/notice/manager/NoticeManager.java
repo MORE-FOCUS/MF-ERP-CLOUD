@@ -1,8 +1,8 @@
 package cn.morefocus.admin.module.business.oa.notice.manager;
 
-import cn.morefocus.admin.module.business.oa.notice.mapper.NoticeMapper;
 import cn.morefocus.admin.module.business.oa.notice.domain.entity.NoticeEntity;
 import cn.morefocus.admin.module.business.oa.notice.domain.form.NoticeVisibleRangeForm;
+import cn.morefocus.admin.module.business.oa.notice.mapper.NoticeMapper;
 import cn.morefocus.base.module.support.datatracer.constant.DataTracerTypeEnum;
 import cn.morefocus.base.module.support.datatracer.service.DataTracerService;
 import org.apache.commons.collections4.CollectionUtils;
@@ -14,8 +14,6 @@ import java.util.List;
 
 /**
  * 通知、公告 manager
- *
- * @author loki
  */
 @Service
 public class NoticeManager {

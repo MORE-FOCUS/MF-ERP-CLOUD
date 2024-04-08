@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * 帮助文档 关联项目
  *
- * @author loki
+ *
  */
 @Data
 public class HelpDocRelationVO {

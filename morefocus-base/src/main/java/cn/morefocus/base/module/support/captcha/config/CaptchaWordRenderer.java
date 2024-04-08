@@ -12,7 +12,7 @@ import java.util.Random;
 /**
  * 验证码字体生成
  *
- * @author loki
+ *
  */
 public class CaptchaWordRenderer extends Configurable implements WordRenderer {
 

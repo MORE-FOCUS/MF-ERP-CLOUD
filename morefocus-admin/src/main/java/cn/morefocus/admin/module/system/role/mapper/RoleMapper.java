@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 
 /**
  * 角色 mapper
- *
- * @author loki
  */
 @Mapper
 @Component

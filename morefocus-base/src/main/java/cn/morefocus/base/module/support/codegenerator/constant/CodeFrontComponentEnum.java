@@ -5,7 +5,7 @@ import cn.morefocus.base.common.enumeration.BaseEnum;
 /**
  * 前端组件类型
  *
- * @author loki
+ *
  */
 public enum CodeFrontComponentEnum implements BaseEnum {
 

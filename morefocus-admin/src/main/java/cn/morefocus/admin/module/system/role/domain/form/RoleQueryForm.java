@@ -6,8 +6,6 @@ import lombok.Data;
 
 /**
  * 角色 查询
- *
- * @author loki
  */
 @Data
 public class RoleQueryForm extends PageParam {

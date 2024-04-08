@@ -26,14 +26,14 @@ import cn.morefocus.base.common.util.LocalBeanUtil;
 import cn.morefocus.base.common.util.LocalEnumUtil;
 import cn.morefocus.base.common.util.LocalIpUtil;
 import cn.morefocus.base.constant.LoginDeviceEnum;
-import cn.morefocus.base.module.support.captcha.service.CaptchaService;
 import cn.morefocus.base.module.support.captcha.domain.CaptchaVO;
+import cn.morefocus.base.module.support.captcha.service.CaptchaService;
 import cn.morefocus.base.module.support.config.ConfigKeyEnum;
 import cn.morefocus.base.module.support.config.service.ConfigService;
 import cn.morefocus.base.module.support.loginlog.constant.LoginLogResultEnum;
-import cn.morefocus.base.module.support.loginlog.service.LoginLogService;
 import cn.morefocus.base.module.support.loginlog.domain.LoginLogEntity;
 import cn.morefocus.base.module.support.loginlog.domain.LoginLogVO;
+import cn.morefocus.base.module.support.loginlog.service.LoginLogService;
 import cn.morefocus.base.module.support.securityprotect.domain.LoginFailEntity;
 import cn.morefocus.base.module.support.securityprotect.service.ProtectLoginService;
 import cn.morefocus.base.module.support.securityprotect.service.ProtectPasswordService;
@@ -50,8 +50,6 @@ import java.util.stream.Collectors;
 
 /**
  * 登录
- *
- * @author loki
  */
 @Slf4j
 @Service
@@ -71,7 +69,6 @@ public class LoginService implements StpInterface {
      * 登录信息二级缓存
      */
     private final ConcurrentMap<Long, RequestEmployee> loginEmployeeCache = new ConcurrentLinkedHashMap.Builder<Long, RequestEmployee>().maximumWeightedCapacity(CACHE_MAX_ONLINE_PERSON_COUNT).build();
-
 
     /**
      * 权限 缓存
@@ -203,7 +200,6 @@ public class LoginService implements StpInterface {
         return R.ok(loginResultVO);
     }
 
-
     /**
      * 获取登录结果信息
      */
@@ -233,7 +229,6 @@ public class LoginService implements StpInterface {
         return loginResultVO;
     }
 
-
     /**
      * 获取登录的用户信息
      */
@@ -249,7 +244,6 @@ public class LoginService implements StpInterface {
 
         return requestEmployee;
     }
-
 
     /**
      * 根据登陆token 获取员请求工信息
@@ -308,7 +302,6 @@ public class LoginService implements StpInterface {
         }
     }
 
-
     /**
      * 退出登录
      */
@@ -351,7 +344,6 @@ public class LoginService implements StpInterface {
                 .build();
         loginLogService.log(loginEntity);
     }
-
 
     @Override
     public List<String> getPermissionList(Object loginId, String loginType) {

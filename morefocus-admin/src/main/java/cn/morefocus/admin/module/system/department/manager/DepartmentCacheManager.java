@@ -1,9 +1,9 @@
 package cn.morefocus.admin.module.system.department.manager;
 
 import cn.morefocus.admin.constant.AdminCacheConst;
-import cn.morefocus.admin.module.system.department.mapper.DepartmentMapper;
 import cn.morefocus.admin.module.system.department.domain.vo.DepartmentTreeVO;
 import cn.morefocus.admin.module.system.department.domain.vo.DepartmentVO;
+import cn.morefocus.admin.module.system.department.mapper.DepartmentMapper;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -24,8 +24,6 @@ import java.util.stream.Collectors;
 
 /**
  * 部门 缓存相关
- *
- * @author loki
  */
 @Slf4j
 @Service
@@ -43,7 +41,6 @@ public class DepartmentCacheManager {
         logClearInfo(AdminCacheConst.Department.DEPARTMENT_LIST_CACHE);
     }
 
-
     /**
      * 部门列表
      */
@@ -59,7 +56,6 @@ public class DepartmentCacheManager {
     public Map<Long, DepartmentVO> getDepartmentMap() {
         return departmentMapper.listAll().stream().collect(Collectors.toMap(DepartmentVO::getDeptId, Function.identity()));
     }
-
 
     /**
      * 缓存部门树结构
@@ -78,7 +74,6 @@ public class DepartmentCacheManager {
         List<DepartmentVO> departmentVOList = departmentMapper.listAll();
         return this.selfAndChildrenIdList(deptId, departmentVOList);
     }
-
 
     /**
      * 部门的路径名称
@@ -159,7 +154,6 @@ public class DepartmentCacheManager {
         }
     }
 
-
     /**
      * 获取子元素
      */
@@ -170,7 +164,6 @@ public class DepartmentCacheManager {
         }
         return LocalBeanUtil.copyList(childrenEntityList, DepartmentTreeVO.class);
     }
-
 
     /**
      * 通过部门id,获取当前以及下属部门

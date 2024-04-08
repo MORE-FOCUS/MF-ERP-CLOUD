@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * 文件key进行序列化对象
  *
- * @author loki
+ *
  */
 public class FileKeyVoSerializer extends JsonSerializer<String> {
 

@@ -6,7 +6,7 @@ import lombok.Getter;
 /**
  * 定时任务级别的错误码
  *
- * @author loki
+ *
  */
 @Getter
 @AllArgsConstructor

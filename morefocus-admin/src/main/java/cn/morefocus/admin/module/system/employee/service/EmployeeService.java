@@ -32,8 +32,6 @@ import java.util.stream.Collectors;
 
 /**
  * 员工 service
- *
- * @author loki
  */
 @Service
 public class EmployeeService {
@@ -61,7 +59,6 @@ public class EmployeeService {
     public EmployeeEntity getById(Long employeeId) {
         return employeeMapper.selectById(employeeId);
     }
-
 
     /**
      * 查询员工列表
@@ -151,7 +148,6 @@ public class EmployeeService {
             return R.userErrorParam("部门不存在");
         }
 
-
         EmployeeEntity existEntity = employeeMapper.getByLoginName(employeeUpdateForm.getLoginName(), null);
         if (null != existEntity && !Objects.equals(existEntity.getEmployeeId(), employeeId)) {
             return R.userErrorParam("登录名重复");
@@ -225,7 +221,6 @@ public class EmployeeService {
         return R.ok();
     }
 
-
     /**
      * 批量更新部门
      */
@@ -246,7 +241,6 @@ public class EmployeeService {
 
         return R.ok();
     }
-
 
     /**
      * 更新密码
@@ -309,7 +303,6 @@ public class EmployeeService {
         return R.ok(voList);
     }
 
-
     /**
      * 重置密码
      */
@@ -325,7 +318,6 @@ public class EmployeeService {
     public static String getEncryptPwd(String password) {
         return DigestUtils.md5Hex(String.format(PASSWORD_SALT_FORMAT, password));
     }
-
 
     /**
      * 查询全部员工

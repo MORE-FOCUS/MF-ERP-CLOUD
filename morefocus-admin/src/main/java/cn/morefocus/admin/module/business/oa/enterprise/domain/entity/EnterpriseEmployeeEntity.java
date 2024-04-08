@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 
 /**
  * 企业员工
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

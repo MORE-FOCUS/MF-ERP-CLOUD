@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * 请求url返回对象
  *
- * @author loki
+ *
  */
 @Data
 public class RequestUrlVO {

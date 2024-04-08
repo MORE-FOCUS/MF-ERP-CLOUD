@@ -4,7 +4,6 @@ import cn.morefocus.admin.module.business.category.constant.CategoryTypeEnum;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.service.CategoryQueryService;
 import cn.morefocus.admin.module.business.goods.constant.GoodsStatusEnum;
-import cn.morefocus.admin.module.business.goods.mapper.GoodsMapper;
 import cn.morefocus.admin.module.business.goods.domain.entity.GoodsEntity;
 import cn.morefocus.admin.module.business.goods.domain.form.GoodsAddForm;
 import cn.morefocus.admin.module.business.goods.domain.form.GoodsImportForm;
@@ -12,6 +11,7 @@ import cn.morefocus.admin.module.business.goods.domain.form.GoodsQueryForm;
 import cn.morefocus.admin.module.business.goods.domain.form.GoodsUpdateForm;
 import cn.morefocus.admin.module.business.goods.domain.vo.GoodsExcelVO;
 import cn.morefocus.admin.module.business.goods.domain.vo.GoodsVO;
+import cn.morefocus.admin.module.business.goods.mapper.GoodsMapper;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
@@ -41,8 +41,6 @@ import java.util.stream.Collectors;
 
 /**
  * 商品
- *
- * @author loki
  */
 @Service
 @Slf4j
@@ -138,7 +136,6 @@ public class GoodsService {
         goodsMapper.batchUpdateDeleted(goodsIdList, Boolean.TRUE);
         return R.ok();
     }
-
 
     /**
      * 分页查询

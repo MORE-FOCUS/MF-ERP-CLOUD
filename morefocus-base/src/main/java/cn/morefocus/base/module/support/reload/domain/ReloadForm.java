@@ -7,8 +7,6 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * reload (内存热加载、钩子等)
- *
- * @author loki
  */
 @Data
 public class ReloadForm {

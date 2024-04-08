@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * 代码生成 查询条件 模型
  *
- * @author loki
+ *
  */
 
 @Data

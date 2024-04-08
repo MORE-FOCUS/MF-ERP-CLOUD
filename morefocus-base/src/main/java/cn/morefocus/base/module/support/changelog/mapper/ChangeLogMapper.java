@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * 系统更新日志 mapper
  *
- * @author loki
+ *
  */
 
 @Mapper

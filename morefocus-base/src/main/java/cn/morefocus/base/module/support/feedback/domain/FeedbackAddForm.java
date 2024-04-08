@@ -11,8 +11,6 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * 意见反馈 添加表单
- *
- * @author loki
  */
 @Data
 public class FeedbackAddForm {

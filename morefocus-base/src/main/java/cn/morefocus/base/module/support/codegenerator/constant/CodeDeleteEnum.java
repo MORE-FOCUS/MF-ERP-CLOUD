@@ -5,7 +5,7 @@ import cn.morefocus.base.common.enumeration.BaseEnum;
 /**
  * 删除类型
  *
- * @author loki
+ *
  */
 public enum CodeDeleteEnum implements BaseEnum {
 

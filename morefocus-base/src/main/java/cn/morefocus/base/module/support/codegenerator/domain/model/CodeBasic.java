@@ -9,8 +9,6 @@ import java.time.LocalDateTime;
 
 /**
  * 代码生成 基础数据 模型
- *
- * @author loki
  */
 
 @Data

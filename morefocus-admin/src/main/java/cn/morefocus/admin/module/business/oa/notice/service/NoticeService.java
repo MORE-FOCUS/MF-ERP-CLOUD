@@ -1,7 +1,6 @@
 package cn.morefocus.admin.module.business.oa.notice.service;
 
 import cn.morefocus.admin.module.business.oa.notice.constant.NoticeVisibleRangeDataTypeEnum;
-import cn.morefocus.admin.module.business.oa.notice.mapper.NoticeMapper;
 import cn.morefocus.admin.module.business.oa.notice.domain.entity.NoticeEntity;
 import cn.morefocus.admin.module.business.oa.notice.domain.form.NoticeAddForm;
 import cn.morefocus.admin.module.business.oa.notice.domain.form.NoticeQueryForm;
@@ -12,12 +11,13 @@ import cn.morefocus.admin.module.business.oa.notice.domain.vo.NoticeUpdateFormVO
 import cn.morefocus.admin.module.business.oa.notice.domain.vo.NoticeVO;
 import cn.morefocus.admin.module.business.oa.notice.domain.vo.NoticeVisibleRangeVO;
 import cn.morefocus.admin.module.business.oa.notice.manager.NoticeManager;
-import cn.morefocus.admin.module.system.department.mapper.DepartmentMapper;
+import cn.morefocus.admin.module.business.oa.notice.mapper.NoticeMapper;
 import cn.morefocus.admin.module.system.department.domain.entity.DepartmentEntity;
 import cn.morefocus.admin.module.system.department.domain.vo.DepartmentVO;
+import cn.morefocus.admin.module.system.department.mapper.DepartmentMapper;
 import cn.morefocus.admin.module.system.department.service.DepartmentService;
-import cn.morefocus.admin.module.system.employee.mapper.EmployeeMapper;
 import cn.morefocus.admin.module.system.employee.domain.entity.EmployeeEntity;
+import cn.morefocus.admin.module.system.employee.mapper.EmployeeMapper;
 import cn.morefocus.base.common.constant.StringConst;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
@@ -40,8 +40,6 @@ import java.util.stream.Collectors;
 
 /**
  * 通知。公告 后台管理业务
- *
- * @author loki
  */
 @Service
 public class NoticeService {
@@ -153,7 +151,6 @@ public class NoticeService {
         return R.ok();
     }
 
-
     /**
      * 更新
      */
@@ -175,7 +172,6 @@ public class NoticeService {
         noticeManager.update(oldNoticeEntity, noticeEntity, updateForm.getVisibleRangeList());
         return R.ok();
     }
-
 
     /**
      * 删除

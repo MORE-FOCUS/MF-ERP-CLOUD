@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 /**
  * 字典反序列化
  *
- * @author loki
+ *
  */
 @Slf4j
 public class DictValueVoDeserializer extends JsonDeserializer<String> {

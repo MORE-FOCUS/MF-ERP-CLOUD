@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * t_reload_result 数据表Mapper
  *
- * @author loki
+ *
  */
 @Component
 @Mapper

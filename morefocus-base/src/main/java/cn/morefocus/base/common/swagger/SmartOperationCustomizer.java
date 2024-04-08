@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * 权限、接口加解密等
  *
- * @author loki
+ *
  */
 
 public class SmartOperationCustomizer implements OperationCustomizer {

@@ -11,8 +11,6 @@ import java.time.LocalDateTime;
 
 /**
  * 企业信息
- *
- * @author loki
  */
 @Data
 public class EnterpriseVO {

@@ -23,8 +23,6 @@ import java.util.Properties;
 
 /**
  * mybaits sql 拦截
- *
- * @author loki
  */
 @Intercepts({@Signature(type = org.apache.ibatis.executor.Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})})
 @Component
@@ -60,7 +58,6 @@ public class MyBatisPlugin extends DataScopePlugin {
         Object obj = invocation.proceed();
         return obj;
     }
-
 
     private Map<String, Object> getParamList(String paramName, Object parameter) {
         Map<String, Object> paramMap = Maps.newHashMap();

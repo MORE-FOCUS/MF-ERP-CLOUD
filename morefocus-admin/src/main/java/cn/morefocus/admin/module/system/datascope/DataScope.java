@@ -1,6 +1,5 @@
 package cn.morefocus.admin.module.system.datascope;
 
-
 import cn.morefocus.admin.module.system.datascope.constant.DataScopeTypeEnum;
 import cn.morefocus.admin.module.system.datascope.constant.DataScopeWhereInTypeEnum;
 import cn.morefocus.admin.module.system.datascope.strategy.AbstractDataScopeStrategy;
@@ -12,8 +11,6 @@ import java.lang.annotation.Target;
 
 /**
  * 数据范围
- *
- * @author loki
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

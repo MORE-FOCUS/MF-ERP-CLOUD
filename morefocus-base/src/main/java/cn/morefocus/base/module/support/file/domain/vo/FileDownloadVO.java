@@ -4,8 +4,6 @@ import lombok.Data;
 
 /**
  * 文件下载
- *
- * @author loki
  */
 @Data
 public class FileDownloadVO {

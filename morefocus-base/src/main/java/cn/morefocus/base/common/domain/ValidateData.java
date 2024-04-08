@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 校验数据是否为空的包装类
  *
- * @author loki
+ *
  */
 @Data
 public class ValidateData<T> {

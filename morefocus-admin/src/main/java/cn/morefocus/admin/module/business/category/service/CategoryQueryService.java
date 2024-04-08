@@ -18,8 +18,6 @@ import java.util.stream.Collectors;
 
 /**
  * 类目 查询 业务类
- *
- * @author loki
  */
 @Service
 @Slf4j
@@ -47,7 +45,6 @@ public class CategoryQueryService {
         return Optional.of(entity);
     }
 
-
     /**
      * 根据 类目id集合 查询未删除的类目集合
      */
@@ -65,7 +62,6 @@ public class CategoryQueryService {
         }
         return categoryEntityMap;
     }
-
 
     /**
      * 根据类目id 递归查询该id的所有子类id 递归查询
@@ -90,7 +86,6 @@ public class CategoryQueryService {
         categoryIdList.addAll(this.queryCategorySubId(categoryIdList));
         return categoryIdList;
     }
-
 
     /**
      * 处理类目名称

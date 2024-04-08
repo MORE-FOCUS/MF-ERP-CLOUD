@@ -9,7 +9,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 /**
  * 将application.yam l中的日志路径变量:project.log-path注入到 log4j2.xml
  *
- * @author loki
+ *
  */
 @Order(value = LoggingApplicationListener.DEFAULT_ORDER - 1)
 public class LogVariableListener implements ApplicationListener<ApplicationEnvironmentPreparedEvent> {

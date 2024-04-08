@@ -1,15 +1,13 @@
 package cn.morefocus.base.module.support.quartz.domain.vo;
 
 import cn.morefocus.base.common.domain.BaseVo;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
  * 定时任务调度表
  *
- * @author loki
+ *
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

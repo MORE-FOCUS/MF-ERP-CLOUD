@@ -3,7 +3,7 @@ package cn.morefocus.base.common.constant;
 /**
  * 字符串常量
  *
- * @author loki
+ *
  */
 public class StringConst {
 

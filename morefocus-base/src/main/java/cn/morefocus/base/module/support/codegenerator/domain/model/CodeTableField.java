@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 代码生成 列表表格 模型
  *
- * @author loki
+ *
  */
 
 @Data

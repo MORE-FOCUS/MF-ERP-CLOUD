@@ -10,8 +10,6 @@ import java.util.List;
 
 /**
  * 菜单功能点操作Form
- *
- * @author loki
  */
 @Data
 public class MenuPointsOperateForm {

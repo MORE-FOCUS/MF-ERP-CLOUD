@@ -3,7 +3,7 @@ package cn.morefocus.base.module.support.heartbeat.core;
 /**
  * 心跳处理接口
  *
- * @author loki
+ *
  */
 public interface IHeartBeatRecordHandler {
 

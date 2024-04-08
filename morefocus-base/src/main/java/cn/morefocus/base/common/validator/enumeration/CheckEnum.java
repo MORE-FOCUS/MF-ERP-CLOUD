@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 /**
  * 自定义的属性校验注解，为了方便与校验属性的值是否为合法的枚举值
  *
- * @author loki
+ *
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

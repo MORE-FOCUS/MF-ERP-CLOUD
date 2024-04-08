@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 /**
  * 变动记录
  *
- * @author loki
+ *
  */
 @Data
 public class DataTracerVO {

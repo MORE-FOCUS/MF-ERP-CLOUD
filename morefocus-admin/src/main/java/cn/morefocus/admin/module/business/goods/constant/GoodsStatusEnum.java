@@ -1,14 +1,11 @@
 package cn.morefocus.admin.module.business.goods.constant;
 
-
 import cn.morefocus.base.common.enumeration.BaseEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
  * 商品状态
- *
- * @author loki
  */
 @AllArgsConstructor
 @Getter
@@ -28,7 +25,6 @@ public enum GoodsStatusEnum implements BaseEnum {
      * 3 售罄
      */
     SELL_OUT(3, "售罄"),
-
 
     ;
 

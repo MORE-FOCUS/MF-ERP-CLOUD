@@ -5,8 +5,6 @@ import lombok.Data;
 
 /**
  * 选择角色
- *
- * @author loki
  */
 @Data
 public class RoleSelectedVO extends RoleVO {

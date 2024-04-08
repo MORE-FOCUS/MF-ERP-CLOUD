@@ -17,15 +17,12 @@ import java.util.List;
 
 /**
  * 角色-数据范围
- *
- * @author loki
  */
 @Service
 public class RoleDataScopeService {
 
     @Resource
     private RoleDataScopeManager roleDataScopeManager;
-
 
     /**
      * 获取某个角色的数据范围设置信息

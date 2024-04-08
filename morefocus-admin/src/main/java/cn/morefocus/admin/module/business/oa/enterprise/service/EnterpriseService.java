@@ -1,8 +1,5 @@
 package cn.morefocus.admin.module.business.oa.enterprise.service;
 
-import cn.morefocus.admin.module.business.oa.enterprise.manaager.EnterpriseEmployeeManager;
-import cn.morefocus.admin.module.business.oa.enterprise.mapper.EnterpriseMapper;
-import cn.morefocus.admin.module.business.oa.enterprise.mapper.EnterpriseEmployeeMapper;
 import cn.morefocus.admin.module.business.oa.enterprise.domain.entity.EnterpriseEmployeeEntity;
 import cn.morefocus.admin.module.business.oa.enterprise.domain.entity.EnterpriseEntity;
 import cn.morefocus.admin.module.business.oa.enterprise.domain.form.*;
@@ -10,6 +7,9 @@ import cn.morefocus.admin.module.business.oa.enterprise.domain.vo.EnterpriseEmpl
 import cn.morefocus.admin.module.business.oa.enterprise.domain.vo.EnterpriseExcelVO;
 import cn.morefocus.admin.module.business.oa.enterprise.domain.vo.EnterpriseListVO;
 import cn.morefocus.admin.module.business.oa.enterprise.domain.vo.EnterpriseVO;
+import cn.morefocus.admin.module.business.oa.enterprise.manaager.EnterpriseEmployeeManager;
+import cn.morefocus.admin.module.business.oa.enterprise.mapper.EnterpriseEmployeeMapper;
+import cn.morefocus.admin.module.business.oa.enterprise.mapper.EnterpriseMapper;
 import cn.morefocus.admin.module.system.department.service.DepartmentService;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.PageResult;
@@ -33,8 +33,6 @@ import java.util.stream.Collectors;
 
 /**
  * 企业
- *
- * @author loki
  */
 @Service
 @Slf4j
@@ -131,7 +129,6 @@ public class EnterpriseService {
         dataTracerService.addTrace(dataTracerForm);
         return R.ok();
     }
-
 
     /**
      * 删除企业

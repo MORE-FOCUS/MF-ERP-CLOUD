@@ -8,8 +8,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 角色 添加表单
- *
- * @author loki
  */
 @Data
 public class RoleAddForm {
@@ -33,6 +31,5 @@ public class RoleAddForm {
     @Schema(description = "角色描述")
     @Length(max = 255, message = "角色描述最多255个字符")
     private String remark;
-
 
 }

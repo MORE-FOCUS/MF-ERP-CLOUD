@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * 分页基础参数
  *
- * @author loki
+ *
  */
 @Data
 public class PageParam {

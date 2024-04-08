@@ -18,8 +18,6 @@ import javax.validation.Valid;
 
 /**
  * 数据变动记录
- *
- * @author loki
  */
 @Tag(name = SwaggerTagConst.Support.DATA_TRACER)
 @RestController
@@ -28,7 +26,7 @@ public class DataTracerController extends SupportBaseController {
     @Resource
     private DataTracerService dataTracerService;
 
-    @Operation(summary = "分页查询业务操作日志 - @author loki")
+    @Operation(summary = "分页查询业务操作日志 - ")
     @PostMapping("/dataTracer/query")
     public R<PageResult<DataTracerVO>> query(@Valid @RequestBody DataTracerQueryForm queryForm) {
         return dataTracerService.query(queryForm);

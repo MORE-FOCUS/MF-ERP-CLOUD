@@ -4,8 +4,6 @@ import cn.morefocus.base.common.enumeration.BaseEnum;
 
 /**
  * 数据范围 类型
- *
- * @author loki
  */
 public enum DataScopeTypeEnum implements BaseEnum {
 
@@ -47,6 +45,5 @@ public enum DataScopeTypeEnum implements BaseEnum {
     public String getName() {
         return name;
     }
-
 
 }

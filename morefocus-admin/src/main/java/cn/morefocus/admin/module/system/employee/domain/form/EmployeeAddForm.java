@@ -14,8 +14,6 @@ import java.util.List;
 
 /**
  * 添加员工
- *
- * @author loki
  */
 @Data
 public class EmployeeAddForm {

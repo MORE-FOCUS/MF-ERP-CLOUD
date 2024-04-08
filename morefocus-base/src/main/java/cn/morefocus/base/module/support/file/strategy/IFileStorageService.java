@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * 接口
  *
- * @author loki
+ *
  */
 public interface IFileStorageService {
 

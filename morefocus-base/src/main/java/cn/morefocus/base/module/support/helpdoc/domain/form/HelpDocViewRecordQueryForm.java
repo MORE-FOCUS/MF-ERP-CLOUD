@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 查阅记录 查询
  *
- * @author loki
+ *
  */
 @Data
 public class HelpDocViewRecordQueryForm extends PageParam {

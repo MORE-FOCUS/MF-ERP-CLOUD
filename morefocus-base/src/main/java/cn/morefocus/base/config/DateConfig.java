@@ -19,7 +19,7 @@ import java.time.format.DateTimeParseException;
 /**
  * java8 localDate 时间类格式化配置
  *
- * @author loki
+ *
  */
 @Configuration
 public class DateConfig {

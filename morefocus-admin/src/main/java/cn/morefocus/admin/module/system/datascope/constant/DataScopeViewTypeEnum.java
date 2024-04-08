@@ -1,13 +1,9 @@
 package cn.morefocus.admin.module.system.datascope.constant;
 
-
 import cn.morefocus.base.common.enumeration.BaseEnum;
-
 
 /**
  * 数据范围 种类
- *
- * @author loki
  */
 public enum DataScopeViewTypeEnum implements BaseEnum {
 
@@ -30,7 +26,6 @@ public enum DataScopeViewTypeEnum implements BaseEnum {
      * 全部
      */
     ALL(10, 100, "全部");
-
 
     private final Integer value;
     private final Integer level;
@@ -55,6 +50,5 @@ public enum DataScopeViewTypeEnum implements BaseEnum {
     public String getDesc() {
         return desc;
     }
-
 
 }

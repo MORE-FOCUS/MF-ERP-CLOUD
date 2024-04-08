@@ -4,7 +4,6 @@ import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import cn.morefocus.base.common.util.PageUtil;
-import cn.morefocus.base.module.support.helpdoc.mapper.HelpDocMapper;
 import cn.morefocus.base.module.support.helpdoc.domain.entity.HelpDocEntity;
 import cn.morefocus.base.module.support.helpdoc.domain.form.HelpDocAddForm;
 import cn.morefocus.base.module.support.helpdoc.domain.form.HelpDocQueryForm;
@@ -12,6 +11,7 @@ import cn.morefocus.base.module.support.helpdoc.domain.form.HelpDocUpdateForm;
 import cn.morefocus.base.module.support.helpdoc.domain.vo.HelpDocDetailVO;
 import cn.morefocus.base.module.support.helpdoc.domain.vo.HelpDocVO;
 import cn.morefocus.base.module.support.helpdoc.manager.HelpDocManager;
+import cn.morefocus.base.module.support.helpdoc.mapper.HelpDocMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,8 +21,6 @@ import java.util.List;
 
 /**
  * 后台管理业务
- *
- * @author loki
  */
 @Service
 public class HelpDocService {

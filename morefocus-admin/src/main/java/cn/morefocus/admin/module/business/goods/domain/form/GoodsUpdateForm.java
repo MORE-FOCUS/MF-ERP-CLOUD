@@ -7,8 +7,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 商品 更新表单
- *
- * @author loki
  */
 @Data
 public class GoodsUpdateForm extends GoodsAddForm {

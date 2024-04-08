@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 /**
  * bean相关工具类
  *
- * @author loki
+ *
  */
 public class LocalBeanUtil {
 

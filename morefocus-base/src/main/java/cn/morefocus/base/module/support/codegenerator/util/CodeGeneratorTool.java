@@ -6,7 +6,7 @@ import com.google.common.base.CaseFormat;
 /**
  * 代码生成 velocity 工具类
  *
- * @author loki
+ *
  */
 
 public class CodeGeneratorTool {

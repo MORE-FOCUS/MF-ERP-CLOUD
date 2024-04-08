@@ -19,8 +19,6 @@ import javax.validation.Valid;
 
 /**
  * 网络安全
- *
- * @author loki
  */
 
 @RestController
@@ -36,12 +34,10 @@ public class AdminProtectController extends SupportBaseController {
         return R.ok(protectLoginService.queryPage(queryForm));
     }
 
-
     @Operation(summary = "批量删除 @author 1024创新实验室-主任-卓大")
     @PostMapping("/protect/loginFail/batchDelete")
     public R<String> batchDelete(@RequestBody ValidateList<Long> idList) {
         return protectLoginService.batchDelete(idList);
     }
-
 
 }

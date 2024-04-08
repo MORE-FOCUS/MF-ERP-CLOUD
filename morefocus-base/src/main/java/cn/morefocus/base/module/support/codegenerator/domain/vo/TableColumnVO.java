@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * 列
  *
- * @author loki
+ *
  */
 
 @Data

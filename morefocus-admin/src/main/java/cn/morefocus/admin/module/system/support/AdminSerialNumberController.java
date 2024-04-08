@@ -7,11 +7,11 @@ import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalEnumUtil;
 import cn.morefocus.base.constant.SwaggerTagConst;
 import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberIdEnum;
-import cn.morefocus.base.module.support.serialnumber.mapper.SerialNumberMapper;
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberEntity;
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberGenerateForm;
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberRecordEntity;
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberRecordQueryForm;
+import cn.morefocus.base.module.support.serialnumber.mapper.SerialNumberMapper;
 import cn.morefocus.base.module.support.serialnumber.service.SerialNumberRecordService;
 import cn.morefocus.base.module.support.serialnumber.strategy.SerialNumberService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -27,8 +27,6 @@ import java.util.List;
 
 /**
  * 单据序列号
- *
- * @author loki
  */
 @Tag(name = SwaggerTagConst.Support.SERIAL_NUMBER)
 @RestController
@@ -43,7 +41,7 @@ public class AdminSerialNumberController extends SupportBaseController {
     @Resource
     private SerialNumberRecordService serialNumberRecordService;
 
-    @Operation(summary = "生成单号 @author loki")
+    @Operation(summary = "生成单号 ")
     @PostMapping("/serialNumber/generate")
     @SaCheckPermission("support:serialNumber:generate")
     public R<List<String>> generate(@RequestBody @Valid SerialNumberGenerateForm generateForm) {
@@ -54,13 +52,13 @@ public class AdminSerialNumberController extends SupportBaseController {
         return R.ok(serialNumberService.generate(serialNumberIdEnum, generateForm.getCount()));
     }
 
-    @Operation(summary = "获取所有单号定义 @author loki")
+    @Operation(summary = "获取所有单号定义 ")
     @GetMapping("/serialNumber/all")
     public R<List<SerialNumberEntity>> getAll() {
         return R.ok(serialNumberMapper.selectList(null));
     }
 
-    @Operation(summary = "获取生成记录 @author loki")
+    @Operation(summary = "获取生成记录 ")
     @PostMapping("/serialNumber/queryRecord")
     @SaCheckPermission("support:serialNumber:record")
     public R<PageResult<SerialNumberRecordEntity>> queryRecord(@RequestBody @Valid SerialNumberRecordQueryForm queryForm) {

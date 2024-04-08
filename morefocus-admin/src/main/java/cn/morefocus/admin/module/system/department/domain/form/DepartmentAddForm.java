@@ -8,8 +8,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 部门 添加表单
- *
- * @author loki
  */
 @Data
 public class DepartmentAddForm {

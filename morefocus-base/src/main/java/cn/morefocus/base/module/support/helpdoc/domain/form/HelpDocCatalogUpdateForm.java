@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 帮助文档 目录
  *
- * @author loki
+ *
  */
 @Data
 public class HelpDocCatalogUpdateForm extends HelpDocCatalogAddForm {

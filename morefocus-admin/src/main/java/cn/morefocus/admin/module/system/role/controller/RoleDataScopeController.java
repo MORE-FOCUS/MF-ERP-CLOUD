@@ -16,8 +16,6 @@ import java.util.List;
 
 /**
  * 角色的数据权限配置
- *
- * @author loki
  */
 @RestController
 @Tag(name = AdminSwaggerTagConst.System.SYSTEM_ROLE_DATA_SCOPE)
@@ -26,18 +24,17 @@ public class RoleDataScopeController {
     @Resource
     private RoleDataScopeService roleDataScopeService;
 
-    @Operation(summary = "获取某角色所设置的数据范围 @author loki")
+    @Operation(summary = "获取某角色所设置的数据范围 ")
     @GetMapping("/role/dataScope/getRoleDataScopeList/{roleId}")
     public R<List<RoleDataScopeVO>> dataScopeListByRole(@PathVariable Long roleId) {
         return roleDataScopeService.getRoleDataScopeList(roleId);
     }
 
-    @Operation(summary = "批量设置某角色数据范围 @author loki")
+    @Operation(summary = "批量设置某角色数据范围 ")
     @PostMapping("/role/dataScope/updateRoleDataScopeList")
     @SaCheckPermission("system:role:dataScope:update")
     public R<String> updateRoleDataScopeList(@RequestBody @Valid RoleDataScopeUpdateForm roleDataScopeUpdateForm) {
         return roleDataScopeService.updateRoleDataScopeList(roleDataScopeUpdateForm);
     }
-
 
 }

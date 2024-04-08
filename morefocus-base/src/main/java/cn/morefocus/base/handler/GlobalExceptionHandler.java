@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 /**
  * 全局异常拦截
  *
- * @author loki
+ *
  */
 @Slf4j
 @ControllerAdvice

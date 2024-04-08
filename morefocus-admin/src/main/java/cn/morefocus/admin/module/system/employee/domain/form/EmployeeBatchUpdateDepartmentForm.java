@@ -10,8 +10,6 @@ import java.util.List;
 
 /**
  * 员工更新部门
- *
- * @author loki
  */
 @Data
 public class EmployeeBatchUpdateDepartmentForm {

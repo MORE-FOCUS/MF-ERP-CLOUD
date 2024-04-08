@@ -9,7 +9,7 @@ import java.util.Random;
 /**
  * 验证码颜色
  *
- * @author loki
+ *
  */
 public class CaptchaColor {
 

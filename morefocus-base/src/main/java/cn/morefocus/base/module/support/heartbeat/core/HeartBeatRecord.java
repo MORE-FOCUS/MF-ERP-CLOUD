@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 /**
  * 心跳记录日志
  *
- * @author loki
+ *
  */
 @Data
 public class HeartBeatRecord {

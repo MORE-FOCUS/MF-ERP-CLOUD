@@ -15,8 +15,6 @@ import java.util.List;
 
 /**
  * 企业
- *
- * @author loki
  */
 @Mapper
 @Component
@@ -51,6 +49,5 @@ public interface EnterpriseMapper extends BaseMapper<EnterpriseEntity> {
      * 查询列表
      */
     List<EnterpriseListVO> queryList(@Param("type") Integer type, @Param("disabledFlag") Boolean disabledFlag, @Param("deleteFlag") Boolean deleteFlag);
-
 
 }

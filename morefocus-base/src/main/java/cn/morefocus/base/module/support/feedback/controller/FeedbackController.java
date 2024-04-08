@@ -22,8 +22,6 @@ import javax.validation.Valid;
 
 /**
  * 意见反馈
- *
- * @author loki
  */
 @Slf4j
 @Tag(name = SwaggerTagConst.Support.FEEDBACK)
@@ -33,13 +31,13 @@ public class FeedbackController extends SupportBaseController {
     @Resource
     private FeedbackService feedbackService;
 
-    @Operation(summary = "意见反馈-分页查询 @author loki")
+    @Operation(summary = "意见反馈-分页查询 ")
     @PostMapping("/feedback/query")
     public R<PageResult<FeedbackVO>> query(@RequestBody @Valid FeedbackQueryForm queryForm) {
         return feedbackService.query(queryForm);
     }
 
-    @Operation(summary = "意见反馈-新增 @author loki")
+    @Operation(summary = "意见反馈-新增 ")
     @PostMapping("/feedback/add")
     public R<String> add(@RequestBody @Valid FeedbackAddForm addForm) {
         RequestUser employee = LocalRequestUtil.getRequestUser();

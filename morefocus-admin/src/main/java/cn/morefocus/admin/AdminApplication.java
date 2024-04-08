@@ -14,8 +14,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * 项目启动类
- *
- * @author loki
  */
 @EnableCaching
 @EnableScheduling

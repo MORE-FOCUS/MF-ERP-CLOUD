@@ -10,8 +10,6 @@ import java.time.LocalDateTime;
 
 /**
  * 操作日志信息
- *
- * @author loki
  */
 @Data
 public class OperateLogVO {

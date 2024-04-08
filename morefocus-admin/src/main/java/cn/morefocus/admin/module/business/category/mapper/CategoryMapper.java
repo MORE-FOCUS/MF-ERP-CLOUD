@@ -11,8 +11,6 @@ import java.util.List;
 
 /**
  * 类目 mapper
- *
- * @author loki
  */
 @Component
 @Mapper
@@ -22,7 +20,7 @@ public interface CategoryMapper extends BaseMapper<CategoryEntity> {
      * 根据父级id 类型 查询子类
      *
      * @param parentIdList 父级id集合
-     * @param deleteFlag  删除标识
+     * @param deleteFlag   删除标识
      * @return 列表
      */
     List<CategoryEntity> queryByParentId(@Param("parentIdList") List<Long> parentIdList,
@@ -33,7 +31,7 @@ public interface CategoryMapper extends BaseMapper<CategoryEntity> {
      *
      * @param parentIdList 父级id集合
      * @param categoryType {@link CategoryTypeEnum}
-     * @param deleteFlag  删除标识
+     * @param deleteFlag   删除标识
      * @return 列表
      */
     List<CategoryEntity> queryByParentIdAndType(@Param("parentIdList") List<Long> parentIdList,

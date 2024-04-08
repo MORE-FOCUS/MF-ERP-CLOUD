@@ -11,8 +11,6 @@ import java.time.LocalDateTime;
 
 /**
  * 通知公告
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

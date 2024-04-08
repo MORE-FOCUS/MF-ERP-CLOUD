@@ -15,8 +15,6 @@ import java.math.BigDecimal;
 
 /**
  * 商品 添加表单
- *
- * @author loki
  */
 @Data
 public class GoodsAddForm {

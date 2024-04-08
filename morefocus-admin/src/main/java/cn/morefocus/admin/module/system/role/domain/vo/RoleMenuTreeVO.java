@@ -8,8 +8,6 @@ import java.util.List;
 
 /**
  * 角色菜单树
- *
- * @author loki
  */
 @Data
 public class RoleMenuTreeVO {

@@ -1,7 +1,7 @@
 spring:
   # 数据库连接信息
   datasource:
-    url: jdbc:p6spy:mysql://127.0.0.1/mf_boot?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    url: jdbc:p6spy:mysql://127.0.0.1/MF_ERP_CLOUD?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
     username: root
     password: 12345678
     initial-size: 2
@@ -60,7 +60,7 @@ spring:
 server:
   tomcat:
     basedir: ${project.log-directory}/tomcat-logs
-    accesslog:
+    access-log:
       enabled: true
       max-days: 7
       pattern: "%t %{X-Forwarded-For}i %a %r %s (%D ms) %I (%B byte)"

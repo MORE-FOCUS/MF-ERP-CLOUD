@@ -5,9 +5,9 @@ import cn.morefocus.base.common.constant.StringConst;
 import cn.morefocus.base.common.domain.RequestUser;
 import cn.morefocus.base.common.util.LocalIpUtil;
 import cn.morefocus.base.common.util.LocalRequestUtil;
-import cn.morefocus.base.module.support.operatelog.mapper.OperateLogMapper;
 import cn.morefocus.base.module.support.operatelog.annotation.OperateLog;
 import cn.morefocus.base.module.support.operatelog.domain.OperateLogEntity;
+import cn.morefocus.base.module.support.operatelog.mapper.OperateLogMapper;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.swagger.v3.oas.annotations.Operation;
@@ -41,7 +41,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * 操作日志记录处理,对所有OperateLog注解的Controller进行操作日志监控
  *
- * @author loki
+ *
  */
 @Slf4j
 @Aspect

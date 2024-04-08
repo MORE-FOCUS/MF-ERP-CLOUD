@@ -10,8 +10,6 @@ import java.util.List;
 
 /**
  * 员工列表
- *
- * @author loki
  */
 @Data
 public class EmployeeQueryForm extends PageParam {

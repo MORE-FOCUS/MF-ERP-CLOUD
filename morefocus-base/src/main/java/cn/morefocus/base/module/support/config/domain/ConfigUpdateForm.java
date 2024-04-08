@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 配置更新表单
  *
- * @author loki
+ *
  */
 @Data
 public class ConfigUpdateForm extends ConfigAddForm {

@@ -7,8 +7,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 部门 更新表单
- *
- * @author loki
  */
 @Data
 public class DepartmentUpdateForm extends DepartmentAddForm {

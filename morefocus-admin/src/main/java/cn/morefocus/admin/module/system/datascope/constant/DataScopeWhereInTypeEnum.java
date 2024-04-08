@@ -1,12 +1,9 @@
 package cn.morefocus.admin.module.system.datascope.constant;
 
-
 import cn.morefocus.base.common.enumeration.BaseEnum;
 
 /**
  * 数据范围 sql where
- *
- * @author loki
  */
 public enum DataScopeWhereInTypeEnum implements BaseEnum {
 
@@ -42,6 +39,5 @@ public enum DataScopeWhereInTypeEnum implements BaseEnum {
     public String getDesc() {
         return desc;
     }
-
 
 }

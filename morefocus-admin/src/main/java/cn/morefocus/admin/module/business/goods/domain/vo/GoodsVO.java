@@ -12,8 +12,6 @@ import java.time.LocalDateTime;
 
 /**
  * 商品
- *
- * @author loki
  */
 @Data
 public class GoodsVO {

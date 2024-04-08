@@ -13,7 +13,7 @@ import java.io.IOException;
 /**
  * 文件key进行序列化对象
  *
- * @author loki
+ *
  */
 public class FileKeySerializer extends JsonSerializer<String> {
 

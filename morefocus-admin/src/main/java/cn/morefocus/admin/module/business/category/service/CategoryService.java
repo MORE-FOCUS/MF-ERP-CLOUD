@@ -1,6 +1,5 @@
 package cn.morefocus.admin.module.business.category.service;
 
-import cn.morefocus.admin.module.business.category.mapper.CategoryMapper;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.domain.form.CategoryAddForm;
 import cn.morefocus.admin.module.business.category.domain.form.CategoryTreeQueryForm;
@@ -8,6 +7,7 @@ import cn.morefocus.admin.module.business.category.domain.form.CategoryUpdateFor
 import cn.morefocus.admin.module.business.category.domain.vo.CategoryTreeVO;
 import cn.morefocus.admin.module.business.category.domain.vo.CategoryVO;
 import cn.morefocus.admin.module.business.category.manager.CategoryCacheManager;
+import cn.morefocus.admin.module.business.category.mapper.CategoryMapper;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
@@ -23,8 +23,6 @@ import java.util.Optional;
 
 /**
  * 类目
- *
- * @author loki
  */
 @Service
 public class CategoryService {

@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 /**
  * BigDecimal 工具类
  *
- * @author loki
+ *
  */
 public class LocalBigDecimalUtil {
 

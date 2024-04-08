@@ -1,12 +1,12 @@
 package cn.morefocus.admin.module.system.department.service;
 
-import cn.morefocus.admin.module.system.department.mapper.DepartmentMapper;
 import cn.morefocus.admin.module.system.department.domain.entity.DepartmentEntity;
 import cn.morefocus.admin.module.system.department.domain.form.DepartmentAddForm;
 import cn.morefocus.admin.module.system.department.domain.form.DepartmentUpdateForm;
 import cn.morefocus.admin.module.system.department.domain.vo.DepartmentTreeVO;
 import cn.morefocus.admin.module.system.department.domain.vo.DepartmentVO;
 import cn.morefocus.admin.module.system.department.manager.DepartmentCacheManager;
+import cn.morefocus.admin.module.system.department.mapper.DepartmentMapper;
 import cn.morefocus.admin.module.system.employee.mapper.EmployeeMapper;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.R;
@@ -21,8 +21,6 @@ import java.util.Map;
 
 /**
  * 部门 service
- *
- * @author loki
  */
 @Service
 public class DepartmentService {
@@ -48,7 +46,6 @@ public class DepartmentService {
         this.clearCache();
         return R.ok();
     }
-
 
     /**
      * 更新部门信息
@@ -112,7 +109,6 @@ public class DepartmentService {
         return R.ok(treeVOList);
     }
 
-
     /**
      * 自身以及所有下级的部门id列表
      */
@@ -120,14 +116,12 @@ public class DepartmentService {
         return departmentCacheManager.getDepartmentSelfAndChildren(deptId);
     }
 
-
     /**
      * 获取所有部门
      */
     public List<DepartmentVO> listAll() {
         return departmentCacheManager.getDepartmentList();
     }
-
 
     /**
      * 获取部门

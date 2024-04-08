@@ -13,8 +13,6 @@ import java.time.LocalDateTime;
 
 /**
  * 上次生成信息
- *
- * @author loki
  */
 @Data
 @AllArgsConstructor

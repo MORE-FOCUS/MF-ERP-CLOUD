@@ -12,8 +12,6 @@ import lombok.EqualsAndHashCode;
 
 /**
  * 企业
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

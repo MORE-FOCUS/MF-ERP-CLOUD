@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * 字典
  *
- * @author loki
+ *
  */
 @Data
 public class DictKeyVO {

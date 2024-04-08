@@ -5,8 +5,6 @@ import lombok.Getter;
 
 /**
  * 性别枚举类
- *
- * @author loki
  */
 @AllArgsConstructor
 @Getter

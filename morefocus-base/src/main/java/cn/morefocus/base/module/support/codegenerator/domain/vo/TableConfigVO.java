@@ -8,8 +8,6 @@ import java.util.List;
 
 /**
  * 表的配置信息
- *
- * @author loki
  */
 
 @Data

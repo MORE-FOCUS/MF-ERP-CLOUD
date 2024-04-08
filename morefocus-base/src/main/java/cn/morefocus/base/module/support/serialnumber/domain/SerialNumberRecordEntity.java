@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 /**
  * 单据序列号 表结构
  *
- * @author loki
+ *
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

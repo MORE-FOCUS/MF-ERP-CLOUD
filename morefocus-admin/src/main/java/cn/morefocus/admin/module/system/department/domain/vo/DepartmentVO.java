@@ -5,8 +5,6 @@ import lombok.Data;
 
 /**
  * 部门
- *
- * @author loki
  */
 @Data
 public class DepartmentVO {
@@ -24,7 +22,7 @@ public class DepartmentVO {
     private Long managerId;
 
     @Schema(description = "父级部门id")
-    private Long parentId;
+    private Long pid;
 
     @Schema(description = "排序")
     private Integer sortValue;

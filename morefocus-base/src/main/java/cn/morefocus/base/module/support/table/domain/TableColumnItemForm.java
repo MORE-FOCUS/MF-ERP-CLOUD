@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 自定义表格列
  *
- * @author loki
+ *
  */
 @Data
 public class TableColumnItemForm {

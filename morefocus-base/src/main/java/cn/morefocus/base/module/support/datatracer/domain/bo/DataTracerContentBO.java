@@ -7,7 +7,7 @@ import java.lang.reflect.Field;
 /**
  * 变动内容
  *
- * @author loki
+ *
  */
 @Data
 public class DataTracerContentBO {

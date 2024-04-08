@@ -10,8 +10,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 查询表单
- *
- * @author loki
  */
 @Data
 public class DataTracerQueryForm extends PageParam {

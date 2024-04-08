@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 
 /**
  * 通知公告类型
- *
- * @author loki
  */
 @Mapper
 @Component

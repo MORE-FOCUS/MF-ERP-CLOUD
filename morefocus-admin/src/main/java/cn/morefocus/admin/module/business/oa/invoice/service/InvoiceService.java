@@ -1,9 +1,9 @@
 package cn.morefocus.admin.module.business.oa.invoice.service;
 
-import cn.morefocus.admin.module.business.oa.enterprise.service.EnterpriseService;
 import cn.morefocus.admin.module.business.oa.enterprise.domain.vo.EnterpriseVO;
-import cn.morefocus.admin.module.business.oa.invoice.mapper.InvoiceMapper;
+import cn.morefocus.admin.module.business.oa.enterprise.service.EnterpriseService;
 import cn.morefocus.admin.module.business.oa.invoice.domain.*;
+import cn.morefocus.admin.module.business.oa.invoice.mapper.InvoiceMapper;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
@@ -22,8 +22,6 @@ import java.util.Objects;
 
 /**
  * OA发票信息
- *
- * @author loki
  */
 @Service
 @Slf4j
@@ -121,7 +119,6 @@ public class InvoiceService {
         dataTracerService.addTrace(enterpriseId, DataTracerTypeEnum.OA_ENTERPRISE, "更新发票：" + DataTracerConst.HTML_BR + dataTracerService.getChangeContent(invoiceDetail, updateInvoice));
         return R.ok();
     }
-
 
     /**
      * 删除发票信息

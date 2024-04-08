@@ -1,11 +1,11 @@
 package cn.morefocus.admin.module.business.oa.invoice.controller;
 
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
-import cn.morefocus.admin.module.business.oa.invoice.service.InvoiceService;
 import cn.morefocus.admin.module.business.oa.invoice.domain.InvoiceAddForm;
 import cn.morefocus.admin.module.business.oa.invoice.domain.InvoiceQueryForm;
 import cn.morefocus.admin.module.business.oa.invoice.domain.InvoiceUpdateForm;
 import cn.morefocus.admin.module.business.oa.invoice.domain.InvoiceVO;
+import cn.morefocus.admin.module.business.oa.invoice.service.InvoiceService;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.RequestUser;
@@ -22,8 +22,6 @@ import java.util.List;
 
 /**
  * OA发票信息
- *
- * @author loki
  */
 @Slf4j
 @RestController
@@ -72,6 +70,5 @@ public class InvoiceController {
     public R<List<InvoiceVO>> queryList(@PathVariable Long enterpriseId) {
         return invoiceService.queryList(enterpriseId);
     }
-
 
 }

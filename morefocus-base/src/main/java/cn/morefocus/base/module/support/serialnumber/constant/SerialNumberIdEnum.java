@@ -7,7 +7,7 @@ import lombok.Getter;
 /**
  * 单据序列号 枚举
  *
- * @author loki
+ *
  */
 @AllArgsConstructor
 @Getter

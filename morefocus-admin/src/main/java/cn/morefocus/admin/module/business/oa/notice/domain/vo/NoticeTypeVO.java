@@ -5,8 +5,6 @@ import lombok.Data;
 
 /**
  * 通知公告 类型
- *
- * @author loki
  */
 @Data
 public class NoticeTypeVO {

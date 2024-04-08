@@ -10,8 +10,6 @@ import lombok.EqualsAndHashCode;
 
 /**
  * 菜单 表
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

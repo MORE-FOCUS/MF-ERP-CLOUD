@@ -1,16 +1,16 @@
 package cn.morefocus.admin.module.system.role.service;
 
-import cn.morefocus.admin.module.system.menu.mapper.MenuMapper;
 import cn.morefocus.admin.module.system.menu.domain.entity.MenuEntity;
 import cn.morefocus.admin.module.system.menu.domain.vo.MenuSimpleTreeVO;
 import cn.morefocus.admin.module.system.menu.domain.vo.MenuVO;
-import cn.morefocus.admin.module.system.role.mapper.RoleMapper;
-import cn.morefocus.admin.module.system.role.mapper.RoleMenuMapper;
+import cn.morefocus.admin.module.system.menu.mapper.MenuMapper;
 import cn.morefocus.admin.module.system.role.domain.entity.RoleEntity;
 import cn.morefocus.admin.module.system.role.domain.entity.RoleMenuEntity;
 import cn.morefocus.admin.module.system.role.domain.form.RoleMenuUpdateForm;
 import cn.morefocus.admin.module.system.role.domain.vo.RoleMenuTreeVO;
 import cn.morefocus.admin.module.system.role.manager.RoleMenuManager;
+import cn.morefocus.admin.module.system.role.mapper.RoleMapper;
+import cn.morefocus.admin.module.system.role.mapper.RoleMenuMapper;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
@@ -27,8 +27,6 @@ import java.util.stream.Collectors;
 
 /**
  * 角色-菜单
- *
- * @author loki
  */
 @Service
 public class RoleMenuService {
@@ -80,7 +78,6 @@ public class RoleMenuService {
         List<MenuEntity> menuEntityList = roleMenuMapper.selectMenuListByRoleIdList(roleIdList, false);
         return LocalBeanUtil.copyList(menuEntityList, MenuVO.class);
     }
-
 
     /**
      * 获取角色关联菜单权限

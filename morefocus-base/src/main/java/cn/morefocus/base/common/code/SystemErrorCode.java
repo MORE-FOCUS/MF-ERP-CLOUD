@@ -6,7 +6,7 @@ import lombok.Getter;
 /**
  * 系统错误状态码（此类返回码应该高度重视）
  *
- * @author loki
+ *
  */
 @Getter
 @AllArgsConstructor

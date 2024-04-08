@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 
 /**
  * OA办公-OA银行信息
- *
- * @author loki
  */
 @Data
 public class BankVO {

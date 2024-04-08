@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 字典
  *
- * @author loki
+ *
  */
 @Data
 public class DictValueQueryForm extends PageParam {

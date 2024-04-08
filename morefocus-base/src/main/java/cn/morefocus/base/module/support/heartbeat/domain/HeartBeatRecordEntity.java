@@ -11,8 +11,6 @@ import java.time.LocalDateTime;
 
 /**
  * 心跳记录
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

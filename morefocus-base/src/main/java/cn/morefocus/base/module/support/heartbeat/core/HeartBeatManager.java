@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 心跳核心调度管理器
  *
- * @author loki
+ *
  */
 public class HeartBeatManager {
 

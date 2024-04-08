@@ -6,11 +6,8 @@ import cn.morefocus.base.common.util.LocalRequestUtil;
 
 /**
  * admin 端的请求工具类
- *
- * @author loki
  */
 public final class AdminRequestUtil {
-
 
     public static RequestEmployee getRequestUser() {
         return (RequestEmployee) LocalRequestUtil.getRequestUser();

@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 /**
  * 字典
  *
- * @author loki
+ *
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

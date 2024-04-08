@@ -10,7 +10,7 @@ import java.util.function.Function;
 /**
  * 凭证（内存实现）
  *
- * @author loki
+ *
  */
 public class RepeatSubmitCaffeineTicket extends AbstractRepeatSubmitTicket {
 

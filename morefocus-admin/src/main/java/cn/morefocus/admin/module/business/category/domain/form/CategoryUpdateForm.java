@@ -7,8 +7,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 类目 更新
- *
- * @author loki
  */
 @Data
 public class CategoryUpdateForm extends CategoryAddForm {

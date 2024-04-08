@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * 帮助文档 mapper
  *
- * @author loki
+ *
  */
 @Mapper
 @Component

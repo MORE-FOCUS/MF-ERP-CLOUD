@@ -9,8 +9,6 @@ import java.time.LocalDate;
 
 /**
  * OA发票信息查询
- *
- * @author loki
  */
 @Data
 public class InvoiceQueryForm extends PageParam {

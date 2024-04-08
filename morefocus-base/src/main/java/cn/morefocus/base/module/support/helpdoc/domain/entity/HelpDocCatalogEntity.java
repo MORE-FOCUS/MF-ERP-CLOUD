@@ -9,7 +9,7 @@ import lombok.*;
 /**
  * 帮助文档的 类型
  *
- * @author loki
+ *
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

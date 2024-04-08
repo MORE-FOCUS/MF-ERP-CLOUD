@@ -14,8 +14,6 @@ import java.util.List;
 
 /**
  * 查询支持的数据范围类型
- *
- * @author loki
  */
 @RestController
 @Tag(name = AdminSwaggerTagConst.System.SYSTEM_DATA_SCOPE)
@@ -24,11 +22,10 @@ public class DataScopeController {
     @Resource
     private DataScopeService dataScopeService;
 
-    @Operation(summary = "获取当前系统所配置的所有数据范围 @author loki")
+    @Operation(summary = "获取当前系统所配置的所有数据范围 ")
     @GetMapping("/dataScope/list")
     public R<List<DataScopeAndViewTypeVO>> dataScopeList() {
         return dataScopeService.dataScopeList();
     }
-
 
 }

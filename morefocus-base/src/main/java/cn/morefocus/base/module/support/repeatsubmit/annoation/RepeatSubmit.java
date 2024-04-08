@@ -8,8 +8,6 @@ import java.lang.annotation.Target;
 /**
  * 标记 需要防止重复提交 的注解<br>
  * 单位：毫秒
- *
- * @author loki
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

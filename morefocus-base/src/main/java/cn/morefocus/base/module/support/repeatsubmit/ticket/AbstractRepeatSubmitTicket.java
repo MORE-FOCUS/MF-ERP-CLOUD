@@ -5,7 +5,7 @@ import java.util.function.Function;
 /**
  * 凭证（用于校验重复提交的东西）
  *
- * @author loki
+ *
  */
 public abstract class AbstractRepeatSubmitTicket {
 

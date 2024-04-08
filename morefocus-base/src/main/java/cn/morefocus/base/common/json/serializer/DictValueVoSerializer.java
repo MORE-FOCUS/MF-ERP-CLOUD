@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * 字典序列化
  *
- * @author loki
+ *
  */
 public class DictValueVoSerializer extends JsonSerializer<String> {
 

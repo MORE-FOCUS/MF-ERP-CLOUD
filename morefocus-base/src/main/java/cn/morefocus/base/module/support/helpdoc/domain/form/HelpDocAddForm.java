@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * 帮助文档
  *
- * @author loki
+ *
  */
 @Data
 public class HelpDocAddForm {

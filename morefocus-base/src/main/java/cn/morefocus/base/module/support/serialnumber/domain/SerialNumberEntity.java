@@ -13,8 +13,6 @@ import java.time.LocalDateTime;
 
 /**
  * 单据序列号 定义表
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

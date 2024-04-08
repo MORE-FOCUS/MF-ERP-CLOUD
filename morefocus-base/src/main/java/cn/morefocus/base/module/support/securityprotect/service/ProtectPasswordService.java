@@ -11,8 +11,6 @@ import javax.annotation.Resource;
 
 /**
  * 三级等保 密码 相关
- *
- * @author loki
  */
 
 @Service

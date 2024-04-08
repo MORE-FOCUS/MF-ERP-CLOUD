@@ -7,8 +7,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 菜单 更新Form
- *
- * @author loki
  */
 @Data
 public class MenuUpdateForm extends MenuBaseForm {

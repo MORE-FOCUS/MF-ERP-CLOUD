@@ -12,8 +12,6 @@ import java.time.LocalDateTime;
 
 /**
  * 登录失败记录
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

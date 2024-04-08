@@ -8,8 +8,6 @@ import java.util.List;
 
 /**
  * 角色的菜单更新
- *
- * @author loki
  */
 @Data
 public class RoleMenuUpdateForm {

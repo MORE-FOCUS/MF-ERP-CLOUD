@@ -11,8 +11,6 @@ import java.util.List;
 
 /**
  * 部门
- *
- * @author loki
  */
 @Component
 @Mapper

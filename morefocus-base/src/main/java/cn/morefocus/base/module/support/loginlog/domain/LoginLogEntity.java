@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 /**
  * 登录日志
  *
- * @author loki
+ *
  */
 @EqualsAndHashCode(callSuper = true)
 @TableName("t_login_log")

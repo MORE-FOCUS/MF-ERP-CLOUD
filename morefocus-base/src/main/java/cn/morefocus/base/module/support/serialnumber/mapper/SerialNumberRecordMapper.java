@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * 单据序列号 生成的记录
  *
- * @author loki
+ *
  */
 @Mapper
 @Component

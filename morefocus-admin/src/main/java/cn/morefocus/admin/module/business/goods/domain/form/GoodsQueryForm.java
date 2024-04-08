@@ -10,8 +10,6 @@ import org.hibernate.validator.constraints.Length;
 
 /**
  * 商品 分页查询
- *
- * @author loki
  */
 @Data
 public class GoodsQueryForm extends PageParam {

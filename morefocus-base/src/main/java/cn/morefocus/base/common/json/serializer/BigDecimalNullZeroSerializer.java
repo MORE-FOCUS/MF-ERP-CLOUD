@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 /**
  * 数字序列化
  *
- * @author loki
+ *
  */
 public class BigDecimalNullZeroSerializer extends JsonSerializer<BigDecimal> {
 

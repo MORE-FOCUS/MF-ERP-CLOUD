@@ -3,7 +3,7 @@ package cn.morefocus.base.common.constant;
 /**
  * 请求消息头常量
  *
- * @author loki
+ *
  */
 public class RequestHeaderConst {
 

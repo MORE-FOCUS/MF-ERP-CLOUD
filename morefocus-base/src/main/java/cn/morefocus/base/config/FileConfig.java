@@ -21,7 +21,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /**
  * 文件上传 配置
  *
- * @author loki
+ *
  */
 @Data
 @Configuration

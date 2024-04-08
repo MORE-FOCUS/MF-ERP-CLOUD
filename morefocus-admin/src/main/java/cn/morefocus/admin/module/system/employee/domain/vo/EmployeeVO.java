@@ -10,8 +10,6 @@ import java.util.List;
 
 /**
  * 员工信息
- *
- * @author loki
  */
 @Data
 public class EmployeeVO {

@@ -4,8 +4,6 @@ import cn.morefocus.base.constant.SwaggerTagConst;
 
 /**
  * swagger
- *
- * @author loki
  */
 public class AdminSwaggerTagConst extends SwaggerTagConst {
 
@@ -22,7 +20,6 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
 
         public static final String OA_NOTICE = "OA办公-通知公告";
     }
-
 
     public static class System {
 
@@ -47,6 +44,5 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
         public static final String SYSTEM_JOB = "系统-定时任务";
 
     }
-
 
 }

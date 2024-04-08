@@ -9,8 +9,6 @@ import lombok.EqualsAndHashCode;
 
 /**
  * 部门实体类
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -21,7 +19,7 @@ public class DepartmentEntity extends BaseEntity {
      * 主键id
      */
     @TableId(type = IdType.AUTO)
-    private Long deptId;
+    private Long id;
 
     /**
      * 部门名称
@@ -36,5 +34,5 @@ public class DepartmentEntity extends BaseEntity {
     /**
      * 部门父级id
      */
-    private Long parentId;
+    private Long pid;
 }

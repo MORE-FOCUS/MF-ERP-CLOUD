@@ -2,8 +2,6 @@ package cn.morefocus.base.module.support.apiencrypt.service;
 
 /**
  * 接口加密、解密 Service
- *
- * @author loki
  */
 
 public interface ApiEncryptService {

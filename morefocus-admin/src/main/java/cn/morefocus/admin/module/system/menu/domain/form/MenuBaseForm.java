@@ -13,8 +13,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 菜单基础
- *
- * @author loki
  */
 @Data
 public class MenuBaseForm {

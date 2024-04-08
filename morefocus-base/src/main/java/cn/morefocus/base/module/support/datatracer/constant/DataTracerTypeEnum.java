@@ -8,7 +8,7 @@ import lombok.Getter;
 /**
  * 数据业务类型
  *
- * @author loki
+ *
  */
 @AllArgsConstructor
 @Getter

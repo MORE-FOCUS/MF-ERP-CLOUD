@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * 登录日志
  *
- * @author loki
+ *
  */
 @Service
 @Slf4j

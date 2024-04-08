@@ -8,8 +8,6 @@ import java.util.List;
 
 /**
  * 部门
- *
- * @author loki
  */
 @Data
 public class DepartmentEmployeeTreeVO extends DepartmentVO {

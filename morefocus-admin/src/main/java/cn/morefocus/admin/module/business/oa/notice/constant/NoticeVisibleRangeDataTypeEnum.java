@@ -1,14 +1,11 @@
 package cn.morefocus.admin.module.business.oa.notice.constant;
 
-
 import cn.morefocus.base.common.enumeration.BaseEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
  * 公告、通知 可见范围类型
- *
- * @author loki
  */
 @Getter
 @AllArgsConstructor

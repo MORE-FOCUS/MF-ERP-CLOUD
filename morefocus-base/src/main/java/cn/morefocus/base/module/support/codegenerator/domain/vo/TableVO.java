@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 /**
  * 表信息
  *
- * @author loki
+ *
  */
 
 @Data

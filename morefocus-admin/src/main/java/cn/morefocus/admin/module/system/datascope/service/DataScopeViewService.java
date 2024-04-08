@@ -3,11 +3,11 @@ package cn.morefocus.admin.module.system.datascope.service;
 import cn.morefocus.admin.module.system.datascope.constant.DataScopeTypeEnum;
 import cn.morefocus.admin.module.system.datascope.constant.DataScopeViewTypeEnum;
 import cn.morefocus.admin.module.system.department.service.DepartmentService;
-import cn.morefocus.admin.module.system.employee.mapper.EmployeeMapper;
 import cn.morefocus.admin.module.system.employee.domain.entity.EmployeeEntity;
+import cn.morefocus.admin.module.system.employee.mapper.EmployeeMapper;
+import cn.morefocus.admin.module.system.role.domain.entity.RoleDataScopeEntity;
 import cn.morefocus.admin.module.system.role.mapper.RoleDataScopeMapper;
 import cn.morefocus.admin.module.system.role.mapper.RoleEmployeeMapper;
-import cn.morefocus.admin.module.system.role.domain.entity.RoleDataScopeEntity;
 import cn.morefocus.base.common.util.LocalEnumUtil;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections4.CollectionUtils;
@@ -21,8 +21,6 @@ import java.util.stream.Collectors;
 
 /**
  * 数据范围
- *
- * @author loki
  */
 @Service
 public class DataScopeViewService {

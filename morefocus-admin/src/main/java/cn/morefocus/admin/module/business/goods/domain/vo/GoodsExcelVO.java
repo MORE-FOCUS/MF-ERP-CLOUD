@@ -10,8 +10,6 @@ import java.math.BigDecimal;
 
 /**
  * excel商品
- *
- * @author loki
  */
 @Data
 @Builder

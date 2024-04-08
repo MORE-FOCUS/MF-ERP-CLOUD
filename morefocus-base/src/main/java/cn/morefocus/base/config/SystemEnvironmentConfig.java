@@ -13,8 +13,6 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
  * 系统环境
- *
- * @author loki
  */
 @Configuration
 public class SystemEnvironmentConfig implements Condition {

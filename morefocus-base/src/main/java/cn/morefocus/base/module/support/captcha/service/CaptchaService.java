@@ -25,7 +25,7 @@ import java.util.UUID;
 /**
  * 图形验证码 服务
  *
- * @author loki
+ *
  */
 @Slf4j
 @Service

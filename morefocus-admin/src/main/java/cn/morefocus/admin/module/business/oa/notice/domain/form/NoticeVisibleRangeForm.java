@@ -12,8 +12,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 通知公告 可见范围数据
- *
- * @author loki
  */
 @Data
 @NoArgsConstructor

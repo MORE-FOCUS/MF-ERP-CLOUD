@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 帮助文档 关联项目
  *
- * @author loki
+ *
  */
 @Data
 public class HelpDocRelationForm {

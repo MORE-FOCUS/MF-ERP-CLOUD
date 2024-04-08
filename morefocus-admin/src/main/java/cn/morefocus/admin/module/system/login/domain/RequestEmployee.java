@@ -9,8 +9,6 @@ import lombok.Data;
 
 /**
  * 请求员工登录信息
- *
- * @author loki
  */
 @Data
 public class RequestEmployee implements RequestUser {

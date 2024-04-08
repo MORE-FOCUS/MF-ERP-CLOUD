@@ -11,8 +11,6 @@ import java.lang.annotation.Annotation;
 
 /**
  * 自定义枚举类文档
- *
- * @author loki
  */
 @Component
 public class SchemaEnumPropertyCustomizer implements PropertyCustomizer {

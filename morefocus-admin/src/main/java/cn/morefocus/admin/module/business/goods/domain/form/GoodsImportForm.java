@@ -7,8 +7,6 @@ import java.math.BigDecimal;
 
 /**
  * 商品 导入表单
- *
- * @author loki
  */
 @Data
 public class GoodsImportForm {

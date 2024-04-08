@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * 操作日志查询 表单
  *
- * @author loki
+ *
  */
 @Data
 public class OperateLogQueryForm extends PageParam {

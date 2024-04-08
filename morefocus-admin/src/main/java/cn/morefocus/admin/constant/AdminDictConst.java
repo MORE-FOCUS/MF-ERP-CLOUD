@@ -4,8 +4,6 @@ import cn.morefocus.base.constant.RedisKeyConst;
 
 /**
  * 字典 常量类
- *
- * @author loki
  */
 public class AdminDictConst extends RedisKeyConst {
     /**

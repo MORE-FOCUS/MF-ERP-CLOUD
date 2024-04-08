@@ -6,13 +6,10 @@ import org.springframework.stereotype.Component;
 
 /**
  * admin 应用启动加载
- *
- * @author loki
  */
 @Slf4j
 @Component
 public class AdminStartupRunner implements CommandLineRunner {
-
 
     @Override
     public void run(String... args) {

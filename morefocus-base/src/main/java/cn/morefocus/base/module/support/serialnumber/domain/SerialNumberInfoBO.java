@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 /**
  * 单据序列号 信息
  *
- * @author loki
+ *
  */
 
 @Getter

@@ -6,11 +6,8 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
-
 /**
  * 新闻、公告  VO
- *
- * @author loki
  */
 @Data
 public class NoticeVO {

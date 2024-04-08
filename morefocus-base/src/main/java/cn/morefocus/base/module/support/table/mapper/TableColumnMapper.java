@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 /**
  * 表格自定义列（前端用户自定义表格列，并保存到数据库里）
  *
- * @author loki
+ *
  */
 @Mapper
 public interface TableColumnMapper extends BaseMapper<TableColumnEntity> {

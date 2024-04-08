@@ -7,8 +7,6 @@ import java.util.List;
 
 /**
  * 菜单
- *
- * @author loki
  */
 @Data
 public class MenuTreeVO extends MenuVO {

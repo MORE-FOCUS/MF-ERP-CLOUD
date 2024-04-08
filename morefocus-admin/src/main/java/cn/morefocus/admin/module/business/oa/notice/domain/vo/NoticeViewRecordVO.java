@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 
 /**
  * 浏览记录 VO
- *
- * @author loki
  */
 @Data
 public class NoticeViewRecordVO {

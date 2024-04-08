@@ -1,14 +1,11 @@
 package cn.morefocus.admin.module.business.category.constant;
 
-
 import cn.morefocus.base.common.enumeration.BaseEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
  * 分类类型 枚举
- *
- * @author loki
  */
 @AllArgsConstructor
 @Getter

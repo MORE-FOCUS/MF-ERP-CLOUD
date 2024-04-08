@@ -2,8 +2,6 @@ package cn.morefocus.base.constant;
 
 /**
  * redis key 常量类
- *
- * @author loki
  */
 public class RedisKeyConst {
 

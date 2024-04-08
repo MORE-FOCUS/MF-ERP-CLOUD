@@ -3,7 +3,7 @@ package cn.morefocus.base.module.support.codegenerator.constant;
 /**
  * 常量
  *
- * @author loki
+ *
  */
 public class CodeGeneratorConstant {
 

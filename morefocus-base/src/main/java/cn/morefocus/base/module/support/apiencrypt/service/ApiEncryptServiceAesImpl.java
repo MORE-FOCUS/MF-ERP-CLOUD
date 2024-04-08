@@ -13,7 +13,7 @@ import java.util.Base64;
 /**
  * AES 加密和解密
  *
- * @author loki
+ *
  */
 
 

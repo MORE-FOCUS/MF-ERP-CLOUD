@@ -4,8 +4,6 @@ import cn.morefocus.base.common.enumeration.BaseEnum;
 
 /**
  * 登录设备类型
- *
- * @author loki
  */
 public enum LoginDeviceEnum implements BaseEnum {
 

@@ -9,8 +9,6 @@ import java.util.List;
 
 /**
  * 用于更新 【通知、公告】 的 VO 对象
- *
- * @author loki
  */
 @Data
 public class NoticeUpdateFormVO extends NoticeVO {

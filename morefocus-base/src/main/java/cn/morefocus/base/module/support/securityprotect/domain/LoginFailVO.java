@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 
 /**
  * 登录失败 列表VO
- *
- * @author loki
  */
 
 @Data

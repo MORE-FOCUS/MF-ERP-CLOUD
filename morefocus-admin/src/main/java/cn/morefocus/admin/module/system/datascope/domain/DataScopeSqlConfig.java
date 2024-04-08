@@ -6,8 +6,6 @@ import lombok.Data;
 
 /**
  * 数据范围
- *
- * @author loki
  */
 @Data
 public class DataScopeSqlConfig {

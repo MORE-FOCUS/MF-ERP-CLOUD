@@ -5,7 +5,7 @@ import cn.morefocus.base.common.enumeration.BaseEnum;
 /**
  * 登录类型
  *
- * @author loki
+ *
  */
 public enum LoginLogResultEnum implements BaseEnum {
 

@@ -7,7 +7,7 @@ import lombok.Getter;
 /**
  * 系统配置常量类
  *
- * @author loki
+ *
  */
 @Getter
 @AllArgsConstructor

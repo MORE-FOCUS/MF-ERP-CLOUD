@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * 单据序列号
  *
- * @author loki
+ *
  */
 public interface SerialNumberService {
 

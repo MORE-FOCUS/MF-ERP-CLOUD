@@ -14,13 +14,10 @@ import java.util.List;
 
 /**
  * 企业员工
- *
- * @author loki
  */
 @Mapper
 @Component
 public interface EnterpriseEmployeeMapper extends BaseMapper<EnterpriseEmployeeEntity> {
-
 
     /**
      * 根据员工查询

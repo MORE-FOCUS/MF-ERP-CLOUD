@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 单据序列号 生成结果
  *
- * @author loki
+ *
  */
 @Data
 @AllArgsConstructor

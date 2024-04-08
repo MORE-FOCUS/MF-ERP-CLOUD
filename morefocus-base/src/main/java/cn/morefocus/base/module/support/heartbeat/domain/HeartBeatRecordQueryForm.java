@@ -9,7 +9,7 @@ import java.time.LocalDate;
 /**
  * 心跳记录 查询
  *
- * @author loki
+ *
  */
 @Data
 public class HeartBeatRecordQueryForm extends PageParam {

@@ -8,7 +8,7 @@ import lombok.Getter;
 /**
  * 单据序列号 周期
  *
- * @author loki
+ *
  */
 @AllArgsConstructor
 @Getter

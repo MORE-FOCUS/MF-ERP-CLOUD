@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 /**
  * 支持查询sql
  *
- * @author loki
+ *
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)

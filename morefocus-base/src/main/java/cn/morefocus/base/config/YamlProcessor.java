@@ -18,8 +18,6 @@ import java.util.List;
 
 /**
  * yaml 读取配置
- *
- * @author loki
  */
 @Configuration
 @Slf4j

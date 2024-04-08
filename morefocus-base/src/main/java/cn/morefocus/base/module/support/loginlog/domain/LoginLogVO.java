@@ -10,8 +10,6 @@ import java.time.LocalDateTime;
 
 /**
  * 登录日志
- *
- * @author loki
  */
 @Data
 public class LoginLogVO {

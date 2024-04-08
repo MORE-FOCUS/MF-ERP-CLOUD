@@ -1,12 +1,12 @@
 package cn.morefocus.admin.module.system.role.service;
 
-import cn.morefocus.admin.module.system.role.mapper.RoleMapper;
-import cn.morefocus.admin.module.system.role.mapper.RoleEmployeeMapper;
-import cn.morefocus.admin.module.system.role.mapper.RoleMenuMapper;
 import cn.morefocus.admin.module.system.role.domain.entity.RoleEntity;
 import cn.morefocus.admin.module.system.role.domain.form.RoleAddForm;
 import cn.morefocus.admin.module.system.role.domain.form.RoleUpdateForm;
 import cn.morefocus.admin.module.system.role.domain.vo.RoleVO;
+import cn.morefocus.admin.module.system.role.mapper.RoleEmployeeMapper;
+import cn.morefocus.admin.module.system.role.mapper.RoleMapper;
+import cn.morefocus.admin.module.system.role.mapper.RoleMenuMapper;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
@@ -18,8 +18,6 @@ import java.util.List;
 
 /**
  * 角色
- *
- * @author loki
  */
 @Service
 public class RoleService {

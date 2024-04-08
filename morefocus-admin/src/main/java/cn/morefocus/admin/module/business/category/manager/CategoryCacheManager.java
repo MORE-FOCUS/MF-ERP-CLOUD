@@ -1,9 +1,9 @@
 package cn.morefocus.admin.module.business.category.manager;
 
 import cn.morefocus.admin.constant.AdminCacheConst;
-import cn.morefocus.admin.module.business.category.mapper.CategoryMapper;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.domain.vo.CategoryTreeVO;
+import cn.morefocus.admin.module.business.category.mapper.CategoryMapper;
 import cn.morefocus.base.common.constant.StringConst;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import com.google.common.collect.Lists;
@@ -20,17 +20,13 @@ import java.util.stream.Collectors;
 
 /**
  * 类目 查询 缓存
- *
- * @author loki
  */
 @Service
 @Slf4j
 public class CategoryCacheManager {
 
-
     @Resource
     private CategoryMapper categoryMapper;
-
 
     /**
      * 根据类目id 移除缓存
@@ -55,7 +51,6 @@ public class CategoryCacheManager {
     public List<CategoryEntity> querySubCategory(Long categoryId) {
         return categoryMapper.queryByParentId(Lists.newArrayList(categoryId), false);
     }
-
 
     /**
      * 查询类目 层级树
@@ -101,6 +96,5 @@ public class CategoryCacheManager {
             e.setChildren(childrenVOList);
         });
     }
-
 
 }

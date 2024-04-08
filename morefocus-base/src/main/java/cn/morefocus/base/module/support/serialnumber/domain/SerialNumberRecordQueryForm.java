@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 单据序列号 生成记录 查询
  *
- * @author loki
+ *
  */
 @Data
 public class SerialNumberRecordQueryForm extends PageParam {

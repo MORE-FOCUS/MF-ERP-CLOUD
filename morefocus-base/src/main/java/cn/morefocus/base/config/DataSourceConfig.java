@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * 数据源配置
  *
- * @author loki
+ *
  */
 @Slf4j
 @Configuration

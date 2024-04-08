@@ -19,8 +19,6 @@ import java.util.List;
 
 /**
  * 公告、通知、新闻等等
- *
- * @author loki
  */
 @Mapper
 @Component
@@ -49,7 +47,6 @@ public interface NoticeMapper extends BaseMapper<NoticeEntity> {
      * 后管分页查询资讯
      */
     List<NoticeVO> query(Page<?> page, @Param("query") NoticeQueryForm queryForm);
-
 
     /**
      * 更新删除状态

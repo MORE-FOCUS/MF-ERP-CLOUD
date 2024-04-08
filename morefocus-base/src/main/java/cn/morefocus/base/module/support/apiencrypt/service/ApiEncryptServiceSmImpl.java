@@ -12,7 +12,7 @@ import java.util.Base64;
 /**
  * 国产 SM4 加密 和 解密
  *
- * @author loki
+ *
  */
 
 @Slf4j

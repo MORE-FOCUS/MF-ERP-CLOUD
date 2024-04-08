@@ -1,12 +1,9 @@
 package cn.morefocus.admin.module.system.menu.constant;
 
-
 import cn.morefocus.base.common.enumeration.BaseEnum;
 
 /**
  * 权限类型
- *
- * @author loki
  */
 public enum MenuPermsTypeEnum implements BaseEnum {
     /**
@@ -19,7 +16,6 @@ public enum MenuPermsTypeEnum implements BaseEnum {
     private final Integer value;
 
     private final String desc;
-
 
     MenuPermsTypeEnum(Integer value, String desc) {
         this.value = value;

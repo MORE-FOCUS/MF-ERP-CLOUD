@@ -12,8 +12,6 @@ import java.time.LocalDate;
 
 /**
  * 系统更新日志 新建表单
- *
- * @author loki
  */
 
 @Data

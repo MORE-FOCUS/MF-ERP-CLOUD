@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * springdoc-openapi 配置
  *
- * @author loki
+ *
  */
 @Slf4j
 @Configuration

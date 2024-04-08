@@ -1,8 +1,8 @@
 package cn.morefocus.base.module.support.helpdoc.manager;
 
-import cn.morefocus.base.module.support.helpdoc.mapper.HelpDocMapper;
 import cn.morefocus.base.module.support.helpdoc.domain.entity.HelpDocEntity;
 import cn.morefocus.base.module.support.helpdoc.domain.form.HelpDocRelationForm;
+import cn.morefocus.base.module.support.helpdoc.mapper.HelpDocMapper;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * 帮助文档 manager
  *
- * @author loki
+ *
  */
 @Service
 public class HelpDocManager {

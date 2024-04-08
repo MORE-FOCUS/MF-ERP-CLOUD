@@ -12,7 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * 请求返回对象
  *
- * @author loki
+ *
  */
 @Data
 @Schema

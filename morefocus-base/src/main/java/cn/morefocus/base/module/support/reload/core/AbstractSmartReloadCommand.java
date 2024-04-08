@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 检测是否 Reload 的类
  *
- * @author loki
+ *
  */
 public abstract class AbstractSmartReloadCommand {
 

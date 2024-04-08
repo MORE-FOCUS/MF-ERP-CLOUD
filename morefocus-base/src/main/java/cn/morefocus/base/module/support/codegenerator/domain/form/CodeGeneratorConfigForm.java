@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * 代码生成 配置信息表单
  *
- * @author loki
+ *
  */
 
 @Data

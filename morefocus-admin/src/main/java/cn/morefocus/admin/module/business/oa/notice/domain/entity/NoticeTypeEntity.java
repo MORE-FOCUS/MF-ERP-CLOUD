@@ -8,8 +8,6 @@ import lombok.*;
 
 /**
  * 通知公告类型
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

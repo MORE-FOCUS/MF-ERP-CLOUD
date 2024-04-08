@@ -1,7 +1,7 @@
 package cn.morefocus.admin.module.system.role.manager;
 
-import cn.morefocus.admin.module.system.role.mapper.RoleMenuMapper;
 import cn.morefocus.admin.module.system.role.domain.entity.RoleMenuEntity;
+import cn.morefocus.admin.module.system.role.mapper.RoleMenuMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,8 +11,6 @@ import java.util.List;
 
 /**
  * 角色-菜单 manager
- *
- * @author loki
  */
 @Service
 public class RoleMenuManager extends ServiceImpl<RoleMenuMapper, RoleMenuEntity> {

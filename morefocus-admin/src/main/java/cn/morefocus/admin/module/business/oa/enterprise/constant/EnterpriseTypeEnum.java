@@ -1,12 +1,9 @@
 package cn.morefocus.admin.module.business.oa.enterprise.constant;
 
-
 import cn.morefocus.base.common.enumeration.BaseEnum;
 
 /**
  * 企业类型
- *
- * @author loki
  */
 public enum EnterpriseTypeEnum implements BaseEnum {
 
@@ -28,7 +25,6 @@ public enum EnterpriseTypeEnum implements BaseEnum {
         this.value = value;
         this.desc = desc;
     }
-
 
     @Override
     public Integer getValue() {

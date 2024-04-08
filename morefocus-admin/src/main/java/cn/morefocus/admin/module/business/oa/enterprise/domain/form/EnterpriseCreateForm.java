@@ -18,8 +18,6 @@ import javax.validation.constraints.Pattern;
 
 /**
  * OA企业模块创建
- *
- * @author loki
  */
 @Data
 public class EnterpriseCreateForm {

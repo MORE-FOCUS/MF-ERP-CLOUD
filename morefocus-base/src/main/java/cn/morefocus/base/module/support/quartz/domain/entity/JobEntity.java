@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 /**
  * 定时任务调度表
  *
- * @author loki
+ *
  */
 @EqualsAndHashCode(callSuper = true)
 @TableName("t_job")

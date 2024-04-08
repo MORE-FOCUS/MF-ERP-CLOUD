@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 /**
  * 验证工具类
  *
- * @author loki
+ *
  */
 public class LocalVerificationUtil {
 

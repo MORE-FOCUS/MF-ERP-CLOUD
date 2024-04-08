@@ -9,8 +9,6 @@ import java.time.LocalDateTime;
 
 /**
  * 类目
- *
- * @author loki
  */
 @Data
 public class CategoryVO {

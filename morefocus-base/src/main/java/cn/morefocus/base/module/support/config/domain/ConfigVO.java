@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 /**
  * 配置信息
  *
- * @author loki
+ *
  */
 @Data
 public class ConfigVO {

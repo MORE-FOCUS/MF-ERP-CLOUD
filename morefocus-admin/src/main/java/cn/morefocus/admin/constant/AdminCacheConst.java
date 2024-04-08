@@ -4,8 +4,6 @@ import cn.morefocus.base.constant.CacheKeyConst;
 
 /**
  * 缓存 key
- *
- * @author loki
  */
 public class AdminCacheConst extends CacheKeyConst {
 

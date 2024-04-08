@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 
 /**
  * OA发票信息
- *
- * @author loki
  */
 @Data
 public class InvoiceVO {

@@ -7,8 +7,6 @@ import lombok.Data;
 
 /**
  * 查询表数据
- *
- * @author loki
  */
 @Data
 public class TableQueryForm extends PageParam {

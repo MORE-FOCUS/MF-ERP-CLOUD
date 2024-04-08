@@ -16,7 +16,7 @@ import cn.morefocus.base.common.domain.SystemEnvironment;
 import cn.morefocus.base.common.enumeration.SystemEnvironmentEnum;
 import cn.morefocus.base.common.enumeration.UserTypeEnum;
 import cn.morefocus.base.common.util.LocalRequestUtil;
-import cn.morefocus.base.common.util.LocalResponseUtil;
+import cn.morefocus.base.common.util.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
@@ -32,8 +32,6 @@ import java.lang.reflect.Method;
 
 /**
  * admin 拦截器
- *
- * @author loki
  */
 @Component
 @Slf4j
@@ -89,13 +87,12 @@ public class AdminInterceptor implements HandlerInterceptor {
             }
 
             if (requestEmployee == null) {
-                LocalResponseUtil.write(response, R.error(UserErrorCode.LOGIN_STATE_INVALID));
+                ResponseUtil.write(response, R.error(UserErrorCode.LOGIN_STATE_INVALID));
                 return false;
             }
 
             // 检测token 活跃频率
             checkActiveTimeout(requestEmployee, debugNumberTokenFlag);
-
 
             // --------------- 第三步： 校验 权限 ---------------
 
@@ -105,7 +102,7 @@ public class AdminInterceptor implements HandlerInterceptor {
             }
 
             // 如果是超级管理员的话，不需要校验权限
-            if(requestEmployee.getAdministratorFlag()){
+            if (requestEmployee.getAdministratorFlag()) {
                 return true;
             }
 
@@ -119,17 +116,17 @@ public class AdminInterceptor implements HandlerInterceptor {
              */
             int code = e.getCode();
             if (code == 11041 || code == 11051) {
-                LocalResponseUtil.write(response, R.error(UserErrorCode.NO_PERMISSION));
+                ResponseUtil.write(response, R.error(UserErrorCode.NO_PERMISSION));
             } else if (code == 11016) {
-                LocalResponseUtil.write(response, R.error(UserErrorCode.LOGIN_ACTIVE_TIMEOUT));
+                ResponseUtil.write(response, R.error(UserErrorCode.LOGIN_ACTIVE_TIMEOUT));
             } else if (code >= 11011 && code <= 11015) {
-                LocalResponseUtil.write(response, R.error(UserErrorCode.LOGIN_STATE_INVALID));
+                ResponseUtil.write(response, R.error(UserErrorCode.LOGIN_STATE_INVALID));
             } else {
-                LocalResponseUtil.write(response, R.error(UserErrorCode.PARAM_ERROR));
+                ResponseUtil.write(response, R.error(UserErrorCode.PARAM_ERROR));
             }
             return false;
         } catch (Throwable e) {
-            LocalResponseUtil.write(response, R.error(SystemErrorCode.SYSTEM_ERROR));
+            ResponseUtil.write(response, R.error(SystemErrorCode.SYSTEM_ERROR));
             log.error(e.getMessage(), e);
             return false;
         }
@@ -137,7 +134,6 @@ public class AdminInterceptor implements HandlerInterceptor {
         // 通过验证
         return true;
     }
-
 
     /**
      * 检测：token 最低活跃频率（单位：秒），如果 token 超过此时间没有访问系统就会被冻结
@@ -163,7 +159,6 @@ public class AdminInterceptor implements HandlerInterceptor {
         StpUtil.updateLastActiveToNow();
     }
 
-
     /**
      * 是否为开发使用的 debug token
      *
@@ -187,6 +182,5 @@ public class AdminInterceptor implements HandlerInterceptor {
             StpUtil.endSwitch();
         }
     }
-
 
 }

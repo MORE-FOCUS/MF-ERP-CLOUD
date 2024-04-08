@@ -12,7 +12,7 @@ import java.time.LocalDate;
 /**
  * 系统更新日志 查询
  *
- * @author loki
+ *
  */
 
 @Data

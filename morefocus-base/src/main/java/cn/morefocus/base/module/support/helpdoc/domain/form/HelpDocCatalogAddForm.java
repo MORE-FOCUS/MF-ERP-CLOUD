@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 /**
  * 帮助文档 目录
  *
- * @author loki
+ *
  */
 @Data
 public class HelpDocCatalogAddForm {

@@ -9,8 +9,6 @@ import lombok.EqualsAndHashCode;
 
 /**
  * 员工 实体表
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

@@ -7,8 +7,6 @@ import lombok.Data;
 
 /**
  * 新闻、公告 可见范围数据 VO
- *
- * @author loki
  */
 @Data
 public class NoticeVisibleRangeVO {

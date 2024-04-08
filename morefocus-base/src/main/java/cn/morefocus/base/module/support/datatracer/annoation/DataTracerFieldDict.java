@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * 字典的字段
  *
- * @author loki
+ *
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)

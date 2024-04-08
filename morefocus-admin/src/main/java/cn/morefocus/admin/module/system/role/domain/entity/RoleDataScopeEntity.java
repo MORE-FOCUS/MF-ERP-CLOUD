@@ -11,8 +11,6 @@ import lombok.EqualsAndHashCode;
 
 /**
  * 数据范围与角色关系
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

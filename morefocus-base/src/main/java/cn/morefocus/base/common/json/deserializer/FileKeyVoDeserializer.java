@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * 文件key反序列化<br>
  * 由于前端接收到的是序列化过的字段, 这边入库需要进行反序列化操作比较方便处理
  *
- * @author loki
+ *
  */
 @Slf4j
 public class FileKeyVoDeserializer extends JsonDeserializer<String> {

@@ -13,8 +13,6 @@ import java.util.List;
 
 /**
  * OA发票信息
- *
- * @author loki
  */
 @Mapper
 @Component

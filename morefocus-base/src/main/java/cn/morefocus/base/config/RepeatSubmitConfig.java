@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 重复提交配置
  *
- * @author loki
+ *
  */
 @Configuration
 public class RepeatSubmitConfig {

@@ -7,8 +7,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 单据序列号 生成表单
- *
- * @author loki
  */
 @Data
 public class SerialNumberGenerateForm {

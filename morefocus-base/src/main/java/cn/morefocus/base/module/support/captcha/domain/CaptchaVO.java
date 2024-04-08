@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * 图形验证码 VO
  *
- * @author loki
+ *
  */
 @Data
 public class CaptchaVO {

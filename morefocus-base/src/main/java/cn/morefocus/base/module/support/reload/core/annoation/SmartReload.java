@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * 定义 SmartReload 注解
  *
- * @author loki
+ *
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

@@ -7,7 +7,7 @@ import lombok.Getter;
 /**
  * 文件服务 文件夹位置类型枚举类
  *
- * @author loki
+ *
  */
 @AllArgsConstructor
 @Getter

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 /**
  * 文件信息查询
  *
- * @author loki
+ *
  */
 @Data
 public class FileQueryForm extends PageParam {

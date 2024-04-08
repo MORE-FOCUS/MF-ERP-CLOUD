@@ -5,8 +5,8 @@ import cn.hutool.core.util.URLUtil;
 import cn.morefocus.base.common.code.ErrorCodeRegister;
 import cn.morefocus.base.common.enumeration.SystemEnvironmentEnum;
 import cn.morefocus.base.common.util.LocalEnumUtil;
-import cn.morefocus.base.module.support.reload.service.ReloadCommand;
 import cn.morefocus.base.module.support.reload.core.SmartReloadManager;
+import cn.morefocus.base.module.support.reload.service.ReloadCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -20,8 +20,6 @@ import org.springframework.stereotype.Component;
 
 /**
  * 启动监听器
- *
- * @author loki
  */
 @Slf4j
 @Component

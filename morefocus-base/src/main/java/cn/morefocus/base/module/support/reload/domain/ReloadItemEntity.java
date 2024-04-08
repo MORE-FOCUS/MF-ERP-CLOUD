@@ -9,8 +9,6 @@ import lombok.EqualsAndHashCode;
 
 /**
  * t_reload_item 数据表 实体类
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

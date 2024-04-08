@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 分页返回对象
  *
- * @author loki
+ *
  */
 @Data
 public class PageResult<T> {

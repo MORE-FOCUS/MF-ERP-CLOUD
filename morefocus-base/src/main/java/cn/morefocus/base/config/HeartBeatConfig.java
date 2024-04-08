@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 /**
  * 心跳配置
  *
- * @author loki
+ *
  */
 @Configuration
 public class HeartBeatConfig {

@@ -9,7 +9,7 @@ import java.util.function.Function;
 /**
  * 配置
  *
- * @author loki
+ *
  */
 @Data
 @Builder

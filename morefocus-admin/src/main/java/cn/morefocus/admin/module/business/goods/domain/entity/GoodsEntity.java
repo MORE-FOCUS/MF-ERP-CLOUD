@@ -11,8 +11,6 @@ import java.math.BigDecimal;
 
 /**
  * 商品 实体类
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -46,7 +44,6 @@ public class GoodsEntity extends BaseEntity {
      * 商品价格
      */
     private BigDecimal price;
-
 
     /**
      * 上架状态

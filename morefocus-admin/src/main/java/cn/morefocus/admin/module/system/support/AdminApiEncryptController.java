@@ -21,14 +21,11 @@ import java.util.List;
 
 /**
  * api 加密
- *
- * @author loki
  */
 
 @RestController
 @Tag(name = SwaggerTagConst.Support.PROTECT)
 public class AdminApiEncryptController extends SupportBaseController {
-
 
     @ApiDecrypt
     @PostMapping("/apiEncrypt/testRequestEncrypt")
@@ -59,7 +56,6 @@ public class AdminApiEncryptController extends SupportBaseController {
     public R<List<JweForm>> testArray(@RequestBody @Valid ValidateList<JweForm> list) {
         return R.ok(list);
     }
-
 
     @Data
     public static class JweForm {

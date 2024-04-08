@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 
 /**
  * reload结果
- *
- * @author loki
  */
 @Data
 public class ReloadResultVO {

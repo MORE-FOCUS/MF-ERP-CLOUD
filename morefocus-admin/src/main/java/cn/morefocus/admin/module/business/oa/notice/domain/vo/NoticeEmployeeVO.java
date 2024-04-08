@@ -7,8 +7,6 @@ import java.time.LocalDate;
 
 /**
  * 通知公告 员工查看
- *
- * @author loki
  */
 @Data
 public class NoticeEmployeeVO extends NoticeVO {

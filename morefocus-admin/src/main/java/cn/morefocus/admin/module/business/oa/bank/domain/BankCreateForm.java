@@ -9,8 +9,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * OA办公-银行信息新建
- *
- * @author loki
  */
 @Data
 public class BankCreateForm {

@@ -5,8 +5,6 @@ import lombok.Data;
 
 /**
  * OA企业模块列表
- *
- * @author loki
  */
 @Data
 public class EnterpriseListVO {

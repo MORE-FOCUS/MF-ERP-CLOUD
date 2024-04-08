@@ -6,7 +6,7 @@ import lombok.Getter;
 /**
  * 未预期的错误码（即发生了不可能发生的事情，此类返回码应该高度重视）
  *
- * @author loki
+ *
  */
 @Getter
 @AllArgsConstructor

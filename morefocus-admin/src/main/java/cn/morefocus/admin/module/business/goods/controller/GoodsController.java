@@ -11,7 +11,7 @@ import cn.morefocus.admin.module.business.goods.service.GoodsService;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.ValidateList;
-import cn.morefocus.base.common.util.LocalResponseUtil;
+import cn.morefocus.base.common.util.ResponseUtil;
 import com.alibaba.excel.EasyExcel;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,8 +26,6 @@ import java.util.List;
 
 /**
  * 商品业务
- *
- * @author loki
  */
 @RestController
 @Tag(name = AdminSwaggerTagConst.Business.MANAGER_GOODS)
@@ -36,35 +34,35 @@ public class GoodsController {
     @Resource
     private GoodsService goodsService;
 
-    @Operation(summary = "分页查询 @author loki")
+    @Operation(summary = "分页查询 ")
     @PostMapping("/goods/query")
     @SaCheckPermission("goods:query")
     public R<PageResult<GoodsVO>> query(@RequestBody @Valid GoodsQueryForm queryForm) {
         return goodsService.query(queryForm);
     }
 
-    @Operation(summary = "添加商品 @author loki")
+    @Operation(summary = "添加商品 ")
     @PostMapping("/goods/add")
     @SaCheckPermission("goods:add")
     public R<String> add(@RequestBody @Valid GoodsAddForm addForm) {
         return goodsService.add(addForm);
     }
 
-    @Operation(summary = "更新商品 @author loki")
+    @Operation(summary = "更新商品 ")
     @PostMapping("/goods/update")
     @SaCheckPermission("goods:update")
     public R<String> update(@RequestBody @Valid GoodsUpdateForm updateForm) {
         return goodsService.update(updateForm);
     }
 
-    @Operation(summary = "删除 @author loki")
+    @Operation(summary = "删除 ")
     @GetMapping("/goods/delete/{goodsId}")
     @SaCheckPermission("goods:delete")
     public R<String> delete(@PathVariable Long goodsId) {
         return goodsService.delete(goodsId);
     }
 
-    @Operation(summary = "批量 @author loki")
+    @Operation(summary = "批量 ")
     @PostMapping("/goods/batchDelete")
     @SaCheckPermission("goods:batchDelete")
     public R<String> batchDelete(@RequestBody @Valid ValidateList<Long> idList) {
@@ -73,14 +71,14 @@ public class GoodsController {
 
     // --------------- 导出和导入 -------------------
 
-    @Operation(summary = "导入 @author loki")
+    @Operation(summary = "导入 ")
     @PostMapping("/goods/importGoods")
     @SaCheckPermission("goods:importGoods")
     public R<String> importGoods(@RequestParam MultipartFile file) {
         return goodsService.importGoods(file);
     }
 
-    @Operation(summary = "导出 @author loki")
+    @Operation(summary = "导出 ")
     @GetMapping("/goods/exportGoods")
     @SaCheckPermission("goods:exportGoods")
     public void exportGoods(HttpServletResponse response) throws IOException {
@@ -88,7 +86,7 @@ public class GoodsController {
         List<GoodsExcelVO> goodsList = goodsService.getAllGoods();
 
         // 设置下载消息头
-        LocalResponseUtil.setDownloadFileHeader(response, "商品列表.xls", null);
+        ResponseUtil.setDownloadFileHeader(response, "商品列表.xls", null);
 
         // 下载
         EasyExcel.write(response.getOutputStream(), GoodsExcelVO.class)

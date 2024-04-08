@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * 系统参数配置 t_config mapper层
  *
- * @author loki
+ *
  */
 @Component
 @Mapper

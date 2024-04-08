@@ -24,8 +24,6 @@ import java.util.List;
 
 /**
  * 公告、通知、新闻等等
- *
- * @author loki
  */
 @Tag(name = AdminSwaggerTagConst.Business.OA_NOTICE)
 @RestController
@@ -43,25 +41,25 @@ public class NoticeController {
 
     // --------------------- 通知公告类型 -------------------------
 
-    @Operation(summary = "通知公告类型-获取全部 @author loki")
+    @Operation(summary = "通知公告类型-获取全部 ")
     @GetMapping("/oa/noticeType/getAll")
     public R<List<NoticeTypeVO>> getAll() {
         return R.ok(noticeTypeService.getAll());
     }
 
-    @Operation(summary = "通知公告类型-添加 @author loki")
+    @Operation(summary = "通知公告类型-添加 ")
     @GetMapping("/oa/noticeType/add/{name}")
     public R<String> add(@PathVariable String name) {
         return noticeTypeService.add(name);
     }
 
-    @Operation(summary = "通知公告类型-修改 @author loki")
+    @Operation(summary = "通知公告类型-修改 ")
     @GetMapping("/oa/noticeType/update/{noticeTypeId}/{name}")
     public R<String> update(@PathVariable Long noticeTypeId, @PathVariable String name) {
         return noticeTypeService.update(noticeTypeId, name);
     }
 
-    @Operation(summary = "通知公告类型-删除 @author loki")
+    @Operation(summary = "通知公告类型-删除 ")
     @GetMapping("/oa/noticeType/delete/{noticeTypeId}")
     public R<String> deleteNoticeType(@PathVariable Long noticeTypeId) {
         return noticeTypeService.delete(noticeTypeId);
@@ -69,15 +67,14 @@ public class NoticeController {
 
     // --------------------- 【管理】通知公告-------------------------
 
-
-    @Operation(summary = "【管理】通知公告-分页查询 @author loki")
+    @Operation(summary = "【管理】通知公告-分页查询 ")
     @PostMapping("/oa/notice/query")
     @SaCheckPermission("oa:notice:query")
     public R<PageResult<NoticeVO>> query(@RequestBody @Valid NoticeQueryForm queryForm) {
         return R.ok(noticeService.query(queryForm));
     }
 
-    @Operation(summary = "【管理】通知公告-添加 @author loki")
+    @Operation(summary = "【管理】通知公告-添加 ")
     @PostMapping("/oa/notice/add")
     @RepeatSubmit
     @SaCheckPermission("oa:notice:add")
@@ -86,7 +83,7 @@ public class NoticeController {
         return noticeService.add(addForm);
     }
 
-    @Operation(summary = "【管理】通知公告-更新 @author loki")
+    @Operation(summary = "【管理】通知公告-更新 ")
     @PostMapping("/oa/notice/update")
     @RepeatSubmit
     @SaCheckPermission("oa:notice:update")
@@ -94,14 +91,14 @@ public class NoticeController {
         return noticeService.update(updateForm);
     }
 
-    @Operation(summary = "【管理】通知公告-更新详情 @author loki")
+    @Operation(summary = "【管理】通知公告-更新详情 ")
     @GetMapping("/oa/notice/getUpdateVO/{noticeId}")
     @SaCheckPermission("oa:notice:update")
     public R<NoticeUpdateFormVO> getUpdateFormVO(@PathVariable Long noticeId) {
         return R.ok(noticeService.getUpdateFormVO(noticeId));
     }
 
-    @Operation(summary = "【管理】通知公告-删除 @author loki")
+    @Operation(summary = "【管理】通知公告-删除 ")
     @GetMapping("/oa/notice/delete/{noticeId}")
     @SaCheckPermission("oa:notice:delete")
     public R<String> delete(@PathVariable Long noticeId) {
@@ -110,8 +107,7 @@ public class NoticeController {
 
     // --------------------- 【员工】查看 通知公告 -------------------------
 
-
-    @Operation(summary = "【员工】通知公告-查看详情 @author loki")
+    @Operation(summary = "【员工】通知公告-查看详情 ")
     @GetMapping("/oa/notice/employee/view/{noticeId}")
     public R<NoticeDetailVO> view(@PathVariable Long noticeId, HttpServletRequest request) {
         return noticeEmployeeService.view(
@@ -122,13 +118,13 @@ public class NoticeController {
         );
     }
 
-    @Operation(summary = "【员工】通知公告-查询全部 @author loki")
+    @Operation(summary = "【员工】通知公告-查询全部 ")
     @PostMapping("/oa/notice/employee/query")
     public R<PageResult<NoticeEmployeeVO>> queryEmployeeNotice(@RequestBody @Valid NoticeEmployeeQueryForm noticeEmployeeQueryForm) {
         return noticeEmployeeService.queryList(LocalRequestUtil.getRequestUserId(), noticeEmployeeQueryForm);
     }
 
-    @Operation(summary = "【员工】通知公告-查询 查看记录 @author loki")
+    @Operation(summary = "【员工】通知公告-查询 查看记录 ")
     @PostMapping("/oa/notice/employee/queryViewRecord")
     public R<PageResult<NoticeViewRecordVO>> queryViewRecord(@RequestBody @Valid NoticeViewRecordQueryForm noticeViewRecordQueryForm) {
         return R.ok(noticeEmployeeService.queryViewRecord(noticeViewRecordQueryForm));

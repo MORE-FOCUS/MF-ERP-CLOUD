@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * 心跳记录
  *
- * @author loki
+ *
  */
 @Data
 public class HeartBeatRecordVO {

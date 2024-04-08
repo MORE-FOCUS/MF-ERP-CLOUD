@@ -5,8 +5,6 @@ import lombok.Data;
 
 /**
  * 角色的数据范围
- *
- * @author loki
  */
 @Data
 public class RoleDataScopeVO {

@@ -14,8 +14,6 @@ import java.util.List;
 
 /**
  * 心跳记录
- *
- * @author loki
  */
 @Component
 @Mapper

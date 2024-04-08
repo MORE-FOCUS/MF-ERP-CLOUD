@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * t_reload_result 表 实体类
  *
- * @author loki
+ *
  */
 @Data
 public class SmartReloadResult {

@@ -9,7 +9,7 @@ import java.util.function.Function;
 /**
  * 凭证（redis实现）
  *
- * @author loki
+ *
  */
 public class RepeatSubmitRedisTicket extends AbstractRepeatSubmitTicket {
 

@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 /**
  * 添加配置表单
  *
- * @author loki
+ *
  */
 @Data
 public class ConfigAddForm {

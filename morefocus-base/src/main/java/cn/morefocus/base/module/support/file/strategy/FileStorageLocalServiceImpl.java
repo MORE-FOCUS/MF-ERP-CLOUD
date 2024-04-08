@@ -28,7 +28,7 @@ import java.util.UUID;
 /**
  * 本地存储 实现
  *
- * @author loki
+ *
  */
 @Slf4j
 public class FileStorageLocalServiceImpl implements IFileStorageService {

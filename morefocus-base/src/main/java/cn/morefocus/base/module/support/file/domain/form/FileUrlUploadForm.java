@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 /**
  * url上传文件
  *
- * @author loki
+ *
  */
 @Data
 public class FileUrlUploadForm {

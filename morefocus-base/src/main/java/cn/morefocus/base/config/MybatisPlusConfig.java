@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 /**
  * mp 插件
  *
- * @author loki
+ *
  */
 @EnableTransactionManagement
 @Configuration

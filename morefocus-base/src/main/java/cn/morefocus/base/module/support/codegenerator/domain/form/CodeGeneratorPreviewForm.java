@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 /**
  * 代码生成 预览 表单
  *
- * @author loki
+ *
  */
 @Data
 public class CodeGeneratorPreviewForm {

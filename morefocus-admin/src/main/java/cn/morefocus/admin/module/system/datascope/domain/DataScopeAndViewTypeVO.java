@@ -7,8 +7,6 @@ import java.util.List;
 
 /**
  * 数据范围
- *
- * @author loki
  */
 @Data
 public class DataScopeAndViewTypeVO {

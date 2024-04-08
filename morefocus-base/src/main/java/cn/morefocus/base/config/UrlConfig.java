@@ -23,8 +23,6 @@ import java.util.Set;
 
 /**
  * url配置
- *
- * @author loki
  */
 @Configuration
 @Slf4j

@@ -6,10 +6,10 @@ import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.enumeration.UserTypeEnum;
 import cn.morefocus.base.common.util.PageUtil;
-import cn.morefocus.base.module.support.securityprotect.mapper.LoginFailMapper;
 import cn.morefocus.base.module.support.securityprotect.domain.LoginFailEntity;
 import cn.morefocus.base.module.support.securityprotect.domain.LoginFailQueryForm;
 import cn.morefocus.base.module.support.securityprotect.domain.LoginFailVO;
+import cn.morefocus.base.module.support.securityprotect.mapper.LoginFailMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * 三级等保 登录 相关
  *
- * @author loki
+ *
  */
 
 @Service

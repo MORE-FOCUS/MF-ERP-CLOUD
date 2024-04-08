@@ -2,9 +2,9 @@ package cn.morefocus.base.module.support.table.service;
 
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.RequestUser;
-import cn.morefocus.base.module.support.table.mapper.TableColumnMapper;
 import cn.morefocus.base.module.support.table.domain.TableColumnEntity;
 import cn.morefocus.base.module.support.table.domain.TableColumnUpdateForm;
+import cn.morefocus.base.module.support.table.mapper.TableColumnMapper;
 import com.alibaba.fastjson.JSONArray;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
@@ -13,8 +13,6 @@ import javax.annotation.Resource;
 
 /**
  * 表格自定义列（前端用户自定义表格列，并保存到数据库里）
- *
- * @author loki
  */
 @Service
 public class TableColumnService {

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 /**
  * 文件信息
  *
- * @author loki
+ *
  */
 @Data
 public class FileVO {

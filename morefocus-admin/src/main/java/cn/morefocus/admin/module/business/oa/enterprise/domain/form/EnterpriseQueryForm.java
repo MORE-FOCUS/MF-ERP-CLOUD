@@ -9,8 +9,6 @@ import java.time.LocalDate;
 
 /**
  * OA企业模块分页查询
- *
- * @author loki
  */
 @Data
 public class EnterpriseQueryForm extends PageParam {

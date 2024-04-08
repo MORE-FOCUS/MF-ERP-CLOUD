@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 帮助文档 详情
  *
- * @author loki
+ *
  */
 @Data
 public class HelpDocDetailVO {

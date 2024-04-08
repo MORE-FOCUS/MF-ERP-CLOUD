@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 /**
  * 定时任务调度 配置
  *
- * @author loki
+ *
  */
 @Slf4j
 @Configuration

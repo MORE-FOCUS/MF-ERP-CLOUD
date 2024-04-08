@@ -7,8 +7,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 通知公告 更新表单
- *
- * @author loki
  */
 @Data
 public class NoticeUpdateForm extends NoticeAddForm {

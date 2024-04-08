@@ -2,13 +2,13 @@ package cn.morefocus.base.module.support.helpdoc.service;
 
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
-import cn.morefocus.base.module.support.helpdoc.mapper.HelpDocCatalogMapper;
-import cn.morefocus.base.module.support.helpdoc.mapper.HelpDocMapper;
 import cn.morefocus.base.module.support.helpdoc.domain.entity.HelpDocCatalogEntity;
 import cn.morefocus.base.module.support.helpdoc.domain.form.HelpDocCatalogAddForm;
 import cn.morefocus.base.module.support.helpdoc.domain.form.HelpDocCatalogUpdateForm;
 import cn.morefocus.base.module.support.helpdoc.domain.vo.HelpDocCatalogVO;
 import cn.morefocus.base.module.support.helpdoc.domain.vo.HelpDocVO;
+import cn.morefocus.base.module.support.helpdoc.mapper.HelpDocCatalogMapper;
+import cn.morefocus.base.module.support.helpdoc.mapper.HelpDocMapper;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ import java.util.Optional;
 /**
  * 帮助文档 目录
  *
- * @author loki
+ *
  */
 @Service
 public class HelpDocCatalogService {

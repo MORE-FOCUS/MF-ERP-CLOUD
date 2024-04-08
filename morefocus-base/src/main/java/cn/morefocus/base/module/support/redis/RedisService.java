@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * redis 一顿操作
  *
- * @author loki
+ *
  */
 @Service
 public class RedisService {

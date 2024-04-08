@@ -10,8 +10,6 @@ import lombok.EqualsAndHashCode;
 
 /**
  * OA发票信息
- *
- * @author loki
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

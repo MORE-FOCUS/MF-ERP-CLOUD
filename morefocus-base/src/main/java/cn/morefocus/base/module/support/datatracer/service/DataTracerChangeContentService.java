@@ -3,9 +3,9 @@ package cn.morefocus.base.module.support.datatracer.service;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.date.LocalDateTimeUtil;
 import cn.hutool.json.JSONUtil;
-import cn.morefocus.base.common.util.LocalStringUtils;
 import cn.morefocus.base.common.util.LocalBigDecimalUtil;
 import cn.morefocus.base.common.util.LocalEnumUtil;
+import cn.morefocus.base.common.util.LocalStringUtils;
 import cn.morefocus.base.module.support.datatracer.annoation.*;
 import cn.morefocus.base.module.support.datatracer.constant.DataTracerConst;
 import cn.morefocus.base.module.support.datatracer.domain.bo.DataTracerContentBO;
@@ -35,7 +35,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 数据变更内容
  *
- * @author loki
+ *
  */
 @Slf4j
 @Service

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * sa-token 所需的权限信息
  *
- * @author loki
+ *
  */
 
 @Data

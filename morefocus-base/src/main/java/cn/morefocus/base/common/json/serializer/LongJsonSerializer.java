@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Long类型序列化
  *
- * @author loki
+ *
  */
 public class LongJsonSerializer extends JsonSerializer<Long> {
 

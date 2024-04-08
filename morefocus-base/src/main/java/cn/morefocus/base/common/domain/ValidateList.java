@@ -6,8 +6,6 @@ import java.util.*;
 
 /**
  * 校验集合是否为空的包装类
- *
- * @author loki
  */
 public class ValidateList<E> implements List<E> {
 

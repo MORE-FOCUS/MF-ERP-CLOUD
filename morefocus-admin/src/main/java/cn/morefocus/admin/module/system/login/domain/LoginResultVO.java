@@ -9,8 +9,6 @@ import java.util.List;
 
 /**
  * 登录结果信息
- *
- * @author loki
  */
 @Data
 public class LoginResultVO extends RequestEmployee {

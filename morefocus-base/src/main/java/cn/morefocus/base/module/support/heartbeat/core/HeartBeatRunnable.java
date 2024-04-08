@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * 心跳线程
  *
- * @author loki
+ *
  */
 public class HeartBeatRunnable implements Runnable {
 

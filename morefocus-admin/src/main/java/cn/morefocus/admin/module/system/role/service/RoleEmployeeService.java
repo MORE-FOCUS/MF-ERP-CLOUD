@@ -1,10 +1,8 @@
 package cn.morefocus.admin.module.system.role.service;
 
-import cn.morefocus.admin.module.system.department.mapper.DepartmentMapper;
 import cn.morefocus.admin.module.system.department.domain.entity.DepartmentEntity;
+import cn.morefocus.admin.module.system.department.mapper.DepartmentMapper;
 import cn.morefocus.admin.module.system.employee.domain.vo.EmployeeVO;
-import cn.morefocus.admin.module.system.role.mapper.RoleEmployeeMapper;
-import cn.morefocus.admin.module.system.role.mapper.RoleMapper;
 import cn.morefocus.admin.module.system.role.domain.entity.RoleEmployeeEntity;
 import cn.morefocus.admin.module.system.role.domain.entity.RoleEntity;
 import cn.morefocus.admin.module.system.role.domain.form.RoleEmployeeQueryForm;
@@ -12,6 +10,8 @@ import cn.morefocus.admin.module.system.role.domain.form.RoleEmployeeUpdateForm;
 import cn.morefocus.admin.module.system.role.domain.vo.RoleSelectedVO;
 import cn.morefocus.admin.module.system.role.domain.vo.RoleVO;
 import cn.morefocus.admin.module.system.role.manager.RoleEmployeeManager;
+import cn.morefocus.admin.module.system.role.mapper.RoleEmployeeMapper;
+import cn.morefocus.admin.module.system.role.mapper.RoleMapper;
 import cn.morefocus.base.common.constant.StringConst;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
@@ -30,8 +30,6 @@ import java.util.stream.Collectors;
 
 /**
  * 角色-员工
- *
- * @author loki
  */
 @Service
 public class RoleEmployeeService {
@@ -44,7 +42,6 @@ public class RoleEmployeeService {
     private DepartmentMapper departmentMapper;
     @Resource
     private RoleEmployeeManager roleEmployeeManager;
-
 
     /**
      * 批量插入
@@ -133,6 +130,5 @@ public class RoleEmployeeService {
     public List<RoleVO> getRoleIdList(Long employeeId) {
         return roleEmployeeMapper.selectRoleByEmployeeId(employeeId);
     }
-
 
 }

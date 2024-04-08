@@ -7,8 +7,6 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * 图形验证码 表单
- *
- * @author loki
  */
 
 @Data

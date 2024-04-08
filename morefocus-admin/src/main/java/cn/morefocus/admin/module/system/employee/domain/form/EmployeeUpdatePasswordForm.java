@@ -9,8 +9,6 @@ import javax.validation.constraints.Pattern;
 
 /**
  * 修改密码所需参数
- *
- * @author loki
  */
 @Data
 public class EmployeeUpdatePasswordForm {

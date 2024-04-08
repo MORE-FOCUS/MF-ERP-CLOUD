@@ -11,8 +11,6 @@ import java.util.List;
 
 /**
  * 角色 菜单 mapper
- *
- * @author loki
  */
 @Mapper
 @Component

@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Length;
 /**
  * 分页查询 系统配置
  *
- * @author loki
+ *
  */
 @Data
 public class ConfigQueryForm extends PageParam {

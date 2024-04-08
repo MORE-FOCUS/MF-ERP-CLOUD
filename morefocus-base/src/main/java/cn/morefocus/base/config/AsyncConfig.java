@@ -14,7 +14,7 @@ import java.util.Arrays;
 /**
  * 异步调用线程配置
  *
- * @author loki
+ *
  */
 @Slf4j
 @Configuration

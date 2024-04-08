@@ -7,8 +7,6 @@ import lombok.Data;
 
 /**
  * 类目 层级树查询
- *
- * @author loki
  */
 @Data
 public class CategoryTreeQueryForm {
