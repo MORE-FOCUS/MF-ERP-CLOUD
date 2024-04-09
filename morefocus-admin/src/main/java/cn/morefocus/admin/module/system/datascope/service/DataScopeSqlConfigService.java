@@ -56,7 +56,7 @@ public class DataScopeSqlConfigService {
     /**
      * 刷新 所有添加数据范围注解的接口方法配置<class.method,DataScopeSqlConfigDTO></>
      */
-    private Map<String, DataScopeSqlConfig> refreshDataScopeMethodMap() {
+    private void refreshDataScopeMethodMap() {
         Reflections reflections = new Reflections(new ConfigurationBuilder().setUrls(ClasspathHelper.forPackage(AdminApplication.COMPONENT_SCAN)).setScanners(new MethodAnnotationsScanner()));
         Set<Method> methods = reflections.getMethodsAnnotatedWith(DataScope.class);
         for (Method method : methods) {
@@ -72,7 +72,6 @@ public class DataScopeSqlConfigService {
                 dataScopeMethodMap.put(method.getDeclaringClass().getSimpleName() + "." + method.getName(), configDTO);
             }
         }
-        return dataScopeMethodMap;
     }
 
     /**
@@ -92,6 +91,7 @@ public class DataScopeSqlConfigService {
         if (employeeId == null) {
             return "";
         }
+
         if (DataScopeWhereInTypeEnum.CUSTOM_STRATEGY == sqlConfigDTO.getDataScopeWhereInType()) {
             Class strategyClass = sqlConfigDTO.getJoinSqlImplClazz();
             if (strategyClass == null) {
@@ -106,6 +106,7 @@ public class DataScopeSqlConfigService {
             DataScopeViewTypeEnum viewTypeEnum = dataScopeViewService.getEmployeeDataScopeViewType(dataScopeTypeEnum, employeeId);
             return powerStrategy.getCondition(viewTypeEnum, paramMap, sqlConfigDTO);
         }
+
         if (DataScopeWhereInTypeEnum.EMPLOYEE == sqlConfigDTO.getDataScopeWhereInType()) {
             List<Long> canViewEmployeeIds = dataScopeViewService.getCanViewEmployeeId(dataScopeTypeEnum, employeeId);
             if (CollectionUtils.isEmpty(canViewEmployeeIds)) {
@@ -115,6 +116,7 @@ public class DataScopeSqlConfigService {
             String sql = joinSql.replaceAll(EMPLOYEE_PARAM, employeeIds);
             return sql;
         }
+
         if (DataScopeWhereInTypeEnum.DEPARTMENT == sqlConfigDTO.getDataScopeWhereInType()) {
             List<Long> canViewDepartmentIds = dataScopeViewService.getCanViewDepartmentId(dataScopeTypeEnum, employeeId);
             if (CollectionUtils.isEmpty(canViewDepartmentIds)) {

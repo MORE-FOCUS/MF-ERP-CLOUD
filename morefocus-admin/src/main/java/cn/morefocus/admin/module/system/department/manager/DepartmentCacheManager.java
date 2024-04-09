@@ -36,7 +36,11 @@ public class DepartmentCacheManager {
         log.info("clear " + cache);
     }
 
-    @CacheEvict(value = {AdminCacheConst.Department.DEPARTMENT_LIST_CACHE, AdminCacheConst.Department.DEPARTMENT_MAP_CACHE, AdminCacheConst.Department.DEPARTMENT_SELF_CHILDREN_CACHE, AdminCacheConst.Department.DEPARTMENT_TREE_CACHE, AdminCacheConst.Department.DEPARTMENT_PATH_CACHE,}, allEntries = true)
+    @CacheEvict(value = {AdminCacheConst.Department.DEPARTMENT_LIST_CACHE,
+            AdminCacheConst.Department.DEPARTMENT_MAP_CACHE,
+            AdminCacheConst.Department.DEPARTMENT_SELF_CHILDREN_CACHE,
+            AdminCacheConst.Department.DEPARTMENT_TREE_CACHE,
+            AdminCacheConst.Department.DEPARTMENT_PATH_CACHE,}, allEntries = true)
     public void clearCache() {
         logClearInfo(AdminCacheConst.Department.DEPARTMENT_LIST_CACHE);
     }
@@ -54,7 +58,7 @@ public class DepartmentCacheManager {
      */
     @Cacheable(AdminCacheConst.Department.DEPARTMENT_MAP_CACHE)
     public Map<Long, DepartmentVO> getDepartmentMap() {
-        return departmentMapper.listAll().stream().collect(Collectors.toMap(DepartmentVO::getDeptId, Function.identity()));
+        return departmentMapper.listAll().stream().collect(Collectors.toMap(DepartmentVO::getId, Function.identity()));
     }
 
     /**
@@ -81,12 +85,12 @@ public class DepartmentCacheManager {
     @Cacheable(AdminCacheConst.Department.DEPARTMENT_PATH_CACHE)
     public Map<Long, String> getDepartmentPathMap() {
         List<DepartmentVO> departmentVOList = departmentMapper.listAll();
-        Map<Long, DepartmentVO> departmentMap = departmentVOList.stream().collect(Collectors.toMap(DepartmentVO::getDeptId, Function.identity()));
+        Map<Long, DepartmentVO> departmentMap = departmentVOList.stream().collect(Collectors.toMap(DepartmentVO::getId, Function.identity()));
 
         Map<Long, String> pathNameMap = Maps.newHashMap();
         for (DepartmentVO departmentVO : departmentVOList) {
             String pathName = this.buildDepartmentPath(departmentVO, departmentMap);
-            pathNameMap.put(departmentVO.getDeptId(), pathName);
+            pathNameMap.put(departmentVO.getId(), pathName);
         }
 
         return pathNameMap;
@@ -96,11 +100,11 @@ public class DepartmentCacheManager {
      * 构建父级考点路径
      */
     private String buildDepartmentPath(DepartmentVO departmentVO, Map<Long, DepartmentVO> departmentMap) {
-        if (Objects.equals(departmentVO.getParentId(), NumberUtils.LONG_ZERO)) {
+        if (Objects.equals(departmentVO.getPid(), NumberUtils.LONG_ZERO)) {
             return departmentVO.getName();
         }
         //父节点
-        DepartmentVO parentDepartment = departmentMap.get(departmentVO.getParentId());
+        DepartmentVO parentDepartment = departmentMap.get(departmentVO.getPid());
         if (parentDepartment == null) {
             return departmentVO.getName();
         }
@@ -117,7 +121,7 @@ public class DepartmentCacheManager {
         if (CollectionUtils.isEmpty(voList)) {
             return Lists.newArrayList();
         }
-        List<DepartmentVO> rootList = voList.stream().filter(e -> e.getParentId() == null || Objects.equals(e.getParentId(), NumberUtils.LONG_ZERO)).collect(Collectors.toList());
+        List<DepartmentVO> rootList = voList.stream().filter(e -> e.getPid() == null || Objects.equals(e.getPid(), NumberUtils.LONG_ZERO)).collect(Collectors.toList());
         if (CollectionUtils.isEmpty(rootList)) {
             return Lists.newArrayList();
         }
@@ -136,17 +140,17 @@ public class DepartmentCacheManager {
             int nextIndex = i + 1;
             DepartmentTreeVO node = nodeList.get(i);
             if (preIndex > -1) {
-                node.setPreId(nodeList.get(preIndex).getDeptId());
+                node.setPreId(nodeList.get(preIndex).getId());
             }
             if (nextIndex < nodeSize) {
-                node.setNextId(nodeList.get(nextIndex).getDeptId());
+                node.setNextId(nodeList.get(nextIndex).getId());
             }
 
             ArrayList<Long> selfAndAllChildrenIdList = Lists.newArrayList();
-            selfAndAllChildrenIdList.add(node.getDeptId());
+            selfAndAllChildrenIdList.add(node.getId());
             node.setSelfAndAllChildrenIdList(selfAndAllChildrenIdList);
 
-            List<DepartmentTreeVO> children = getChildren(node.getDeptId(), allDepartmentList);
+            List<DepartmentTreeVO> children = getChildren(node.getId(), allDepartmentList);
             if (CollectionUtils.isNotEmpty(children)) {
                 node.setChildren(children);
                 this.recursiveBuildTree(children, allDepartmentList);
@@ -158,7 +162,7 @@ public class DepartmentCacheManager {
      * 获取子元素
      */
     private List<DepartmentTreeVO> getChildren(Long deptId, List<DepartmentVO> voList) {
-        List<DepartmentVO> childrenEntityList = voList.stream().filter(e -> deptId.equals(e.getParentId())).collect(Collectors.toList());
+        List<DepartmentVO> childrenEntityList = voList.stream().filter(e -> deptId.equals(e.getPid())).collect(Collectors.toList());
         if (CollectionUtils.isEmpty(childrenEntityList)) {
             return Lists.newArrayList();
         }
@@ -178,7 +182,7 @@ public class DepartmentCacheManager {
         if (CollectionUtils.isEmpty(children)) {
             return selfAndChildrenIdList;
         }
-        List<Long> childrenIdList = children.stream().map(DepartmentTreeVO::getDeptId).collect(Collectors.toList());
+        List<Long> childrenIdList = children.stream().map(DepartmentTreeVO::getId).collect(Collectors.toList());
         selfAndChildrenIdList.addAll(childrenIdList);
         for (Long childId : childrenIdList) {
             this.selfAndChildrenRecursion(selfAndChildrenIdList, childId, voList);
@@ -194,7 +198,7 @@ public class DepartmentCacheManager {
         if (CollectionUtils.isEmpty(children)) {
             return;
         }
-        List<Long> childrenIdList = children.stream().map(DepartmentTreeVO::getDeptId).collect(Collectors.toList());
+        List<Long> childrenIdList = children.stream().map(DepartmentTreeVO::getId).collect(Collectors.toList());
         selfAndChildrenIdList.addAll(childrenIdList);
         for (Long childId : childrenIdList) {
             this.selfAndChildrenRecursion(selfAndChildrenIdList, childId, voList);

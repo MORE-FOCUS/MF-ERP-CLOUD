@@ -10,7 +10,7 @@ import lombok.Data;
 public class DepartmentVO {
 
     @Schema(description = "部门id")
-    private Long deptId;
+    private Long id;
 
     @Schema(description = "部门名称")
     private String name;

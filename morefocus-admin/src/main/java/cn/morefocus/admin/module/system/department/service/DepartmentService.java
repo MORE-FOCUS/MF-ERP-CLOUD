@@ -147,7 +147,7 @@ public class DepartmentService {
         DepartmentVO departmentVO = departmentMap.get(deptId);
         while (departmentVO != null) {
             list.add(departmentVO);
-            departmentVO = departmentMap.get(departmentVO.getParentId());
+            departmentVO = departmentMap.get(departmentVO.getPid());
         }
         Collections.reverse(list);
         return list;
@@ -162,11 +162,10 @@ public class DepartmentService {
         Map<Long, DepartmentVO> departmentMap = departmentCacheManager.getDepartmentMap();
         DepartmentVO departmentVO = departmentMap.get(deptId);
         while (departmentVO != null) {
-            list.add(departmentVO.getDeptId());
-            departmentVO = departmentMap.get(departmentVO.getParentId());
+            list.add(departmentVO.getId());
+            departmentVO = departmentMap.get(departmentVO.getPid());
         }
         Collections.reverse(list);
         return list;
     }
-
 }
