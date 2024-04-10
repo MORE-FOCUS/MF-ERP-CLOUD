@@ -2,6 +2,10 @@ package ${packageName};
 
 #foreach ($importClass in $importPackageList)
 $importClass
+import cn.morefocus.base.common.domain.BaseEntity;
+import cn.morefocus.base.common.domain.BaseVo;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 #end
 
 /**
@@ -10,19 +14,19 @@ $importClass
  * @author ${basic.backendAuthor}
  * @date ${basic.backendDate}
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class ${name.upperCamel}VO {
+public class ${name.upperCamel}VO extends BaseVo {
 
     private $!{primaryKeyJavaType} $!{primaryKeyFieldName};
 
 #foreach ($field in $fields)
 
 #if($field.isEnum)
-    ${field.apiModelProperty}
     private $field.javaType $field.fieldName;
 #end
 #if(!$field.isEnum)
-    ${field.apiModelProperty}$!{field.dict}$!{field.file}
+    $!{field.dict}$!{field.file}
     private $field.javaType $field.fieldName;
 #end
 #end

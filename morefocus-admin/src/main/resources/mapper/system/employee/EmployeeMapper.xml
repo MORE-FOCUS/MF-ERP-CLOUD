@@ -7,7 +7,7 @@
         t_employee.*,
         t_department.name AS departmentName
         FROM t_employee
-        LEFT JOIN t_department ON t_department.dept_id = t_employee.dept_id
+        LEFT JOIN t_department ON t_department.id = t_employee.dept_id
         <where>
             <if test="queryForm.keyword != null and queryForm.keyword != ''">
                 AND (
@@ -169,7 +169,7 @@
         SELECT t_employee.*,
                t_department.name AS departmentName
         FROM t_employee
-                 LEFT JOIN t_department ON t_department.dept_id = t_employee.dept_id
+                 LEFT JOIN t_department ON t_department.id = t_employee.dept_id
         where t_employee.employee_id = #{employeeId}
     </select>
 
@@ -179,7 +179,7 @@
         t_employee.*,
         t_department.name AS departmentName
         FROM t_employee
-        LEFT JOIN t_department ON t_department.dept_id = t_employee.dept_id
+        LEFT JOIN t_department ON t_department.id = t_employee.dept_id
         <where>
             <if test="disabledFlag != null">
                 AND t_employee.disabled_flag = #{disabledFlag}

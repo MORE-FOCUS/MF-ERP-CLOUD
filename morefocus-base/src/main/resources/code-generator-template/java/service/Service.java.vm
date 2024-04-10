@@ -1,14 +1,17 @@
 package ${packageName};
 
-#foreach ($importClass in $importPackageList)
-$importClass
-#end
+    #foreach ($importClass in $importPackageList)
+        $importClass
+    #end
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import cn.morefocus.base.common.util.PageUtil;
 import cn.morefocus.base.common.domain.PageResult;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * ${basic.description} Service
@@ -35,70 +38,70 @@ public class ${name.upperCamel}Service {
         return pageResult;
     }
 
-#if($insertAndUpdate.isSupportInsertAndUpdate)
-    /**
-     * 添加
-     */
-    public R<String> add(${name.upperCamel}AddForm addForm) {
-        ${name.upperCamel}Entity ${name.lowerCamel}Entity = LocalBeanUtil.copy(addForm, ${name.upperCamel}Entity.class);
-        ${name.lowerCamel}Mapper.insert(${name.lowerCamel}Entity);
-        return R.ok();
-    }
-
-    /**
-     * 更新
-     *
-     * @param updateForm
-     * @return
-     */
-    public R<String> update(${name.upperCamel}UpdateForm updateForm) {
-        ${name.upperCamel}Entity ${name.lowerCamel}Entity = LocalBeanUtil.copy(updateForm, ${name.upperCamel}Entity.class);
-        ${name.lowerCamel}Mapper.updateById(${name.lowerCamel}Entity);
-        return R.ok();
-    }
-#end
-
-#if($deleteInfo.isSupportDelete)
-    #if($deleteInfo.deleteEnum == "BATCH" || $deleteInfo.deleteEnum == "SingleAndBatch")
-    /**
-     * 批量删除
-     *
-     * @param idList
-     * @return
-     */
-    public R<String> batchDelete(List<${primaryKeyJavaType}> idList) {
-        if (CollectionUtils.isEmpty(idList)){
+    #if($insertAndUpdate.isSupportInsertAndUpdate)
+        /**
+         * 添加
+         */
+        public R<String> add(${name.upperCamel}AddForm addForm) {
+                ${name.upperCamel}Entity ${name.lowerCamel}Entity = LocalBeanUtil.copy(addForm, ${name.upperCamel}Entity.class);
+                ${name.lowerCamel}Mapper.insert(${name.lowerCamel}Entity);
             return R.ok();
         }
 
-### 真删除 or 假删除
-#if(!${deleteInfo.isPhysicallyDeleted})
-        ${name.lowerCamel}Mapper.batchUpdateDeleted(idList, true);
-#else
-        ${name.lowerCamel}Mapper.deleteBatchIds(idList);
-#end
-        return R.ok();
-    }
-    #end
-
-    #if($deleteInfo.deleteEnum == "Single" || $deleteInfo.deleteEnum == "SingleAndBatch")
-    /**
-     * 单个删除
-     */
-    public R<String> delete(${primaryKeyJavaType} ${primaryKeyFieldName}) {
-        if (null == ${primaryKeyFieldName}){
+        /**
+         * 更新
+         *
+         * @param updateForm
+         * @return
+         */
+        public R<String> update(${name.upperCamel}UpdateForm updateForm) {
+                ${name.upperCamel}Entity ${name.lowerCamel}Entity = LocalBeanUtil.copy(updateForm, ${name.upperCamel}Entity.class);
+                ${name.lowerCamel}Mapper.updateById(${name.lowerCamel}Entity);
             return R.ok();
         }
-
-### 真删除 or 假删除
-#if(!${deleteInfo.isPhysicallyDeleted})
-        ${name.lowerCamel}Mapper.updateDeleted(${primaryKeyFieldName},true);
-#end
-#if(${deleteInfo.isPhysicallyDeleted})
-        ${name.lowerCamel}Mapper.deleteById(${primaryKeyFieldName});
-#end
-        return R.ok();
-    }
     #end
-#end
+
+    #if($deleteInfo.isSupportDelete)
+        #if($deleteInfo.deleteEnum == "BATCH" || $deleteInfo.deleteEnum == "SingleAndBatch")
+            /**
+             * 批量删除
+             *
+             * @param idList
+             * @return
+             */
+            public R<String> batchDelete(List<${primaryKeyJavaType}> idList) {
+                if (CollectionUtils.isEmpty(idList)) {
+                    return R.ok();
+                }
+
+                ### 真删除 or 假删除
+                #if(!${deleteInfo.isPhysicallyDeleted})
+                        ${name.lowerCamel}Mapper.batchUpdateDeleted(idList, true);
+                #else
+                        ${name.lowerCamel}Mapper.deleteBatchIds(idList);
+                #end
+                return R.ok();
+            }
+        #end
+
+        #if($deleteInfo.deleteEnum == "Single" || $deleteInfo.deleteEnum == "SingleAndBatch")
+            /**
+             * 单个删除
+             */
+            public R<String> delete(${primaryKeyJavaType} ${primaryKeyFieldName}) {
+                if (null == ${primaryKeyFieldName}) {
+                    return R.ok();
+                }
+
+                ### 真删除 or 假删除
+                #if(!${deleteInfo.isPhysicallyDeleted})
+                        ${name.lowerCamel}Mapper.updateDeleted(${primaryKeyFieldName}, true);
+                #end
+                #if(${deleteInfo.isPhysicallyDeleted})
+                        ${name.lowerCamel}Mapper.deleteById(${primaryKeyFieldName});
+                #end
+                return R.ok();
+            }
+        #end
+    #end
 }

@@ -42,7 +42,7 @@
         FROM t_notice
         left join t_notice_type on t_notice_type.notice_type_id = t_notice.notice_type_id
         left join t_employee on t_notice.create_by = t_employee.employee_id
-        left join t_department on t_employee.dept_id = t_department.dept_id
+        left join t_department on t_employee.dept_id = t_department.id
         <where>
             <if test="query.noticeTypeId != null">
                 AND t_notice_type.notice_type_id = #{query.noticeTypeId}
@@ -206,7 +206,7 @@
         t_department.name as departmentName
         from t_notice_view_record
         left join t_employee on t_employee.employee_id = t_notice_view_record.employee_id
-        left join t_department on t_department.dept_id = t_employee.dept_id
+        left join t_department on t_department.id = t_employee.dept_id
         where
         notice_id = #{queryForm.noticeId}
         <if test="queryForm.keywords != null and queryForm.keywords !=''">
@@ -219,7 +219,7 @@
             )
         </if>
         <if test="queryForm.deptId != null ">
-            and t_department.dept_id = #{queryForm.deptId}
+            and t_department.id = #{queryForm.deptId}
         </if>
         order by t_notice_view_record.update_time desc,t_notice_view_record.create_time desc
     </select>

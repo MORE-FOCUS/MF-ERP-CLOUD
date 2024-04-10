@@ -2,6 +2,7 @@ package ${packageName};
 
 #foreach ($importClass in $importPackageList)
 $importClass
+import lombok.Data;
 #end
 
 /**
@@ -15,12 +16,11 @@ public class ${name.upperCamel}AddForm {
 #foreach ($field in $fields)
 
 #if($field.isEnum)
-    ${field.apiModelProperty}
     ${field.checkEnum}
     private $field.javaType $field.fieldName;
 #end
 #if(!$field.isEnum)
-    ${field.apiModelProperty}$!{field.notEmpty}$!{field.dict}$!{field.file}
+    $!{field.notEmpty}$!{field.dict}$!{field.file}
     private $field.javaType $field.fieldName;
 #end
 #end

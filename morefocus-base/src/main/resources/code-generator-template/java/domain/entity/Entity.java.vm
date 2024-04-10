@@ -2,6 +2,13 @@ package ${basic.javaPackageName}.domain.entity;
 
 #foreach ($importClass in $importPackageList)
 $importClass
+import cn.morefocus.base.common.domain.BaseEntity;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 #end
 
 /**
@@ -10,6 +17,7 @@ $importClass
  * @author ${basic.backendAuthor}
  * @date ${basic.backendDate}
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @TableName("${tableName}")
 public class ${name.upperCamel}Entity extends BaseEntity{

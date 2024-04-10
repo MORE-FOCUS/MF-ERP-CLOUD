@@ -36,22 +36,18 @@ import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.OutputStream;
 import java.io.StringWriter;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 
 /**
  * 代码生成器 模板 Service
- *
- *
  */
-
-@Service
 @Slf4j
+@Service
 public class CodeGeneratorTemplateService {
 
-
-    private Map<String, CodeGenerateBaseVariableService> map = new HashMap<>();
+    private final Map<String, CodeGenerateBaseVariableService> map = new HashMap<>();
 
     @PostConstruct
     public void init() {
@@ -66,6 +62,7 @@ public class CodeGeneratorTemplateService {
         map.put("java/manager/Manager.java", new ManagerVariableService());
         map.put("java/mapper/Mapper.java", new DaoVariableService());
         map.put("java/mapper/Mapper.xml", new MapperVariableService());
+
         // 前端
         map.put("js/api.js", new ApiVariableService());
         map.put("js/const.js", new ConstVariableService());
@@ -124,13 +121,10 @@ public class CodeGeneratorTemplateService {
             }
         }
 
-
-        ZipUtil.zip(outputStream, Charset.forName("utf-8"), false, null, dir);
+        ZipUtil.zip(outputStream, StandardCharsets.UTF_8, false, null, dir);
 
         FileUtil.del(dir);
-
     }
-
 
     public String generate(String tableName, String file, CodeGeneratorConfigEntity codeGeneratorConfigEntity) {
 
@@ -154,7 +148,7 @@ public class CodeGeneratorTemplateService {
         CodeDelete deleteInfo = JSON.parseObject(codeGeneratorConfigEntity.getDeleteInfo(), CodeDelete.class);
         List<CodeQueryField> queryFields = JSONArray.parseArray(codeGeneratorConfigEntity.getQueryFields(), CodeQueryField.class);
         List<CodeTableField> tableFields = JSONArray.parseArray(codeGeneratorConfigEntity.getTableFields(), CodeTableField.class);
-        tableFields.stream().forEach(e -> e.setWidth(e.getWidth() == null ? 0 : e.getWidth()));
+        tableFields.forEach(e -> e.setWidth(e.getWidth() == null ? 0 : e.getWidth()));
 
         CodeGeneratorConfigForm form = CodeGeneratorConfigForm.builder().basic(basic).fields(fields).insertAndUpdate(insertAndUpdate).deleteInfo(deleteInfo).queryFields(queryFields).tableFields(tableFields).deleteInfo(deleteInfo).build();
         form.setTableName(tableName);
@@ -164,7 +158,6 @@ public class CodeGeneratorTemplateService {
 
         // -------------------- 2 通用模板的变量 --------------------
         Map<String, Object> variablesMap = new HashMap<>();
-
 
         Map<String, Object> basicMap = BeanUtil.beanToMap(basic);
         basicMap.put("frontDate", DateUtil.formatLocalDateTime(basic.getFrontDate()));
@@ -186,11 +179,11 @@ public class CodeGeneratorTemplateService {
         variablesMap.put("name", names);
 
         //主键字段名称和java类型
-        CodeField primaryKeycodeField = fields.stream().filter(e -> e.getPrimaryKeyFlag()).findFirst().get();
-        if (primaryKeycodeField != null) {
-            variablesMap.put("primaryKeyJavaType", primaryKeycodeField.getJavaType());
-            variablesMap.put("primaryKeyFieldName", primaryKeycodeField.getFieldName());
-            variablesMap.put("primaryKeyColumnName", primaryKeycodeField.getColumnName());
+        Optional<CodeField> primaryKeycodeField = fields.stream().filter(CodeField::getPrimaryKeyFlag).findFirst();
+        if (primaryKeycodeField.isPresent()) {
+            variablesMap.put("primaryKeyJavaType", primaryKeycodeField.get().getJavaType());
+            variablesMap.put("primaryKeyFieldName", primaryKeycodeField.get().getFieldName());
+            variablesMap.put("primaryKeyColumnName", primaryKeycodeField.get().getColumnName());
         }
 
         // -------------------- 3、针对此 模板 的特殊变量 --------------------
@@ -208,7 +201,6 @@ public class CodeGeneratorTemplateService {
      *
      * @param templateFile
      * @param variablesMap
-     * @return
      */
     private String render(String templateFile, Map<String, Object> variablesMap) {
         VelocityEngine engine = new VelocityEngine();
