@@ -25,7 +25,7 @@ public class ConfigController extends SupportBaseController {
     @Resource
     private ConfigService configService;
 
-    @Operation(summary = "查询配置详情 ")
+    @Operation(summary = "查询配置详情")
     @GetMapping("/config/queryByKey")
     public R<ConfigVO> queryByKey(@RequestParam String configKey) {
         return R.ok(configService.getConfig(configKey));

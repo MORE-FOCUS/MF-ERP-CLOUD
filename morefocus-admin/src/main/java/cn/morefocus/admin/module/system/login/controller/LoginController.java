@@ -32,7 +32,7 @@ public class LoginController {
 
     @NoNeedLogin
     @PostMapping("/login")
-    @Operation(summary = "登录 ")
+    @Operation(summary = "登录")
     public R<LoginResultVO> login(@Valid @RequestBody LoginForm loginForm, HttpServletRequest request) {
         String ip = ServletUtil.getClientIP(request);
         String userAgent = ServletUtil.getHeaderIgnoreCase(request, RequestHeaderConst.USER_AGENT);
@@ -40,7 +40,7 @@ public class LoginController {
     }
 
     @GetMapping("/login/getLoginInfo")
-    @Operation(summary = "获取登录结果信息  ")
+    @Operation(summary = "获取登录结果信息 ")
     public R<LoginResultVO> getLoginInfo() {
         LoginResultVO loginResult = loginService.getLoginResult(AdminRequestUtil.getRequestUser());
         String tokenValue = StpUtil.getTokenValue();
@@ -48,13 +48,13 @@ public class LoginController {
         return R.ok(loginResult);
     }
 
-    @Operation(summary = "退出登陆  ")
+    @Operation(summary = "退出登陆 ")
     @GetMapping("/login/logout")
     public R<String> logout(@RequestHeader(value = RequestHeaderConst.TOKEN, required = false) String token) {
         return loginService.logout(token, LocalRequestUtil.getRequestUser());
     }
 
-    @Operation(summary = "获取验证码  ")
+    @Operation(summary = "获取验证码 ")
     @GetMapping("/login/getCaptcha")
     @NoNeedLogin
     public R<CaptchaVO> getCaptcha() {

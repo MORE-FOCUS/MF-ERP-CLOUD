@@ -24,14 +24,14 @@ public class AdminOperateLogController extends SupportBaseController {
     @Resource
     private OperateLogService operateLogService;
 
-    @Operation(summary = "分页查询 ")
+    @Operation(summary = "分页查询")
     @PostMapping("/operateLog/page/query")
     @SaCheckPermission("support:operateLog:query")
     public R<PageResult<OperateLogVO>> queryByPage(@RequestBody OperateLogQueryForm queryForm) {
         return operateLogService.queryByPage(queryForm);
     }
 
-    @Operation(summary = "详情 ")
+    @Operation(summary = "详情")
     @GetMapping("/operateLog/detail/{operateLogId}")
     @SaCheckPermission("support:operateLog:detail")
     public R<OperateLogVO> detail(@PathVariable Long operateLogId) {

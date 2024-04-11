@@ -26,21 +26,21 @@ public class TableColumnController extends SupportBaseController {
     @Resource
     private TableColumnService tableColumnService;
 
-    @Operation(summary = "修改表格列 ")
+    @Operation(summary = "修改表格列")
     @PostMapping("/tableColumn/update")
     @RepeatSubmit
     public R<String> updateTableColumn(@RequestBody @Valid TableColumnUpdateForm updateForm) {
         return tableColumnService.updateTableColumns(LocalRequestUtil.getRequestUser(), updateForm);
     }
 
-    @Operation(summary = "恢复默认（删除） ")
+    @Operation(summary = "恢复默认（删除）")
     @GetMapping("/tableColumn/delete/{tableId}")
     @RepeatSubmit
     public R<String> deleteTableColumn(@PathVariable Integer tableId) {
         return tableColumnService.deleteTableColumn(LocalRequestUtil.getRequestUser(), tableId);
     }
 
-    @Operation(summary = "查询表格列 ")
+    @Operation(summary = "查询表格列")
     @GetMapping("/tableColumn/getColumns/{tableId}")
     public R<String> getColumns(@PathVariable Integer tableId) {
         return R.ok(tableColumnService.getTableColumns(LocalRequestUtil.getRequestUser(), tableId));

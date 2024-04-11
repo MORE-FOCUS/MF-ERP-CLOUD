@@ -36,20 +36,20 @@ public class FileController extends SupportBaseController {
     @Resource
     private FileService fileService;
 
-    @Operation(summary = "文件上传 ")
+    @Operation(summary = "文件上传")
     @PostMapping("/file/upload")
     public R<FileUploadVO> upload(@RequestParam MultipartFile file, @RequestParam Integer folder) {
         RequestUser requestUser = LocalRequestUtil.getRequestUser();
         return fileService.fileUpload(file, folder, requestUser);
     }
 
-    @Operation(summary = "获取文件URL：根据fileKey ")
+    @Operation(summary = "获取文件URL：根据fileKey")
     @GetMapping("/file/getFileUrl")
     public R<String> getUrl(@RequestParam String fileKey) {
         return fileService.getFileUrl(fileKey);
     }
 
-    @Operation(summary = "下载文件流（根据fileKey） ")
+    @Operation(summary = "下载文件流（根据fileKey）")
     @GetMapping("/file/downLoad")
     public void downLoad(@RequestParam String fileKey, HttpServletRequest request, HttpServletResponse response) throws IOException {
         String userAgent = ServletUtil.getHeaderIgnoreCase(request, RequestHeaderConst.USER_AGENT);

@@ -24,7 +24,7 @@ public class CaptchaController extends SupportBaseController {
     @Resource
     private CaptchaService captchaService;
 
-    @Operation(summary = "获取图形验证码 ")
+    @Operation(summary = "获取图形验证码")
     @GetMapping("/captcha")
     public R<CaptchaVO> generateCaptcha() {
         return R.ok(captchaService.generateCaptcha());

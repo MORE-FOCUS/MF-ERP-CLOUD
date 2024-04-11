@@ -24,14 +24,14 @@ public class AdminCacheController extends SupportBaseController {
     @Resource
     private CacheService cacheService;
 
-    @Operation(summary = "获取所有缓存 ")
+    @Operation(summary = "获取所有缓存")
     @GetMapping("/cache/names")
     @SaCheckPermission("support:cache:keys")
     public R<List<String>> cacheNames() {
         return R.ok(cacheService.cacheNames());
     }
 
-    @Operation(summary = "移除某个缓存 ")
+    @Operation(summary = "移除某个缓存")
     @GetMapping("/cache/remove/{cacheName}")
     @SaCheckPermission("support:cache:delete")
     public R<String> removeCache(@PathVariable String cacheName) {
@@ -39,7 +39,7 @@ public class AdminCacheController extends SupportBaseController {
         return R.ok();
     }
 
-    @Operation(summary = "获取某个缓存的所有key ")
+    @Operation(summary = "获取某个缓存的所有key")
     @GetMapping("/cache/keys/{cacheName}")
     @SaCheckPermission("support:cache:keys")
     public R<List<String>> cacheKeys(@PathVariable String cacheName) {

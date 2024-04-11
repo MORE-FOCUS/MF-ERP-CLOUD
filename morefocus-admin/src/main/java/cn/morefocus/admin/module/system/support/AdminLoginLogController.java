@@ -26,7 +26,7 @@ public class AdminLoginLogController extends SupportBaseController {
     @Resource
     private LoginLogService loginLogService;
 
-    @Operation(summary = "分页查询 ")
+    @Operation(summary = "分页查询")
     @PostMapping("/loginLog/page/query")
     @SaCheckPermission("support:loginLog:query")
     public R<PageResult<LoginLogVO>> queryByPage(@RequestBody LoginLogQueryForm queryForm) {

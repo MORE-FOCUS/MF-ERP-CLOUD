@@ -29,21 +29,21 @@ public class AdminConfigController extends SupportBaseController {
     @Resource
     private ConfigService configService;
 
-    @Operation(summary = "分页查询系统配置 ")
+    @Operation(summary = "分页查询系统配置")
     @PostMapping("/config/query")
     @SaCheckPermission("support:config:query")
     public R<PageResult<ConfigVO>> queryConfigPage(@RequestBody @Valid ConfigQueryForm queryForm) {
         return configService.queryConfigPage(queryForm);
     }
 
-    @Operation(summary = "添加配置参数 ")
+    @Operation(summary = "添加配置参数")
     @PostMapping("/config/add")
     @SaCheckPermission("support:config:add")
     public R<String> addConfig(@RequestBody @Valid ConfigAddForm configAddForm) {
         return configService.add(configAddForm);
     }
 
-    @Operation(summary = "修改配置参数 ")
+    @Operation(summary = "修改配置参数")
     @PostMapping("/config/update")
     @SaCheckPermission("support:config:update")
     public R<String> updateConfig(@RequestBody @Valid ConfigUpdateForm updateForm) {

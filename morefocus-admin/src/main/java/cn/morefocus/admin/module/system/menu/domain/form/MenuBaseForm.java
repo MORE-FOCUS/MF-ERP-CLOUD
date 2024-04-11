@@ -58,7 +58,7 @@ public class MenuBaseForm {
     @NotNull(message = "禁用状态不能为空")
     private Boolean disabledFlag;
 
-    @SchemaEnum(value = MenuPermsTypeEnum.class, desc = "权限类型 ")
+    @SchemaEnum(value = MenuPermsTypeEnum.class, desc = "权限类型")
     @CheckEnum(value = MenuPermsTypeEnum.class, message = "权限类型")
     private Integer permsType;
 

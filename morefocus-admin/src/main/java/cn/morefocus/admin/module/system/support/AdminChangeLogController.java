@@ -26,28 +26,28 @@ public class AdminChangeLogController extends SupportBaseController {
     @Resource
     private ChangeLogService changeLogService;
 
-    @Operation(summary = "添加 ")
+    @Operation(summary = "添加")
     @PostMapping("/changeLog/add")
     @SaCheckPermission("support:changeLog:add")
     public R<String> add(@RequestBody @Valid ChangeLogAddForm addForm) {
         return changeLogService.add(addForm);
     }
 
-    @Operation(summary = "更新 ")
+    @Operation(summary = "更新")
     @PostMapping("/changeLog/update")
     @SaCheckPermission("support:changeLog:update")
     public R<String> update(@RequestBody @Valid ChangeLogUpdateForm updateForm) {
         return changeLogService.update(updateForm);
     }
 
-    @Operation(summary = "批量删除 ")
+    @Operation(summary = "批量删除")
     @PostMapping("/changeLog/batchDelete")
     @SaCheckPermission("support:changeLog:batchDelete")
     public R<String> batchDelete(@RequestBody ValidateList<Long> idList) {
         return changeLogService.batchDelete(idList);
     }
 
-    @Operation(summary = "单个删除 ")
+    @Operation(summary = "单个删除")
     @GetMapping("/changeLog/delete/{changeLogId}")
     @SaCheckPermission("support:changeLog:delete")
     public R<String> batchDelete(@PathVariable Long changeLogId) {

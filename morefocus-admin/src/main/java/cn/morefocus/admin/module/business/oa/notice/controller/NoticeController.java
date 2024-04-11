@@ -41,25 +41,25 @@ public class NoticeController {
 
     // --------------------- 通知公告类型 -------------------------
 
-    @Operation(summary = "通知公告类型-获取全部 ")
+    @Operation(summary = "通知公告类型-获取全部")
     @GetMapping("/oa/noticeType/getAll")
     public R<List<NoticeTypeVO>> getAll() {
         return R.ok(noticeTypeService.getAll());
     }
 
-    @Operation(summary = "通知公告类型-添加 ")
+    @Operation(summary = "通知公告类型-添加")
     @GetMapping("/oa/noticeType/add/{name}")
     public R<String> add(@PathVariable String name) {
         return noticeTypeService.add(name);
     }
 
-    @Operation(summary = "通知公告类型-修改 ")
+    @Operation(summary = "通知公告类型-修改")
     @GetMapping("/oa/noticeType/update/{noticeTypeId}/{name}")
     public R<String> update(@PathVariable Long noticeTypeId, @PathVariable String name) {
         return noticeTypeService.update(noticeTypeId, name);
     }
 
-    @Operation(summary = "通知公告类型-删除 ")
+    @Operation(summary = "通知公告类型-删除")
     @GetMapping("/oa/noticeType/delete/{noticeTypeId}")
     public R<String> deleteNoticeType(@PathVariable Long noticeTypeId) {
         return noticeTypeService.delete(noticeTypeId);

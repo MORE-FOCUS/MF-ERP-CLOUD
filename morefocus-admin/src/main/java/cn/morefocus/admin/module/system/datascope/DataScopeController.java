@@ -22,7 +22,7 @@ public class DataScopeController {
     @Resource
     private DataScopeService dataScopeService;
 
-    @Operation(summary = "获取当前系统所配置的所有数据范围 ")
+    @Operation(summary = "获取当前系统所配置的所有数据范围")
     @GetMapping("/dataScope/list")
     public R<List<DataScopeAndViewTypeVO>> dataScopeList() {
         return dataScopeService.dataScopeList();

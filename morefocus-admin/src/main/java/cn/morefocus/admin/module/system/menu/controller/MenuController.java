@@ -28,7 +28,7 @@ public class MenuController {
     @Resource
     private MenuService menuService;
 
-    @Operation(summary = "添加菜单 ")
+    @Operation(summary = "添加菜单")
     @PostMapping("/menu/add")
     @SaCheckPermission("system:menu:add")
     public R<String> addMenu(@RequestBody @Valid MenuAddForm menuAddForm) {
@@ -36,7 +36,7 @@ public class MenuController {
         return menuService.addMenu(menuAddForm);
     }
 
-    @Operation(summary = "更新菜单 ")
+    @Operation(summary = "更新菜单")
     @PostMapping("/menu/update")
     @SaCheckPermission("system:menu:update")
     public R<String> updateMenu(@RequestBody @Valid MenuUpdateForm menuUpdateForm) {
@@ -44,32 +44,32 @@ public class MenuController {
         return menuService.updateMenu(menuUpdateForm);
     }
 
-    @Operation(summary = "批量删除菜单 ")
+    @Operation(summary = "批量删除菜单")
     @GetMapping("/menu/batchDelete")
     @SaCheckPermission("system:menu:batchDelete")
     public R<String> batchDeleteMenu(@RequestParam("menuIdList") List<Long> menuIdList) {
         return menuService.batchDeleteMenu(menuIdList, LocalRequestUtil.getRequestUserId());
     }
 
-    @Operation(summary = "查询菜单列表 ")
+    @Operation(summary = "查询菜单列表")
     @GetMapping("/menu/query")
     public R<List<MenuVO>> queryMenuList() {
         return R.ok(menuService.queryMenuList(null));
     }
 
-    @Operation(summary = "查询菜单详情 ")
+    @Operation(summary = "查询菜单详情")
     @GetMapping("/menu/detail/{menuId}")
     public R<MenuVO> getMenuDetail(@PathVariable Long menuId) {
         return menuService.getMenuDetail(menuId);
     }
 
-    @Operation(summary = "查询菜单树 ")
+    @Operation(summary = "查询菜单树")
     @GetMapping("/menu/tree")
     public R<List<MenuTreeVO>> queryMenuTree(@RequestParam("onlyMenu") Boolean onlyMenu) {
         return menuService.queryMenuTree(onlyMenu);
     }
 
-    @Operation(summary = "获取所有请求路径 ")
+    @Operation(summary = "获取所有请求路径")
     @GetMapping("/menu/auth/url")
     public R<List<RequestUrlVO>> getAuthUrl() {
         return menuService.getAuthUrl();

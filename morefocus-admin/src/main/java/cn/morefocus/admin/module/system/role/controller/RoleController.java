@@ -25,34 +25,34 @@ public class RoleController {
     @Resource
     private RoleService roleService;
 
-    @Operation(summary = "添加角色 ")
+    @Operation(summary = "添加角色")
     @PostMapping("/role/add")
     @SaCheckPermission("system:role:add")
     public R<String> addRole(@Valid @RequestBody RoleAddForm roleAddForm) {
         return roleService.addRole(roleAddForm);
     }
 
-    @Operation(summary = "删除角色 ")
+    @Operation(summary = "删除角色")
     @GetMapping("/role/delete/{roleId}")
     @SaCheckPermission("system:role:delete")
     public R<String> deleteRole(@PathVariable Long roleId) {
         return roleService.deleteRole(roleId);
     }
 
-    @Operation(summary = "更新角色 ")
+    @Operation(summary = "更新角色")
     @PostMapping("/role/update")
     @SaCheckPermission("system:role:update")
     public R<String> updateRole(@Valid @RequestBody RoleUpdateForm roleUpdateDTO) {
         return roleService.updateRole(roleUpdateDTO);
     }
 
-    @Operation(summary = "获取角色数据 ")
+    @Operation(summary = "获取角色数据")
     @GetMapping("/role/get/{roleId}")
     public R<RoleVO> getRole(@PathVariable("roleId") Long roleId) {
         return roleService.getRoleById(roleId);
     }
 
-    @Operation(summary = "获取所有角色 ")
+    @Operation(summary = "获取所有角色")
     @GetMapping("/role/getAll")
     public R<List<RoleVO>> getAllRole() {
         return roleService.getAllRole();
