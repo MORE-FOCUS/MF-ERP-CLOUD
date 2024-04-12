@@ -2,7 +2,7 @@ package cn.morefocus.base.module.support.table.controller;
 
 import cn.morefocus.base.common.controller.SupportBaseController;
 import cn.morefocus.base.common.domain.R;
-import cn.morefocus.base.common.util.LocalRequestUtil;
+import cn.morefocus.base.common.util.RequestContext;
 import cn.morefocus.base.constant.SwaggerTagConst;
 import cn.morefocus.base.module.support.repeatsubmit.annoation.RepeatSubmit;
 import cn.morefocus.base.module.support.table.domain.TableColumnUpdateForm;
@@ -30,19 +30,19 @@ public class TableColumnController extends SupportBaseController {
     @PostMapping("/tableColumn/update")
     @RepeatSubmit
     public R<String> updateTableColumn(@RequestBody @Valid TableColumnUpdateForm updateForm) {
-        return tableColumnService.updateTableColumns(LocalRequestUtil.getRequestUser(), updateForm);
+        return tableColumnService.updateTableColumns(RequestContext.getRequestUser(), updateForm);
     }
 
     @Operation(summary = "恢复默认（删除）")
     @GetMapping("/tableColumn/delete/{tableId}")
     @RepeatSubmit
     public R<String> deleteTableColumn(@PathVariable Integer tableId) {
-        return tableColumnService.deleteTableColumn(LocalRequestUtil.getRequestUser(), tableId);
+        return tableColumnService.deleteTableColumn(RequestContext.getRequestUser(), tableId);
     }
 
     @Operation(summary = "查询表格列")
     @GetMapping("/tableColumn/getColumns/{tableId}")
     public R<String> getColumns(@PathVariable Integer tableId) {
-        return R.ok(tableColumnService.getTableColumns(LocalRequestUtil.getRequestUser(), tableId));
+        return R.ok(tableColumnService.getTableColumns(RequestContext.getRequestUser(), tableId));
     }
 }

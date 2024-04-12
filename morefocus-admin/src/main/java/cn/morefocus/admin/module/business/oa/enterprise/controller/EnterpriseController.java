@@ -11,7 +11,7 @@ import cn.morefocus.admin.module.business.oa.enterprise.service.EnterpriseServic
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.RequestUser;
-import cn.morefocus.base.common.util.LocalRequestUtil;
+import cn.morefocus.base.common.util.RequestContext;
 import cn.morefocus.base.common.util.ResponseUtil;
 import cn.morefocus.base.module.support.operatelog.annotation.OperateLog;
 import com.alibaba.excel.EasyExcel;
@@ -76,7 +76,7 @@ public class EnterpriseController {
     @PostMapping("/oa/enterprise/create")
     @SaCheckPermission("oa:enterprise:add")
     public R<String> createEnterprise(@RequestBody @Valid EnterpriseCreateForm createVO) {
-        RequestUser requestUser = LocalRequestUtil.getRequestUser();
+        RequestUser requestUser = RequestContext.getRequestUser();
         createVO.setCreateUserId(requestUser.getUserId());
         createVO.setCreateUserName(requestUser.getUserName());
         return enterpriseService.createEnterprise(createVO);

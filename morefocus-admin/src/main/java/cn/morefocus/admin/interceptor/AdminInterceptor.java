@@ -15,7 +15,7 @@ import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.SystemEnvironment;
 import cn.morefocus.base.common.enumeration.SystemEnvironmentEnum;
 import cn.morefocus.base.common.enumeration.UserTypeEnum;
-import cn.morefocus.base.common.util.LocalRequestUtil;
+import cn.morefocus.base.common.util.RequestContext;
 import cn.morefocus.base.common.util.ResponseUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,7 +47,7 @@ public class AdminInterceptor implements HandlerInterceptor {
     private long tokenActiveTimeout;
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 
         // OPTIONS请求直接return
         if (HttpMethod.OPTIONS.toString().equals(request.getMethod())) {
@@ -96,7 +96,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 
             // --------------- 第三步： 校验 权限 ---------------
 
-            LocalRequestUtil.setRequestUser(requestEmployee);
+            RequestContext.setRequestUser(requestEmployee);
             if (SaStrategy.instance.isAnnotationPresent.apply(method, SaIgnore.class)) {
                 return true;
             }
@@ -161,9 +161,6 @@ public class AdminInterceptor implements HandlerInterceptor {
 
     /**
      * 是否为开发使用的 debug token
-     *
-     * @param token
-     * @return
      */
     private boolean isDevDebugNumberToken(String token) {
         if (!StrUtil.isNumeric(token)) {
@@ -176,7 +173,8 @@ public class AdminInterceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         // 清除上下文
-        LocalRequestUtil.remove();
+        RequestContext.remove();
+
         // 开发环境，关闭 sa token 的临时切换用户
         if (systemEnvironment.getCurrentEnvironment() == SystemEnvironmentEnum.DEV) {
             StpUtil.endSwitch();

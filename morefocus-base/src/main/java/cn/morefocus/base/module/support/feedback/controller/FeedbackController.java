@@ -4,7 +4,7 @@ import cn.morefocus.base.common.controller.SupportBaseController;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.RequestUser;
-import cn.morefocus.base.common.util.LocalRequestUtil;
+import cn.morefocus.base.common.util.RequestContext;
 import cn.morefocus.base.constant.SwaggerTagConst;
 import cn.morefocus.base.module.support.feedback.domain.FeedbackAddForm;
 import cn.morefocus.base.module.support.feedback.domain.FeedbackQueryForm;
@@ -40,7 +40,7 @@ public class FeedbackController extends SupportBaseController {
     @Operation(summary = "意见反馈-新增 ")
     @PostMapping("/feedback/add")
     public R<String> add(@RequestBody @Valid FeedbackAddForm addForm) {
-        RequestUser employee = LocalRequestUtil.getRequestUser();
+        RequestUser employee = RequestContext.getRequestUser();
         return feedbackService.add(addForm, employee);
     }
 }

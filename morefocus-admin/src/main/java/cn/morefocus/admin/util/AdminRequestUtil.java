@@ -2,7 +2,7 @@ package cn.morefocus.admin.util;
 
 import cn.morefocus.admin.module.system.login.domain.RequestEmployee;
 import cn.morefocus.base.common.domain.RequestUser;
-import cn.morefocus.base.common.util.LocalRequestUtil;
+import cn.morefocus.base.common.util.RequestContext;
 
 /**
  * admin 端的请求工具类
@@ -10,7 +10,7 @@ import cn.morefocus.base.common.util.LocalRequestUtil;
 public final class AdminRequestUtil {
 
     public static RequestEmployee getRequestUser() {
-        return (RequestEmployee) LocalRequestUtil.getRequestUser();
+        return (RequestEmployee) RequestContext.getRequestUser();
     }
 
     public static Long getRequestUserId() {

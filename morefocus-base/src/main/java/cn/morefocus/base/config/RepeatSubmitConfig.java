@@ -1,7 +1,7 @@
 package cn.morefocus.base.config;
 
 import cn.morefocus.base.common.constant.StringConst;
-import cn.morefocus.base.common.util.LocalRequestUtil;
+import cn.morefocus.base.common.util.RequestContext;
 import cn.morefocus.base.module.support.repeatsubmit.RepeatSubmitAspect;
 import cn.morefocus.base.module.support.repeatsubmit.ticket.RepeatSubmitCaffeineTicket;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +25,7 @@ public class RepeatSubmitConfig {
      * 获取指明某个用户的凭证
      */
     private String ticket(String servletPath) {
-        Long userId = LocalRequestUtil.getRequestUserId();
+        Long userId = RequestContext.getUserId();
         if (null == userId) {
             return StringConst.EMPTY;
         }

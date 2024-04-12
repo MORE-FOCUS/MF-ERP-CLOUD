@@ -6,7 +6,7 @@ import cn.morefocus.admin.module.system.employee.domain.vo.EmployeeVO;
 import cn.morefocus.admin.module.system.employee.service.EmployeeService;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
-import cn.morefocus.base.common.util.LocalRequestUtil;
+import cn.morefocus.base.common.util.RequestContext;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -81,7 +81,7 @@ public class EmployeeController {
      */
     @PostMapping("/employee/update/password")
     public R<String> updatePassword(@Valid @RequestBody EmployeeUpdatePasswordForm updatePasswordForm) {
-        updatePasswordForm.setEmployeeId(LocalRequestUtil.getRequestUserId());
+        updatePasswordForm.setEmployeeId(RequestContext.getUserId());
         return employeeService.updatePassword(updatePasswordForm);
     }
 

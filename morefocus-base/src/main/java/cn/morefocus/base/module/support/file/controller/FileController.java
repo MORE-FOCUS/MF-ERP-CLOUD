@@ -5,7 +5,7 @@ import cn.morefocus.base.common.constant.RequestHeaderConst;
 import cn.morefocus.base.common.controller.SupportBaseController;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.RequestUser;
-import cn.morefocus.base.common.util.LocalRequestUtil;
+import cn.morefocus.base.common.util.RequestContext;
 import cn.morefocus.base.common.util.ResponseUtil;
 import cn.morefocus.base.constant.SwaggerTagConst;
 import cn.morefocus.base.module.support.file.domain.vo.FileDownloadVO;
@@ -39,7 +39,7 @@ public class FileController extends SupportBaseController {
     @Operation(summary = "文件上传")
     @PostMapping("/file/upload")
     public R<FileUploadVO> upload(@RequestParam MultipartFile file, @RequestParam Integer folder) {
-        RequestUser requestUser = LocalRequestUtil.getRequestUser();
+        RequestUser requestUser = RequestContext.getRequestUser();
         return fileService.fileUpload(file, folder, requestUser);
     }
 

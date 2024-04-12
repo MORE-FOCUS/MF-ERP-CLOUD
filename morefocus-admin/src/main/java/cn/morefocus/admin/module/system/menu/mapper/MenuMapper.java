@@ -36,11 +36,12 @@ public interface MenuMapper extends BaseMapper<MenuEntity> {
     /**
      * 根据菜单ID删除菜单（逻辑删除）
      *
-     * @param menuIdList   菜单id集合
-     * @param updateUserId 操作人id
-     * @param deleteFlag   是否删除
+     * @param menuIdList 菜单id集合
+     * @param updateBy   操作人id
+     * @param updateByName   操作人名称
+     * @param deleteFlag 是否删除
      */
-    void deleteByMenuIdList(@Param("menuIdList") List<Long> menuIdList, @Param("updateUserId") Long updateUserId, @Param("deleteFlag") Boolean deleteFlag);
+    void deleteByMenuIdList(@Param("menuIdList") List<Long> menuIdList, @Param("updateBy") Long updateBy, @Param("updateByName") String updateByName, @Param("deleteFlag") Boolean deleteFlag);
 
     /**
      * 查询菜单列表

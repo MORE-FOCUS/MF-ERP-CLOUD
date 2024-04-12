@@ -3,7 +3,7 @@ package cn.morefocus.base.module.support.helpdoc.controller;
 import cn.morefocus.base.common.controller.SupportBaseController;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
-import cn.morefocus.base.common.util.LocalRequestUtil;
+import cn.morefocus.base.common.util.RequestContext;
 import cn.morefocus.base.constant.SwaggerTagConst;
 import cn.morefocus.base.module.support.helpdoc.domain.form.HelpDocViewRecordQueryForm;
 import cn.morefocus.base.module.support.helpdoc.domain.vo.HelpDocCatalogVO;
@@ -52,7 +52,7 @@ public class HelpDocController extends SupportBaseController {
     @RepeatSubmit
     public R<HelpDocDetailVO> view(@PathVariable Long helpDocId, HttpServletRequest request) {
         return helpDocUserService.view(
-                LocalRequestUtil.getRequestUser(),
+                RequestContext.getRequestUser(),
                 helpDocId);
     }
 

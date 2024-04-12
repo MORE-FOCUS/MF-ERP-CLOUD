@@ -5,8 +5,8 @@ import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.RequestUser;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import cn.morefocus.base.common.util.LocalIpUtil;
-import cn.morefocus.base.common.util.LocalRequestUtil;
 import cn.morefocus.base.common.util.PageUtil;
+import cn.morefocus.base.common.util.RequestContext;
 import cn.morefocus.base.module.support.datatracer.constant.DataTracerConst;
 import cn.morefocus.base.module.support.datatracer.constant.DataTracerTypeEnum;
 import cn.morefocus.base.module.support.datatracer.domain.entity.DataTracerEntity;
@@ -153,7 +153,7 @@ public class DataTracerService {
      * 保存数据变动记录
      */
     public void addTrace(DataTracerForm tracerForm) {
-        RequestUser requestUser = LocalRequestUtil.getRequestUser();
+        RequestUser requestUser = RequestContext.getRequestUser();
         this.addTrace(tracerForm, requestUser);
     }
 
@@ -179,7 +179,7 @@ public class DataTracerService {
      * 批量保存数据变动记录
      */
     public void addTraceList(List<DataTracerForm> tracerFormList) {
-        RequestUser requestUser = LocalRequestUtil.getRequestUser();
+        RequestUser requestUser = RequestContext.getRequestUser();
         this.addTraceList(tracerFormList, requestUser);
     }
 

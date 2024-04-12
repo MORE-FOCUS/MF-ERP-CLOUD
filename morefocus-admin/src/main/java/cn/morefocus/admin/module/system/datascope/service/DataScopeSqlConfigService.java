@@ -7,7 +7,7 @@ import cn.morefocus.admin.module.system.datascope.constant.DataScopeViewTypeEnum
 import cn.morefocus.admin.module.system.datascope.constant.DataScopeWhereInTypeEnum;
 import cn.morefocus.admin.module.system.datascope.domain.DataScopeSqlConfig;
 import cn.morefocus.admin.module.system.datascope.strategy.AbstractDataScopeStrategy;
-import cn.morefocus.base.common.util.LocalRequestUtil;
+import cn.morefocus.base.common.util.RequestContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -87,7 +87,7 @@ public class DataScopeSqlConfigService {
     public String getJoinSql(Map<String, Object> paramMap, DataScopeSqlConfig sqlConfigDTO) {
         DataScopeTypeEnum dataScopeTypeEnum = sqlConfigDTO.getDataScopeType();
         String joinSql = sqlConfigDTO.getJoinSql();
-        Long employeeId = LocalRequestUtil.getRequestUserId();
+        Long employeeId = RequestContext.getUserId();
         if (employeeId == null) {
             return "";
         }

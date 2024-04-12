@@ -83,23 +83,26 @@ public class MenuService {
     /**
      * 批量删除菜单
      */
-    public synchronized R<String> batchDeleteMenu(List<Long> menuIdList, Long employeeId) {
+    public synchronized R<String> batchDeleteMenu(List<Long> menuIdList, Long employeeId, String employeeName) {
         if (CollectionUtils.isEmpty(menuIdList)) {
             return R.userErrorParam("所选菜单不能为空");
         }
-        menuMapper.deleteByMenuIdList(menuIdList, employeeId, Boolean.TRUE);
+        menuMapper.deleteByMenuIdList(menuIdList, employeeId, employeeName, Boolean.TRUE);
         //孩子节点也需要删除
-        this.recursiveDeleteChildren(menuIdList, employeeId);
+        this.recursiveDeleteChildren(menuIdList, employeeId, employeeName);
         return R.ok();
     }
 
-    private void recursiveDeleteChildren(List<Long> menuIdList, Long employeeId) {
+    /**
+     * 递归删除菜单
+     */
+    private void recursiveDeleteChildren(List<Long> menuIdList, Long employeeId, String employeeName) {
         List<Long> childrenMenuIdList = menuMapper.selectMenuIdByParentIdList(menuIdList);
         if (CollectionUtil.isEmpty(childrenMenuIdList)) {
             return;
         }
-        menuMapper.deleteByMenuIdList(childrenMenuIdList, employeeId, Boolean.TRUE);
-        recursiveDeleteChildren(childrenMenuIdList, employeeId);
+        menuMapper.deleteByMenuIdList(childrenMenuIdList, employeeId, employeeName, Boolean.TRUE);
+        recursiveDeleteChildren(childrenMenuIdList, employeeId, employeeName);
     }
 
     /**

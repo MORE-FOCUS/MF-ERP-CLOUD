@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
-public class LocalRequestUtil {
+public class RequestContext {
 
     private static final ThreadLocal<RequestUser> REQUEST_THREAD_LOCAL = new ThreadLocal<>();
 
@@ -21,15 +21,23 @@ public class LocalRequestUtil {
         return REQUEST_THREAD_LOCAL.get();
     }
 
-    public static Long getRequestUserId() {
+    /**
+     * 获取登录用户ID
+     */
+    public static Long getUserId() {
         RequestUser requestUser = getRequestUser();
         return null == requestUser ? null : requestUser.getUserId();
     }
 
+    /**
+     * 获取登录用户名称
+     */
+    public static String getUserName() {
+        RequestUser requestUser = getRequestUser();
+        return null == requestUser ? null : requestUser.getUserName();
+    }
 
     public static void remove() {
         REQUEST_THREAD_LOCAL.remove();
     }
-
-
 }

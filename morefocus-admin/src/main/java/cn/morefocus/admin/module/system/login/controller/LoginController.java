@@ -10,7 +10,7 @@ import cn.morefocus.admin.util.AdminRequestUtil;
 import cn.morefocus.base.common.annoation.NoNeedLogin;
 import cn.morefocus.base.common.constant.RequestHeaderConst;
 import cn.morefocus.base.common.domain.R;
-import cn.morefocus.base.common.util.LocalRequestUtil;
+import cn.morefocus.base.common.util.RequestContext;
 import cn.morefocus.base.module.support.captcha.domain.CaptchaVO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -51,7 +51,7 @@ public class LoginController {
     @Operation(summary = "退出登陆 ")
     @GetMapping("/login/logout")
     public R<String> logout(@RequestHeader(value = RequestHeaderConst.TOKEN, required = false) String token) {
-        return loginService.logout(token, LocalRequestUtil.getRequestUser());
+        return loginService.logout(token, RequestContext.getRequestUser());
     }
 
     @Operation(summary = "获取验证码 ")
