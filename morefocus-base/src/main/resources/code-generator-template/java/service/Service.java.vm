@@ -27,9 +27,6 @@ public class ${name.upperCamel}Service {
 
     /**
      * 分页查询
-     *
-     * @param queryForm
-     * @return
      */
     public PageResult<${name.upperCamel}VO> queryPage(${name.upperCamel}QueryForm queryForm) {
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
@@ -50,9 +47,6 @@ public class ${name.upperCamel}Service {
 
         /**
          * 更新
-         *
-         * @param updateForm
-         * @return
          */
         public R<String> update(${name.upperCamel}UpdateForm updateForm) {
                 ${name.upperCamel}Entity ${name.lowerCamel}Entity = LocalBeanUtil.copy(updateForm, ${name.upperCamel}Entity.class);
@@ -65,9 +59,6 @@ public class ${name.upperCamel}Service {
         #if($deleteInfo.deleteEnum == "BATCH" || $deleteInfo.deleteEnum == "SingleAndBatch")
             /**
              * 批量删除
-             *
-             * @param idList
-             * @return
              */
             public R<String> batchDelete(List<${primaryKeyJavaType}> idList) {
                 if (CollectionUtils.isEmpty(idList)) {

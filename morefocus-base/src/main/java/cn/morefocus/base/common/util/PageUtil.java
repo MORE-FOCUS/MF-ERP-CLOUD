@@ -15,12 +15,9 @@ import java.util.List;
 
 /**
  * 分页工具类
- *
- *
  */
 @Slf4j
 public class PageUtil {
-
     /**
      * 转换为查询参数
      */
@@ -86,6 +83,9 @@ public class PageUtil {
         return newPageResult;
     }
 
+    /**
+     * 转换分页数据
+     */
     public static <T> PageResult subListPage(Integer pageNum, Integer pageSize, List<T> list) {
         PageResult<T> pageRet = new PageResult<T>();
         //总条数

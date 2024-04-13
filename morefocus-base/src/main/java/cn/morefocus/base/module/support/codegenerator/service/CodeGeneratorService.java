@@ -48,9 +48,6 @@ public class CodeGeneratorService {
 
     /**
      * 列信息
-     *
-     * @param tableName
-     * @return
      */
     public List<TableColumnVO> getTableColumns(String tableName) {
         return codeGeneratorMapper.selectTableColumn(tableName);
@@ -59,9 +56,6 @@ public class CodeGeneratorService {
 
     /**
      * 查询数据库表数据
-     *
-     * @param tableQueryForm
-     * @return
      */
     public PageResult<TableVO> queryTableList(TableQueryForm tableQueryForm) {
         Page<?> page = PageUtil.convert2PageQuery(tableQueryForm);
@@ -71,9 +65,6 @@ public class CodeGeneratorService {
 
     /**
      * 获取 表的 配置信息
-     *
-     * @param table
-     * @return
      */
     public TableConfigVO getTableConfig(String table) {
 
@@ -119,9 +110,6 @@ public class CodeGeneratorService {
 
     /**
      * 更新配置
-     *
-     * @param form
-     * @return
      */
     public synchronized R<String> updateConfig(CodeGeneratorConfigForm form) {
         long existCount = codeGeneratorMapper.countByTableName(form.getTableName());
@@ -168,9 +156,6 @@ public class CodeGeneratorService {
 
     /**
      * 预览
-     *
-     * @param form
-     * @return
      */
     public R<String> preview(CodeGeneratorPreviewForm form) {
         long existCount = codeGeneratorMapper.countByTableName(form.getTableName());
@@ -195,9 +180,6 @@ public class CodeGeneratorService {
 
     /**
      * 下载代码
-     *
-     * @param tableName
-     * @return
      */
     public R<byte[]> download(String tableName) {
         if (LocalStringUtils.isBlank(tableName)) {

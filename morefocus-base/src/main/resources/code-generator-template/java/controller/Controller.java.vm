@@ -24,36 +24,51 @@ public class ${name.upperCamel}Controller {
     @Resource
     private ${name.upperCamel}Service ${name.lowerCamel}Service;
 
+    /**
+     * 分页查询
+     */
     @PostMapping("/${name.lowerCamel}/queryPage")
     public R<PageResult<${name.upperCamel}VO>> queryPage(@RequestBody @Valid ${name.upperCamel}QueryForm queryForm) {
         return R.ok(${name.lowerCamel}Service.queryPage(queryForm));
     }
 
+/**
+ * 新增
+ */
     #if($insertAndUpdate.isSupportInsertAndUpdate)
-        @PostMapping("/${name.lowerCamel}/add")
-        public R<String> add(@RequestBody @Valid ${name.upperCamel}AddForm addForm) {
-            return ${name.lowerCamel}Service.add(addForm);
-        }
+    @PostMapping("/${name.lowerCamel}/add")
+    public R<String> add(@RequestBody @Valid ${name.upperCamel}AddForm addForm) {
+        return ${name.lowerCamel}Service.add(addForm);
+    }
 
+        /**
+          * 编辑
+          */
         @PostMapping("/${name.lowerCamel}/update")
         public R<String> update(@RequestBody @Valid ${name.upperCamel}UpdateForm updateForm) {
             return ${name.lowerCamel}Service.update(updateForm);
         }
     #end
 
+/**
+ * 批量删除
+ */
     #if($deleteInfo.isSupportDelete)
         #if($deleteInfo.deleteEnum == "Batch" || $deleteInfo.deleteEnum == "SingleAndBatch")
-            @PostMapping("/${name.lowerCamel}/batchDelete")
-            public R<String> batchDelete(@RequestBody List<${primaryKeyJavaType}> idList) {
-                return ${name.lowerCamel}Service.batchDelete(idList);
-            }
+        @PostMapping("/${name.lowerCamel}/batchDelete")
+        public R<String> batchDelete(@RequestBody List<${primaryKeyJavaType}> idList) {
+            return ${name.lowerCamel}Service.batchDelete(idList);
+        }
         #end
 
+    /**
+     * 删除
+     */
         #if($deleteInfo.deleteEnum == "Single" || $deleteInfo.deleteEnum == "SingleAndBatch")
-            @PostMapping("/${name.lowerCamel}/delete/{${primaryKeyFieldName}}")
-            public R<String> batchDelete(@PathVariable ${primaryKeyJavaType} ${primaryKeyFieldName}) {
-                return ${name.lowerCamel}Service.delete(${primaryKeyFieldName});
-            }
+        @PostMapping("/${name.lowerCamel}/delete/{${primaryKeyFieldName}}")
+        public R<String> batchDelete(@PathVariable ${primaryKeyJavaType} ${primaryKeyFieldName}) {
+            return ${name.lowerCamel}Service.delete(${primaryKeyFieldName});
+        }
         #end
     #end
 }

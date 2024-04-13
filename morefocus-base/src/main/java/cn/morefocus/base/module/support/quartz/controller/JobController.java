@@ -27,7 +27,9 @@ public class JobController {
     @Resource
     private JobService jobService;
 
-    @Operation(summary = "分页查询")
+    /**
+     * 分页查询
+     */
     @PostMapping("/job/queryPage")
     @SaCheckPermission("quartz:job:query")
     public R<PageResult<JobVO>> queryPage(@RequestBody JobQueryForm queryForm) {

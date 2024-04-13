@@ -7,8 +7,8 @@
             <foreach collection="menuIdList" item="item" separator=";">
                 update t_menu
                 set delete_flag = #{deleteFlag},
-                update_by = #{updateBy},
-                update_by_name = #{updateByName}
+                delete_by = #{deleteBy},
+                delete_by_name = #{deleteByName}
                 where menu_id = #{item}
             </foreach>
         </if>

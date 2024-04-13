@@ -134,14 +134,17 @@
     </a-card>
 </template>
 <script setup>
-    import { reactive, ref, onMounted } from 'vue';
-    import { message, Modal } from 'ant-design-vue';
-    import { SmartLoading } from '/@/components/framework/smart-loading';
-    import { $!{name.lowerCamel}Api } from '/@/api/business/$!{name.lowerHyphenCamel}/$!{name.lowerHyphenCamel}-api';
-    import { PAGE_SIZE_OPTIONS } from '/@/constants/common-const';
-    import { smartSentry } from '/@/lib/smart-sentry';
-    import TableOperator from '/@/components/support/table-operator/index.vue';
-#foreach ($import in $frontImportList)
+  import {onMounted, reactive, ref} from 'vue';
+  import {message, Modal} from 'ant-design-vue';
+  import {SmartLoading} from '/@/components/framework/smart-loading';
+
+  import {
+          $!{name.lowerCamel}Api
+  }
+    from
+        '/@/api/business/';
+  import {smartSentry} from '/@/lib/smart-sentry';
+      #foreach ($import in $frontImportList)
     $!{import}
 #end
     // ---------------------------- 表格列 ----------------------------
@@ -216,6 +219,24 @@
         }
     }
 
+    // 根据关键字 查询
+    async function queryByKeyword() {
+      tableLoading.value = true;
+      try {
+        params.pageNum = 1;
+        let res = await $!{name.lowerCamel}Api.queryPage(params);
+        tableData.value = res.data.list;
+        total.value = res.data.total;
+        // 清除选中
+        selectedRowKeys.value = [];
+        selectedRows.value = [];
+      } catch (error) {
+        smartSentry.captureError(error);
+      } finally {
+        tableLoading.value = false;
+      }
+    }
+
 #foreach ($field in $queryFields)
     #if($field.queryTypeEnum == "DateRange")
     function onChange$codeGeneratorTool.lowerCamel2UpperCamel(${field.fieldName})(dates, dateStrings){
@@ -244,7 +265,7 @@
     function onDelete(data){
         Modal.confirm({
             title: '提示',
-            content: '确定要删除选吗?',
+          content: '确定要删除吗?',
             okText: '删除',
             okType: 'danger',
             onOk() {
@@ -259,9 +280,6 @@
     async function requestDelete(data){
         SmartLoading.show();
         try {
-            let deleteForm = {
-                goodsIdList: selectedRowKeyList.value,
-            };
             await $!{name.lowerCamel}Api.delete(data.$!{primaryKeyFieldName});
             message.success('删除成功');
             queryData();

@@ -21,10 +21,6 @@ public interface ${name.upperCamel}Mapper extends BaseMapper<${name.upperCamel}E
 
     /**
      * 分页 查询
-     *
-     * @param page
-     * @param queryForm
-     * @return
      */
     List<${name.upperCamel}VO> queryPage(Page page, @Param("queryForm") ${name.upperCamel}QueryForm queryForm);
 
