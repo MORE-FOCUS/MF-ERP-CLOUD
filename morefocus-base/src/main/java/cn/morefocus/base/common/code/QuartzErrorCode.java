@@ -5,8 +5,6 @@ import lombok.Getter;
 
 /**
  * 定时任务级别的错误码
- *
- *
  */
 @Getter
 @AllArgsConstructor

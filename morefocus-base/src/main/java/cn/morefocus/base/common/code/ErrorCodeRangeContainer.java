@@ -2,6 +2,7 @@ package cn.morefocus.base.common.code;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.List;
@@ -12,8 +13,6 @@ import java.util.stream.Stream;
 
 /**
  * 错误码 注册容器
- *
- *
  */
 class ErrorCodeRangeContainer {
 
@@ -34,29 +33,12 @@ class ErrorCodeRangeContainer {
      * 校验是否重复 是否越界
      */
     static void register(Class<? extends ErrorCode> clazz, int start, int end) {
-        String simpleName = clazz.getSimpleName();
-        if (!clazz.isEnum()) {
-            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: %s not Enum class !", simpleName));
-        }
-        if (start > end) {
-            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: %s start must be less than the end !", simpleName));
-        }
-
-        if (start <= MIN_START_CODE) {
-            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: %s start must be more than %s !", simpleName, MIN_START_CODE));
-        }
-
-        // 校验是否重复注册
-        boolean containsKey = CODE_RANGE_MAP.containsKey(clazz);
-        if (containsKey) {
-            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: Enum %s already exist !", simpleName));
-        }
+        String simpleName = getSimpleName(clazz, start, end);
 
         // 校验 开始结束值 是否越界
         CODE_RANGE_MAP.forEach((k, v) -> {
             if (isExistOtherRange(start, end, v)) {
-                throw new IllegalArgumentException(String.format("<<ErrorCodeRangeValidator>> error: %s[%d,%d] has intersection with class:%s[%d,%d]", simpleName, start, end,
-                        k.getSimpleName(), v.getLeft(), v.getRight()));
+                throw new IllegalArgumentException(String.format("<<ErrorCodeRangeValidator>> error: %s[%d,%d] has intersection with class:%s[%d,%d]", simpleName, start, end, k.getSimpleName(), v.getLeft(), v.getRight()));
             }
         });
 
@@ -81,6 +63,28 @@ class ErrorCodeRangeContainer {
         errorCounter = errorCounter + distinctCodeList.size();
     }
 
+    @NotNull
+    private static String getSimpleName(Class<? extends ErrorCode> clazz, int start, int end) {
+        String simpleName = clazz.getSimpleName();
+        if (!clazz.isEnum()) {
+            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: %s not Enum class !", simpleName));
+        }
+        if (start > end) {
+            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: %s start must be less than the end !", simpleName));
+        }
+
+        if (start <= MIN_START_CODE) {
+            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: %s start must be more than %s !", simpleName, MIN_START_CODE));
+        }
+
+        // 校验是否重复注册
+        boolean containsKey = CODE_RANGE_MAP.containsKey(clazz);
+        if (containsKey) {
+            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: Enum %s already exist !", simpleName));
+        }
+        return simpleName;
+    }
+
     /**
      * 是否存在于其他范围
      */
@@ -89,11 +93,7 @@ class ErrorCodeRangeContainer {
             return true;
         }
 
-        if (end >= range.getLeft() && end <= range.getRight()) {
-            return true;
-        }
-
-        return false;
+        return end >= range.getLeft() && end <= range.getRight();
     }
 
     /**
@@ -102,5 +102,4 @@ class ErrorCodeRangeContainer {
     static int initialize() {
         return errorCounter;
     }
-
 }

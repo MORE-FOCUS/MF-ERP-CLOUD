@@ -23,13 +23,7 @@ public class ErrorCodeRegister {
 
     }
 
-
     public static int initialize() {
         return ErrorCodeRangeContainer.initialize();
     }
-
-    public static void main(String[] args) {
-        ErrorCodeRegister.initialize();
-    }
-
 }

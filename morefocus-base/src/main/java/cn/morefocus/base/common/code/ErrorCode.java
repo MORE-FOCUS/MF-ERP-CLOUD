@@ -36,5 +36,4 @@ public interface ErrorCode {
      */
     String getLevel();
 
-
 }

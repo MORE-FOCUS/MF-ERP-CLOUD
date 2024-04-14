@@ -5,8 +5,6 @@ import lombok.Getter;
 
 /**
  * 系统错误状态码（此类返回码应该高度重视）
- *
- *
  */
 @Getter
 @AllArgsConstructor
@@ -30,6 +28,5 @@ public enum SystemErrorCode implements ErrorCode {
         this.msg = msg;
         this.level = LEVEL_SYSTEM;
     }
-
 }
 

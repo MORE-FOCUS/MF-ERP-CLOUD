@@ -5,8 +5,6 @@ import lombok.Getter;
 
 /**
  * 用户级别的错误码（用户引起的错误返回码，可以不用关注）
- *
- *
  */
 @Getter
 @AllArgsConstructor
@@ -31,6 +29,7 @@ public enum UserErrorCode implements ErrorCode {
     FORM_REPEAT_SUBMIT(30009, "请勿重复提交"),
 
     LOGIN_FAIL_LOCK(30010, "登录连续失败已经被锁定，无法登录"),
+
     LOGIN_FAIL_WILL_LOCK(30011, "登录连续失败将会锁定提醒"),
 
     LOGIN_ACTIVE_TIMEOUT(30012, "长时间未操作系统，需要重新登录");
