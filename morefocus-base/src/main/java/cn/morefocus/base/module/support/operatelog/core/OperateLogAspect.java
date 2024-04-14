@@ -36,12 +36,11 @@ import java.io.StringWriter;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 操作日志记录处理,对所有OperateLog注解的Controller进行操作日志监控
- *
- *
  */
 @Slf4j
 @Aspect
@@ -97,7 +96,7 @@ public abstract class OperateLogAspect {
         // 设置线程活跃时间（秒）
         taskExecutor.setKeepAliveSeconds(60);
         // 设置默认线程名称
-        taskExecutor.setThreadNamePrefix("smart-operate-log");
+        taskExecutor.setThreadNamePrefix("sys-operate-log");
         // 设置拒绝策略
         taskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         // 等待所有任务结束后再关闭线程池
@@ -111,13 +110,13 @@ public abstract class OperateLogAspect {
                 return;
             }
             this.submitLog(joinPoint, e);
-        } catch (Exception exp) {
-            log.error("保存操作日志异常:{}", exp.getMessage());
-            exp.printStackTrace();
+        } catch (Exception ex) {
+            log.error("保存操作日志异常:{}", ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
-    private OperateLog getAnnotationLog(JoinPoint joinPoint) throws Exception {
+    private OperateLog getAnnotationLog(JoinPoint joinPoint) {
         Signature signature = joinPoint.getSignature();
         MethodSignature methodSignature = (MethodSignature) signature;
         Method method = methodSignature.getMethod();
@@ -131,28 +130,16 @@ public abstract class OperateLogAspect {
 
     /**
      * swagger tag
-     *
-     * @param joinPoint
-     * @return
-     * @throws Exception
      */
     private Tag getApi(JoinPoint joinPoint) {
         Signature signature = joinPoint.getSignature();
         MethodSignature methodSignature = (MethodSignature) signature;
         Method method = methodSignature.getMethod();
-        Tag classAnnotation = AnnotationUtils.findAnnotation(method.getDeclaringClass(), Tag.class);
-        if (method != null) {
-            return classAnnotation;
-        }
-        return null;
+        return AnnotationUtils.findAnnotation(method.getDeclaringClass(), Tag.class);
     }
 
     /**
      * swagger ApiOperation
-     *
-     * @param joinPoint
-     * @return
-     * @throws Exception
      */
     private Operation getApiOperation(JoinPoint joinPoint) {
         Signature signature = joinPoint.getSignature();
@@ -167,13 +154,9 @@ public abstract class OperateLogAspect {
 
     /**
      * 提交存储操作日志
-     *
-     * @param joinPoint
-     * @param e
-     * @throws Exception
      */
-    private void submitLog(final JoinPoint joinPoint, final Throwable e) throws Exception {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+    private void submitLog(final JoinPoint joinPoint, final Throwable e) {
+        HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
         //设置用户信息
         RequestUser user = RequestContext.getRequestUser();
         if (user == null) {
@@ -186,7 +169,7 @@ public abstract class OperateLogAspect {
         String methodName = joinPoint.getSignature().getName();
         String operateMethod = className + "." + methodName;
         String failReason = null;
-        Boolean successFlag = true;
+        boolean successFlag = true;
         if (e != null) {
             successFlag = false;
             failReason = getExceptionString(e);
@@ -209,11 +192,13 @@ public abstract class OperateLogAspect {
         if (apiOperation != null) {
             operateLogEntity.setContent(apiOperation.summary());
         }
+
         Tag api = this.getApi(joinPoint);
         if (api != null) {
             String name = api.name();
             operateLogEntity.setModule(StrUtil.join(",", name));
         }
+
         taskExecutor.execute(() -> {
             this.saveLog(operateLogEntity);
         });
@@ -239,7 +224,6 @@ public abstract class OperateLogAspect {
         }
         return JSON.toJSONString(filterArgs);
     }
-
 
     private String getExceptionString(Throwable e) {
         StringWriter sw = new StringWriter();
