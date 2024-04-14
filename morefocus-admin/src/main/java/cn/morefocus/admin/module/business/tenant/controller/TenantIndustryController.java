@@ -1,5 +1,6 @@
 package cn.morefocus.admin.module.business.tenant.controller;
 
+import cn.morefocus.admin.constant.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.tenant.domain.form.TenantIndustryAddForm;
 import cn.morefocus.admin.module.business.tenant.domain.form.TenantIndustryQueryForm;
 import cn.morefocus.admin.module.business.tenant.domain.form.TenantIndustryUpdateForm;
@@ -22,7 +23,7 @@ import java.util.List;
  * @date 2024-04-09 00:06:08
  */
 @RestController
-@Tag(name = "")
+@Tag(name = AdminSwaggerTagConst.Business.TENANT_INDUSTRY)
 public class TenantIndustryController {
 
     @Resource
@@ -32,6 +33,12 @@ public class TenantIndustryController {
     @PostMapping("/tenant/industry/queryPage")
     public R<PageResult<TenantIndustryVO>> queryPage(@RequestBody @Valid TenantIndustryQueryForm queryForm) {
         return R.ok(tenantIndustryService.queryPage(queryForm));
+    }
+
+    @Operation(summary = "查询所有")
+    @PostMapping("/tenant/industry/queryAll")
+    public R<List<TenantIndustryVO>> queryAll() {
+        return R.ok(tenantIndustryService.queryAll());
     }
 
     @Operation(summary = "添加")

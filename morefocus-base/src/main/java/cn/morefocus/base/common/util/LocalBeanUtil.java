@@ -12,8 +12,6 @@ import java.util.stream.Collectors;
 
 /**
  * bean相关工具类
- *
- *
  */
 public class LocalBeanUtil {
 
@@ -37,8 +35,6 @@ public class LocalBeanUtil {
      *
      * @param source 源 要复制的对象
      * @param target 目标 复制到此对象
-     * @param <T>
-     * @return
      */
     public static <T> T copy(Object source, Class<T> target) {
         if (source == null || target == null) {
@@ -58,9 +54,6 @@ public class LocalBeanUtil {
      *
      * @param source
      * @param target
-     * @param <T>
-     * @param <K>
-     * @return
      */
     public static <T, K> List<K> copyList(List<T> source, Class<K> target) {
         if (null == source || source.isEmpty()) {

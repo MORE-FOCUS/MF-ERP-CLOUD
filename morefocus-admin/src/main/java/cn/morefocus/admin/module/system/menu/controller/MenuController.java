@@ -74,4 +74,10 @@ public class MenuController {
     public R<List<RequestUrlVO>> getAuthUrl() {
         return menuService.getAuthUrl();
     }
+
+    @Operation(summary = "复制")
+    @GetMapping("/menu/copy/{menuId}")
+    public R<String> copyMenu(@PathVariable("menuId") Long menuId) {
+        return menuService.copyMenu(menuId);
+    }
 }

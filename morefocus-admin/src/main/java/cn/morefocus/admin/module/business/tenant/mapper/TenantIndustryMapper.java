@@ -23,10 +23,6 @@ public interface TenantIndustryMapper extends BaseMapper<TenantIndustryEntity> {
 
     /**
      * 分页 查询
-     *
-     * @param page
-     * @param queryForm
-     * @return
      */
     List<TenantIndustryVO> queryPage(Page page, @Param("queryForm") TenantIndustryQueryForm queryForm);
 

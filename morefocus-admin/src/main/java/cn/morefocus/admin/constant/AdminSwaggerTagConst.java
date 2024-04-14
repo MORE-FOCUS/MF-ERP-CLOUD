@@ -7,6 +7,9 @@ import cn.morefocus.base.constant.SwaggerTagConst;
  */
 public class AdminSwaggerTagConst extends SwaggerTagConst {
 
+    /**
+     * 业务
+     */
     public static class Business {
         public static final String MANAGER_CATEGORY = "ERP进销存-分类管理";
 
@@ -19,8 +22,15 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
         public static final String OA_INVOICE = "OA办公-发票信息";
 
         public static final String OA_NOTICE = "OA办公-通知公告";
+
+        public static final String TENANT = "租户";
+
+        public static final String TENANT_INDUSTRY = "租户-所属行业";
     }
 
+    /**
+     * 系统
+     */
     public static class System {
 
         public static final String SYSTEM_LOGIN = "系统-员工登录";
@@ -44,5 +54,4 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
         public static final String SYSTEM_JOB = "系统-定时任务";
 
     }
-
 }

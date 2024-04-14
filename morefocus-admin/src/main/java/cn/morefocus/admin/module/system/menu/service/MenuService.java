@@ -9,7 +9,6 @@ import cn.morefocus.admin.module.system.menu.domain.form.MenuUpdateForm;
 import cn.morefocus.admin.module.system.menu.domain.vo.MenuTreeVO;
 import cn.morefocus.admin.module.system.menu.domain.vo.MenuVO;
 import cn.morefocus.admin.module.system.menu.mapper.MenuMapper;
-import cn.morefocus.base.common.code.SystemErrorCode;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.RequestUrlVO;
 import cn.morefocus.base.common.util.LocalBeanUtil;
@@ -201,10 +200,10 @@ public class MenuService {
         //校验菜单是否存在
         MenuEntity selectMenu = menuMapper.selectById(menuId);
         if (selectMenu == null) {
-            return R.error(SystemErrorCode.SYSTEM_ERROR, "菜单不存在");
+            return R.userErrorParam("菜单不存在");
         }
         if (selectMenu.getDeleteFlag()) {
-            return R.error(SystemErrorCode.SYSTEM_ERROR, "菜单已被删除");
+            return R.userErrorParam("菜单已被删除");
         }
         MenuVO menuVO = LocalBeanUtil.copy(selectMenu, MenuVO.class);
         return R.ok(menuVO);
@@ -217,4 +216,24 @@ public class MenuService {
         return R.ok(authUrl);
     }
 
+    /**
+     * 复制
+     */
+    public R<String> copyMenu(Long menuId) {
+        MenuEntity selectMenu = menuMapper.selectById(menuId);
+        if (selectMenu == null) {
+            return R.userErrorParam("菜单不存在");
+        }
+        if (selectMenu.getDeleteFlag()) {
+            return R.userErrorParam("菜单已被删除");
+        }
+
+        MenuEntity menuEntity = LocalBeanUtil.copy(selectMenu, MenuEntity.class);
+        menuEntity.setMenuId(null);
+        menuEntity.setCreateTime();
+        menuEntity.setCreateBy();
+        menuEntity.setCreateByName();
+        menuMapper.insert(menuEntity);
+        return R.ok();
+    }
 }

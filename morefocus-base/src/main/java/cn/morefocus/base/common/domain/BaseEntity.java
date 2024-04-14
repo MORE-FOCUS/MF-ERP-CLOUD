@@ -1,5 +1,7 @@
 package cn.morefocus.base.common.domain;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -18,22 +20,38 @@ public class BaseEntity {
     /**
      * 创建人ID
      */
+    @TableField(value = "create_by", fill = FieldFill.INSERT)
     private Long createBy;
 
     /**
      * 创建人
      */
+    @TableField(value = "create_by_name", fill = FieldFill.INSERT)
     private String createByName;
+
+    /**
+     * 创建时间
+     */
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
 
     /**
      * 更新人ID
      */
+    @TableField(value = "update_by", fill = FieldFill.UPDATE)
     private Long updateBy;
 
     /**
      * 更新人名称
      */
+    @TableField(value = "update_by_name", fill = FieldFill.UPDATE)
     private String updateByName;
+
+    /**
+     * 更新时间
+     */
+    @TableField(value = "update_time", fill = FieldFill.UPDATE)
+    private LocalDateTime updateTime;
 
     /**
      * 排序值
@@ -64,14 +82,4 @@ public class BaseEntity {
      * 删除人名称
      */
     private String deleteByName;
-
-    /**
-     * 创建时间
-     */
-    private LocalDateTime createTime;
-
-    /**
-     * 更新时间
-     */
-    private LocalDateTime updateTime;
 }

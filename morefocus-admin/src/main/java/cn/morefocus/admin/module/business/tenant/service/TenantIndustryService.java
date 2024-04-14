@@ -10,6 +10,8 @@ import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import cn.morefocus.base.common.util.PageUtil;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
@@ -31,15 +33,22 @@ public class TenantIndustryService {
 
     /**
      * 分页查询
-     *
-     * @param queryForm
-     * @return
      */
     public PageResult<TenantIndustryVO> queryPage(TenantIndustryQueryForm queryForm) {
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
         List<TenantIndustryVO> list = tenantIndustryMapper.queryPage(page, queryForm);
         PageResult<TenantIndustryVO> pageResult = PageUtil.convert2PageResult(page, list);
         return pageResult;
+    }
+
+    /**
+     * 查询所有
+     */
+    public List<TenantIndustryVO> queryAll() {
+        Wrapper<TenantIndustryEntity> wrapper = new QueryWrapper<TenantIndustryEntity>()
+                .eq("enabled", Boolean.TRUE);
+        List<TenantIndustryEntity> list = tenantIndustryMapper.selectList(wrapper);
+        return LocalBeanUtil.copyList(list, TenantIndustryVO.class);
     }
 
     /**
