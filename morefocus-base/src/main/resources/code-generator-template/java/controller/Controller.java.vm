@@ -30,7 +30,7 @@ public class ${name.upperCamel}Controller {
      * 分页查询
      */
     @Operation(summary = "分页查询")
-    @PostMapping("/${name.lowerCamel}/query/page")
+    @PostMapping("/${name.lowerCamel}/queryPage")
     public R<PageResult<${name.upperCamel}VO>> queryPage(@RequestBody @Valid ${name.upperCamel}QueryForm queryForm) {
         return R.ok(${name.lowerCamel}Service.queryPage(queryForm));
     }
@@ -38,7 +38,7 @@ public class ${name.upperCamel}Controller {
     /**
     * 查询所有
     */
-    @PostMapping("/${name.lowerCamel}/query/all")
+    @PostMapping("/${name.lowerCamel}/queryAll")
     public R<PageResult<${name.upperCamel}VO>> queryAll(@RequestBody @Valid ${name.upperCamel}QueryForm queryForm) {
         return R.ok(${name.lowerCamel}Service.queryPage(queryForm));
     }
