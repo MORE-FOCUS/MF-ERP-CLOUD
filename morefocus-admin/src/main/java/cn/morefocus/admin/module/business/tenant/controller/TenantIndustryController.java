@@ -28,31 +28,31 @@ public class TenantIndustryController {
     @Resource
     private TenantIndustryService tenantIndustryService;
 
-    @Operation(summary = "分页查询 @author loki")
+    @Operation(summary = "分页查询")
     @PostMapping("/tenant/industry/queryPage")
     public R<PageResult<TenantIndustryVO>> queryPage(@RequestBody @Valid TenantIndustryQueryForm queryForm) {
         return R.ok(tenantIndustryService.queryPage(queryForm));
     }
 
-    @Operation(summary = "添加 @author loki")
+    @Operation(summary = "添加")
     @PostMapping("/tenant/industry/add")
     public R<String> add(@RequestBody @Valid TenantIndustryAddForm addForm) {
         return tenantIndustryService.add(addForm);
     }
 
-    @Operation(summary = "更新 @author loki")
+    @Operation(summary = "更新")
     @PostMapping("/tenant/industry/update")
     public R<String> update(@RequestBody @Valid TenantIndustryUpdateForm updateForm) {
         return tenantIndustryService.update(updateForm);
     }
 
-    @Operation(summary = "批量删除 @author loki")
+    @Operation(summary = "批量删除")
     @PostMapping("/tenant/industry/batchDelete")
     public R<String> batchDelete(@RequestBody List<Long> idList) {
         return tenantIndustryService.batchDelete(idList);
     }
 
-    @Operation(summary = "单个删除 @author loki")
+    @Operation(summary = "单个删除")
     @GetMapping("/tenant/industry/delete/{id}")
     public R<String> batchDelete(@PathVariable Long id) {
         return tenantIndustryService.delete(id);

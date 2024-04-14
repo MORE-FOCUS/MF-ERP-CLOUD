@@ -79,7 +79,7 @@ public class ${name.upperCamel}Controller {
      * 删除
      */
         #if($deleteInfo.deleteEnum == "Single" || $deleteInfo.deleteEnum == "SingleAndBatch")
-        @Operation(summary = "删除")
+        @Operation(summary = "单个删除")
         @PostMapping("/${name.lowerCamel}/delete/{${primaryKeyFieldName}}")
         public R<String> batchDelete(@PathVariable ${primaryKeyJavaType} ${primaryKeyFieldName}) {
             return ${name.lowerCamel}Service.delete(${primaryKeyFieldName});

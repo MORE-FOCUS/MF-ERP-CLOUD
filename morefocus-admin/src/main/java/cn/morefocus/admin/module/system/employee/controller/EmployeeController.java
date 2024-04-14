@@ -26,9 +26,6 @@ public class EmployeeController {
     @Resource
     private EmployeeService employeeService;
 
-    /**
-     * 员工管理查询
-     */
     @Operation(summary = "查询员工列表")
     @PostMapping("/employee/query/page")
     @SaCheckPermission("system:employee:query")
@@ -39,17 +36,14 @@ public class EmployeeController {
     /**
      * 添加员工(返回添加员工的密码)
      */
-    @Operation(summary = "添加员工")
+    @Operation(summary = "添加")
     @PostMapping("/employee/add")
     @SaCheckPermission("system:employee:add")
     public R<String> addEmployee(@Valid @RequestBody EmployeeAddForm employeeAddForm) {
         return employeeService.addEmployee(employeeAddForm);
     }
 
-    /**
-     * 更新员工
-     */
-    @Operation(summary = "更新员工")
+    @Operation(summary = "更新")
     @PostMapping("/employee/update")
     @SaCheckPermission("system:employee:update")
     public R<String> updateEmployee(@Valid @RequestBody EmployeeUpdateForm employeeUpdateForm) {
