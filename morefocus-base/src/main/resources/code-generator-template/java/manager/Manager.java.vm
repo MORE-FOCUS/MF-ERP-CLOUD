@@ -16,5 +16,4 @@ import org.springframework.stereotype.Service;
 @Service
 public class ${name.upperCamel}Manager extends ServiceImpl<${name.upperCamel}Mapper, ${name.upperCamel}Entity> {
 
-
 }
