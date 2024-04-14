@@ -76,7 +76,8 @@ public class MenuController {
     }
 
     @Operation(summary = "复制")
-    @GetMapping("/menu/copy/{menuId}")
+    @PostMapping("/menu/copy/{menuId}")
+    @SaCheckPermission("system:menu:copy")
     public R<String> copyMenu(@PathVariable("menuId") Long menuId) {
         return menuService.copyMenu(menuId);
     }

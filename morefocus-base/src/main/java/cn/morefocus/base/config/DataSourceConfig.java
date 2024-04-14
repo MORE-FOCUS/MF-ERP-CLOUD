@@ -1,6 +1,7 @@
 package cn.morefocus.base.config;
 
 import cn.morefocus.base.common.domain.DataScopePlugin;
+import cn.morefocus.base.handler.DefaultDataFillHandler;
 import com.alibaba.druid.filter.Filter;
 import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.pool.DruidDataSource;
@@ -8,6 +9,8 @@ import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
 import com.alibaba.druid.support.spring.stat.DruidStatInterceptor;
 import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.core.config.GlobalConfig;
+import com.baomidou.mybatisplus.core.toolkit.GlobalConfigUtils;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +37,6 @@ import java.util.Map;
 
 /**
  * 数据源配置
- *
- *
  */
 @Slf4j
 @Configuration
@@ -129,6 +130,11 @@ public class DataSourceConfig {
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         MybatisSqlSessionFactoryBean factoryBean = new MybatisSqlSessionFactoryBean();
         factoryBean.setDataSource(druidDataSource());
+
+        GlobalConfig globalConfig = GlobalConfigUtils.defaults();
+        globalConfig.setMetaObjectHandler(new DefaultDataFillHandler());
+        factoryBean.setGlobalConfig(globalConfig);
+
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         Resource[] resources = resolver.getResources("classpath*:/mapper/**/*.xml");
         factoryBean.setMapperLocations(resources);
@@ -136,18 +142,16 @@ public class DataSourceConfig {
         // 设置 MyBatis-Plus 分页插件 注意此处myBatisPlugin一定要放在后面
         List<Interceptor> pluginsList = new ArrayList<>();
         pluginsList.add(paginationInterceptor);
-        if (dataScopePlugin != null) {
+        if (null != dataScopePlugin) {
             pluginsList.add(dataScopePlugin);
         }
-        factoryBean.setPlugins(pluginsList.toArray(new Interceptor[pluginsList.size()]));
+        factoryBean.setPlugins(pluginsList.toArray(new Interceptor[0]));
 
         return factoryBean.getObject();
     }
 
     /**
      * 非正式环境 才加载
-     *
-     * @return
      */
     @Conditional(SystemEnvironmentConfig.class)
     @Bean

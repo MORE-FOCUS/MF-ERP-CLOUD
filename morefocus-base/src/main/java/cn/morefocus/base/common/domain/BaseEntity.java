@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
  * 所有的实体类都需要包括该字段
  */
 @Data
-public class BaseEntity {
+public class BaseEntity implements Serializable {
     /**
      * 部门ID
      */
@@ -20,37 +21,37 @@ public class BaseEntity {
     /**
      * 创建人ID
      */
-    @TableField(value = "create_by", fill = FieldFill.INSERT)
+    @TableField(fill = FieldFill.INSERT)
     private Long createBy;
 
     /**
      * 创建人
      */
-    @TableField(value = "create_by_name", fill = FieldFill.INSERT)
+    @TableField(fill = FieldFill.INSERT)
     private String createByName;
 
     /**
      * 创建时间
      */
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
     /**
      * 更新人ID
      */
-    @TableField(value = "update_by", fill = FieldFill.UPDATE)
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updateBy;
 
     /**
      * 更新人名称
      */
-    @TableField(value = "update_by_name", fill = FieldFill.UPDATE)
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateByName;
 
     /**
      * 更新时间
      */
-    @TableField(value = "update_time", fill = FieldFill.UPDATE)
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
     /**

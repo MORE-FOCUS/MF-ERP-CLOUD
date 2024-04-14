@@ -230,9 +230,6 @@ public class MenuService {
 
         MenuEntity menuEntity = LocalBeanUtil.copy(selectMenu, MenuEntity.class);
         menuEntity.setMenuId(null);
-        menuEntity.setCreateTime();
-        menuEntity.setCreateBy();
-        menuEntity.setCreateByName();
         menuMapper.insert(menuEntity);
         return R.ok();
     }

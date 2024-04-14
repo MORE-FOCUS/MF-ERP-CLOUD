@@ -9,8 +9,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * mp 插件
- *
- *
  */
 @EnableTransactionManagement
 @Configuration
