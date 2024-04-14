@@ -22,8 +22,12 @@ import java.util.List;
 public interface TenantIndustryMapper extends BaseMapper<TenantIndustryEntity> {
 
     /**
-     * 分页 查询
+     * 分页查询
      */
     List<TenantIndustryVO> queryPage(Page page, @Param("queryForm") TenantIndustryQueryForm queryForm);
 
+    /**
+     * 更新禁用启用
+     */
+    void updateDisableFlag(@Param("id") Long id, @Param("disabledFlag") Boolean disabledFlag);
 }

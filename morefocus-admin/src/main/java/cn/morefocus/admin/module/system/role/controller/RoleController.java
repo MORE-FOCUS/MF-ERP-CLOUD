@@ -3,9 +3,11 @@ package cn.morefocus.admin.module.system.role.controller;
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.system.role.domain.form.RoleAddForm;
+import cn.morefocus.admin.module.system.role.domain.form.RoleQueryForm;
 import cn.morefocus.admin.module.system.role.domain.form.RoleUpdateForm;
 import cn.morefocus.admin.module.system.role.domain.vo.RoleVO;
 import cn.morefocus.admin.module.system.role.service.RoleService;
+import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,6 +26,18 @@ public class RoleController {
 
     @Resource
     private RoleService roleService;
+
+    @Operation(summary = "查询分页列表")
+    @PostMapping("/role/queryPage")
+    public PageResult<RoleVO> queryPage(@RequestBody RoleQueryForm queryForm) {
+        return roleService.queryPage(queryForm);
+    }
+
+    @Operation(summary = "获取所有角色")
+    @GetMapping("/role/queryAll")
+    public R<List<RoleVO>> queryAll() {
+        return roleService.queryAll();
+    }
 
     @Operation(summary = "添加角色")
     @PostMapping("/role/add")
@@ -51,11 +65,4 @@ public class RoleController {
     public R<RoleVO> getRole(@PathVariable("roleId") Long roleId) {
         return roleService.getRoleById(roleId);
     }
-
-    @Operation(summary = "获取所有角色")
-    @GetMapping("/role/getAll")
-    public R<List<RoleVO>> getAllRole() {
-        return roleService.getAllRole();
-    }
-
 }

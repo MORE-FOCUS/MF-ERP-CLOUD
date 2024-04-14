@@ -119,7 +119,7 @@ public class DepartmentService {
     /**
      * 获取所有部门
      */
-    public List<DepartmentVO> listAll() {
+    public List<DepartmentVO> queryAll() {
         return departmentCacheManager.getDepartmentList();
     }
 

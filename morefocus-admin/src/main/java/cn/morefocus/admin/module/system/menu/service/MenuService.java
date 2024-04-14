@@ -75,6 +75,16 @@ public class MenuService {
             return R.userErrorParam("上级菜单不能为自己");
         }
         MenuEntity menuEntity = LocalBeanUtil.copy(menuUpdateForm, MenuEntity.class);
+
+        if (MenuTypeEnum.CATALOG.getValue().equals(menuEntity.getMenuType())) {
+            menuEntity.setComponent("");
+            menuEntity.setPath("");
+        }
+
+        if (MenuTypeEnum.BTN.getValue().equals(menuEntity.getMenuType())) {
+            menuEntity.setComponent("");
+            menuEntity.setPath("");
+        }
         menuMapper.updateById(menuEntity);
         return R.ok();
     }
@@ -199,7 +209,7 @@ public class MenuService {
     public R<MenuVO> getMenuDetail(Long menuId) {
         //校验菜单是否存在
         MenuEntity selectMenu = menuMapper.selectById(menuId);
-        if (selectMenu == null) {
+        if (null == selectMenu) {
             return R.userErrorParam("菜单不存在");
         }
         if (selectMenu.getDeleteFlag()) {
@@ -230,6 +240,16 @@ public class MenuService {
 
         MenuEntity menuEntity = LocalBeanUtil.copy(selectMenu, MenuEntity.class);
         menuEntity.setMenuId(null);
+
+        if (MenuTypeEnum.CATALOG.getValue().equals(menuEntity.getMenuType())) {
+            menuEntity.setComponent("");
+            menuEntity.setPath("");
+        }
+
+        if (MenuTypeEnum.BTN.getValue().equals(menuEntity.getMenuType())) {
+            menuEntity.setComponent("");
+            menuEntity.setPath("");
+        }
         menuMapper.insert(menuEntity);
         return R.ok();
     }

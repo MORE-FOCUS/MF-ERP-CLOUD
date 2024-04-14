@@ -8,5 +8,9 @@
         FROM t_tenant_industry
     </select>
 
-
+    <update id="updateDisableFlag">
+        UPDATE t_tenant_industry
+        SET disabled_flag = #{disabledFlag}
+        WHERE id = #{id}
+    </update>
 </mapper>

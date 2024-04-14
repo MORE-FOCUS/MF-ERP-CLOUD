@@ -19,7 +19,7 @@ import lombok.EqualsAndHashCode;
 public class TenantIndustryEntity extends BaseEntity {
 
     /**
-     * 分类id
+     * ID
      */
     @TableId(type = IdType.AUTO)
     private Long id;
@@ -35,8 +35,9 @@ public class TenantIndustryEntity extends BaseEntity {
     private String icon;
 
     /**
-     * 是否启用
-     * true-启用 false-禁用
+     * 是否被禁用
+     * 0-否
+     * 1-是
      */
-    private Boolean enabled;
+    private Boolean disabledFlag;
 }

@@ -17,7 +17,7 @@ public enum MenuTypeEnum implements BaseEnum {
     /**
      * 功能点
      */
-    POINTS(3, "功能点");
+    BTN(3, "按钮");
 
     private final Integer value;
 

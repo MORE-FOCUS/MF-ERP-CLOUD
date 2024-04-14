@@ -10,9 +10,6 @@ import lombok.Data;
 @Data
 public class RoleQueryForm extends PageParam {
 
-    @Schema(description = "角色名称")
-    private String roleName;
-
-    @Schema(description = "角色id")
-    private String roleId;
+    @Schema(description = "关键字")
+    private String keywords;
 }

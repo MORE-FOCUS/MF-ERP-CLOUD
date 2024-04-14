@@ -29,7 +29,7 @@ public class ${name.upperCamel}Controller {
     /**
      * 分页查询
      */
-    @Operation(summary = "分页查询")
+    @Operation(summary = "查询分页列表")
     @PostMapping("/${name.lowerCamel}/queryPage")
     public R<PageResult<${name.upperCamel}VO>> queryPage(@RequestBody @Valid ${name.upperCamel}QueryForm queryForm) {
         return R.ok(${name.lowerCamel}Service.queryPage(queryForm));

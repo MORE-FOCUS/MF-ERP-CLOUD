@@ -54,9 +54,9 @@ public class DepartmentController {
     }
 
     @Operation(summary = "查询部门列表")
-    @GetMapping("/department/listAll")
-    public R<List<DepartmentVO>> listAll() {
-        return R.ok(departmentService.listAll());
+    @GetMapping("/department/queryAll")
+    public R<List<DepartmentVO>> queryAll() {
+        return R.ok(departmentService.queryAll());
     }
 
 }

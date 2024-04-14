@@ -2,14 +2,18 @@ package cn.morefocus.admin.module.system.role.service;
 
 import cn.morefocus.admin.module.system.role.domain.entity.RoleEntity;
 import cn.morefocus.admin.module.system.role.domain.form.RoleAddForm;
+import cn.morefocus.admin.module.system.role.domain.form.RoleQueryForm;
 import cn.morefocus.admin.module.system.role.domain.form.RoleUpdateForm;
 import cn.morefocus.admin.module.system.role.domain.vo.RoleVO;
 import cn.morefocus.admin.module.system.role.mapper.RoleEmployeeMapper;
 import cn.morefocus.admin.module.system.role.mapper.RoleMapper;
 import cn.morefocus.admin.module.system.role.mapper.RoleMenuMapper;
 import cn.morefocus.base.common.code.UserErrorCode;
+import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
+import cn.morefocus.base.common.util.PageUtil;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,6 +34,25 @@ public class RoleService {
 
     @Resource
     private RoleEmployeeMapper roleEmployeeMapper;
+
+    /**
+     * 获取所有角色列表
+     */
+    public PageResult<RoleVO> queryPage(RoleQueryForm queryForm) {
+        Page<?> page = PageUtil.convert2PageQuery(queryForm);
+        List<RoleVO> list = roleMapper.queryPage(page, queryForm);
+        PageResult<RoleVO> pageResult = PageUtil.convert2PageResult(page, list);
+        return pageResult;
+    }
+
+    /**
+     * 获取所有角色列表
+     */
+    public R<List<RoleVO>> queryAll() {
+        List<RoleEntity> roleEntityList = roleMapper.selectList(null);
+        List<RoleVO> roleList = LocalBeanUtil.copyList(roleEntityList, RoleVO.class);
+        return R.ok(roleList);
+    }
 
     /**
      * 新增添加角色
@@ -99,14 +122,5 @@ public class RoleService {
         }
         RoleVO role = LocalBeanUtil.copy(roleEntity, RoleVO.class);
         return R.ok(role);
-    }
-
-    /**
-     * 获取所有角色列表
-     */
-    public R<List<RoleVO>> getAllRole() {
-        List<RoleEntity> roleEntityList = roleMapper.selectList(null);
-        List<RoleVO> roleList = LocalBeanUtil.copyList(roleEntityList, RoleVO.class);
-        return R.ok(roleList);
     }
 }

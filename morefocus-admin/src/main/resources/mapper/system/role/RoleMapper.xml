@@ -5,6 +5,10 @@
     <resultMap id="RoleEntity"
                type="cn.morefocus.admin.module.system.role.domain.entity.RoleEntity"></resultMap>
 
+    <select id="queryPage" resultType="cn.morefocus.admin.module.system.role.domain.vo.RoleVO">
+        SELECT *
+        FROM t_role
+    </select>
 
     <select id="getByRoleName" resultMap="RoleEntity">
         SELECT *

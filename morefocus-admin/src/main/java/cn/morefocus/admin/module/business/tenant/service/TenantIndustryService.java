@@ -6,6 +6,7 @@ import cn.morefocus.admin.module.business.tenant.domain.form.TenantIndustryQuery
 import cn.morefocus.admin.module.business.tenant.domain.form.TenantIndustryUpdateForm;
 import cn.morefocus.admin.module.business.tenant.domain.vo.TenantIndustryVO;
 import cn.morefocus.admin.module.business.tenant.mapper.TenantIndustryMapper;
+import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
@@ -62,9 +63,6 @@ public class TenantIndustryService {
 
     /**
      * 更新
-     *
-     * @param updateForm
-     * @return
      */
     public R<String> update(TenantIndustryUpdateForm updateForm) {
         TenantIndustryEntity tenantIndustryEntity = LocalBeanUtil.copy(updateForm, TenantIndustryEntity.class);
@@ -73,10 +71,23 @@ public class TenantIndustryService {
     }
 
     /**
+     * 批量更新行业状态
+     */
+    public R<String> updateDisableFlag(Long id) {
+        if (null == id) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+        TenantIndustryEntity tenantIndustryEntity = tenantIndustryMapper.selectById(id);
+        if (null == tenantIndustryEntity) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+        tenantIndustryMapper.updateDisableFlag(id, !tenantIndustryEntity.getDisabledFlag());
+
+        return R.ok();
+    }
+
+    /**
      * 批量删除
-     *
-     * @param idList
-     * @return
      */
     public R<String> batchDelete(List<Long> idList) {
         if (CollectionUtils.isEmpty(idList)) {

@@ -1,5 +1,6 @@
 package cn.morefocus.admin.module.business.tenant.controller;
 
+import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.tenant.domain.form.TenantIndustryAddForm;
 import cn.morefocus.admin.module.business.tenant.domain.form.TenantIndustryQueryForm;
@@ -31,6 +32,7 @@ public class TenantIndustryController {
 
     @Operation(summary = "分页查询")
     @PostMapping("/tenant/industry/queryPage")
+    @SaCheckPermission("tenant:industry:query")
     public R<PageResult<TenantIndustryVO>> queryPage(@RequestBody @Valid TenantIndustryQueryForm queryForm) {
         return R.ok(tenantIndustryService.queryPage(queryForm));
     }
@@ -43,24 +45,38 @@ public class TenantIndustryController {
 
     @Operation(summary = "添加")
     @PostMapping("/tenant/industry/add")
+    @SaCheckPermission("tenant:industry:add")
     public R<String> add(@RequestBody @Valid TenantIndustryAddForm addForm) {
         return tenantIndustryService.add(addForm);
     }
 
     @Operation(summary = "更新")
     @PostMapping("/tenant/industry/update")
+    @SaCheckPermission("tenant:industry:update")
     public R<String> update(@RequestBody @Valid TenantIndustryUpdateForm updateForm) {
         return tenantIndustryService.update(updateForm);
     }
 
+    /**
+     * 更新行业禁用/启用状态
+     */
+    @Operation(summary = "更新行业禁用/启用状态")
+    @GetMapping("/tenant/industry/update/disabled/{id}")
+    @SaCheckPermission("tenant:industry:disabled")
+    public R<String> updateDisableFlag(@PathVariable("id") Long id) {
+        return tenantIndustryService.updateDisableFlag(id);
+    }
+
     @Operation(summary = "批量删除")
     @PostMapping("/tenant/industry/batchDelete")
+    @SaCheckPermission("tenant:industry:delete")
     public R<String> batchDelete(@RequestBody List<Long> idList) {
         return tenantIndustryService.batchDelete(idList);
     }
 
     @Operation(summary = "单个删除")
     @GetMapping("/tenant/industry/delete/{id}")
+    @SaCheckPermission("tenant:industry:delete")
     public R<String> batchDelete(@PathVariable Long id) {
         return tenantIndustryService.delete(id);
     }

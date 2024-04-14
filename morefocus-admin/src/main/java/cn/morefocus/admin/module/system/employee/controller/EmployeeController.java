@@ -26,11 +26,11 @@ public class EmployeeController {
     @Resource
     private EmployeeService employeeService;
 
-    @Operation(summary = "查询员工列表")
-    @PostMapping("/employee/query/page")
+    @Operation(summary = "查询分页列表")
+    @PostMapping("/employee/queryPage")
     @SaCheckPermission("system:employee:query")
     public R<PageResult<EmployeeVO>> queryPage(@Valid @RequestBody EmployeeQueryForm query) {
-        return R.ok(employeeService.queryEmployee(query));
+        return R.ok(employeeService.queryPage(query));
     }
 
     /**
