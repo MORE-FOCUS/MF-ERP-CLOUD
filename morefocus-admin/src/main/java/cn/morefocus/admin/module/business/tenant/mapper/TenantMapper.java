@@ -23,11 +23,11 @@ public interface TenantMapper extends BaseMapper<TenantEntity> {
 
     /**
      * 分页 查询
-     *
-     * @param page
-     * @param queryForm
-     * @return
      */
     List<TenantVO> queryPage(Page page, @Param("queryForm") TenantQueryForm queryForm);
 
+    /**
+     * 更新禁用|启用状态
+     */
+    void updateDisableFlag(@Param("id") Long id, @Param("disabledFlag") Boolean disabledFlag);
 }

@@ -77,4 +77,14 @@ public class TenantVO extends BaseVo {
      * 当前套餐ID
      */
     private Long packageId;
+
+    /**
+     * 禁用启用
+     */
+    private Boolean disabledFlag;
+
+    /**
+     * 剩余天数
+     */
+    private Long effectiveDays;
 }

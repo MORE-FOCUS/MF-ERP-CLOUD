@@ -8,6 +8,7 @@ import cn.morefocus.admin.module.business.tenant.domain.form.TenantUpdateForm;
 import cn.morefocus.admin.module.business.tenant.domain.vo.TenantVO;
 import cn.morefocus.admin.module.business.tenant.mapper.TenantIndustryMapper;
 import cn.morefocus.admin.module.business.tenant.mapper.TenantMapper;
+import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 /**
@@ -34,13 +37,17 @@ public class TenantService {
     private TenantMapper tenantMapper;
     @Resource
     private TenantIndustryMapper tenantIndustryMapper;
-    
+
     /**
      * 分页查询
      */
     public PageResult<TenantVO> queryPage(TenantQueryForm queryForm) {
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
         List<TenantVO> list = tenantMapper.queryPage(page, queryForm);
+        list.forEach(item -> {
+            item.setEffectiveDays(LocalDate.now().until(item.getExpirationDate(), ChronoUnit.DAYS));
+        });
+
         PageResult<TenantVO> pageResult = PageUtil.convert2PageResult(page, list);
         return pageResult;
     }
@@ -92,5 +99,21 @@ public class TenantService {
      */
     public void register(@RequestBody @Valid TenantRegisterForm registerForm) {
         //TODO
+    }
+
+    /**
+     * 更新禁用/启用状态
+     */
+    public R<String> updateDisableFlag(Long id) {
+        if (null == id) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+        TenantEntity tenantEntity = tenantMapper.selectById(id);
+        if (null == tenantEntity) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+        tenantMapper.updateDisableFlag(id, !tenantEntity.getDisabledFlag());
+
+        return R.ok();
     }
 }

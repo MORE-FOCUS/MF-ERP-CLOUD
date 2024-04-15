@@ -33,6 +33,13 @@ public class EmployeeController {
         return R.ok(employeeService.queryPage(query));
     }
 
+    @Operation(summary = "查询分页列表")
+    @PostMapping("/employee/queryAll")
+    @SaCheckPermission("system:employee:query")
+    public R<List<EmployeeVO>> queryAll(@Valid @RequestBody EmployeeQueryForm query) {
+        return employeeService.queryAllEmployee(query.getDisabledFlag());
+    }
+
     /**
      * 添加员工(返回添加员工的密码)
      */

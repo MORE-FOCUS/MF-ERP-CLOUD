@@ -81,4 +81,11 @@ public class TenantEntity extends BaseEntity {
      */
     private Long packageId;
 
+    /**
+     * 禁用启用
+     * true-禁用
+     * false-启用
+     */
+    private Boolean disabledFlag;
+
 }

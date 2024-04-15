@@ -9,4 +9,10 @@
         FROM t_tenant t_tenant
                  left join t_tenant_industry t_tenant_industry on (t_tenant_industry.id = t_tenant.industry_id)
     </select>
+
+    <update id="updateDisableFlag">
+        UPDATE t_tenant
+        SET disabled_flag = #{disabledFlag}
+        WHERE id = #{id}
+    </update>
 </mapper>

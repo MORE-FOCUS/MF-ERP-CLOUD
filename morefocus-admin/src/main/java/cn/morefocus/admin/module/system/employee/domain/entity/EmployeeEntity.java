@@ -34,7 +34,7 @@ public class EmployeeEntity extends BaseEntity {
     private String actualName;
 
     /**
-     * 性别
+     * 性别 0-女 1-男 2-未知
      */
     private Integer gender;
 
