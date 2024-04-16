@@ -33,7 +33,7 @@ public class EmployeeVO {
     private Long deptId;
 
     @Schema(description = "是否被禁用")
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 
     @Schema(description = "是否 超级管理员")
     private Boolean administratorFlag;

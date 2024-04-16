@@ -91,8 +91,8 @@
             OR INSTR(t_employee.login_name,#{queryForm.keyword})
             )
         </if>
-        <if test="queryForm.deleteFlag != null">
-            AND t_employee.delete_flag = #{queryForm.deleteFlag}
+        <if test="queryForm.isDeleted != null">
+            AND t_employee.is_deleted = #{queryForm.isDeleted}
         </if>
     </select>
 

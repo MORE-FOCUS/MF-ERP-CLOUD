@@ -27,8 +27,8 @@ public class BankQueryForm extends PageParam {
     private LocalDate endTime;
 
     @Schema(description = "禁用状态")
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 
     @Schema(description = "删除状态", hidden = true)
-    private Boolean deleteFlag;
+    private Boolean isDeleted;
 }

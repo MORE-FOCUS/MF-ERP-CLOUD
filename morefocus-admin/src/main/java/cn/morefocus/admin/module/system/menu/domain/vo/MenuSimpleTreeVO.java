@@ -21,7 +21,7 @@ public class MenuSimpleTreeVO {
     private Long contextMenuId;
 
     @Schema(description = "父级菜单ID")
-    private Long parentId;
+    private Long pid;
 
     @Schema(description = "菜单类型")
     private Integer menuType;

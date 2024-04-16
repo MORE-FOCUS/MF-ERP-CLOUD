@@ -124,7 +124,7 @@ public class CodeGeneratorService {
             updateFlag = false;
         }
 
-        // 校验假删，必须有 delete_flag 字段
+        // 校验假删，必须有 is_deleted 字段
         List<TableColumnVO> tableColumns = getTableColumns(form.getTableName());
         if (null != form.getDeleteInfo() && form.getDeleteInfo().getIsSupportDelete() && !form.getDeleteInfo().getIsPhysicallyDeleted()) {
             Optional<TableColumnVO> any = tableColumns.stream().filter(e -> e.getColumnName().equals(CodeGeneratorConstant.DELETED_FLAG)).findAny();

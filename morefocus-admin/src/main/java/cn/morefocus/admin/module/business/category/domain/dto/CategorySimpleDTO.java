@@ -19,5 +19,5 @@ public class CategorySimpleDTO {
     private String categoryFullName;
 
     @Schema(description = "父级id")
-    private Long parentId;
+    private Long pid;
 }

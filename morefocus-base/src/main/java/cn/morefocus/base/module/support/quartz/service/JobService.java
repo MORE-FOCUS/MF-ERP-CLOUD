@@ -49,7 +49,7 @@ public class JobService {
         scheduler.clear();
 
         Wrapper<JobEntity> wrapper = new QueryWrapper<JobEntity>()
-                .eq("deleteFlag", Boolean.FALSE)
+                .eq("isDeleted", Boolean.FALSE)
                 .eq("status", Boolean.TRUE);
         List<JobEntity> jobList = jobMapper.selectList(null);
         for (JobEntity job : jobList) {

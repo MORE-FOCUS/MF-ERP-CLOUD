@@ -51,7 +51,7 @@ public class DepartmentService {
      * 更新部门信息
      */
     public R<String> updateDepartment(DepartmentUpdateForm updateDTO) {
-        if (updateDTO.getParentId() == null) {
+        if (updateDTO.getPid() == null) {
             return R.userErrorParam("父级部门id不能为空");
         }
         DepartmentEntity entity = departmentMapper.selectById(updateDTO.getDeptId());

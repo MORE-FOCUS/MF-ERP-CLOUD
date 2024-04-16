@@ -18,7 +18,7 @@ public class HelpDocCatalogVO {
     private String name;
 
     @Schema(description = "帮助文档目录-父级id")
-    private Long parentId;
+    private Long pid;
 
     @Schema(description = "帮助文档目录-排序")
     private Integer sort;

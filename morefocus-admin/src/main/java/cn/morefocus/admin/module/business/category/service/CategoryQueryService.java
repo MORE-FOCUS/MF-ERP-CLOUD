@@ -39,7 +39,7 @@ public class CategoryQueryService {
             return Optional.empty();
         }
         CategoryEntity entity = categoryCacheManager.queryCategory(categoryId);
-        if (null == entity || entity.getDeleteFlag()) {
+        if (null == entity || entity.getIsDeleted()) {
             return Optional.empty();
         }
         return Optional.of(entity);
@@ -110,7 +110,7 @@ public class CategoryQueryService {
      */
     public String queryCategoryName(Long categoryId) {
         CategoryEntity categoryEntity = categoryCacheManager.queryCategory(categoryId);
-        if (null == categoryEntity || categoryEntity.getDeleteFlag()) {
+        if (null == categoryEntity || categoryEntity.getIsDeleted()) {
             return null;
         }
         return categoryEntity.getCategoryName();
@@ -121,7 +121,7 @@ public class CategoryQueryService {
      */
     public CategorySimpleDTO queryCategoryInfo(Long categoryId) {
         CategoryEntity categoryEntity = categoryCacheManager.queryCategory(categoryId);
-        if (null == categoryEntity || categoryEntity.getDeleteFlag()) {
+        if (null == categoryEntity || categoryEntity.getIsDeleted()) {
             return null;
         }
         String fullName = this.queryFullName(categoryId);
@@ -130,7 +130,7 @@ public class CategoryQueryService {
         categoryDTO.setCategoryId(categoryId);
         categoryDTO.setCategoryName(categoryEntity.getCategoryName());
         categoryDTO.setCategoryFullName(fullName);
-        categoryDTO.setParentId(categoryEntity.getParentId());
+        categoryDTO.setPid(categoryEntity.getPid());
         return categoryDTO;
     }
 
@@ -141,17 +141,17 @@ public class CategoryQueryService {
     public List<CategoryEntity> queryCategoryAndParent(Long categoryId) {
         List<CategoryEntity> parentCategoryList = Lists.newArrayList();
         CategoryEntity categoryEntity = categoryCacheManager.queryCategory(categoryId);
-        if (null == categoryEntity || categoryEntity.getDeleteFlag()) {
+        if (null == categoryEntity || categoryEntity.getIsDeleted()) {
             return parentCategoryList;
         }
 
         // 父级始终放在第一位
         parentCategoryList.add(0, categoryEntity);
-        Long parentId = categoryEntity.getParentId();
-        if (Objects.equals(DEFAULT_CATEGORY_PARENT_ID, parentId)) {
+        Long pid = categoryEntity.getPid();
+        if (Objects.equals(DEFAULT_CATEGORY_PARENT_ID, pid)) {
             return parentCategoryList;
         }
-        parentCategoryList.addAll(0, this.queryCategoryAndParent(parentId));
+        parentCategoryList.addAll(0, this.queryCategoryAndParent(pid));
         return parentCategoryList;
     }
 

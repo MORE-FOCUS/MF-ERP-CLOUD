@@ -20,7 +20,7 @@ public class HelpDocCatalogAddForm {
     private String name;
 
     @Schema(description = "父级")
-    private Long parentId;
+    private Long pid;
 
     @Schema(description = "排序")
     private Integer sort;

@@ -23,12 +23,12 @@ public interface DictKeyMapper extends BaseMapper<DictKeyEntity> {
     /**
      * 查找所有未删除的自带key
      */
-    List<DictKeyEntity> selectByDeletedFlag(@Param("deleteFlag") Boolean deleteFlag);
+    List<DictKeyEntity> selectByIsDeleted(@Param("isDeleted") Boolean isDeleted);
 
     /**
      * 逻辑删除
      */
-    void updateDeletedFlagByIdList(@Param("dictKeyIdList") List<Long> dictKeyIdList, @Param("deleteFlag") Boolean deleteFlag);
+    void updateIsDeletedByIdList(@Param("dictKeyIdList") List<Long> dictKeyIdList, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 分页查询
@@ -38,5 +38,5 @@ public interface DictKeyMapper extends BaseMapper<DictKeyEntity> {
     /**
      * 跟进code查询
      */
-    DictKeyEntity selectByCode(@Param("keyCode") String keyCode, @Param("deleteFlag") Boolean deleteFlag);
+    DictKeyEntity selectByCode(@Param("keyCode") String keyCode, @Param("isDeleted") Boolean isDeleted);
 }

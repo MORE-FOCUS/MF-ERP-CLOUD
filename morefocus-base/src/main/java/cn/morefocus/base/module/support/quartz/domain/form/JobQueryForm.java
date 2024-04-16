@@ -13,7 +13,7 @@ public class JobQueryForm extends PageParam {
     private String searchWord;
 
     @Schema(description = "删除标识", hidden = true)
-    private Boolean deleteFlag;
+    private Boolean isDeleted;
 
     @Schema(description = "任务状态")
     private Boolean status;

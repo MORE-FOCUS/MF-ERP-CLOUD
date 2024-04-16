@@ -41,7 +41,7 @@
 
 #if($mapper.deletedFieldUpperName != $null)
     <update id="batchUpdate${mapper.deletedFieldUpperName}">
-        update ${mapper.tableName} set ${mapper.deletedColumnName} = #{deleteFlag}
+        update ${mapper.tableName} set ${mapper.deletedColumnName} = #{isDeleted}
         where ${mapper.mainKeyColumnName} in
         <foreach collection="idList" open="(" close=")" separator="," item="item">
             #{item}
@@ -55,7 +55,7 @@
 #if($deleteInfo.deleteEnum == "Batch" || $deleteInfo.deleteEnum == "SingleAndBatch")
 
     <update id="batchUpdateDeleted">
-        update ${tableName} set delete_flag = #{deleteFlag}
+        update ${tableName} set is_deleted = #{isDeleted}
         where ${primaryKeyColumnName} in
         <foreach collection="idList" open="(" close=")" separator="," item="item">
             #{item}
@@ -65,7 +65,7 @@
 #if($deleteInfo.deleteEnum == "Single" || $deleteInfo.deleteEnum == "SingleAndBatch")
 
     <update id="updateDeleted">
-        update ${tableName} set delete_flag = #{deleteFlag}
+        update ${tableName} set is_deleted = #{isDeleted}
         where ${primaryKeyColumnName} = #{${primaryKeyFieldName}}
     </update>
 #end

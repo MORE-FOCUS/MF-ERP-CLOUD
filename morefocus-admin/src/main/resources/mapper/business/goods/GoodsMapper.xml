@@ -3,7 +3,7 @@
 <mapper namespace="cn.morefocus.admin.module.business.goods.mapper.GoodsMapper">
     <update id="batchUpdateDeleted">
         update t_goods
-        set delete_flag = #{deleteFlag}
+        set is_deleted = #{isDeleted}
         WHERE goods_id IN
         <foreach collection="goodsIdList" open="(" close=")" separator="," item="item">
             #{item}
@@ -29,8 +29,8 @@
             <if test="query.shelvesFlag != null">
                 AND shelves_flag = #{query.shelvesFlag}
             </if>
-            <if test="query.deleteFlag != null">
-                AND delete_flag = #{query.deleteFlag}
+            <if test="query.isDeleted != null">
+                AND is_deleted = #{query.isDeleted}
             </if>
         </where>
         <if test="query.sortItemList == null or query.sortItemList.size == 0">

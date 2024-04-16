@@ -90,7 +90,7 @@ public class RoleMenuService {
         res.setSelectedMenuId(selectedMenuId);
         //查询菜单权限
         List<MenuVO> menuVOList = menuMapper.queryMenuList(Boolean.FALSE, Boolean.FALSE, null);
-        Map<Long, List<MenuVO>> parentMap = menuVOList.stream().collect(Collectors.groupingBy(MenuVO::getParentId, Collectors.toList()));
+        Map<Long, List<MenuVO>> parentMap = menuVOList.stream().collect(Collectors.groupingBy(MenuVO::getPid, Collectors.toList()));
         List<MenuSimpleTreeVO> menuTreeList = this.buildMenuTree(parentMap, NumberUtils.LONG_ZERO);
         res.setMenuTreeList(menuTreeList);
         return R.ok(res);
@@ -99,9 +99,9 @@ public class RoleMenuService {
     /**
      * 构建菜单树
      */
-    private List<MenuSimpleTreeVO> buildMenuTree(Map<Long, List<MenuVO>> parentMap, Long parentId) {
+    private List<MenuSimpleTreeVO> buildMenuTree(Map<Long, List<MenuVO>> parentMap, Long pid) {
         // 获取本级菜单树List
-        List<MenuSimpleTreeVO> res = parentMap.getOrDefault(parentId, Lists.newArrayList()).stream()
+        List<MenuSimpleTreeVO> res = parentMap.getOrDefault(pid, Lists.newArrayList()).stream()
                 .map(e -> LocalBeanUtil.copy(e, MenuSimpleTreeVO.class)).collect(Collectors.toList());
         // 循环遍历下级菜单
         res.forEach(e -> {

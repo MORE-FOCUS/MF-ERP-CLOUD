@@ -86,6 +86,6 @@ public class TenantEntity extends BaseEntity {
      * true-禁用
      * false-启用
      */
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 
 }

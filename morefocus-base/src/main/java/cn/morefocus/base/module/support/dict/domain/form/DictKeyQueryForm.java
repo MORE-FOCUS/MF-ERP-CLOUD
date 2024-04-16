@@ -16,5 +16,5 @@ public class DictKeyQueryForm extends PageParam {
     private String searchWord;
 
     @Schema(description = "删除标识", hidden = true)
-    private Boolean deleteFlag;
+    private Boolean isDeleted;
 }

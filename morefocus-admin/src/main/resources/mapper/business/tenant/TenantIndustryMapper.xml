@@ -10,7 +10,7 @@
 
     <update id="updateDisableFlag">
         UPDATE t_tenant_industry
-        SET disabled_flag = #{disabledFlag}
+        SET is_disabled = #{isDisabled}
         WHERE id = #{id}
     </update>
 </mapper>

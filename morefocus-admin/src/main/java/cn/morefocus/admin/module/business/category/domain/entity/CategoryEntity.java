@@ -34,12 +34,12 @@ public class CategoryEntity extends BaseEntity {
     /**
      * 父级类目id
      */
-    private Long parentId;
+    private Long pid;
 
     /**
      * 是否禁用(1-禁用 0-启用)
      */
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 }
 
 

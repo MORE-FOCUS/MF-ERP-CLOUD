@@ -24,18 +24,18 @@ public interface InvoiceMapper extends BaseMapper<InvoiceEntity> {
      * @param enterpriseId
      * @param accountNumber
      * @param excludeInvoiceId
-     * @param deleteFlag
+     * @param isDeleted
      * @return
      */
-    InvoiceEntity queryByAccountNumber(@Param("enterpriseId") Long enterpriseId, @Param("accountNumber") String accountNumber, @Param("excludeInvoiceId") Long excludeInvoiceId, @Param("deleteFlag") Boolean deleteFlag);
+    InvoiceEntity queryByAccountNumber(@Param("enterpriseId") Long enterpriseId, @Param("accountNumber") String accountNumber, @Param("excludeInvoiceId") Long excludeInvoiceId, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 删除发票信息
      *
      * @param invoiceId
-     * @param deleteFlag
+     * @param isDeleted
      */
-    void deleteInvoice(@Param("invoiceId") Long invoiceId, @Param("deleteFlag") Boolean deleteFlag);
+    void deleteInvoice(@Param("invoiceId") Long invoiceId, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 发票信息分页查询
@@ -50,8 +50,8 @@ public interface InvoiceMapper extends BaseMapper<InvoiceEntity> {
      * 查询发票信息详情
      *
      * @param invoiceId
-     * @param deleteFlag
+     * @param isDeleted
      * @return
      */
-    InvoiceVO getDetail(@Param("invoiceId") Long invoiceId, @Param("deleteFlag") Boolean deleteFlag);
+    InvoiceVO getDetail(@Param("invoiceId") Long invoiceId, @Param("isDeleted") Boolean isDeleted);
 }

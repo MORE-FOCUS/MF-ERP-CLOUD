@@ -26,9 +26,9 @@
     </select>
 
     <!-- ================================== 通知公告【主表】相关 ================================== -->
-    <update id="updateDeletedFlag">
+    <update id="updateIsDeleted">
         update t_notice
-        set delete_flag = true
+        set is_deleted = true
         where notice_id = #{noticeId}
     </update>
 
@@ -59,8 +59,8 @@
             <if test="query.createUserId != null">
                 AND t_notice.create_by = #{createUserId}
             </if>
-            <if test="query.deleteFlag != null">
-                and t_notice.delete_flag = #{query.deleteFlag}
+            <if test="query.isDeleted != null">
+                and t_notice.is_deleted = #{query.isDeleted}
             </if>
             <if test="query.createTimeBegin != null">
                 AND DATE_FORMAT(t_notice.create_time, '%Y-%m-%d') &gt;= DATE_FORMAT(#{query.createTimeBegin},
@@ -117,7 +117,7 @@
                 )
             </if>
 
-            and t_notice.delete_flag = #{deleteFlag}
+            and t_notice.is_deleted = #{isDeleted}
             and t_notice.publish_time &lt; now()
             <if test="query.noticeTypeId != null">
                 AND t_notice_type.notice_type_id = #{query.noticeTypeId}
@@ -175,7 +175,7 @@
                 )
             </if>
             and t_notice.all_visible_flag = true
-            and t_notice.delete_flag = #{deleteFlag}
+            and t_notice.is_deleted = #{isDeleted}
             and t_notice.publish_time &lt; now()
             <if test="query.noticeTypeId != null">
                 AND t_notice_type.notice_type_id = #{query.noticeTypeId}

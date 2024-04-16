@@ -54,7 +54,7 @@ public class NoticeVO {
     private Integer userViewCount;
 
     @Schema(description = "删除标识")
-    private Boolean deleteFlag;
+    private Boolean isDeleted;
 
     @Schema(description = "创建人名称")
     private String createUserName;

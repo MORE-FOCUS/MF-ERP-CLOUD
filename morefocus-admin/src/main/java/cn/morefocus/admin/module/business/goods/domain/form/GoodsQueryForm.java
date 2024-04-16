@@ -32,5 +32,5 @@ public class GoodsQueryForm extends PageParam {
     private Boolean shelvesFlag;
 
     @Schema(hidden = true)
-    private Boolean deleteFlag;
+    private Boolean isDeleted;
 }

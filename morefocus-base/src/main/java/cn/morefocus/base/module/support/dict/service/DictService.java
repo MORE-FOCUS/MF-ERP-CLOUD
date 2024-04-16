@@ -103,7 +103,7 @@ public class DictService {
      */
     public R<String> valueEdit(DictValueUpdateForm valueUpdateForm) {
         DictKeyEntity dictKeyEntity = dictKeyMapper.selectById(valueUpdateForm.getDictKeyId());
-        if (dictKeyEntity == null || dictKeyEntity.getDeleteFlag()) {
+        if (dictKeyEntity == null || dictKeyEntity.getIsDeleted()) {
             return R.userErrorParam("key不能存在");
         }
         synchronized (CODE_POOL.intern(valueUpdateForm.getValueCode())) {
@@ -127,7 +127,7 @@ public class DictService {
         if (CollectionUtils.isEmpty(keyIdList)) {
             return R.ok();
         }
-        dictKeyMapper.updateDeletedFlagByIdList(keyIdList, true);
+        dictKeyMapper.updateIsDeletedByIdList(keyIdList, true);
         return R.ok();
     }
 
@@ -141,7 +141,7 @@ public class DictService {
         if (CollectionUtils.isEmpty(valueIdList)) {
             return R.ok();
         }
-        dictValueMapper.updateDeletedFlagByIdList(valueIdList, true);
+        dictValueMapper.updateIsDeletedByIdList(valueIdList, true);
         return R.ok();
     }
 
@@ -152,7 +152,7 @@ public class DictService {
      * @return
      */
     public R<PageResult<DictKeyVO>> keyQuery(DictKeyQueryForm queryForm) {
-        queryForm.setDeleteFlag(false);
+        queryForm.setIsDeleted(false);
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
         List<DictKeyVO> list = dictKeyMapper.query(page, queryForm);
         PageResult<DictKeyVO> pageResult = PageUtil.convert2PageResult(page, list);
@@ -178,7 +178,7 @@ public class DictService {
      * @return
      */
     public R<PageResult<DictValueVO>> valueQuery(DictValueQueryForm queryForm) {
-        queryForm.setDeleteFlag(false);
+        queryForm.setIsDeleted(false);
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
         List<DictValueVO> list = dictValueMapper.query(page, queryForm);
         PageResult<DictValueVO> pageResult = PageUtil.convert2PageResult(page, list);

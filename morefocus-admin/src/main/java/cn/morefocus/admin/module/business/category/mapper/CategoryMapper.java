@@ -19,30 +19,30 @@ public interface CategoryMapper extends BaseMapper<CategoryEntity> {
     /**
      * 根据父级id 类型 查询子类
      *
-     * @param parentIdList 父级id集合
-     * @param deleteFlag   删除标识
+     * @param pidList 父级id集合
+     * @param isDeleted   删除标识
      * @return 列表
      */
-    List<CategoryEntity> queryByParentId(@Param("parentIdList") List<Long> parentIdList,
-                                         @Param("deleteFlag") Boolean deleteFlag);
+    List<CategoryEntity> queryByParentId(@Param("pidList") List<Long> pidList,
+                                         @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 根据父级id 类型 查询子类
      *
-     * @param parentIdList 父级id集合
+     * @param pidList 父级id集合
      * @param categoryType {@link CategoryTypeEnum}
-     * @param deleteFlag   删除标识
+     * @param isDeleted   删除标识
      * @return 列表
      */
-    List<CategoryEntity> queryByParentIdAndType(@Param("parentIdList") List<Long> parentIdList,
+    List<CategoryEntity> queryByParentIdAndType(@Param("pidList") List<Long> pidList,
                                                 @Param("categoryType") Integer categoryType,
-                                                @Param("deleteFlag") Boolean deleteFlag);
+                                                @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 某个类型的所有
      */
     List<CategoryEntity> queryByType(@Param("categoryType") Integer categoryType,
-                                     @Param("deleteFlag") Boolean deleteFlag);
+                                     @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 根据类型和id查询

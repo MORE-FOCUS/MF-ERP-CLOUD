@@ -178,11 +178,11 @@ public class NoticeService {
      */
     public R<String> delete(Long noticeId) {
         NoticeEntity noticeEntity = noticeMapper.selectById(noticeId);
-        if (null == noticeEntity || noticeEntity.getDeleteFlag()) {
+        if (null == noticeEntity || noticeEntity.getIsDeleted()) {
             return R.userErrorParam("通知公告不存在");
         }
         // 更新删除状态
-        noticeMapper.updateDeletedFlag(noticeId);
+        noticeMapper.updateIsDeleted(noticeId);
         dataTracerService.delete(noticeId, DataTracerTypeEnum.OA_NOTICE);
         return R.ok();
     }

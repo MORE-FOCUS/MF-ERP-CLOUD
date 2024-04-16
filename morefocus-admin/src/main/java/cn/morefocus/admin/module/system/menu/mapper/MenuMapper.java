@@ -20,18 +20,18 @@ public interface MenuMapper extends BaseMapper<MenuEntity> {
      * 根据名称查询同一级下的菜单
      *
      * @param menuName   菜单名
-     * @param parentId   父级id
-     * @param deleteFlag 是否删除
+     * @param pid   父级id
+     * @param isDeleted 是否删除
      */
-    MenuEntity getByMenuName(@Param("menuName") String menuName, @Param("parentId") Long parentId, @Param("deleteFlag") Boolean deleteFlag);
+    MenuEntity getByMenuName(@Param("menuName") String menuName, @Param("pid") Long pid, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 根据前端权限字符串查询菜单
      *
      * @param webPerms   前端权限字符串
-     * @param deleteFlag 是否删除
+     * @param isDeleted 是否删除
      */
-    MenuEntity getByWebPerms(@Param("webPerms") String webPerms, @Param("deleteFlag") Boolean deleteFlag);
+    MenuEntity getByWebPerms(@Param("webPerms") String webPerms, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 根据菜单ID删除菜单（逻辑删除）
@@ -39,49 +39,49 @@ public interface MenuMapper extends BaseMapper<MenuEntity> {
      * @param menuIdList 菜单id集合
      * @param deleteBy   操作人id
      * @param deleteByName   操作人名称
-     * @param deleteFlag 是否删除
+     * @param isDeleted 是否删除
      */
-    void deleteByMenuIdList(@Param("menuIdList") List<Long> menuIdList, @Param("deleteBy") Long deleteBy, @Param("deleteByName") String deleteByName, @Param("deleteFlag") Boolean deleteFlag);
+    void deleteByMenuIdList(@Param("menuIdList") List<Long> menuIdList, @Param("deleteBy") Long deleteBy, @Param("deleteByName") String deleteByName, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 查询菜单列表
      *
-     * @param deleteFlag   是否删除
-     * @param disabledFlag 是否禁用
+     * @param isDeleted   是否删除
+     * @param isDisabled 是否禁用
      * @param menuTypeList 菜单类型集合
      */
-    List<MenuVO> queryMenuList(@Param("deleteFlag") Boolean deleteFlag, @Param("disabledFlag") Boolean disabledFlag, @Param("menuTypeList") List<Integer> menuTypeList);
+    List<MenuVO> queryMenuList(@Param("isDeleted") Boolean isDeleted, @Param("isDisabled") Boolean isDisabled, @Param("menuTypeList") List<Integer> menuTypeList);
 
     /**
      * 根据菜单ID 查询功能点列表
      *
      * @param menuId     菜单id
      * @param menuType   菜单类型
-     * @param deleteFlag 删除标记
+     * @param isDeleted 删除标记
      */
-    List<MenuEntity> getPointListByMenuId(@Param("menuId") Long menuId, @Param("menuType") Integer menuType, @Param("deleteFlag") Boolean deleteFlag);
+    List<MenuEntity> getPointListByMenuId(@Param("menuId") Long menuId, @Param("menuType") Integer menuType, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 根据员工ID查询菜单列表
      *
-     * @param deleteFlag   是否删除
-     * @param disabledFlag 禁用标识
+     * @param isDeleted   是否删除
+     * @param isDisabled 禁用标识
      * @param employeeId   员工id
      */
-    List<MenuVO> queryMenuByEmployeeId(@Param("deleteFlag") Boolean deleteFlag,
-                                       @Param("disabledFlag") Boolean disabledFlag,
+    List<MenuVO> queryMenuByEmployeeId(@Param("isDeleted") Boolean isDeleted,
+                                       @Param("isDisabled") Boolean isDisabled,
                                        @Param("employeeId") Long employeeId);
 
     /**
      * 根据菜单类型查询
      *
      * @param menuType     菜单类型
-     * @param deleteFlag   删除
-     * @param disabledFlag 禁用
+     * @param isDeleted   删除
+     * @param isDisabled 禁用
      */
     List<MenuEntity> queryMenuByType(@Param("menuType") Integer menuType,
-                                     @Param("deleteFlag") Boolean deleteFlag,
-                                     @Param("disabledFlag") Boolean disabledFlag);
+                                     @Param("isDeleted") Boolean isDeleted,
+                                     @Param("isDisabled") Boolean isDisabled);
 
     /**
      * 查询孩子id

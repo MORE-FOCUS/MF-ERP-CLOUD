@@ -39,5 +39,5 @@ public class TenantIndustryEntity extends BaseEntity {
      * 0-否
      * 1-是
      */
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 }

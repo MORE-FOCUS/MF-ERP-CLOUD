@@ -112,7 +112,7 @@ public class TenantService {
         if (null == tenantEntity) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
-        tenantMapper.updateDisableFlag(id, !tenantEntity.getDisabledFlag());
+        tenantMapper.updateDisableFlag(id, !tenantEntity.getIsDisabled());
 
         return R.ok();
     }

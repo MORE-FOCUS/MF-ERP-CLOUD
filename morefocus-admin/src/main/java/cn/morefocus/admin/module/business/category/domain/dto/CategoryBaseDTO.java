@@ -26,7 +26,7 @@ public class CategoryBaseDTO {
     private Integer categoryType;
 
     @Schema(description = "父级类目id|可选")
-    private Long parentId;
+    private Long pid;
 
     @Schema(description = "排序|可选")
     private Integer sortValue;
@@ -37,5 +37,5 @@ public class CategoryBaseDTO {
 
     @Schema(description = "禁用状态")
     @NotNull(message = "禁用状态不能为空")
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 }

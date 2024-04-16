@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.morefocus.base.module.support.dict.mapper.DictValueMapper">
 
-    <update id="updateDeletedFlagByIdList">
-        update t_dict_value set delete_flag = #{deleteFlag} where dict_value_id in
+    <update id="updateIsDeletedByIdList">
+        update t_dict_value set is_deleted = #{isDeleted} where dict_value_id in
         <foreach collection="dictValueIdList" open="(" close=")" separator="," item="item">
             #{item}
         </foreach>
@@ -18,8 +18,8 @@
             <if test="query.searchWord != null and query.searchWord !=''">
                 AND (INSTR(value_code,#{query.searchWord}) or INSTR(value_name,#{query.searchWord}))
             </if>
-            <if test="query.deleteFlag != null">
-                AND delete_flag = #{query.deleteFlag}
+            <if test="query.isDeleted != null">
+                AND is_deleted = #{query.isDeleted}
             </if>
         </where>
         <if test="query.sortItemList == null or query.sortItemList.size == 0">
@@ -29,16 +29,25 @@
 
     <select id="selectByCode"
             resultType="cn.morefocus.base.module.support.dict.domain.entity.DictValueEntity">
-        select * from t_dict_value where value_code = #{valueCode} and delete_flag = #{deleteFlag}
+        select *
+        from t_dict_value
+        where value_code = #{valueCode}
+          and is_deleted = #{isDeleted}
     </select>
 
-    <select id="selectByDeletedFlag"
+    <select id="selectByIsDeleted"
             resultType="cn.morefocus.base.module.support.dict.domain.entity.DictValueEntity">
-        select * from t_dict_value where delete_flag = #{deleteFlag} order by sort_value;
+        select *
+        from t_dict_value
+        where is_deleted = #{isDeleted}
+        order by sort_value;
     </select>
-    <select id="selectByDeletedFlagAndKeyId"
+    <select id="selectByIsDeletedAndKeyId"
             resultType="cn.morefocus.base.module.support.dict.domain.entity.DictValueEntity">
-        select * from t_dict_value where dict_key_id = #{dictKeyId} and delete_flag = #{deleteFlag}
+        select *
+        from t_dict_value
+        where dict_key_id = #{dictKeyId}
+          and is_deleted = #{isDeleted}
     </select>
 
 </mapper>

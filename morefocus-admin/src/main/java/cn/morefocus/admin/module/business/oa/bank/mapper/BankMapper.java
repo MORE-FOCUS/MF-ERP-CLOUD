@@ -21,12 +21,12 @@ public interface BankMapper extends BaseMapper<BankEntity> {
     /**
      * 根据账号查询
      */
-    BankEntity queryByAccountNumber(@Param("enterpriseId") Long enterpriseId, @Param("accountNumber") String accountNumber, @Param("excludeBankId") Long excludeBankId, @Param("deleteFlag") Boolean deleteFlag);
+    BankEntity queryByAccountNumber(@Param("enterpriseId") Long enterpriseId, @Param("accountNumber") String accountNumber, @Param("excludeBankId") Long excludeBankId, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 删除银行信息
      */
-    void deleteBank(@Param("bankId") Long bankId, @Param("deleteFlag") Boolean deleteFlag);
+    void deleteBank(@Param("bankId") Long bankId, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 银行信息分页查询
@@ -36,5 +36,5 @@ public interface BankMapper extends BaseMapper<BankEntity> {
     /**
      * 查询银行信息详情
      */
-    BankVO getDetail(@Param("bankId") Long bankId, @Param("deleteFlag") Boolean deleteFlag);
+    BankVO getDetail(@Param("bankId") Long bankId, @Param("isDeleted") Boolean isDeleted);
 }

@@ -22,6 +22,6 @@ public class EnterpriseEmployeeQueryForm extends PageParam {
     private Long enterpriseId;
 
     @Schema(description = "删除标识", hidden = true)
-    private Boolean deleteFlag;
+    private Boolean isDeleted;
 
 }

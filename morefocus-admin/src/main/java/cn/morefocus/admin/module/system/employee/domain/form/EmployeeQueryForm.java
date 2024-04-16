@@ -29,7 +29,7 @@ public class EmployeeQueryForm extends PageParam {
     /**
      * 是否禁用
      */
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 
     /**
      * 员工id集合
@@ -40,6 +40,6 @@ public class EmployeeQueryForm extends PageParam {
     /**
      * 删除标识
      */
-    private Boolean deleteFlag;
+    private Boolean isDeleted;
 
 }

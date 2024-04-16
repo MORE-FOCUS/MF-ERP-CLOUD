@@ -24,11 +24,11 @@
                     #{item}
                 </foreach>
             </if>
-            <if test="queryForm.disabledFlag != null">
-                AND t_employee.disabled_flag = #{queryForm.disabledFlag}
+            <if test="queryForm.isDisabled != null">
+                AND t_employee.is_disabled = #{queryForm.isDisabled}
             </if>
-            <if test="queryForm.deleteFlag != null">
-                AND t_employee.delete_flag = #{queryForm.deleteFlag}
+            <if test="queryForm.isDeleted != null">
+                AND t_employee.is_deleted = #{queryForm.isDeleted}
             </if>
         </where>
     </select>
@@ -36,7 +36,7 @@
 
     <update id="updateDisableFlag">
         UPDATE t_employee
-        SET disabled_flag = #{disabledFlag}
+        SET is_disabled = #{isDisabled}
         WHERE employee_id = #{employeeId}
     </update>
 
@@ -46,8 +46,8 @@
         FROM t_employee
         <where>
             login_name = #{loginName}
-            <if test="disabledFlag != null">
-                AND disabled_flag = #{disabledFlag}
+            <if test="isDisabled != null">
+                AND is_disabled = #{isDisabled}
             </if>
         </where>
     </select>
@@ -57,8 +57,8 @@
         FROM t_employee
         <where>
             actual_name = #{actualName}
-            <if test="disabledFlag != null">
-                AND disabled_flag = #{disabledFlag}
+            <if test="isDisabled != null">
+                AND is_disabled = #{isDisabled}
             </if>
         </where>
     </select>
@@ -69,8 +69,8 @@
         FROM t_employee
         <where>
             phone = #{phone}
-            <if test="disabledFlag != null">
-                AND disabled_flag = #{disabledFlag}
+            <if test="isDisabled != null">
+                AND is_disabled = #{isDisabled}
             </if>
         </where>
     </select>
@@ -95,8 +95,8 @@
         FROM t_employee
         <where>
             dept_id = #{deptId}
-            <if test="disabledFlag != null">
-                AND disabled_flag = #{disabledFlag}
+            <if test="isDisabled != null">
+                AND is_disabled = #{isDisabled}
             </if>
         </where>
         ORDER BY create_time DESC
@@ -111,8 +111,8 @@
             <foreach collection="deptIdList" item="item" open="(" close=")" separator=",">
                 #{item}
             </foreach>
-            <if test="disabledFlag != null">
-                AND disabled_flag = #{disabledFlag}
+            <if test="isDisabled != null">
+                AND is_disabled = #{isDisabled}
             </if>
         </where>
     </select>
@@ -125,8 +125,8 @@
             <foreach collection="deptIds" item="item" open="(" close=")" separator=",">
                 #{item}
             </foreach>
-            <if test="disabledFlag != null">
-                AND disabled_flag = #{disabledFlag}
+            <if test="isDisabled != null">
+                AND is_disabled = #{isDisabled}
             </if>
         </where>
         ORDER BY create_time DESC
@@ -137,8 +137,8 @@
         SELECT employee_id
         FROM t_employee
         <where>
-            <if test="disabledFlag != null">
-                AND disabled_flag = #{disabledFlag}
+            <if test="isDisabled != null">
+                AND is_disabled = #{isDisabled}
             </if>
         </where>
     </select>
@@ -148,8 +148,8 @@
         FROM t_employee
         <where>
             dept_id = #{deptId}
-            <if test="disabledFlag != null">
-                AND disabled_flag = #{disabledFlag}
+            <if test="isDisabled != null">
+                AND is_disabled = #{isDisabled}
             </if>
         </where>
         ORDER BY create_time DESC
@@ -181,11 +181,11 @@
         FROM t_employee
         LEFT JOIN t_department ON t_department.id = t_employee.dept_id
         <where>
-            <if test="disabledFlag != null">
-                AND t_employee.disabled_flag = #{disabledFlag}
+            <if test="isDisabled != null">
+                AND t_employee.is_disabled = #{isDisabled}
             </if>
-            <if test="deleteFlag != null">
-                AND t_employee.delete_flag = #{deleteFlag}
+            <if test="isDeleted != null">
+                AND t_employee.is_deleted = #{isDeleted}
             </if>
         </where>
     </select>

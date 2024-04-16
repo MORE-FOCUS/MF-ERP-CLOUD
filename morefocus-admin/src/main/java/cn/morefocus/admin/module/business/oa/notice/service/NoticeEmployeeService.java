@@ -85,7 +85,7 @@ public class NoticeEmployeeService {
      */
     public R<NoticeDetailVO> view(Long requestEmployeeId, Long noticeId, String ip, String userAgent) {
         NoticeUpdateFormVO updateFormVO = noticeService.getUpdateFormVO(noticeId);
-        if (updateFormVO == null || Boolean.TRUE.equals(updateFormVO.getDeleteFlag())) {
+        if (updateFormVO == null || Boolean.TRUE.equals(updateFormVO.getIsDeleted())) {
             return R.userErrorParam("通知公告不存在");
         }
 

@@ -25,6 +25,6 @@ public class DepartmentAddForm {
     private Long managerId;
 
     @Schema(description = "上级部门id (可选)")
-    private Long parentId;
+    private Long pid;
 
 }

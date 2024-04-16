@@ -23,12 +23,12 @@ public interface EnterpriseMapper extends BaseMapper<EnterpriseEntity> {
     /**
      * 根据企业名称查询
      */
-    EnterpriseEntity queryByEnterpriseName(@Param("enterpriseName") String enterpriseName, @Param("excludeEnterpriseId") Long excludeEnterpriseId, @Param("deleteFlag") Boolean deleteFlag);
+    EnterpriseEntity queryByEnterpriseName(@Param("enterpriseName") String enterpriseName, @Param("excludeEnterpriseId") Long excludeEnterpriseId, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 删除企业
      */
-    void deleteEnterprise(@Param("enterpriseId") Long enterpriseId, @Param("deleteFlag") Boolean deleteFlag);
+    void deleteEnterprise(@Param("enterpriseId") Long enterpriseId, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 企业分页查询
@@ -43,11 +43,11 @@ public interface EnterpriseMapper extends BaseMapper<EnterpriseEntity> {
     /**
      * 查询企业详情
      */
-    EnterpriseVO getDetail(@Param("enterpriseId") Long enterpriseId, @Param("deleteFlag") Boolean deleteFlag);
+    EnterpriseVO getDetail(@Param("enterpriseId") Long enterpriseId, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 查询列表
      */
-    List<EnterpriseListVO> queryList(@Param("type") Integer type, @Param("disabledFlag") Boolean disabledFlag, @Param("deleteFlag") Boolean deleteFlag);
+    List<EnterpriseListVO> queryList(@Param("type") Integer type, @Param("isDisabled") Boolean isDisabled, @Param("isDeleted") Boolean isDeleted);
 
 }

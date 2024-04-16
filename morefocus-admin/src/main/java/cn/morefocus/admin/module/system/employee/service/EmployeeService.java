@@ -64,7 +64,7 @@ public class EmployeeService {
      * 查询员工列表
      */
     public PageResult<EmployeeVO> queryPage(EmployeeQueryForm employeeQueryForm) {
-        employeeQueryForm.setDeleteFlag(false);
+        employeeQueryForm.setIsDeleted(false);
         Page pageParam = PageUtil.convert2PageQuery(employeeQueryForm);
 
         List<Long> deptIdList = new ArrayList<>();
@@ -124,7 +124,7 @@ public class EmployeeService {
         entity.setLoginPwd(getEncryptPwd(password));
 
         // 保存数据
-        entity.setDeleteFlag(Boolean.FALSE);
+        entity.setIsDeleted(Boolean.FALSE);
         employeeManager.saveEmployee(entity, employeeAddForm.getRoleIdList());
 
         return R.ok(password);
@@ -184,9 +184,9 @@ public class EmployeeService {
         if (null == employeeEntity) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
-        employeeMapper.updateDisableFlag(employeeId, !employeeEntity.getDisabledFlag());
+        employeeMapper.updateDisableFlag(employeeId, !employeeEntity.getIsDisabled());
 
-        if (employeeEntity.getDisabledFlag()) {
+        if (employeeEntity.getIsDisabled()) {
             // 强制退出登录
             StpUtil.logout(UserTypeEnum.ADMIN_EMPLOYEE.getValue() + StringConst.COLON + employeeId);
         }
@@ -209,7 +209,7 @@ public class EmployeeService {
         List<EmployeeEntity> deleteList = employeeIdList.stream().map(e -> {
             EmployeeEntity updateEmployee = new EmployeeEntity();
             updateEmployee.setEmployeeId(e);
-            updateEmployee.setDeleteFlag(true);
+            updateEmployee.setIsDeleted(true);
             return updateEmployee;
         }).collect(Collectors.toList());
         employeeManager.updateBatchById(deleteList);
@@ -281,10 +281,10 @@ public class EmployeeService {
     /**
      * 获取某个部门的员工信息
      */
-    public R<List<EmployeeVO>> getAllEmployeeByDepartmentId(Long deptId, Boolean disabledFlag) {
-        List<EmployeeEntity> employeeEntityList = employeeMapper.selectByDepartmentId(deptId, disabledFlag);
-        if (disabledFlag != null) {
-            employeeEntityList = employeeEntityList.stream().filter(e -> e.getDisabledFlag().equals(disabledFlag)).collect(Collectors.toList());
+    public R<List<EmployeeVO>> getAllEmployeeByDepartmentId(Long deptId, Boolean isDisabled) {
+        List<EmployeeEntity> employeeEntityList = employeeMapper.selectByDepartmentId(deptId, isDisabled);
+        if (isDisabled != null) {
+            employeeEntityList = employeeEntityList.stream().filter(e -> e.getIsDisabled().equals(isDisabled)).collect(Collectors.toList());
         }
 
         if (CollectionUtils.isEmpty(employeeEntityList)) {
@@ -322,8 +322,8 @@ public class EmployeeService {
     /**
      * 查询全部员工
      */
-    public R<List<EmployeeVO>> queryAllEmployee(Boolean disabledFlag) {
-        List<EmployeeVO> employeeList = employeeMapper.selectEmployeeByDisabledAndDeleted(disabledFlag, Boolean.FALSE);
+    public R<List<EmployeeVO>> queryAllEmployee(Boolean isDisabled) {
+        List<EmployeeVO> employeeList = employeeMapper.selectEmployeeByDisabledAndDeleted(isDisabled, Boolean.FALSE);
         return R.ok(employeeList);
     }
 

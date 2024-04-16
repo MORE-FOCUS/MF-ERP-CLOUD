@@ -40,7 +40,7 @@ public class BankService {
      * 分页查询银行信息
      */
     public R<PageResult<BankVO>> queryByPage(BankQueryForm queryForm) {
-        queryForm.setDeleteFlag(Boolean.FALSE);
+        queryForm.setIsDeleted(Boolean.FALSE);
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
         List<BankVO> bankList = bankMapper.queryPage(page, queryForm);
         PageResult<BankVO> pageResult = PageUtil.convert2PageResult(page, bankList);
@@ -53,7 +53,7 @@ public class BankService {
     public R<List<BankVO>> queryList(Long enterpriseId) {
         BankQueryForm queryForm = new BankQueryForm();
         queryForm.setEnterpriseId(enterpriseId);
-        queryForm.setDeleteFlag(Boolean.FALSE);
+        queryForm.setIsDeleted(Boolean.FALSE);
         List<BankVO> bankList = bankMapper.queryPage(null, queryForm);
         return R.ok(bankList);
     }
@@ -78,7 +78,7 @@ public class BankService {
         Long enterpriseId = createVO.getEnterpriseId();
         // 校验企业是否存在
         EnterpriseEntity enterpriseDetail = enterpriseMapper.selectById(enterpriseId);
-        if (Objects.isNull(enterpriseDetail) || enterpriseDetail.getDeleteFlag()) {
+        if (Objects.isNull(enterpriseDetail) || enterpriseDetail.getIsDeleted()) {
             return R.userErrorParam("企业不存在");
         }
         // 验证银行信息账号是否重复
@@ -101,13 +101,13 @@ public class BankService {
         Long enterpriseId = updateVO.getEnterpriseId();
         // 校验企业是否存在
         EnterpriseEntity enterpriseDetail = enterpriseMapper.selectById(enterpriseId);
-        if (Objects.isNull(enterpriseDetail) || enterpriseDetail.getDeleteFlag()) {
+        if (Objects.isNull(enterpriseDetail) || enterpriseDetail.getIsDeleted()) {
             return R.userErrorParam("企业不存在");
         }
         Long bankId = updateVO.getBankId();
         // 校验银行信息是否存在
         BankEntity bankDetail = bankMapper.selectById(bankId);
-        if (Objects.isNull(bankDetail) || bankDetail.getDeleteFlag()) {
+        if (Objects.isNull(bankDetail) || bankDetail.getIsDeleted()) {
             return R.userErrorParam("银行信息不存在");
         }
         // 验证银行信息账号是否重复
@@ -129,7 +129,7 @@ public class BankService {
     public R<String> deleteBank(Long bankId) {
         // 校验银行信息是否存在
         BankEntity bankDetail = bankMapper.selectById(bankId);
-        if (Objects.isNull(bankDetail) || bankDetail.getDeleteFlag()) {
+        if (Objects.isNull(bankDetail) || bankDetail.getIsDeleted()) {
             return R.userErrorParam("银行信息不存在");
         }
         bankMapper.deleteBank(bankId, Boolean.TRUE);

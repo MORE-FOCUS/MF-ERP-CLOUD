@@ -37,7 +37,7 @@ public class MenuEntity extends BaseEntity {
     /**
      * 父菜单ID
      */
-    private Long parentId;
+    private Long pid;
 
     /**
      * 路由地址
@@ -52,7 +52,7 @@ public class MenuEntity extends BaseEntity {
     /**
      * 是否为外链
      */
-    private Boolean frameFlag;
+    private Boolean isFrame;
 
     /**
      * 外链地址
@@ -62,17 +62,17 @@ public class MenuEntity extends BaseEntity {
     /**
      * 是否缓存
      */
-    private Boolean cacheFlag;
+    private Boolean isCached;
 
     /**
      * 显示状态
      */
-    private Boolean visibleFlag;
+    private Boolean isVisible;
 
     /**
      * 禁用状态
      */
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 
     /**
      * 后端权限字符串

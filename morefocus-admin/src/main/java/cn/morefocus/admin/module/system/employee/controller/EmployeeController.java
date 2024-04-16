@@ -37,7 +37,7 @@ public class EmployeeController {
     @PostMapping("/employee/queryAll")
     @SaCheckPermission("system:employee:query")
     public R<List<EmployeeVO>> queryAll(@Valid @RequestBody EmployeeQueryForm query) {
-        return employeeService.queryAllEmployee(query.getDisabledFlag());
+        return employeeService.queryAllEmployee(query.getIsDisabled());
     }
 
     /**
@@ -121,7 +121,7 @@ public class EmployeeController {
      */
     @Operation(summary = "查询所有员工")
     @GetMapping("/employee/query/all")
-    public R<List<EmployeeVO>> queryAllEmployee(@RequestParam(value = "disabledFlag", required = false) Boolean disabledFlag) {
-        return employeeService.queryAllEmployee(disabledFlag);
+    public R<List<EmployeeVO>> queryAllEmployee(@RequestParam(value = "isDisabled", required = false) Boolean isDisabled) {
+        return employeeService.queryAllEmployee(isDisabled);
     }
 }

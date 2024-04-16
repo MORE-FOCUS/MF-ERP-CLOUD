@@ -51,7 +51,7 @@ public interface NoticeMapper extends BaseMapper<NoticeEntity> {
     /**
      * 更新删除状态
      */
-    void updateDeletedFlag(@Param("noticeId") Long noticeId);
+    void updateIsDeleted(@Param("noticeId") Long noticeId);
 
     // ================================= 通知公告【员工查看】 相关  =================================
 
@@ -62,7 +62,7 @@ public interface NoticeMapper extends BaseMapper<NoticeEntity> {
                                                @Param("requestEmployeeId") Long requestEmployeeId,
                                                @Param("query") NoticeEmployeeQueryForm noticeEmployeeQueryForm,
                                                @Param("requestEmployeeDepartmentIdList") List<Long> requestEmployeeDepartmentIdList,
-                                               @Param("deleteFlag") boolean deleteFlag,
+                                               @Param("isDeleted") boolean isDeleted,
                                                @Param("administratorFlag") boolean administratorFlag,
                                                @Param("departmentDataType") Integer departmentDataType,
                                                @Param("employeeDataType") Integer employeeDataType
@@ -76,7 +76,7 @@ public interface NoticeMapper extends BaseMapper<NoticeEntity> {
                                                       @Param("requestEmployeeId") Long requestEmployeeId,
                                                       @Param("query") NoticeEmployeeQueryForm noticeEmployeeQueryForm,
                                                       @Param("requestEmployeeDepartmentIdList") List<Long> requestEmployeeDepartmentIdList,
-                                                      @Param("deleteFlag") boolean deleteFlag,
+                                                      @Param("isDeleted") boolean isDeleted,
                                                       @Param("administratorFlag") boolean administratorFlag,
                                                       @Param("departmentDataType") Integer departmentDataType,
                                                       @Param("employeeDataType") Integer employeeDataType

@@ -21,7 +21,7 @@ public class SupplierAddForm {
     private LocalDateTime updateTime;
 
     @NotNull(message = "是否删除 不能为空")
-    private Integer deleteFlag;
+    private Integer isDeleted;
 
     @NotNull(message = "创建时间 不能为空")
     private LocalDateTime createTime;

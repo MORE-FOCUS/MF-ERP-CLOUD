@@ -33,7 +33,7 @@ public class EnterpriseEmployeeVO {
     private Long deptId;
 
     @Schema(description = "是否被禁用")
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 
     @Schema(description = "部门名称")
     private String departmentName;

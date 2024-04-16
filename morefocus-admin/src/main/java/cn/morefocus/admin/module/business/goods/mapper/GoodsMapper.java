@@ -26,5 +26,5 @@ public interface GoodsMapper extends BaseMapper<GoodsEntity> {
     /**
      * 批量更新删除状态
      */
-    void batchUpdateDeleted(@Param("goodsIdList") List<Long> goodsIdList, @Param("deleteFlag") Boolean deleteFlag);
+    void batchUpdateDeleted(@Param("goodsIdList") List<Long> goodsIdList, @Param("isDeleted") Boolean isDeleted);
 }

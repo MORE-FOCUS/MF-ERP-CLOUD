@@ -67,7 +67,7 @@ public class BaseEntity implements Serializable {
     /**
      * 删除标识
      */
-    private Boolean deleteFlag;
+    private Boolean isDeleted;
 
     /**
      * 删除时间

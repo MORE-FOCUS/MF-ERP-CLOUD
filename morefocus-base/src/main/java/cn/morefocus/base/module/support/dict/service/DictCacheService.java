@@ -46,11 +46,11 @@ public class DictCacheService {
     }
 
     public void cacheInit() {
-        List<DictKeyEntity> dictKeyEntityList = dictKeyMapper.selectByDeletedFlag(false);
+        List<DictKeyEntity> dictKeyEntityList = dictKeyMapper.selectByIsDeleted(false);
         if (CollectionUtils.isEmpty(dictKeyEntityList)) {
             return;
         }
-        List<DictValueEntity> dictKeyValueList = dictValueMapper.selectByDeletedFlag(false);
+        List<DictValueEntity> dictKeyValueList = dictValueMapper.selectByIsDeleted(false);
         List<DictValueVO> dictValueVOList = LocalBeanUtil.copyList(dictKeyValueList, DictValueVO.class);
         Map<Long, List<DictValueVO>> valueListMap = dictValueVOList.stream().collect(Collectors.groupingBy(DictValueVO::getDictKeyId));
         //字典键值对缓存

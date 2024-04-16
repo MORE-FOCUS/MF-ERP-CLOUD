@@ -51,5 +51,5 @@ public class EmployeeEntity extends BaseEntity {
     /**
      * 是否被禁用 0否1是
      */
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 }

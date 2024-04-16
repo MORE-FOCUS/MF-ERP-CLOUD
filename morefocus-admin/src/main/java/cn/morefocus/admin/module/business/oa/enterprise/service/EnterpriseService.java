@@ -57,7 +57,7 @@ public class EnterpriseService {
      * 分页查询企业模块
      */
     public R<PageResult<EnterpriseVO>> queryByPage(EnterpriseQueryForm queryForm) {
-        queryForm.setDeleteFlag(Boolean.FALSE);
+        queryForm.setIsDeleted(Boolean.FALSE);
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
         List<EnterpriseVO> enterpriseList = enterpriseMapper.queryPage(page, queryForm);
         PageResult<EnterpriseVO> pageResult = PageUtil.convert2PageResult(page, enterpriseList);
@@ -68,7 +68,7 @@ public class EnterpriseService {
      * 获取导出数据
      */
     public List<EnterpriseExcelVO> getExcelExportData(EnterpriseQueryForm queryForm) {
-        queryForm.setDeleteFlag(false);
+        queryForm.setIsDeleted(false);
         return enterpriseMapper.selectExcelExportData(queryForm);
     }
 
@@ -104,7 +104,7 @@ public class EnterpriseService {
         Long enterpriseId = updateVO.getEnterpriseId();
         // 校验企业是否存在
         EnterpriseEntity enterpriseDetail = enterpriseMapper.selectById(enterpriseId);
-        if (Objects.isNull(enterpriseDetail) || enterpriseDetail.getDeleteFlag()) {
+        if (Objects.isNull(enterpriseDetail) || enterpriseDetail.getIsDeleted()) {
             return R.userErrorParam("企业不存在");
         }
         // 验证企业名称是否重复
@@ -137,7 +137,7 @@ public class EnterpriseService {
     public R<String> deleteEnterprise(Long enterpriseId) {
         // 校验企业是否存在
         EnterpriseEntity enterpriseDetail = enterpriseMapper.selectById(enterpriseId);
-        if (Objects.isNull(enterpriseDetail) || enterpriseDetail.getDeleteFlag()) {
+        if (Objects.isNull(enterpriseDetail) || enterpriseDetail.getIsDeleted()) {
             return R.userErrorParam("企业不存在");
         }
         enterpriseMapper.deleteEnterprise(enterpriseId, Boolean.TRUE);
@@ -161,7 +161,7 @@ public class EnterpriseService {
     public synchronized R<String> addEmployee(EnterpriseEmployeeForm enterpriseEmployeeForm) {
         Long enterpriseId = enterpriseEmployeeForm.getEnterpriseId();
         EnterpriseEntity enterpriseEntity = enterpriseMapper.selectById(enterpriseId);
-        if (enterpriseEntity == null || enterpriseEntity.getDeleteFlag()) {
+        if (enterpriseEntity == null || enterpriseEntity.getIsDeleted()) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
         //过滤掉已存在的员工
@@ -191,7 +191,7 @@ public class EnterpriseService {
     public synchronized R<String> deleteEmployee(EnterpriseEmployeeForm enterpriseEmployeeForm) {
         Long enterpriseId = enterpriseEmployeeForm.getEnterpriseId();
         EnterpriseEntity enterpriseEntity = enterpriseMapper.selectById(enterpriseId);
-        if (enterpriseEntity == null || enterpriseEntity.getDeleteFlag()) {
+        if (enterpriseEntity == null || enterpriseEntity.getIsDeleted()) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
         List<Long> waitDeleteEmployeeIdList = enterpriseEmployeeForm.getEmployeeIdList();

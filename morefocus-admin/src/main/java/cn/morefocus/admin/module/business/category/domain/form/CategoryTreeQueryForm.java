@@ -15,5 +15,5 @@ public class CategoryTreeQueryForm {
     private Integer categoryType;
 
     @Schema(description = "父级类目id|可选")
-    private Long parentId;
+    private Long pid;
 }

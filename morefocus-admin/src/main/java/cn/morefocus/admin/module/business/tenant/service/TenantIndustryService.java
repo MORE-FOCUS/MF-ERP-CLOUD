@@ -81,7 +81,7 @@ public class TenantIndustryService {
         if (null == tenantIndustryEntity) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
-        tenantIndustryMapper.updateDisableFlag(id, !tenantIndustryEntity.getDisabledFlag());
+        tenantIndustryMapper.updateDisableFlag(id, !tenantIndustryEntity.getIsDisabled());
 
         return R.ok();
     }

@@ -81,7 +81,7 @@ public class TenantVO extends BaseVo {
     /**
      * 禁用启用
      */
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 
     /**
      * 剩余天数

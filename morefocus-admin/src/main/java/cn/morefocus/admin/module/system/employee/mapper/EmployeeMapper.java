@@ -26,30 +26,30 @@ public interface EmployeeMapper extends BaseMapper<EmployeeEntity> {
     /**
      * 查询员工
      */
-    List<EmployeeVO> selectEmployeeByDisabledAndDeleted(@Param("disabledFlag") Boolean disabledFlag, @Param("deleteFlag") Boolean deleteFlag);
+    List<EmployeeVO> selectEmployeeByDisabledAndDeleted(@Param("isDisabled") Boolean isDisabled, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 更新单个
      */
-    void updateDisableFlag(@Param("employeeId") Long employeeId, @Param("disabledFlag") Boolean disabledFlag);
+    void updateDisableFlag(@Param("employeeId") Long employeeId, @Param("isDisabled") Boolean isDisabled);
 
     /**
      * 通过登录名查询
      */
     EmployeeEntity getByLoginName(@Param("loginName") String loginName,
-                                  @Param("disabledFlag") Boolean disabledFlag);
+                                  @Param("isDisabled") Boolean isDisabled);
 
     /**
      * 通过姓名查询
      */
     EmployeeEntity getByActualName(@Param("actualName") String actualName,
-                                   @Param("disabledFlag") Boolean disabledFlag
+                                   @Param("isDisabled") Boolean isDisabled
     );
 
     /**
      * 通过手机号查询
      */
-    EmployeeEntity getByPhone(@Param("phone") String phone, @Param("disabledFlag") Boolean disabledFlag);
+    EmployeeEntity getByPhone(@Param("phone") String phone, @Param("isDisabled") Boolean isDisabled);
 
     /**
      * 获取所有员工
@@ -74,27 +74,27 @@ public interface EmployeeMapper extends BaseMapper<EmployeeEntity> {
     /**
      * 获取某个部门的员工
      */
-    List<EmployeeEntity> selectByDepartmentId(@Param("deptId") Long deptId, @Param("disabledFlag") Boolean disabledFlag);
+    List<EmployeeEntity> selectByDepartmentId(@Param("deptId") Long deptId, @Param("isDisabled") Boolean isDisabled);
 
     /**
      * 查询某些部门下用户名是xxx的员工
      */
-    List<EmployeeEntity> selectByActualName(@Param("deptIdList") List<Long> deptIdList, @Param("actualName") String actualName, @Param("disabledFlag") Boolean disabledFlag);
+    List<EmployeeEntity> selectByActualName(@Param("deptIdList") List<Long> deptIdList, @Param("actualName") String actualName, @Param("isDisabled") Boolean isDisabled);
 
     /**
      * 获取某批部门的员工Id
      */
-    List<Long> getEmployeeIdByDepartmentIdList(@Param("deptIds") List<Long> deptIds, @Param("disabledFlag") Boolean disabledFlag);
+    List<Long> getEmployeeIdByDepartmentIdList(@Param("deptIds") List<Long> deptIds, @Param("isDisabled") Boolean isDisabled);
 
     /**
      * 获取所有
      */
-    List<Long> getEmployeeId(@Param("leaveFlag") Boolean leaveFlag, @Param("disabledFlag") Boolean disabledFlag);
+    List<Long> getEmployeeId(@Param("leaveFlag") Boolean leaveFlag, @Param("isDisabled") Boolean isDisabled);
 
     /**
      * 获取某个部门的员工Id
      */
-    List<Long> getEmployeeIdByDepartmentId(@Param("deptId") Long deptId, @Param("disabledFlag") Boolean disabledFlag);
+    List<Long> getEmployeeIdByDepartmentId(@Param("deptId") Long deptId, @Param("isDisabled") Boolean isDisabled);
 
     /**
      * 员工重置密码

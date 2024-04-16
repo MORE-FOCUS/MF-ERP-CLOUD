@@ -3,7 +3,7 @@
 <mapper namespace="cn.morefocus.admin.module.business.oa.enterprise.mapper.EnterpriseMapper">
     <update id="deleteEnterprise">
         UPDATE t_oa_enterprise
-        SET delete_flag = #{deleteFlag}
+        SET is_deleted = #{isDeleted}
         WHERE enterprise_id = #{enterpriseId}
     </update>
     <select id="queryByEnterpriseName"
@@ -11,7 +11,7 @@
         SELECT *
         FROM t_oa_enterprise
         WHERE enterprise_name = #{enterpriseName}
-        AND delete_flag = #{deleteFlag}
+        AND is_deleted = #{isDeleted}
         <if test="excludeEnterpriseId != null">
             AND enterprise_id != #{excludeEnterpriseId}
         </if>
@@ -22,7 +22,7 @@
         SELECT t_oa_enterprise.*
         FROM t_oa_enterprise
         <where>
-            delete_flag = #{queryForm.deleteFlag}
+            is_deleted = #{queryForm.isDeleted}
             <if test="queryForm.keywords != null and queryForm.keywords != ''">
                 AND (INSTR(enterprise_name,#{queryForm.keywords}) OR INSTR(contact,#{queryForm.keywords}) OR
                 INSTR(contact_phone,#{queryForm.keywords}) OR INSTR(create_user_name,#{queryForm.keywords}))
@@ -33,8 +33,8 @@
             <if test="queryForm.endTime != null">
                 AND DATE_FORMAT(create_time, '%Y-%m-%d') &lt;= #{queryForm.endTime}
             </if>
-            <if test="queryForm.disabledFlag != null">
-                AND disabled_flag = #{queryForm.disabledFlag}
+            <if test="queryForm.isDisabled != null">
+                AND is_disabled = #{queryForm.isDisabled}
             </if>
         </where>
         <if test="queryForm.sortItemList == null or queryForm.sortItemList.size == 0">
@@ -47,7 +47,7 @@
         SELECT t_oa_enterprise.*
         FROM t_oa_enterprise
         <where>
-            delete_flag = #{queryForm.deleteFlag}
+            is_deleted = #{queryForm.isDeleted}
             <if test="queryForm.keywords != null and queryForm.keywords != ''">
                 AND (INSTR(enterprise_name,#{queryForm.keywords}) OR INSTR(contact,#{queryForm.keywords}) OR
                 INSTR(contact_phone,#{queryForm.keywords}) OR INSTR(create_user_name,#{queryForm.keywords}))
@@ -58,8 +58,8 @@
             <if test="queryForm.endTime != null">
                 AND DATE_FORMAT(create_time, '%Y-%m-%d') &lt;= #{queryForm.endTime}
             </if>
-            <if test="queryForm.disabledFlag != null">
-                AND disabled_flag = #{queryForm.disabledFlag}
+            <if test="queryForm.isDisabled != null">
+                AND is_disabled = #{queryForm.isDisabled}
             </if>
         </where>
         <if test="queryForm.sortItemList == null or queryForm.sortItemList.size == 0">
@@ -72,8 +72,8 @@
             resultType="cn.morefocus.admin.module.business.oa.enterprise.domain.vo.EnterpriseListVO">
         SELECT enterprise_id, enterprise_name
         FROM t_oa_enterprise
-        WHERE disabled_flag = #{disabledFlag}
-        AND delete_flag = #{deleteFlag}
+        WHERE is_disabled = #{isDisabled}
+        AND is_deleted = #{isDeleted}
         <if test="type != null">
             AND type = #{type}
         </if>
@@ -83,7 +83,7 @@
         SELECT oe.*
         FROM t_oa_enterprise oe
         WHERE oe.enterprise_id = #{enterpriseId}
-          AND oe.delete_flag = #{deleteFlag}
+          AND oe.is_deleted = #{isDeleted}
     </select>
 
 </mapper>

@@ -24,7 +24,7 @@ public class MenuPointsOperateForm {
 
     @Schema(description = "禁用状态")
     @NotNull(message = "禁用状态不能为空")
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 
     @Schema(description = "后端接口权限集合")
     private List<String> apiPermsList;

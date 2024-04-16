@@ -20,7 +20,7 @@ public class CodeGeneratorConstant {
     /**
      * 默认逻辑删除字段名称
      */
-    public static String DELETED_FLAG = "delete_flag";
+    public static String DELETED_FLAG = "is_deleted";
 
 
 }

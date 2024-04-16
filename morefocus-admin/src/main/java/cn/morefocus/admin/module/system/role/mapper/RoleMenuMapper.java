@@ -29,7 +29,7 @@ public interface RoleMenuMapper extends BaseMapper<RoleMenuEntity> {
     /**
      * 根据角色ID集合查询选择的菜单权限
      */
-    List<MenuEntity> selectMenuListByRoleIdList(@Param("roleIdList") List<Long> roleIdList, @Param("deleteFlag") Boolean deleteFlag);
+    List<MenuEntity> selectMenuListByRoleIdList(@Param("roleIdList") List<Long> roleIdList, @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 查询所有的菜单角色

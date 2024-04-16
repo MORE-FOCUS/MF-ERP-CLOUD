@@ -25,7 +25,7 @@ public class NoticeQueryForm extends PageParam {
     private Long createUserId;
 
     @Schema(description = "删除标识")
-    private Boolean deleteFlag;
+    private Boolean isDeleted;
 
     @Schema(description = "创建-开始时间")
     private LocalDate createTimeBegin;

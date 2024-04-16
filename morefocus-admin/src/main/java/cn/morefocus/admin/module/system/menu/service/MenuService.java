@@ -60,7 +60,7 @@ public class MenuService {
         if (selectMenu == null) {
             return R.userErrorParam("菜单不存在");
         }
-        if (selectMenu.getDeleteFlag()) {
+        if (selectMenu.getIsDeleted()) {
             return R.userErrorParam("菜单已被删除");
         }
         //校验菜单名称
@@ -71,7 +71,7 @@ public class MenuService {
         if (this.validateWebPerms(menuUpdateForm)) {
             return R.userErrorParam("前端权限字符串已存在");
         }
-        if (menuUpdateForm.getMenuId().equals(menuUpdateForm.getParentId())) {
+        if (menuUpdateForm.getMenuId().equals(menuUpdateForm.getPid())) {
             return R.userErrorParam("上级菜单不能为自己");
         }
         MenuEntity menuEntity = LocalBeanUtil.copy(menuUpdateForm, MenuEntity.class);
@@ -118,7 +118,7 @@ public class MenuService {
      * 校验菜单名称
      */
     public <T extends MenuBaseForm> Boolean validateMenuName(T menuDTO) {
-        MenuEntity menu = menuMapper.getByMenuName(menuDTO.getMenuName(), menuDTO.getParentId(), Boolean.FALSE);
+        MenuEntity menu = menuMapper.getByMenuName(menuDTO.getMenuName(), menuDTO.getPid(), Boolean.FALSE);
         if (menuDTO instanceof MenuAddForm) {
             return menu != null;
         }
@@ -149,19 +149,19 @@ public class MenuService {
     /**
      * 查询菜单列表
      */
-    public List<MenuVO> queryMenuList(Boolean disabledFlag) {
-        List<MenuVO> menuVOList = menuMapper.queryMenuList(Boolean.FALSE, disabledFlag, null);
+    public List<MenuVO> queryMenuList(Boolean isDisabled) {
+        List<MenuVO> menuVOList = menuMapper.queryMenuList(Boolean.FALSE, isDisabled, null);
         //根据ParentId进行分组
-        Map<Long, List<MenuVO>> parentMap = menuVOList.stream().collect(Collectors.groupingBy(MenuVO::getParentId, Collectors.toList()));
+        Map<Long, List<MenuVO>> parentMap = menuVOList.stream().collect(Collectors.groupingBy(MenuVO::getPid, Collectors.toList()));
         return this.filterNoParentMenu(parentMap, NumberUtils.LONG_ZERO);
     }
 
     /**
      * 过滤没有上级菜单的菜单列表
      */
-    private List<MenuVO> filterNoParentMenu(Map<Long, List<MenuVO>> parentMap, Long parentId) {
+    private List<MenuVO> filterNoParentMenu(Map<Long, List<MenuVO>> parentMap, Long pid) {
         // 获取本级菜单树List
-        List<MenuVO> res = parentMap.getOrDefault(parentId, Lists.newArrayList());
+        List<MenuVO> res = parentMap.getOrDefault(pid, Lists.newArrayList());
         List<MenuVO> childMenu = Lists.newArrayList();
         // 循环遍历下级菜单
         res.forEach(e -> {
@@ -184,7 +184,7 @@ public class MenuService {
         }
         List<MenuVO> menuVOList = menuMapper.queryMenuList(Boolean.FALSE, null, menuTypeList);
         //根据ParentId进行分组
-        Map<Long, List<MenuVO>> parentMap = menuVOList.stream().collect(Collectors.groupingBy(MenuVO::getParentId, Collectors.toList()));
+        Map<Long, List<MenuVO>> parentMap = menuVOList.stream().collect(Collectors.groupingBy(MenuVO::getPid, Collectors.toList()));
         List<MenuTreeVO> menuTreeVOList = this.buildMenuTree(parentMap, NumberUtils.LONG_ZERO);
         return R.ok(menuTreeVOList);
     }
@@ -192,9 +192,9 @@ public class MenuService {
     /**
      * 构建菜单树
      */
-    List<MenuTreeVO> buildMenuTree(Map<Long, List<MenuVO>> parentMap, Long parentId) {
+    List<MenuTreeVO> buildMenuTree(Map<Long, List<MenuVO>> parentMap, Long pid) {
         // 获取本级菜单树List
-        List<MenuTreeVO> res = parentMap.getOrDefault(parentId, Lists.newArrayList()).stream()
+        List<MenuTreeVO> res = parentMap.getOrDefault(pid, Lists.newArrayList()).stream()
                 .map(e -> LocalBeanUtil.copy(e, MenuTreeVO.class)).collect(Collectors.toList());
         // 循环遍历下级菜单
         res.forEach(e -> {
@@ -212,7 +212,7 @@ public class MenuService {
         if (null == selectMenu) {
             return R.userErrorParam("菜单不存在");
         }
-        if (selectMenu.getDeleteFlag()) {
+        if (selectMenu.getIsDeleted()) {
             return R.userErrorParam("菜单已被删除");
         }
         MenuVO menuVO = LocalBeanUtil.copy(selectMenu, MenuVO.class);
@@ -234,7 +234,7 @@ public class MenuService {
         if (selectMenu == null) {
             return R.userErrorParam("菜单不存在");
         }
-        if (selectMenu.getDeleteFlag()) {
+        if (selectMenu.getIsDeleted()) {
             return R.userErrorParam("菜单已被删除");
         }
 

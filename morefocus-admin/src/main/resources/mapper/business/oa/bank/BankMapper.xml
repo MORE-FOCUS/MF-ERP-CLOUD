@@ -3,7 +3,7 @@
 <mapper namespace="cn.morefocus.admin.module.business.oa.bank.mapper.BankMapper">
     <update id="deleteBank">
         UPDATE t_oa_bank
-        SET delete_flag = #{deleteFlag}
+        SET is_deleted = #{isDeleted}
         WHERE bank_id = #{bankId}
     </update>
     <select id="queryByAccountNumber"
@@ -12,7 +12,7 @@
         FROM t_oa_bank
         WHERE enterprise_id = #{enterpriseId}
         AND account_number = #{accountNumber}
-        AND delete_flag = #{deleteFlag}
+        AND is_deleted = #{isDeleted}
         <if test="excludeBankId != null">
             AND bank_id != #{excludeBankId}
         </if>
@@ -23,7 +23,7 @@
         FROM t_oa_bank
         LEFT JOIN t_oa_enterprise ON t_oa_bank.enterprise_id = t_oa_enterprise.enterprise_id
         <where>
-            t_oa_bank.delete_flag = #{queryForm.deleteFlag}
+            t_oa_bank.is_deleted = #{queryForm.isDeleted}
             <if test="queryForm.keywords != null and queryForm.keywords != ''">
                 AND (INSTR(t_oa_bank.bank_name,#{queryForm.keywords}) OR
                 INSTR(t_oa_bank.account_name,#{queryForm.keywords}) OR
@@ -36,8 +36,8 @@
             <if test="queryForm.endTime != null">
                 AND DATE_FORMAT(t_oa_bank.create_time, '%Y-%m-%d') &lt;= #{queryForm.endTime}
             </if>
-            <if test="queryForm.disabledFlag != null">
-                AND t_oa_bank.disabled_flag = #{queryForm.disabledFlag}
+            <if test="queryForm.isDisabled != null">
+                AND t_oa_bank.is_disabled = #{queryForm.isDisabled}
             </if>
             <if test="queryForm.enterpriseId != null">
                 AND t_oa_bank.enterprise_id = #{queryForm.enterpriseId}
@@ -53,6 +53,6 @@
         FROM t_oa_bank
                  LEFT JOIN t_oa_enterprise ON t_oa_bank.enterprise_id = t_oa_enterprise.enterprise_id
         WHERE t_oa_bank.bank_id = #{bankId}
-          AND t_oa_bank.delete_flag = #{deleteFlag}
+          AND t_oa_bank.is_deleted = #{isDeleted}
     </select>
 </mapper>

@@ -7,9 +7,9 @@
             resultType="cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity">
         SELECT * FROM t_category
         WHERE
-        parent_id IN
-        <foreach collection="parentIdList" open="(" separator="," close=")" item="id">#{id}</foreach>
-        AND delete_flag = #{deleteFlag}
+        pid IN
+        <foreach collection="pidList" open="(" separator="," close=")" item="id">#{id}</foreach>
+        AND is_deleted = #{isDeleted}
         ORDER BY sort_value ASC
     </select>
 
@@ -19,10 +19,10 @@
             resultType="cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity">
         SELECT * FROM t_category
         WHERE
-        parent_id IN
-        <foreach collection="parentIdList" open="(" separator="," close=")" item="id">#{id}</foreach>
+        pid IN
+        <foreach collection="pidList" open="(" separator="," close=")" item="id">#{id}</foreach>
         AND category_type = #{categoryType}
-        AND delete_flag = #{deleteFlag}
+        AND is_deleted = #{isDeleted}
         ORDER BY sort_value ASC
     </select>
 
@@ -31,7 +31,7 @@
         SELECT *
         FROM t_category
         WHERE category_type = #{categoryType}
-          AND delete_flag = #{deleteFlag}
+          AND is_deleted = #{isDeleted}
         ORDER BY sort_value ASC
     </select>
 
@@ -42,14 +42,14 @@
             <if test="categoryType != null">
                 AND category_type = #{categoryType}
             </if>
-            <if test="parentId != null">
-                AND parent_id = #{parentId}
+            <if test="pid != null">
+                AND pid = #{pid}
             </if>
             <if test="categoryName != null">
                 AND category_name = #{categoryName}
             </if>
-            <if test="deleteFlag != null">
-                AND delete_flag = #{deleteFlag}
+            <if test="isDeleted != null">
+                AND is_deleted = #{isDeleted}
             </if>
         </where>
         LIMIT 1

@@ -66,7 +66,7 @@ public class EnterpriseVO {
     private String businessLicense;
 
     @Schema(description = "禁用状态")
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 
     @Schema(description = "创建人ID")
     private Long createUserId;

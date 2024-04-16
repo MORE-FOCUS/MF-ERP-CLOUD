@@ -30,5 +30,5 @@ public class HelpDocCatalogEntity extends BaseEntity {
     /**
      * 父id
      */
-    private Long parentId;
+    private Long pid;
 }

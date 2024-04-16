@@ -35,7 +35,7 @@ public class InvoiceAddForm {
 
     @Schema(description = "启用状态")
     @NotNull(message = "启用状态不能为空")
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 
     @Schema(description = "备注")
     @Length(max = 500, message = "备注最多500字符")

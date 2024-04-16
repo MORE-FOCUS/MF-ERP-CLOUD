@@ -57,10 +57,10 @@ public class CategoryCacheManager {
      * 优先查询缓存
      */
     @Cacheable(AdminCacheConst.Category.CATEGORY_TREE)
-    public List<CategoryTreeVO> queryCategoryTree(Long parentId, Integer categoryType) {
+    public List<CategoryTreeVO> queryCategoryTree(Long pid, Integer categoryType) {
         List<CategoryEntity> allCategoryEntityList = categoryMapper.queryByType(categoryType, false);
 
-        List<CategoryEntity> categoryEntityList = allCategoryEntityList.stream().filter(e -> e.getParentId().equals(parentId)).collect(Collectors.toList());
+        List<CategoryEntity> categoryEntityList = allCategoryEntityList.stream().filter(e -> e.getPid().equals(pid)).collect(Collectors.toList());
         List<CategoryTreeVO> treeList = LocalBeanUtil.copyList(categoryEntityList, CategoryTreeVO.class);
         treeList.forEach(e -> {
             e.setLabel(e.getCategoryName());
@@ -80,9 +80,9 @@ public class CategoryCacheManager {
         if (CollectionUtils.isEmpty(treeList)) {
             return;
         }
-        List<Long> parentIdList = treeList.stream().map(CategoryTreeVO::getValue).collect(Collectors.toList());
-        List<CategoryEntity> categoryEntityList = allCategoryEntityList.stream().filter(e -> parentIdList.contains(e.getParentId())).collect(Collectors.toList());
-        Map<Long, List<CategoryEntity>> categorySubMap = categoryEntityList.stream().collect(Collectors.groupingBy(CategoryEntity::getParentId));
+        List<Long> pidList = treeList.stream().map(CategoryTreeVO::getValue).collect(Collectors.toList());
+        List<CategoryEntity> categoryEntityList = allCategoryEntityList.stream().filter(e -> pidList.contains(e.getPid())).collect(Collectors.toList());
+        Map<Long, List<CategoryEntity>> categorySubMap = categoryEntityList.stream().collect(Collectors.groupingBy(CategoryEntity::getPid));
         treeList.forEach(e -> {
             List<CategoryEntity> childrenEntityList = categorySubMap.getOrDefault(e.getValue(), Lists.newArrayList());
             List<CategoryTreeVO> childrenVOList = LocalBeanUtil.copyList(childrenEntityList, CategoryTreeVO.class);

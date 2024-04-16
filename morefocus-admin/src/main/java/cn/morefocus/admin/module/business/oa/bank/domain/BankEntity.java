@@ -62,5 +62,5 @@ public class BankEntity extends BaseEntity {
      * 禁用状态
      */
     @DataTracerFieldLabel("禁用状态")
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 }

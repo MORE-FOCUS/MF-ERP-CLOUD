@@ -25,8 +25,8 @@
         from t_menu
         left join t_role_menu on t_role_menu.menu_id = t_menu.menu_id
         <where>
-            <if test="deleteFlag != null">
-                and t_menu.delete_flag = #{deleteFlag}
+            <if test="isDeleted != null">
+                and t_menu.is_deleted = #{isDeleted}
             </if>
             <if test="roleIdList != null and roleIdList.size > 0">
                 and t_role_menu.role_id in

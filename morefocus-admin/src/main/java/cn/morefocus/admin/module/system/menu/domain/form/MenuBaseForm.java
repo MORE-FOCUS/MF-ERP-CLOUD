@@ -28,7 +28,7 @@ public class MenuBaseForm {
 
     @Schema(description = "父菜单ID 无上级可传0")
     @NotNull(message = "父菜单ID不能为空")
-    private Long parentId;
+    private Long pid;
 
     @Schema(description = "显示顺序")
     private Integer sortValue;
@@ -41,22 +41,22 @@ public class MenuBaseForm {
 
     @Schema(description = "是否为外链")
     @NotNull(message = "是否为外链不能为空")
-    private Boolean frameFlag;
+    private Boolean isFrame;
 
     @Schema(description = "外链地址")
     private String frameUrl;
 
     @Schema(description = "是否缓存")
     @NotNull(message = "是否缓存不能为空")
-    private Boolean cacheFlag;
+    private Boolean isCached;
 
     @Schema(description = "显示状态")
     @NotNull(message = "显示状态不能为空")
-    private Boolean visibleFlag;
+    private Boolean isVisible;
 
     @Schema(description = "禁用状态")
     @NotNull(message = "禁用状态不能为空")
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 
     @SchemaEnum(value = MenuPermsTypeEnum.class, desc = "权限类型")
     @CheckEnum(value = MenuPermsTypeEnum.class, message = "权限类型")

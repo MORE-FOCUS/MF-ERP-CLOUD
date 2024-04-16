@@ -29,5 +29,5 @@ public interface TenantIndustryMapper extends BaseMapper<TenantIndustryEntity> {
     /**
      * 更新禁用启用
      */
-    void updateDisableFlag(@Param("id") Long id, @Param("disabledFlag") Boolean disabledFlag);
+    void updateDisableFlag(@Param("id") Long id, @Param("isDisabled") Boolean isDisabled);
 }

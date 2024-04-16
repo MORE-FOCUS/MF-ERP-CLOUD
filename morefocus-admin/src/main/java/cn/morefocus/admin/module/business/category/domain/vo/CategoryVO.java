@@ -20,7 +20,7 @@ public class CategoryVO {
     private Integer categoryType;
 
     @Schema(description = "父级类目id|可选")
-    private Long parentId;
+    private Long pid;
 
     @Schema(description = "排序|可选")
     private Integer sortValue;
@@ -29,7 +29,7 @@ public class CategoryVO {
     private String remark;
 
     @Schema(description = "禁用状态")
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 
     @Schema(description = "类目id")
     private Long categoryId;

@@ -21,7 +21,7 @@ public class CategoryTreeVO {
     private String categoryFullName;
 
     @Schema(description = "父级id")
-    private Long parentId;
+    private Long pid;
 
     @Schema(description = "类目id")
     private Long value;

@@ -40,7 +40,7 @@ public class InvoiceService {
      * 分页查询发票信息
      */
     public R<PageResult<InvoiceVO>> queryByPage(InvoiceQueryForm queryForm) {
-        queryForm.setDeleteFlag(Boolean.FALSE);
+        queryForm.setIsDeleted(Boolean.FALSE);
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
         List<InvoiceVO> invoiceList = invoiceMapper.queryPage(page, queryForm);
         PageResult<InvoiceVO> pageResult = PageUtil.convert2PageResult(page, invoiceList);
@@ -49,8 +49,8 @@ public class InvoiceService {
 
     public R<List<InvoiceVO>> queryList(Long enterpriseId) {
         InvoiceQueryForm queryForm = new InvoiceQueryForm();
-        queryForm.setDeleteFlag(Boolean.FALSE);
-        queryForm.setDisabledFlag(Boolean.FALSE);
+        queryForm.setIsDeleted(Boolean.FALSE);
+        queryForm.setIsDisabled(Boolean.FALSE);
         queryForm.setEnterpriseId(enterpriseId);
         List<InvoiceVO> invoiceList = invoiceMapper.queryPage(null, queryForm);
         return R.ok(invoiceList);
@@ -105,7 +105,7 @@ public class InvoiceService {
         Long invoiceId = updateVO.getInvoiceId();
         // 校验发票信息是否存在
         InvoiceEntity invoiceDetail = invoiceMapper.selectById(invoiceId);
-        if (Objects.isNull(invoiceDetail) || invoiceDetail.getDeleteFlag()) {
+        if (Objects.isNull(invoiceDetail) || invoiceDetail.getIsDeleted()) {
             return R.userErrorParam("发票信息不存在");
         }
         // 验证发票信息账号是否重复
@@ -127,7 +127,7 @@ public class InvoiceService {
     public R<String> deleteInvoice(Long invoiceId) {
         // 校验发票信息是否存在
         InvoiceEntity invoiceDetail = invoiceMapper.selectById(invoiceId);
-        if (Objects.isNull(invoiceDetail) || invoiceDetail.getDeleteFlag()) {
+        if (Objects.isNull(invoiceDetail) || invoiceDetail.getIsDeleted()) {
             return R.userErrorParam("发票信息不存在");
         }
         invoiceMapper.deleteInvoice(invoiceId, Boolean.TRUE);

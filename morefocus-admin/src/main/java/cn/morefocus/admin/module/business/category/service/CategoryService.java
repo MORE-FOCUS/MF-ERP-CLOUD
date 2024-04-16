@@ -47,10 +47,10 @@ public class CategoryService {
             return res;
         }
         // 没有父类则使用默认父类
-        Long parentId = null == addForm.getParentId() ? NumberUtils.LONG_ZERO : addForm.getParentId();
-        categoryEntity.setParentId(parentId);
+        Long pid = null == addForm.getPid() ? NumberUtils.LONG_ZERO : addForm.getPid();
+        categoryEntity.setPid(pid);
         categoryEntity.setSortValue(null == addForm.getSortValue() ? 0 : addForm.getSortValue());
-        categoryEntity.setDeleteFlag(false);
+        categoryEntity.setIsDeleted(false);
 
         // 保存数据
         categoryMapper.insert(categoryEntity);
@@ -80,7 +80,7 @@ public class CategoryService {
  */
         Integer categoryType = optional.get().getCategoryType();
         categoryEntity.setCategoryType(categoryType);
-        categoryEntity.setParentId(optional.get().getParentId());
+        categoryEntity.setPid(optional.get().getPid());
 
         R<String> r = this.checkCategory(categoryEntity, true);
         if (!r.getOk()) {
@@ -98,14 +98,14 @@ public class CategoryService {
      */
     private R<String> checkCategory(CategoryEntity categoryEntity, boolean isUpdate) {
         // 校验父级是否存在
-        Long parentId = categoryEntity.getParentId();
+        Long pid = categoryEntity.getPid();
         Integer categoryType = categoryEntity.getCategoryType();
-        if (null != parentId) {
-            if (Objects.equals(categoryEntity.getCategoryId(), parentId)) {
+        if (null != pid) {
+            if (Objects.equals(categoryEntity.getCategoryId(), pid)) {
                 return R.userErrorParam("父级类目怎么和自己相同了");
             }
-            if (!Objects.equals(parentId, NumberUtils.LONG_ZERO)) {
-                Optional<CategoryEntity> optional = categoryQueryService.queryCategory(parentId);
+            if (!Objects.equals(pid, NumberUtils.LONG_ZERO)) {
+                Optional<CategoryEntity> optional = categoryQueryService.queryCategory(pid);
                 if (!optional.isPresent()) {
                     return R.error(UserErrorCode.DATA_NOT_EXIST, "父级类目不存在~");
                 }
@@ -118,15 +118,15 @@ public class CategoryService {
 
         } else {
             // 如果没有父类 使用默认父类
-            parentId = NumberUtils.LONG_ZERO;
+            pid = NumberUtils.LONG_ZERO;
         }
 
         // 校验同父类下 名称是否重复
         CategoryEntity queryEntity = new CategoryEntity();
-        queryEntity.setParentId(parentId);
+        queryEntity.setPid(pid);
         queryEntity.setCategoryType(categoryType);
         queryEntity.setCategoryName(categoryEntity.getCategoryName());
-        queryEntity.setDeleteFlag(false);
+        queryEntity.setIsDeleted(false);
         queryEntity = categoryMapper.selectOne(queryEntity);
         if (null != queryEntity) {
             if (isUpdate) {
@@ -157,13 +157,13 @@ public class CategoryService {
      * 如果父类id 为空 返回所有类目层级
      */
     public R<List<CategoryTreeVO>> queryTree(CategoryTreeQueryForm queryForm) {
-        if (null == queryForm.getParentId()) {
+        if (null == queryForm.getPid()) {
             if (null == queryForm.getCategoryType()) {
                 return R.userErrorParam("类目类型不能为空");
             }
-            queryForm.setParentId(NumberUtils.LONG_ZERO);
+            queryForm.setPid(NumberUtils.LONG_ZERO);
         }
-        List<CategoryTreeVO> treeList = categoryCacheManager.queryCategoryTree(queryForm.getParentId(), queryForm.getCategoryType());
+        List<CategoryTreeVO> treeList = categoryCacheManager.queryCategoryTree(queryForm.getPid(), queryForm.getCategoryType());
         return R.ok(treeList);
     }
 
@@ -185,7 +185,7 @@ public class CategoryService {
         // 更新数据
         CategoryEntity categoryEntity = new CategoryEntity();
         categoryEntity.setCategoryId(categoryId);
-        categoryEntity.setDeleteFlag(true);
+        categoryEntity.setIsDeleted(true);
         categoryMapper.updateById(categoryEntity);
 
         // 更新缓存

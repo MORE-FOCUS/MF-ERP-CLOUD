@@ -38,7 +38,7 @@ public class EmployeeAddForm {
 
     @Schema(description = "是否启用")
     @NotNull(message = "是否被禁用不能为空")
-    private Boolean disabledFlag;
+    private Boolean isDisabled;
 
     @Schema(description = "手机号")
     @NotNull(message = "手机号不能为空")

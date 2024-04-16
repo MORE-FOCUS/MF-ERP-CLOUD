@@ -69,7 +69,7 @@ public class GoodsService {
             return res;
         }
         GoodsEntity goodsEntity = LocalBeanUtil.copy(addForm, GoodsEntity.class);
-        goodsEntity.setDeleteFlag(Boolean.FALSE);
+        goodsEntity.setIsDeleted(Boolean.FALSE);
         goodsMapper.insert(goodsEntity);
         dataTracerService.insert(goodsEntity.getGoodsId(), DataTracerTypeEnum.GOODS);
         return R.ok();
@@ -141,7 +141,7 @@ public class GoodsService {
      * 分页查询
      */
     public R<PageResult<GoodsVO>> query(GoodsQueryForm queryForm) {
-        queryForm.setDeleteFlag(false);
+        queryForm.setIsDeleted(false);
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
         List<GoodsVO> list = goodsMapper.query(page, queryForm);
         PageResult<GoodsVO> pageResult = PageUtil.convert2PageResult(page, list);

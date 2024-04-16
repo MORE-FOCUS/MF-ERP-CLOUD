@@ -18,8 +18,6 @@ import java.util.Optional;
 
 /**
  * 帮助文档 目录
- *
- *
  */
 @Service
 public class HelpDocCatalogService {
@@ -32,8 +30,6 @@ public class HelpDocCatalogService {
 
     /**
      * 查询全部目录
-     *
-     * @return
      */
     public List<HelpDocCatalogVO> getAll() {
         return LocalBeanUtil.copyList(helpDocCatalogMapper.selectList(null), HelpDocCatalogVO.class);
@@ -41,9 +37,6 @@ public class HelpDocCatalogService {
 
     /**
      * 添加目录
-     *
-     * @param helpDocCatalogAddForm
-     * @return
      */
     public synchronized R<String> add(HelpDocCatalogAddForm helpDocCatalogAddForm) {
         List<HelpDocCatalogVO> helpDocCatalogList = getAll();
@@ -58,9 +51,6 @@ public class HelpDocCatalogService {
 
     /**
      * 更新目录
-     *
-     * @param updateForm
-     * @return
      */
     public synchronized R<String> update(HelpDocCatalogUpdateForm updateForm) {
         HelpDocCatalogEntity helpDocCatalogEntity = helpDocCatalogMapper.selectById(updateForm.getHelpDocCatalogId());
@@ -79,9 +69,6 @@ public class HelpDocCatalogService {
 
     /**
      * 删除目录（如果有子目录、或者有帮助文档，则不能删除）
-     *
-     * @param helpDocCatalogId
-     * @return
      */
     public synchronized R<String> delete(Long helpDocCatalogId) {
         if (helpDocCatalogId == null) {
@@ -94,7 +81,7 @@ public class HelpDocCatalogService {
         }
 
         //如果有子目录，则不能删除
-        Optional<HelpDocCatalogVO> existOptional = getAll().stream().filter(e -> helpDocCatalogId.equals(e.getParentId())).findFirst();
+        Optional<HelpDocCatalogVO> existOptional = getAll().stream().filter(e -> helpDocCatalogId.equals(e.getPid())).findFirst();
         if (existOptional.isPresent()) {
             return R.userErrorParam("存在子目录：" + existOptional.get().getName());
         }
@@ -107,5 +94,4 @@ public class HelpDocCatalogService {
         helpDocCatalogMapper.deleteById(helpDocCatalogId);
         return R.ok();
     }
-
 }

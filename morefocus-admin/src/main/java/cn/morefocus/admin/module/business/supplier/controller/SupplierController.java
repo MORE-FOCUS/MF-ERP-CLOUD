@@ -1,5 +1,6 @@
 package cn.morefocus.admin.module.business.supplier.controller;
 
+import cn.morefocus.admin.constant.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierAddForm;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierQueryForm;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierUpdateForm;
@@ -24,7 +25,7 @@ import java.util.List;
  * @author loki
  * @date 2024-04-09 00:04:56
  */
-@Tag(name = "")
+@Tag(name = AdminSwaggerTagConst.Business.SUPPLIER)
 @RestController
 public class SupplierController {
 

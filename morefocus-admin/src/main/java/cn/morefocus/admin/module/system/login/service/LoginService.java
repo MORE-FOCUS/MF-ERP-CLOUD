@@ -134,7 +134,7 @@ public class LoginService implements StpInterface {
         }
 
         // 验证账号状态
-        if (employeeEntity.getDisabledFlag()) {
+        if (employeeEntity.getIsDisabled()) {
             saveLoginLog(employeeEntity, ip, userAgent, "账号已禁用", LoginLogResultEnum.LOGIN_FAIL);
             return R.userErrorParam("您的账号已被禁用,请联系工作人员！");
         }

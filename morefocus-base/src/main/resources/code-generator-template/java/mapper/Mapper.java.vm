@@ -31,13 +31,13 @@ public interface ${name.upperCamel}Mapper extends BaseMapper<${name.upperCamel}E
     /**
      * 更新删除状态
      */
-    long updateDeleted(@Param("${primaryKeyFieldName}")${primaryKeyJavaType} ${primaryKeyFieldName},@Param("${deleteFlag}")boolean deleteFlag);
+    long updateDeleted(@Param("${primaryKeyFieldName}")${primaryKeyJavaType} ${primaryKeyFieldName}, @Param("${isDeleted}") boolean isDeleted);
 #end
 #if($deleteInfo.deleteEnum == "Batch" || $deleteInfo.deleteEnum == "SingleAndBatch")
     /**
      * 批量更新删除状态
      */
-    void batchUpdateDeleted(@Param("idList")List<${primaryKeyJavaType}> idList,@Param("${deleteFlag}")boolean deleteFlag);
+    void batchUpdateDeleted(@Param("idList") List<${primaryKeyJavaType}> idList, @Param("${isDeleted}") boolean isDeleted);
 #end
 #end
 #end
