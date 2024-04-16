@@ -41,7 +41,7 @@ public interface MenuMapper extends BaseMapper<MenuEntity> {
      * @param deleteByName   操作人名称
      * @param deleteFlag 是否删除
      */
-    void deleteByMenuIdList(@Param("menuIdList") List<Long> menuIdList, @Param("deleteBy") Long deleteBy, @Param("deleteByByName") String deleteByName, @Param("deleteFlag") Boolean deleteFlag);
+    void deleteByMenuIdList(@Param("menuIdList") List<Long> menuIdList, @Param("deleteBy") Long deleteBy, @Param("deleteByName") String deleteByName, @Param("deleteFlag") Boolean deleteFlag);
 
     /**
      * 查询菜单列表

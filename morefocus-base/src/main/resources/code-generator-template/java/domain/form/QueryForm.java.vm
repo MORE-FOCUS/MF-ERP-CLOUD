@@ -3,9 +3,9 @@ package ${packageName};
 import cn.morefocus.base.common.domain.PageParam;
 #foreach ($importClass in $importPackageList)
 $importClass
+#end
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-#end
 
 /**
  * ${basic.description} 分页查询表单

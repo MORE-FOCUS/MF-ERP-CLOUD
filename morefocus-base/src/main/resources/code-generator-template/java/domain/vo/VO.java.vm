@@ -2,11 +2,11 @@ package ${packageName};
 
 #foreach ($importClass in $importPackageList)
 $importClass
+#end
 import cn.morefocus.base.common.domain.BaseEntity;
 import cn.morefocus.base.common.domain.BaseVo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-#end
 
 /**
  * ${basic.description} 列表VO
@@ -23,10 +23,16 @@ public class ${name.upperCamel}VO extends BaseVo {
 #foreach ($field in $fields)
 
 #if($field.isEnum)
+    /**
+     * $field.label
+     */
     private $field.javaType $field.fieldName;
 #end
 #if(!$field.isEnum)
     $!{field.dict}$!{field.file}
+    /**
+     * $field.label
+     */
     private $field.javaType $field.fieldName;
 #end
 #end

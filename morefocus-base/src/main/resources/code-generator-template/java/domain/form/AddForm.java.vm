@@ -2,8 +2,8 @@ package ${packageName};
 
 #foreach ($importClass in $importPackageList)
 $importClass
-import lombok.Data;
 #end
+import lombok.Data;
 
 /**
  * ${basic.description} 新建表单

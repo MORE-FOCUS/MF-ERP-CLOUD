@@ -28,6 +28,24 @@ public class MenuController {
     @Resource
     private MenuService menuService;
 
+    @Operation(summary = "查询菜单列表")
+    @GetMapping("/menu/query")
+    public R<List<MenuVO>> queryMenuList() {
+        return R.ok(menuService.queryMenuList(null));
+    }
+
+    @Operation(summary = "查询菜单详情")
+    @GetMapping("/menu/detail/{menuId}")
+    public R<MenuVO> getMenuDetail(@PathVariable Long menuId) {
+        return menuService.getMenuDetail(menuId);
+    }
+
+    @Operation(summary = "查询菜单树")
+    @GetMapping("/menu/tree")
+    public R<List<MenuTreeVO>> queryMenuTree(@RequestParam("onlyMenu") Boolean onlyMenu) {
+        return menuService.queryMenuTree(onlyMenu);
+    }
+
     @Operation(summary = "添加菜单")
     @PostMapping("/menu/add")
     @SaCheckPermission("system:menu:add")
@@ -49,24 +67,6 @@ public class MenuController {
     @SaCheckPermission("system:menu:batchDelete")
     public R<String> batchDeleteMenu(@RequestParam("menuIdList") List<Long> menuIdList) {
         return menuService.batchDeleteMenu(menuIdList, RequestContext.getUserId(), RequestContext.getUserName());
-    }
-
-    @Operation(summary = "查询菜单列表")
-    @GetMapping("/menu/query")
-    public R<List<MenuVO>> queryMenuList() {
-        return R.ok(menuService.queryMenuList(null));
-    }
-
-    @Operation(summary = "查询菜单详情")
-    @GetMapping("/menu/detail/{menuId}")
-    public R<MenuVO> getMenuDetail(@PathVariable Long menuId) {
-        return menuService.getMenuDetail(menuId);
-    }
-
-    @Operation(summary = "查询菜单树")
-    @GetMapping("/menu/tree")
-    public R<List<MenuTreeVO>> queryMenuTree(@RequestParam("onlyMenu") Boolean onlyMenu) {
-        return menuService.queryMenuTree(onlyMenu);
     }
 
     @Operation(summary = "获取所有请求路径")

@@ -4,6 +4,8 @@ package ${packageName};
 $importClass
 #end
 
+import lombok.Data;
+
 /**
  * ${basic.description} 更新表单
  *
