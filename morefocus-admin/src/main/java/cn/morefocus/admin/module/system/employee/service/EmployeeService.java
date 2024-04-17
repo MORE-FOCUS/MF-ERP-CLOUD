@@ -63,7 +63,7 @@ public class EmployeeService {
     /**
      * 查询员工列表
      */
-    public PageResult<EmployeeVO> queryPage(EmployeeQueryForm employeeQueryForm) {
+    public PageResult<EmployeeVO> queryPage(EmployeePageQueryForm employeeQueryForm) {
         employeeQueryForm.setIsDeleted(false);
         Page pageParam = PageUtil.convert2PageQuery(employeeQueryForm);
 

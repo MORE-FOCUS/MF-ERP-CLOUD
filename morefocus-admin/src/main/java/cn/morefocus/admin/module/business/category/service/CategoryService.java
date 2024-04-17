@@ -73,11 +73,10 @@ public class CategoryService {
         }
         CategoryEntity categoryEntity = LocalBeanUtil.copy(updateForm, CategoryEntity.class);
 
-        /*
-          不更新类目类型
-          不更新父类id
-    
- */
+        /**
+         *   不更新类目类型
+         *    不更新父类id
+         */
         Integer categoryType = optional.get().getCategoryType();
         categoryEntity.setCategoryType(categoryType);
         categoryEntity.setPid(optional.get().getPid());

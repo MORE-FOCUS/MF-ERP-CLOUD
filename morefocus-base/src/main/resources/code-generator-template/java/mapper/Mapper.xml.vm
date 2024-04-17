@@ -39,6 +39,47 @@
 #end
     </select>
 
+    <!-- 分页查询 -->
+    <select id="queryAll" resultType="${basic.javaPackageName}.domain.vo.${name.upperCamel}VO">
+        SELECT
+        *
+        FROM ${tableName}
+        #if($queryFields.size() > 0)
+            <where>
+                #foreach ($queryField in $queryFields)
+                    <!--${queryField.label}-->
+                    #if(${queryField.queryTypeEnum} == "Like")
+                        <if test="queryForm.${queryField.fieldName} != null and queryForm.${queryField.fieldName} != ''">
+                            ${queryField.likeStr}
+                        </if>
+                    #end
+                    #if(${queryField.queryTypeEnum} == "Equal" || ${queryField.queryTypeEnum} ==
+                        "Enum" || ${queryField.queryTypeEnum} == "Dict")
+                        <if test="queryForm.${queryField.fieldName} != null">
+                            AND ${tableName}.${queryField.columnName} = #{queryForm.${queryField.fieldName}}
+                        </if>
+                    #end
+                    #if(${queryField.queryTypeEnum} == "Date")
+                        <if test="queryForm.${queryField.fieldName} != null">
+                            AND DATE_FORMAT(${tableName}.${queryField.columnName}, '%Y-%m-%d') =
+                            #{queryForm.${queryField.fieldName}}
+                        </if>
+                    #end
+                    #if(${queryField.queryTypeEnum} == "DateRange")
+                        <if test="queryForm.${queryField.fieldName}Begin != null">
+                            AND DATE_FORMAT(${tableName}.${queryField.columnName}, '%Y-%m-%d') &gt;=
+                            #{queryForm.${queryField.fieldName}Begin}
+                        </if>
+                        <if test="queryForm.${queryField.fieldName}End != null">
+                            AND DATE_FORMAT(${tableName}.${queryField.columnName}, '%Y-%m-%d') &lt;=
+                            #{queryForm.${queryField.fieldName}End}
+                        </if>
+                    #end
+                #end
+            </where>
+        #end
+    </select>
+
 #if($mapper.deletedFieldUpperName != $null)
     <update id="batchUpdate${mapper.deletedFieldUpperName}">
         update ${mapper.tableName} set ${mapper.deletedColumnName} = #{isDeleted}

@@ -26,4 +26,8 @@ public interface SupplierCategoryMapper extends BaseMapper<SupplierCategoryEntit
      */
     List<SupplierCategoryVO> queryPage(Page page, @Param("queryForm") SupplierCategoryQueryForm queryForm);
 
+    /**
+     * 分页 查询
+     */
+    List<SupplierCategoryVO> queryAll();
 }

@@ -24,7 +24,13 @@ public interface ${name.upperCamel}Mapper extends BaseMapper<${name.upperCamel}E
      */
     List<${name.upperCamel}VO> queryPage(Page page, @Param("queryForm") ${name.upperCamel}QueryForm queryForm);
 
-#if($deleteInfo.isSupportDelete)
+    /**
+ * 分页 查询
+ */
+    List<${name.upperCamel}VO> queryAll();
+
+
+    #if($deleteInfo.isSupportDelete)
 ### 假删除
 #if(!${deleteInfo.isPhysicallyDeleted})
 #if($deleteInfo.deleteEnum == "Single" || $deleteInfo.deleteEnum == "SingleAndBatch")

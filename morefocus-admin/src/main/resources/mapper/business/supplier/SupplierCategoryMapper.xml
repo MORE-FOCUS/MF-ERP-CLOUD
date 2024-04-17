@@ -8,4 +8,8 @@
         FROM t_supplier_category
     </select>
 
+    <select id="queryAll" resultType="cn.morefocus.admin.module.business.supplier.domain.vo.SupplierCategoryVO">
+        SELECT *
+        FROM t_supplier_category
+    </select>
 </mapper>

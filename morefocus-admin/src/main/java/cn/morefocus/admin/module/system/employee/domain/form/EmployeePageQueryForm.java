@@ -1,6 +1,8 @@
 package cn.morefocus.admin.module.system.employee.domain.form;
 
+import cn.morefocus.base.common.domain.PageParam;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Size;
@@ -9,8 +11,9 @@ import java.util.List;
 /**
  * 员工列表
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class EmployeeQueryForm {
+public class EmployeePageQueryForm extends PageParam {
 
     /**
      * 搜索词

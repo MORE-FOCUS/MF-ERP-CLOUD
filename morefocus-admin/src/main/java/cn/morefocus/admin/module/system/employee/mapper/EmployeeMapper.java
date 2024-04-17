@@ -1,7 +1,7 @@
 package cn.morefocus.admin.module.system.employee.mapper;
 
 import cn.morefocus.admin.module.system.employee.domain.entity.EmployeeEntity;
-import cn.morefocus.admin.module.system.employee.domain.form.EmployeeQueryForm;
+import cn.morefocus.admin.module.system.employee.domain.form.EmployeePageQueryForm;
 import cn.morefocus.admin.module.system.employee.domain.vo.EmployeeVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -21,7 +21,7 @@ public interface EmployeeMapper extends BaseMapper<EmployeeEntity> {
     /**
      * 查询员工列表
      */
-    List<EmployeeVO> queryEmployee(Page page, @Param("queryForm") EmployeeQueryForm queryForm, @Param("deptIdList") List<Long> deptIdList);
+    List<EmployeeVO> queryEmployee(Page page, @Param("queryForm") EmployeePageQueryForm queryForm, @Param("deptIdList") List<Long> deptIdList);
 
     /**
      * 查询员工

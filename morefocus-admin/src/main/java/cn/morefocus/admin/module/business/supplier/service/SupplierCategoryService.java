@@ -6,6 +6,7 @@ import cn.morefocus.admin.module.business.supplier.domain.form.SupplierCategoryQ
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierCategoryUpdateForm;
 import cn.morefocus.admin.module.business.supplier.domain.vo.SupplierCategoryVO;
 import cn.morefocus.admin.module.business.supplier.mapper.SupplierCategoryMapper;
+import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
@@ -40,10 +41,27 @@ public class SupplierCategoryService {
     }
 
     /**
+     * 分页查询
+     */
+    public List<SupplierCategoryVO> queryAll() {
+        List<SupplierCategoryVO> list = supplierCategoryMapper.queryAll();
+        return list;
+    }
+
+    /**
      * 添加
      */
     public R<String> add(SupplierCategoryAddForm addForm) {
+        //父节点
+        if (null != addForm.getPid()) {
+            SupplierCategoryEntity parent = supplierCategoryMapper.selectById(addForm.getPid());
+            if (null == parent) {
+                return R.error(UserErrorCode.DATA_NOT_EXIST, "");
+            }
+        }
+
         SupplierCategoryEntity supplierCategoryEntity = LocalBeanUtil.copy(addForm, SupplierCategoryEntity.class);
+
         supplierCategoryMapper.insert(supplierCategoryEntity);
         return R.ok();
     }

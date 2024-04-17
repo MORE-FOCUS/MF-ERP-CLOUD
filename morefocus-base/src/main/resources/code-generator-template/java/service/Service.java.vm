@@ -35,6 +35,14 @@ public class ${name.upperCamel}Service {
         return pageResult;
     }
 
+    /**
+    * 查询所有
+    */
+    public List<${name.upperCamel}VO> queryAll() {
+        List<${name.upperCamel}VO> list = ${name.lowerCamel}Mapper.queryAll();
+        return list;
+    }
+
     #if($insertAndUpdate.isSupportInsertAndUpdate)
         /**
          * 添加

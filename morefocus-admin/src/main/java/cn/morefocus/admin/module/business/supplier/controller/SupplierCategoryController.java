@@ -36,7 +36,7 @@ public class SupplierCategoryController {
      * 分页查询
      */
     @Operation(summary = "查询分页列表")
-    @PostMapping("/supplierCategory/queryPage")
+    @PostMapping("/supplier/category/queryPage")
     public R<PageResult<SupplierCategoryVO>> queryPage(@RequestBody @Valid SupplierCategoryQueryForm queryForm) {
         return R.ok(supplierCategoryService.queryPage(queryForm));
     }
@@ -44,16 +44,16 @@ public class SupplierCategoryController {
     /**
      * 查询所有
      */
-    @PostMapping("/supplierCategory/queryAll")
-    public R<PageResult<SupplierCategoryVO>> queryAll(@RequestBody @Valid SupplierCategoryQueryForm queryForm) {
-        return R.ok(supplierCategoryService.queryPage(queryForm));
+    @PostMapping("/supplier/category/queryAll")
+    public R<List<SupplierCategoryVO>> queryAll() {
+        return R.ok(supplierCategoryService.queryAll());
     }
 
     /**
      * 新增
      */
     @Operation(summary = "新增")
-    @PostMapping("/supplierCategory/add")
+    @PostMapping("/supplier/category/add")
     public R<String> add(@RequestBody @Valid SupplierCategoryAddForm addForm) {
         return supplierCategoryService.add(addForm);
     }
@@ -62,7 +62,7 @@ public class SupplierCategoryController {
      * 编辑
      */
     @Operation(summary = "编辑")
-    @PostMapping("/supplierCategory/update")
+    @PostMapping("/supplier/category/update")
     public R<String> update(@RequestBody @Valid SupplierCategoryUpdateForm updateForm) {
         return supplierCategoryService.update(updateForm);
     }
@@ -71,7 +71,7 @@ public class SupplierCategoryController {
      * 批量删除
      */
     @Operation(summary = "批量删除")
-    @PostMapping("/supplierCategory/batchDelete")
+    @PostMapping("/supplier/category/batchDelete")
     public R<String> batchDelete(@RequestBody List<Long> idList) {
         return supplierCategoryService.batchDelete(idList);
     }
@@ -80,7 +80,7 @@ public class SupplierCategoryController {
      * 删除
      */
     @Operation(summary = "单个删除")
-    @PostMapping("/supplierCategory/delete/{id}")
+    @PostMapping("/supplier/category/delete/{id}")
     public R<String> batchDelete(@PathVariable Long id) {
         return supplierCategoryService.delete(id);
     }
