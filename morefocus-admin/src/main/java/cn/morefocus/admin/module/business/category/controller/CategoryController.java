@@ -27,16 +27,30 @@ public class CategoryController {
     @Resource
     private CategoryService categoryService;
 
+    @Operation(summary = "查询类目列表 ")
+    @PostMapping("/category/queryAll")
+    @SaCheckPermission("business:category:tree")
+    public R<List<CategoryTreeVO>> queryAll(@RequestBody @Valid CategoryTreeQueryForm queryForm) {
+        return categoryService.queryAll(queryForm);
+    }
+
+    @Operation(summary = "查询类目层级树 ")
+    @PostMapping("/category/tree")
+    @SaCheckPermission("business:category:tree")
+    public R<List<CategoryTreeVO>> queryTree(@RequestBody @Valid CategoryTreeQueryForm queryForm) {
+        return categoryService.queryTree(queryForm);
+    }
+
     @Operation(summary = "添加类目 ")
     @PostMapping("/category/add")
-    @SaCheckPermission("category:add")
+    @SaCheckPermission("business:category:add")
     public R<String> add(@RequestBody @Valid CategoryAddForm addForm) {
         return categoryService.add(addForm);
     }
 
     @Operation(summary = "更新类目 ")
     @PostMapping("/category/update")
-    @SaCheckPermission("category:update")
+    @SaCheckPermission("business:category:update")
     public R<String> update(@RequestBody @Valid CategoryUpdateForm updateForm) {
         return categoryService.update(updateForm);
     }
@@ -47,16 +61,9 @@ public class CategoryController {
         return categoryService.queryDetail(categoryId);
     }
 
-    @Operation(summary = "查询类目层级树 ")
-    @PostMapping("/category/tree")
-    @SaCheckPermission("category:tree")
-    public R<List<CategoryTreeVO>> queryTree(@RequestBody @Valid CategoryTreeQueryForm queryForm) {
-        return categoryService.queryTree(queryForm);
-    }
-
     @Operation(summary = "删除类目 ")
     @GetMapping("/category/delete/{categoryId}")
-    @SaCheckPermission("category:delete")
+    @SaCheckPermission("business:category:delete")
     public R<String> delete(@PathVariable Long categoryId) {
         return categoryService.delete(categoryId);
     }

@@ -17,9 +17,9 @@ public enum CategoryTypeEnum implements BaseEnum {
     GOODS(1, "商品"),
 
     /**
-     * 2 自定义
+     * 2 供应商
      */
-    CUSTOM(2, "自定义"),
+    SUPPLIER(2, "供应商"),
 
     ;
 

@@ -46,6 +46,7 @@ public class CategoryService {
         if (!res.getOk()) {
             return res;
         }
+
         // 没有父类则使用默认父类
         Long pid = null == addForm.getPid() ? NumberUtils.LONG_ZERO : addForm.getPid();
         categoryEntity.setPid(pid);
@@ -149,6 +150,20 @@ public class CategoryService {
         }
         CategoryVO adminVO = LocalBeanUtil.copy(optional.get(), CategoryVO.class);
         return R.ok(adminVO);
+    }
+
+    /**
+     * 根据父级id 查询所有子类 返回层级树
+     * 如果父类id 为空 返回所有类目层级
+     */
+    public R<List<CategoryTreeVO>> queryAll(CategoryTreeQueryForm queryForm) {
+        if (null == queryForm.getCategoryType()) {
+            return R.userErrorParam("类目类型不能为空");
+        }
+
+        queryForm.setPid(NumberUtils.LONG_ZERO);
+        List<CategoryTreeVO> treeList = categoryCacheManager.queryCategoryTree(queryForm.getPid(), queryForm.getCategoryType());
+        return R.ok(treeList);
     }
 
     /**

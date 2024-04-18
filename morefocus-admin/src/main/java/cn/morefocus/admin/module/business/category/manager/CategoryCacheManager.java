@@ -53,6 +53,16 @@ public class CategoryCacheManager {
     }
 
     /**
+     * 查询所有分类
+     */
+    @Cacheable(AdminCacheConst.Category.CATEGORY_TREE)
+    public List<CategoryTreeVO> queryAll(Integer categoryType) {
+        List<CategoryEntity> categoryEntityList = categoryMapper.queryByType(categoryType, false);
+        List<CategoryTreeVO> treeList = LocalBeanUtil.copyList(categoryEntityList, CategoryTreeVO.class);
+        return treeList;
+    }
+
+    /**
      * 查询类目 层级树
      * 优先查询缓存
      */

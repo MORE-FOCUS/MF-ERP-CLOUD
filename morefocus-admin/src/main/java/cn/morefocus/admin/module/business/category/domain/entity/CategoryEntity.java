@@ -40,6 +40,27 @@ public class CategoryEntity extends BaseEntity {
      * 是否禁用(1-禁用 0-启用)
      */
     private Boolean isDisabled;
+
+    /**
+     * 是否默认 true-默认
+     */
+    private Boolean isDefault;
+
+    /**
+     * 层级
+     */
+    private Integer level;
+
+    /**
+     * 是否叶子节点
+     */
+    private Boolean leaf;
+
+    /**
+     * 完整父级路径（英文逗号拼接）
+     * 根节点ID,一级ID,二级ID
+     */
+    private String path;
 }
 
 
