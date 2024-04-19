@@ -54,7 +54,7 @@ public class CategoryEntity extends BaseEntity {
     /**
      * 是否叶子节点
      */
-    private Boolean leaf;
+    private Boolean isLeaf;
 
     /**
      * 完整父级路径（英文逗号拼接）

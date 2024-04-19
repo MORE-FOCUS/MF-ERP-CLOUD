@@ -55,7 +55,7 @@ public class CategoryCacheManager {
     /**
      * 查询所有分类
      */
-    @Cacheable(AdminCacheConst.Category.CATEGORY_TREE)
+    @Cacheable(AdminCacheConst.Category.CATEGORY_LIST)
     public List<CategoryTreeVO> queryAll(Integer categoryType) {
         List<CategoryEntity> categoryEntityList = categoryMapper.queryByType(categoryType, false);
         List<CategoryTreeVO> treeList = LocalBeanUtil.copyList(categoryEntityList, CategoryTreeVO.class);

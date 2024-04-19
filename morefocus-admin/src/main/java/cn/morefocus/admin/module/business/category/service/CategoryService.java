@@ -51,7 +51,7 @@ public class CategoryService {
         Long pid = null == addForm.getPid() ? NumberUtils.LONG_ZERO : addForm.getPid();
         categoryEntity.setPid(pid);
         categoryEntity.setSortValue(null == addForm.getSortValue() ? 0 : addForm.getSortValue());
-        categoryEntity.setIsDeleted(false);
+        categoryEntity.setIsDeleted(Boolean.FALSE);
 
         // 保存数据
         categoryMapper.insert(categoryEntity);
@@ -75,8 +75,8 @@ public class CategoryService {
         CategoryEntity categoryEntity = LocalBeanUtil.copy(updateForm, CategoryEntity.class);
 
         /**
-         *   不更新类目类型
-         *    不更新父类id
+         *不更新类目类型
+         * 不更新父类id
          */
         Integer categoryType = optional.get().getCategoryType();
         categoryEntity.setCategoryType(categoryType);

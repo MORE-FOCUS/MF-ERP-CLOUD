@@ -1,6 +1,5 @@
 package cn.morefocus.base.common.validator.enumeration;
 
-
 import cn.morefocus.base.common.enumeration.BaseEnum;
 
 import javax.validation.ConstraintValidator;
@@ -11,8 +10,6 @@ import java.util.stream.Stream;
 
 /**
  * 枚举类校验器
- *
- *
  */
 public class EnumValidator implements ConstraintValidator<CheckEnum, Object> {
 

@@ -39,4 +39,9 @@ public class CategoryAddForm {
     @NotNull(message = "禁用状态不能为空")
     private Boolean isDisabled;
 
+    /**
+     * 是否默认 true-默认
+     */
+    @NotNull(message = "是否默认不能为空")
+    private Boolean isDefault;
 }

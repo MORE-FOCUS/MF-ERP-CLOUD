@@ -46,6 +46,8 @@ public class AdminCacheConst extends CacheKeyConst {
         public static final String CATEGORY_SUB = "category_sub_cache";
 
         public static final String CATEGORY_TREE = "category_tree_cache";
+
+        public static final String CATEGORY_LIST = "category_list_cache";
     }
 
 }
