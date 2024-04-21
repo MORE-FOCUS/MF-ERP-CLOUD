@@ -4,7 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.morefocus.base.common.constant.StringConst;
 import cn.morefocus.base.common.domain.RequestUser;
 import cn.morefocus.base.common.util.LocalIpUtil;
-import cn.morefocus.base.common.util.RequestContext;
+import cn.morefocus.base.common.util.SecurityContextHolder;
 import cn.morefocus.base.module.support.operatelog.annotation.OperateLog;
 import cn.morefocus.base.module.support.operatelog.domain.OperateLogEntity;
 import cn.morefocus.base.module.support.operatelog.mapper.OperateLogMapper;
@@ -158,7 +158,7 @@ public abstract class OperateLogAspect {
     private void submitLog(final JoinPoint joinPoint, final Throwable e) {
         HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
         //设置用户信息
-        RequestUser user = RequestContext.getRequestUser();
+        RequestUser user = SecurityContextHolder.getRequestUser();
         if (user == null) {
             return;
         }

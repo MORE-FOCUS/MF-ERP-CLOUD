@@ -15,8 +15,8 @@ import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.SystemEnvironment;
 import cn.morefocus.base.common.enumeration.SystemEnvironmentEnum;
 import cn.morefocus.base.common.enumeration.UserTypeEnum;
-import cn.morefocus.base.common.util.RequestContext;
 import cn.morefocus.base.common.util.ResponseUtil;
+import cn.morefocus.base.common.util.SecurityContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
@@ -96,7 +96,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 
             // --------------- 第三步： 校验 权限 ---------------
 
-            RequestContext.setRequestUser(requestEmployee);
+            SecurityContextHolder.setRequestUser(requestEmployee);
             if (SaStrategy.instance.isAnnotationPresent.apply(method, SaIgnore.class)) {
                 return true;
             }
@@ -173,7 +173,7 @@ public class AdminInterceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         // 清除上下文
-        RequestContext.remove();
+        SecurityContextHolder.remove();
 
         // 开发环境，关闭 sa token 的临时切换用户
         if (systemEnvironment.getCurrentEnvironment() == SystemEnvironmentEnum.DEV) {

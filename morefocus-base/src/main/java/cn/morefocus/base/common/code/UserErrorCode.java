@@ -12,7 +12,7 @@ public enum UserErrorCode implements ErrorCode {
 
     PARAM_ERROR(30001, "参数错误"),
 
-    DATA_NOT_EXIST(30002, "左翻右翻，数据竟然找不到了~"),
+    DATA_NOT_EXIST(30002, "数据不存在"),
 
     ALREADY_EXIST(30003, "数据已存在了呀~"),
 

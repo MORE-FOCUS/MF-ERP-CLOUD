@@ -1,6 +1,6 @@
 package cn.morefocus.base.handler;
 
-import cn.morefocus.base.common.util.RequestContext;
+import cn.morefocus.base.common.util.SecurityContextHolder;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
@@ -19,15 +19,15 @@ public class DefaultDataFillHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         this.setFieldValByName("createTime", LocalDateTime.now(), metaObject);
-        this.setFieldValByName("createBy", RequestContext.getUserId(), metaObject);
-        this.setFieldValByName("createByName", RequestContext.getUserName(), metaObject);
+        this.setFieldValByName("createBy", SecurityContextHolder.getUserId(), metaObject);
+        this.setFieldValByName("createByName", SecurityContextHolder.getUserName(), metaObject);
         updateFill(metaObject);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
         this.setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
-        this.setFieldValByName("updateBy", RequestContext.getUserId(), metaObject);
-        this.setFieldValByName("updateByName", RequestContext.getUserName(), metaObject);
+        this.setFieldValByName("updateBy", SecurityContextHolder.getUserId(), metaObject);
+        this.setFieldValByName("updateByName", SecurityContextHolder.getUserName(), metaObject);
     }
 }

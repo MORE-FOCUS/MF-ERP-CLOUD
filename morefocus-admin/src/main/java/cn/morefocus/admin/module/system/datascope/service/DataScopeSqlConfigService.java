@@ -7,7 +7,7 @@ import cn.morefocus.admin.module.system.datascope.constant.DataScopeViewTypeEnum
 import cn.morefocus.admin.module.system.datascope.constant.DataScopeWhereInTypeEnum;
 import cn.morefocus.admin.module.system.datascope.domain.DataScopeSqlConfig;
 import cn.morefocus.admin.module.system.datascope.strategy.AbstractDataScopeStrategy;
-import cn.morefocus.base.common.util.RequestContext;
+import cn.morefocus.base.common.util.SecurityContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -87,7 +87,7 @@ public class DataScopeSqlConfigService {
     public String getJoinSql(Map<String, Object> paramMap, DataScopeSqlConfig sqlConfigDTO) {
         DataScopeTypeEnum dataScopeTypeEnum = sqlConfigDTO.getDataScopeType();
         String joinSql = sqlConfigDTO.getJoinSql();
-        Long employeeId = RequestContext.getUserId();
+        Long employeeId = SecurityContextHolder.getUserId();
         if (employeeId == null) {
             return "";
         }
@@ -113,8 +113,7 @@ public class DataScopeSqlConfigService {
                 return "";
             }
             String employeeIds = StringUtils.join(canViewEmployeeIds, ",");
-            String sql = joinSql.replaceAll(EMPLOYEE_PARAM, employeeIds);
-            return sql;
+            return joinSql.replaceAll(EMPLOYEE_PARAM, employeeIds);
         }
 
         if (DataScopeWhereInTypeEnum.DEPARTMENT == sqlConfigDTO.getDataScopeWhereInType()) {
@@ -123,8 +122,7 @@ public class DataScopeSqlConfigService {
                 return "";
             }
             String deptIds = StringUtils.join(canViewDepartmentIds, ",");
-            String sql = joinSql.replaceAll(DEPARTMENT_PARAM, deptIds);
-            return sql;
+            return joinSql.replaceAll(DEPARTMENT_PARAM, deptIds);
         }
         return "";
     }

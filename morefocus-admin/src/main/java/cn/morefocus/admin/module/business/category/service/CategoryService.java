@@ -9,6 +9,7 @@ import cn.morefocus.admin.module.business.category.domain.vo.CategoryVO;
 import cn.morefocus.admin.module.business.category.manager.CategoryCacheManager;
 import cn.morefocus.admin.module.business.category.mapper.CategoryMapper;
 import cn.morefocus.base.common.code.UserErrorCode;
+import cn.morefocus.base.common.constant.StringConst;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import com.google.common.collect.Lists;
@@ -17,6 +18,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,8 +49,22 @@ public class CategoryService {
             return res;
         }
 
-        // 没有父类则使用默认父类
-        Long pid = null == addForm.getPid() ? NumberUtils.LONG_ZERO : addForm.getPid();
+        //全路径
+        Long pid;
+        if (null == addForm.getPid()) {
+            categoryEntity.setPath(NumberUtils.LONG_ZERO.toString());
+            pid = NumberUtils.LONG_ZERO;
+        } else {
+            pid = addForm.getPid();
+            CategoryEntity parentCategoryEntity = categoryMapper.selectById(pid);
+            categoryEntity.setPath(parentCategoryEntity.getPath() + StringConst.SEPARATOR + pid);
+        }
+
+        //层级
+        categoryEntity.setLevel(categoryEntity.getPath().split(StringConst.SEPARATOR).length + 1);
+
+        //是否叶子节点
+        categoryEntity.setIsLeaf(Boolean.TRUE);
         categoryEntity.setPid(pid);
         categoryEntity.setSortValue(null == addForm.getSortValue() ? 0 : addForm.getSortValue());
         categoryEntity.setIsDeleted(Boolean.FALSE);
@@ -63,7 +79,7 @@ public class CategoryService {
 
     /**
      * 更新类目
-     * 不能更新父级类目
+     * 不更新类型
      */
     public R<String> update(CategoryUpdateForm updateForm) {
         // 校验类目
@@ -74,18 +90,31 @@ public class CategoryService {
         }
         CategoryEntity categoryEntity = LocalBeanUtil.copy(updateForm, CategoryEntity.class);
 
-        /**
-         *不更新类目类型
-         * 不更新父类id
-         */
         Integer categoryType = optional.get().getCategoryType();
         categoryEntity.setCategoryType(categoryType);
-        categoryEntity.setPid(optional.get().getPid());
 
         R<String> r = this.checkCategory(categoryEntity, true);
         if (!r.getOk()) {
             return r;
         }
+
+        //全路径
+        Long pid;
+        if (null == updateForm.getPid()) {
+            pid = NumberUtils.LONG_ZERO;
+            categoryEntity.setPath(NumberUtils.LONG_ZERO.toString());
+        } else {
+            pid = updateForm.getPid();
+            CategoryEntity parentCategoryEntity = categoryMapper.selectById(pid);
+            categoryEntity.setPath(parentCategoryEntity.getPath() + StringConst.SEPARATOR + pid);
+        }
+
+        //层级
+        categoryEntity.setLevel(categoryEntity.getPath().split(StringConst.SEPARATOR).length + 1);
+
+        //是否叶子节点,判断是否有子节点
+        categoryEntity.setIsLeaf(CollectionUtils.isEmpty(categoryMapper.queryByPid(Collections.singletonList(categoryEntity.getCategoryId()), Boolean.TRUE)) ? Boolean.TRUE : Boolean.FALSE);
+        categoryEntity.setPid(pid);
         categoryMapper.updateById(categoryEntity);
 
         // 更新缓存
@@ -102,12 +131,12 @@ public class CategoryService {
         Integer categoryType = categoryEntity.getCategoryType();
         if (null != pid) {
             if (Objects.equals(categoryEntity.getCategoryId(), pid)) {
-                return R.userErrorParam("父级类目怎么和自己相同了");
+                return R.userErrorParam("父级类目不能为自己");
             }
             if (!Objects.equals(pid, NumberUtils.LONG_ZERO)) {
                 Optional<CategoryEntity> optional = categoryQueryService.queryCategory(pid);
                 if (!optional.isPresent()) {
-                    return R.error(UserErrorCode.DATA_NOT_EXIST, "父级类目不存在~");
+                    return R.error(UserErrorCode.DATA_NOT_EXIST, "父级类目不存在");
                 }
 
                 CategoryEntity parent = optional.get();

@@ -9,7 +9,7 @@ import cn.morefocus.admin.module.business.oa.bank.service.BankService;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.RequestUser;
-import cn.morefocus.base.common.util.RequestContext;
+import cn.morefocus.base.common.util.SecurityContextHolder;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
@@ -49,7 +49,7 @@ public class BankController {
     @Operation(summary = "新建银行信息 @author 善逸")
     @PostMapping("/oa/bank/create")
     public R<String> createBank(@RequestBody @Valid BankCreateForm createVO) {
-        RequestUser requestUser = RequestContext.getRequestUser();
+        RequestUser requestUser = SecurityContextHolder.getRequestUser();
         createVO.setCreateUserId(requestUser.getUserId());
         createVO.setCreateUserName(requestUser.getUserName());
         return bankService.createBank(createVO);

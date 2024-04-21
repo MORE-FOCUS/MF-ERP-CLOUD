@@ -10,7 +10,7 @@ import cn.morefocus.admin.module.business.oa.notice.service.NoticeService;
 import cn.morefocus.admin.module.business.oa.notice.service.NoticeTypeService;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
-import cn.morefocus.base.common.util.RequestContext;
+import cn.morefocus.base.common.util.SecurityContextHolder;
 import cn.morefocus.base.module.support.operatelog.annotation.OperateLog;
 import cn.morefocus.base.module.support.repeatsubmit.annoation.RepeatSubmit;
 import io.swagger.v3.oas.annotations.Operation;
@@ -79,7 +79,7 @@ public class NoticeController {
     @RepeatSubmit
     @SaCheckPermission("oa:notice:add")
     public R<String> add(@RequestBody @Valid NoticeAddForm addForm) {
-        addForm.setCreateUserId(RequestContext.getUserId());
+        addForm.setCreateUserId(SecurityContextHolder.getUserId());
         return noticeService.add(addForm);
     }
 
@@ -111,7 +111,7 @@ public class NoticeController {
     @GetMapping("/oa/notice/employee/view/{noticeId}")
     public R<NoticeDetailVO> view(@PathVariable Long noticeId, HttpServletRequest request) {
         return noticeEmployeeService.view(
-                RequestContext.getUserId(),
+                SecurityContextHolder.getUserId(),
                 noticeId,
                 ServletUtil.getClientIP(request),
                 request.getHeader("User-Agent")
@@ -121,7 +121,7 @@ public class NoticeController {
     @Operation(summary = "【员工】通知公告-查询全部 ")
     @PostMapping("/oa/notice/employee/query")
     public R<PageResult<NoticeEmployeeVO>> queryEmployeeNotice(@RequestBody @Valid NoticeEmployeeQueryForm noticeEmployeeQueryForm) {
-        return noticeEmployeeService.queryList(RequestContext.getUserId(), noticeEmployeeQueryForm);
+        return noticeEmployeeService.queryList(SecurityContextHolder.getUserId(), noticeEmployeeQueryForm);
     }
 
     @Operation(summary = "【员工】通知公告-查询 查看记录 ")

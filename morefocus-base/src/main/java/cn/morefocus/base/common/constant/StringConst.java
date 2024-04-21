@@ -13,6 +13,11 @@ public class StringConst {
     public static final String SEPARATOR = ",";
 
     /**
+     * 全局通用分隔符
+     */
+    public static final String SEPARATOR_POINT = ".";
+
+    /**
      * 全局通用分隔符 下划线
      */
     public static final String UNDERLINE = "_";

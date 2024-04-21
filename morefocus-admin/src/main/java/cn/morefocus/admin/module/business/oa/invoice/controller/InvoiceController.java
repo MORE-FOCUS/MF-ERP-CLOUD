@@ -9,7 +9,7 @@ import cn.morefocus.admin.module.business.oa.invoice.service.InvoiceService;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.RequestUser;
-import cn.morefocus.base.common.util.RequestContext;
+import cn.morefocus.base.common.util.SecurityContextHolder;
 import cn.morefocus.base.module.support.operatelog.annotation.OperateLog;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -46,7 +46,7 @@ public class InvoiceController {
     @Operation(summary = "新建发票信息 @author 善逸")
     @PostMapping("/oa/invoice/create")
     public R<String> createInvoice(@RequestBody @Valid InvoiceAddForm createVO) {
-        RequestUser requestUser = RequestContext.getRequestUser();
+        RequestUser requestUser = SecurityContextHolder.getRequestUser();
         createVO.setCreateUserId(requestUser.getUserId());
         createVO.setCreateUserName(requestUser.getUserName());
         return invoiceService.createInvoice(createVO);

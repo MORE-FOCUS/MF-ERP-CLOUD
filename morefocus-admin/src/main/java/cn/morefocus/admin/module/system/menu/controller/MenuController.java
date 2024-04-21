@@ -9,7 +9,7 @@ import cn.morefocus.admin.module.system.menu.domain.vo.MenuVO;
 import cn.morefocus.admin.module.system.menu.service.MenuService;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.RequestUrlVO;
-import cn.morefocus.base.common.util.RequestContext;
+import cn.morefocus.base.common.util.SecurityContextHolder;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
@@ -50,7 +50,7 @@ public class MenuController {
     @PostMapping("/menu/add")
     @SaCheckPermission("system:menu:add")
     public R<String> addMenu(@RequestBody @Valid MenuAddForm menuAddForm) {
-        menuAddForm.setCreateUserId(RequestContext.getUserId());
+        menuAddForm.setCreateUserId(SecurityContextHolder.getUserId());
         return menuService.addMenu(menuAddForm);
     }
 
@@ -58,7 +58,7 @@ public class MenuController {
     @PostMapping("/menu/update")
     @SaCheckPermission("system:menu:update")
     public R<String> updateMenu(@RequestBody @Valid MenuUpdateForm menuUpdateForm) {
-        menuUpdateForm.setUpdateUserId(RequestContext.getUserId());
+        menuUpdateForm.setUpdateUserId(SecurityContextHolder.getUserId());
         return menuService.updateMenu(menuUpdateForm);
     }
 
@@ -66,7 +66,7 @@ public class MenuController {
     @GetMapping("/menu/batchDelete")
     @SaCheckPermission("system:menu:batchDelete")
     public R<String> batchDeleteMenu(@RequestParam("menuIdList") List<Long> menuIdList) {
-        return menuService.batchDeleteMenu(menuIdList, RequestContext.getUserId(), RequestContext.getUserName());
+        return menuService.batchDeleteMenu(menuIdList, SecurityContextHolder.getUserId(), SecurityContextHolder.getUserName());
     }
 
     @Operation(summary = "获取所有请求路径")

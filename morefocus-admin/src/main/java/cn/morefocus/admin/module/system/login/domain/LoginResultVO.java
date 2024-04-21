@@ -3,6 +3,7 @@ package cn.morefocus.admin.module.system.login.domain;
 import cn.morefocus.admin.module.system.menu.domain.vo.MenuVO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * 登录结果信息
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class LoginResultVO extends RequestEmployee {
 

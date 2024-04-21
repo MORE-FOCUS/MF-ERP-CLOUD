@@ -5,11 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 请求用户  工具类
- *
- *
  */
 @Slf4j
-public class RequestContext {
+public class SecurityContextHolder {
 
     private static final ThreadLocal<RequestUser> REQUEST_THREAD_LOCAL = new ThreadLocal<>();
 

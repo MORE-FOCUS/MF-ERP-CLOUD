@@ -7,7 +7,7 @@ import cn.morefocus.admin.module.system.employee.domain.vo.EmployeeVO;
 import cn.morefocus.admin.module.system.employee.service.EmployeeService;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
-import cn.morefocus.base.common.util.RequestContext;
+import cn.morefocus.base.common.util.SecurityContextHolder;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
@@ -93,7 +93,7 @@ public class EmployeeController {
     @Operation(summary = "修改密码")
     @PostMapping("/employee/update/password")
     public R<String> updatePassword(@Valid @RequestBody EmployeeUpdatePasswordForm updatePasswordForm) {
-        updatePasswordForm.setEmployeeId(RequestContext.getUserId());
+        updatePasswordForm.setEmployeeId(SecurityContextHolder.getUserId());
         return employeeService.updatePassword(updatePasswordForm);
     }
 

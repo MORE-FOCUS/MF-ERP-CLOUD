@@ -3,6 +3,7 @@ package cn.morefocus.admin.module.system.datascope;
 import cn.hutool.core.util.StrUtil;
 import cn.morefocus.admin.module.system.datascope.domain.DataScopeSqlConfig;
 import cn.morefocus.admin.module.system.datascope.service.DataScopeSqlConfigService;
+import cn.morefocus.base.common.constant.StringConst;
 import cn.morefocus.base.common.domain.DataScopePlugin;
 import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
@@ -40,23 +41,23 @@ public class MyBatisPlugin extends DataScopePlugin {
         BoundSql boundSql = mappedStatement.getBoundSql(parameter);
         String originalSql = boundSql.getSql().trim();
         String id = mappedStatement.getId();
-        List<String> methodStrList = StrUtil.split(id, ".");
+        List<String> methodStrList = StrUtil.split(id, StringConst.SEPARATOR_POINT);
         String path = methodStrList.get(methodStrList.size() - 2) + "." + methodStrList.get(methodStrList.size() - 1);
-        DataScopeSqlConfigService dataScopeSqlConfigService = this.dataScopeSqlConfigService();
-        if (dataScopeSqlConfigService == null) {
+        DataScopeSqlConfigService dataScopeSqlConfigService = this.getDataScopeSqlConfigService();
+        if (null == dataScopeSqlConfigService) {
             return invocation.proceed();
         }
-        DataScopeSqlConfig sqlConfigDTO = dataScopeSqlConfigService.getSqlConfig(path);
-        if (sqlConfigDTO != null) {
-            Map<String, Object> paramMap = this.getParamList(sqlConfigDTO.getParamName(), parameter);
-            BoundSql newBoundSql = copyFromBoundSql(mappedStatement, boundSql, this.joinSql(originalSql, paramMap, sqlConfigDTO));
+
+        DataScopeSqlConfig config = dataScopeSqlConfigService.getSqlConfig(path);
+        if (null != config) {
+            Map<String, Object> paramMap = this.getParamList(config.getParamName(), parameter);
+            BoundSql newBoundSql = copyFromBoundSql(mappedStatement, boundSql, this.joinSql(originalSql, paramMap, config));
             ParameterMap map = mappedStatement.getParameterMap();
             MappedStatement newMs = copyFromMappedStatement(mappedStatement, new BoundSqlSqlSource(newBoundSql), map);
             invocation.getArgs()[0] = newMs;
         }
 
-        Object obj = invocation.proceed();
-        return obj;
+        return invocation.proceed();
     }
 
     private Map<String, Object> getParamList(String paramName, Object parameter) {
@@ -79,15 +80,13 @@ public class MyBatisPlugin extends DataScopePlugin {
         return paramMap;
     }
 
-    private String joinSql(String sql, Map<String, Object> paramMap, DataScopeSqlConfig sqlConfigDTO) {
-        if (null == sqlConfigDTO) {
-            return sql;
-        }
-        String appendSql = this.dataScopeSqlConfigService().getJoinSql(paramMap, sqlConfigDTO);
+    private String joinSql(String sql, Map<String, Object> paramMap, DataScopeSqlConfig config) {
+        String appendSql = this.getDataScopeSqlConfigService().getJoinSql(paramMap, config);
         if (StringUtils.isEmpty(appendSql)) {
             return sql;
         }
-        Integer appendSqlWhereIndex = sqlConfigDTO.getWhereIndex();
+
+        Integer appendSqlWhereIndex = config.getWhereIndex();
         String where = "where";
         String order = "order by";
         String group = "group by";
@@ -114,8 +113,8 @@ public class MyBatisPlugin extends DataScopePlugin {
         return sql;
     }
 
-    public DataScopeSqlConfigService dataScopeSqlConfigService() {
-        return (DataScopeSqlConfigService) applicationContext.getBean("dataScopeSqlConfigService");
+    public DataScopeSqlConfigService getDataScopeSqlConfigService() {
+        return applicationContext.getBean(DataScopeSqlConfigService.class);
     }
 
     public class BoundSqlSqlSource implements SqlSource {
