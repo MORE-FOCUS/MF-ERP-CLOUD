@@ -9,8 +9,6 @@ import java.lang.annotation.Target;
 
 /**
  * 枚举类字段属性的 自定义 swagger 注解
- *
- *
  */
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)

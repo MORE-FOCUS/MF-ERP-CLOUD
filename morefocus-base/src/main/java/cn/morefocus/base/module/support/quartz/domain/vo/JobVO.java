@@ -1,6 +1,6 @@
 package cn.morefocus.base.module.support.quartz.domain.vo;
 
-import cn.morefocus.base.common.domain.BaseVo;
+import cn.morefocus.base.common.domain.BaseVO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class JobVO extends BaseVo {
+public class JobVO extends BaseVO {
     /**
      * 任务ID
      */

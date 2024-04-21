@@ -1,10 +1,10 @@
 package cn.morefocus.admin.module.business.category.service;
 
+import cn.hutool.core.lang.tree.Tree;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.domain.form.CategoryAddForm;
 import cn.morefocus.admin.module.business.category.domain.form.CategoryTreeQueryForm;
 import cn.morefocus.admin.module.business.category.domain.form.CategoryUpdateForm;
-import cn.morefocus.admin.module.business.category.domain.vo.CategoryTreeVO;
 import cn.morefocus.admin.module.business.category.domain.vo.CategoryVO;
 import cn.morefocus.admin.module.business.category.manager.CategoryCacheManager;
 import cn.morefocus.admin.module.business.category.mapper.CategoryMapper;
@@ -156,13 +156,12 @@ public class CategoryService {
      * 根据父级id 查询所有子类 返回层级树
      * 如果父类id 为空 返回所有类目层级
      */
-    public R<List<CategoryTreeVO>> queryAll(CategoryTreeQueryForm queryForm) {
+    public R<List<CategoryVO>> queryAll(CategoryTreeQueryForm queryForm) {
         if (null == queryForm.getCategoryType()) {
             return R.userErrorParam("类目类型不能为空");
         }
 
-        queryForm.setPid(NumberUtils.LONG_ZERO);
-        List<CategoryTreeVO> treeList = categoryCacheManager.queryCategoryTree(queryForm.getPid(), queryForm.getCategoryType());
+        List<CategoryVO> treeList = categoryCacheManager.queryAll(queryForm.getCategoryType());
         return R.ok(treeList);
     }
 
@@ -170,15 +169,15 @@ public class CategoryService {
      * 根据父级id 查询所有子类 返回层级树
      * 如果父类id 为空 返回所有类目层级
      */
-    public R<List<CategoryTreeVO>> queryTree(CategoryTreeQueryForm queryForm) {
+    public R<List<Tree<Long>>> queryTree(CategoryTreeQueryForm queryForm) {
         if (null == queryForm.getPid()) {
             if (null == queryForm.getCategoryType()) {
                 return R.userErrorParam("类目类型不能为空");
             }
             queryForm.setPid(NumberUtils.LONG_ZERO);
         }
-        List<CategoryTreeVO> treeList = categoryCacheManager.queryCategoryTree(queryForm.getPid(), queryForm.getCategoryType());
-        return R.ok(treeList);
+
+        return R.ok(categoryCacheManager.queryCategoryTree(queryForm.getPid(), queryForm.getCategoryType()));
     }
 
     /**

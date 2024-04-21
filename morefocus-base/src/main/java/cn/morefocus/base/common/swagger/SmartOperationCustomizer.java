@@ -15,10 +15,7 @@ import java.util.List;
 
 /**
  * 权限、接口加解密等
- *
- *
  */
-
 public class SmartOperationCustomizer implements OperationCustomizer {
 
     @Override
@@ -52,7 +49,6 @@ public class SmartOperationCustomizer implements OperationCustomizer {
         return operation;
     }
 
-
     private List<String> getPermission(HandlerMethod handlerMethod) {
         List<String> values = new ArrayList<>();
 
@@ -75,7 +71,6 @@ public class SmartOperationCustomizer implements OperationCustomizer {
             permissionStringBuilder.insert(0, "<font style=\"color:red\" class=\"light-red\">权限校验：</font></br>");
             values.add(permissionStringBuilder.toString());
         }
-
 
         StringBuilder roleStringBuilder = new StringBuilder();
         SaCheckRole classCheckRole = handlerMethod.getBeanType().getAnnotation(SaCheckRole.class);

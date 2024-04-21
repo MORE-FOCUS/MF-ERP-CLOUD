@@ -1,11 +1,11 @@
 package cn.morefocus.admin.module.business.category.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
+import cn.hutool.core.lang.tree.Tree;
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.category.domain.form.CategoryAddForm;
 import cn.morefocus.admin.module.business.category.domain.form.CategoryTreeQueryForm;
 import cn.morefocus.admin.module.business.category.domain.form.CategoryUpdateForm;
-import cn.morefocus.admin.module.business.category.domain.vo.CategoryTreeVO;
 import cn.morefocus.admin.module.business.category.domain.vo.CategoryVO;
 import cn.morefocus.admin.module.business.category.service.CategoryService;
 import cn.morefocus.base.common.domain.R;
@@ -29,15 +29,15 @@ public class CategoryController {
 
     @Operation(summary = "查询类目列表 ")
     @PostMapping("/category/queryAll")
-    @SaCheckPermission("business:category:tree")
-    public R<List<CategoryTreeVO>> queryAll(@RequestBody @Valid CategoryTreeQueryForm queryForm) {
+    @SaCheckPermission("business:category:list")
+    public R<List<CategoryVO>> queryAll(@RequestBody @Valid CategoryTreeQueryForm queryForm) {
         return categoryService.queryAll(queryForm);
     }
 
     @Operation(summary = "查询类目层级树 ")
     @PostMapping("/category/tree")
     @SaCheckPermission("business:category:tree")
-    public R<List<CategoryTreeVO>> queryTree(@RequestBody @Valid CategoryTreeQueryForm queryForm) {
+    public R<List<Tree<Long>>> queryTree(@RequestBody @Valid CategoryTreeQueryForm queryForm) {
         return categoryService.queryTree(queryForm);
     }
 

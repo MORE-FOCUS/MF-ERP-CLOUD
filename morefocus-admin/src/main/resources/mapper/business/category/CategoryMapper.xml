@@ -3,12 +3,14 @@
 <mapper namespace="cn.morefocus.admin.module.business.category.mapper.CategoryMapper">
 
     <!-- 根据父级id 查询子类 -->
-    <select id="queryByParentId"
+    <select id="queryByPid"
             resultType="cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity">
         SELECT * FROM t_category
         WHERE
         pid IN
-        <foreach collection="pidList" open="(" separator="," close=")" item="id">#{id}</foreach>
+        <foreach collection="pidList" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
         AND is_deleted = #{isDeleted}
         ORDER BY sort_value ASC
     </select>

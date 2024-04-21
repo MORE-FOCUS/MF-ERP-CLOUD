@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.business.tenant.domain.vo;
 
-import cn.morefocus.base.common.domain.BaseVo;
+import cn.morefocus.base.common.domain.BaseVO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,7 +14,7 @@ import java.time.LocalDate;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class TenantVO extends BaseVo {
+public class TenantVO extends BaseVO {
 
     private Long id;
 

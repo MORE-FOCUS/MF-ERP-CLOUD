@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.business.tenant.domain.vo;
 
-import cn.morefocus.base.common.domain.BaseVo;
+import cn.morefocus.base.common.domain.BaseVO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class TenantIndustryVO extends BaseVo {
+public class TenantIndustryVO extends BaseVO {
     private Long id;
     private String name;
     private String icon;

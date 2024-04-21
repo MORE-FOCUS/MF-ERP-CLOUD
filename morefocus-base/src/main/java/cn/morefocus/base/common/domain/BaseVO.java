@@ -11,31 +11,31 @@ import java.time.LocalDateTime;
  *
  */
 @Data
-public class BaseVo {
+public class BaseVO {
     /**
      * 部门ID
      */
     private Long deptId;
 
-    /**
-     * 创建人ID
-     */
-    private Long createBy;
-
-    /**
-     * 创建人
-     */
-    private String createByName;
-
-    /**
-     * 更新人ID
-     */
-    private Long updateBy;
-
-    /**
-     * 更新人名称
-     */
-    private String updateByName;
+//    /**
+//     * 创建人ID
+//     */
+//    private Long createBy;
+//
+//    /**
+//     * 创建人
+//     */
+//    private String createByName;
+//
+//    /**
+//     * 更新人ID
+//     */
+//    private Long updateBy;
+//
+//    /**
+//     * 更新人名称
+//     */
+//    private String updateByName;
 
     /**
      * 排序值

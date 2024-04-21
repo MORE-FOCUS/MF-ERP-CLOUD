@@ -1,22 +1,21 @@
 package cn.morefocus.admin.module.business.category.manager;
 
+import cn.hutool.core.lang.tree.Tree;
+import cn.hutool.core.lang.tree.TreeNodeConfig;
+import cn.hutool.core.lang.tree.TreeUtil;
 import cn.morefocus.admin.constant.AdminCacheConst;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
-import cn.morefocus.admin.module.business.category.domain.vo.CategoryTreeVO;
+import cn.morefocus.admin.module.business.category.domain.vo.CategoryVO;
 import cn.morefocus.admin.module.business.category.mapper.CategoryMapper;
-import cn.morefocus.base.common.constant.StringConst;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * 类目 查询 缓存
@@ -31,7 +30,7 @@ public class CategoryCacheManager {
     /**
      * 根据类目id 移除缓存
      */
-    @CacheEvict(value = {AdminCacheConst.Category.CATEGORY_ENTITY, AdminCacheConst.Category.CATEGORY_SUB, AdminCacheConst.Category.CATEGORY_TREE}, allEntries = true)
+    @CacheEvict(value = {AdminCacheConst.Category.CATEGORY_ENTITY, AdminCacheConst.Category.CATEGORY_SUB, AdminCacheConst.Category.CATEGORY_TREE, AdminCacheConst.Category.CATEGORY_LIST}, allEntries = true)
     public void removeCache() {
         log.info("clear CATEGORY ,CATEGORY_SUB ,CATEGORY_TREE");
     }
@@ -49,17 +48,16 @@ public class CategoryCacheManager {
      */
     @Cacheable(AdminCacheConst.Category.CATEGORY_SUB)
     public List<CategoryEntity> querySubCategory(Long categoryId) {
-        return categoryMapper.queryByParentId(Lists.newArrayList(categoryId), false);
+        return categoryMapper.queryByPid(Lists.newArrayList(categoryId), false);
     }
 
     /**
      * 查询所有分类
      */
     @Cacheable(AdminCacheConst.Category.CATEGORY_LIST)
-    public List<CategoryTreeVO> queryAll(Integer categoryType) {
+    public List<CategoryVO> queryAll(Integer categoryType) {
         List<CategoryEntity> categoryEntityList = categoryMapper.queryByType(categoryType, false);
-        List<CategoryTreeVO> treeList = LocalBeanUtil.copyList(categoryEntityList, CategoryTreeVO.class);
-        return treeList;
+        return LocalBeanUtil.copyList(categoryEntityList, CategoryVO.class);
     }
 
     /**
@@ -67,44 +65,21 @@ public class CategoryCacheManager {
      * 优先查询缓存
      */
     @Cacheable(AdminCacheConst.Category.CATEGORY_TREE)
-    public List<CategoryTreeVO> queryCategoryTree(Long pid, Integer categoryType) {
-        List<CategoryEntity> allCategoryEntityList = categoryMapper.queryByType(categoryType, false);
+    public List<Tree<Long>> queryCategoryTree(Long pid, Integer categoryType) {
+        List<CategoryEntity> categoryList = categoryMapper.queryByType(categoryType, false);
 
-        List<CategoryEntity> categoryEntityList = allCategoryEntityList.stream().filter(e -> e.getPid().equals(pid)).collect(Collectors.toList());
-        List<CategoryTreeVO> treeList = LocalBeanUtil.copyList(categoryEntityList, CategoryTreeVO.class);
-        treeList.forEach(e -> {
-            e.setLabel(e.getCategoryName());
-            e.setValue(e.getCategoryId());
-            e.setCategoryFullName(e.getCategoryName());
-        });
-        // 递归设置子类
-        this.queryAndSetSubCategory(treeList, allCategoryEntityList);
-        return treeList;
-    }
+        TreeNodeConfig config = new TreeNodeConfig()
+                .setIdKey("value")
+                .setParentIdKey("pid")
+                .setNameKey("label")
+                .setChildrenKey("children")
+                .setWeightKey("sort");
 
-    /**
-     * 递归查询设置类目子类
-     * 从缓存查询子类
-     */
-    private void queryAndSetSubCategory(List<CategoryTreeVO> treeList, List<CategoryEntity> allCategoryEntityList) {
-        if (CollectionUtils.isEmpty(treeList)) {
-            return;
-        }
-        List<Long> pidList = treeList.stream().map(CategoryTreeVO::getValue).collect(Collectors.toList());
-        List<CategoryEntity> categoryEntityList = allCategoryEntityList.stream().filter(e -> pidList.contains(e.getPid())).collect(Collectors.toList());
-        Map<Long, List<CategoryEntity>> categorySubMap = categoryEntityList.stream().collect(Collectors.groupingBy(CategoryEntity::getPid));
-        treeList.forEach(e -> {
-            List<CategoryEntity> childrenEntityList = categorySubMap.getOrDefault(e.getValue(), Lists.newArrayList());
-            List<CategoryTreeVO> childrenVOList = LocalBeanUtil.copyList(childrenEntityList, CategoryTreeVO.class);
-            childrenVOList.forEach(item -> {
-                item.setLabel(item.getCategoryName());
-                item.setValue(item.getCategoryId());
-                item.setCategoryFullName(e.getCategoryFullName() + StringConst.SEPARATOR_SLASH + item.getCategoryName());
-            });
-            // 递归查询
-            this.queryAndSetSubCategory(childrenVOList, allCategoryEntityList);
-            e.setChildren(childrenVOList);
+        return TreeUtil.build(categoryList, pid, config, (node, tree) -> {
+            tree.setParentId(node.getPid());
+            tree.setId(node.getCategoryId());
+            tree.setName(node.getCategoryName());
+            tree.setWeight(node.getSortValue());
         });
     }
-
 }

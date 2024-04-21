@@ -3,8 +3,7 @@ package ${packageName};
 #foreach ($importClass in $importPackageList)
 $importClass
 #end
-import cn.morefocus.base.common.domain.BaseEntity;
-import cn.morefocus.base.common.domain.BaseVo;
+import cn.morefocus.base.common.domain.BaseVO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,7 +15,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ${name.upperCamel}VO extends BaseVo {
+public class ${name.upperCamel}VO extends BaseVO {
 
     private $!{primaryKeyJavaType} $!{primaryKeyFieldName};
 

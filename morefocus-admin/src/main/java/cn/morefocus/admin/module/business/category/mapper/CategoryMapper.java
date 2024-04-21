@@ -23,8 +23,8 @@ public interface CategoryMapper extends BaseMapper<CategoryEntity> {
      * @param isDeleted   删除标识
      * @return 列表
      */
-    List<CategoryEntity> queryByParentId(@Param("pidList") List<Long> pidList,
-                                         @Param("isDeleted") Boolean isDeleted);
+    List<CategoryEntity> queryByPid(@Param("pidList") List<Long> pidList,
+                                    @Param("isDeleted") Boolean isDeleted);
 
     /**
      * 根据父级id 类型 查询子类
