@@ -16,6 +16,7 @@ public class BaseEntity implements Serializable {
     /**
      * 部门ID
      */
+    @TableField(fill = FieldFill.INSERT)
     private Long deptId;
 
     /**

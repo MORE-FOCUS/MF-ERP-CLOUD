@@ -9,8 +9,6 @@ import lombok.EqualsAndHashCode;
 
 /**
  * 系统配置参数 实体类
- *
- *
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -35,4 +33,8 @@ public class ConfigEntity extends BaseEntity {
      */
     private String configName;
 
+    /**
+     * 分组
+     */
+    private String configGroup;
 }

@@ -35,7 +35,7 @@ public class RequestEmployee implements RequestUser {
     private Long deptId;
 
     @Schema(description = "部门名称")
-    private String departmentName;
+    private String deptName;
 
     @Schema(description = "是否为超管")
     private Boolean administratorFlag;
@@ -54,5 +54,10 @@ public class RequestEmployee implements RequestUser {
     @Override
     public String getUserName() {
         return actualName;
+    }
+
+    @Override
+    public Long getDeptId() {
+        return deptId;
     }
 }

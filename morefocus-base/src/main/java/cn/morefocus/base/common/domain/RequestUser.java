@@ -32,4 +32,8 @@ public interface RequestUser {
      */
     String getUserAgent();
 
+    /**
+     * 获取部门ID
+     */
+    Long getDeptId();
 }

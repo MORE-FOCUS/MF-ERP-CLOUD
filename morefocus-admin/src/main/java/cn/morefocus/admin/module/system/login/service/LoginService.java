@@ -240,7 +240,7 @@ public class LoginService implements StpInterface {
 
         // 部门信息
         DepartmentVO department = departmentService.getDepartmentById(employeeEntity.getDeptId());
-        requestEmployee.setDepartmentName(null == department ? StringConst.EMPTY : department.getName());
+        requestEmployee.setDeptName(null == department ? StringConst.EMPTY : department.getName());
 
         return requestEmployee;
     }

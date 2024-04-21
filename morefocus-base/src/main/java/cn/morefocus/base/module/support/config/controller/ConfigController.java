@@ -3,7 +3,7 @@ package cn.morefocus.base.module.support.config.controller;
 import cn.morefocus.base.common.controller.SupportBaseController;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.constant.SwaggerTagConst;
-import cn.morefocus.base.module.support.config.domain.ConfigVO;
+import cn.morefocus.base.module.support.config.domain.vo.ConfigVO;
 import cn.morefocus.base.module.support.config.service.ConfigService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -15,8 +15,6 @@ import javax.annotation.Resource;
 
 /**
  * 配置
- *
- *
  */
 @Tag(name = SwaggerTagConst.Support.CONFIG)
 @RestController

@@ -1,4 +1,4 @@
-package cn.morefocus.base.module.support.config.domain;
+package cn.morefocus.base.module.support.config.domain.bo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

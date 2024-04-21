@@ -98,7 +98,10 @@
                 :row-selection="{ selectedRowKeys: selectedRowKeyList, onChange: onSelectChange }"
 #end
         >
-            <template #bodyCell="{ text, record, column }">
+          <template #bodyCell="{record,index, column }">
+            <template v-if="column.dataIndex === 'no'">
+              {{ index + 1 }}
+            </template>
                 <template v-if="column.dataIndex === 'action'">
                     <div class="smart-table-operate">
 #if($insertAndUpdate.isSupportInsertAndUpdate)
@@ -150,12 +153,19 @@
     // ---------------------------- 表格列 ----------------------------
 
     const columns = ref([
+      {
+        title: '序号',
+        dataIndex: 'no',
+        width: 50,
+        align: 'center'
+      },
 #foreach ($field in $tableFields)
 #if($field.showFlag)
         {
             title: '$!{field.label}',
             dataIndex: '$!{field.fieldName}',
             ellipsis: $!{field.ellipsisFlag},
+          align: 'center',
 #if(${field.width} > 0)
             width: $!{field.width},
 #end
@@ -167,6 +177,7 @@
             title: '操作',
             dataIndex: 'action',
             fixed: 'right',
+          align: 'center',
             width: 90,
         },
 #end

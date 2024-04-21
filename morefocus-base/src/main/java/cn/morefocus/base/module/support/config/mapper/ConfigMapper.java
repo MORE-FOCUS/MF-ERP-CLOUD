@@ -1,7 +1,7 @@
 package cn.morefocus.base.module.support.config.mapper;
 
 import cn.morefocus.base.module.support.config.domain.ConfigEntity;
-import cn.morefocus.base.module.support.config.domain.ConfigQueryForm;
+import cn.morefocus.base.module.support.config.domain.bo.ConfigQueryForm;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Mapper;

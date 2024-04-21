@@ -35,6 +35,14 @@ public class SecurityContextHolder {
         return null == requestUser ? null : requestUser.getUserName();
     }
 
+    /**
+     * 获取用户部门ID
+     */
+    public static Long getDeptId() {
+        RequestUser requestUser = getRequestUser();
+        return null == requestUser ? null : requestUser.getDeptId();
+    }
+
     public static void remove() {
         REQUEST_THREAD_LOCAL.remove();
     }

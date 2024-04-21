@@ -1,6 +1,7 @@
 package cn.morefocus.base.common.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.Valid;
@@ -13,8 +14,9 @@ import java.util.List;
 /**
  * 分页基础参数
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class PageParam {
+public class PageParam extends BaseBo {
     /**
      * 页码 默认1
      */

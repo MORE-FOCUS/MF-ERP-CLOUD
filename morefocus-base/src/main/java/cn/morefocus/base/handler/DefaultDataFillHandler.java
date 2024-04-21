@@ -2,7 +2,6 @@ package cn.morefocus.base.handler;
 
 import cn.morefocus.base.common.util.SecurityContextHolder;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
 
@@ -12,8 +11,8 @@ import java.time.LocalDateTime;
  * 自动赋值
  * 创建时间/创建人ID/创建人名称
  * 更新时间/更新人ID/更新人名称
+ * 部门ID
  */
-@Slf4j
 @Component
 public class DefaultDataFillHandler implements MetaObjectHandler {
     @Override
@@ -21,6 +20,7 @@ public class DefaultDataFillHandler implements MetaObjectHandler {
         this.setFieldValByName("createTime", LocalDateTime.now(), metaObject);
         this.setFieldValByName("createBy", SecurityContextHolder.getUserId(), metaObject);
         this.setFieldValByName("createByName", SecurityContextHolder.getUserName(), metaObject);
+        this.setFieldValByName("deptId", SecurityContextHolder.getDeptId(), metaObject);
         updateFill(metaObject);
     }
 

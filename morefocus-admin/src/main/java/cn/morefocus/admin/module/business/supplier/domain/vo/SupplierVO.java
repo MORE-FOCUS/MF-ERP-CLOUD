@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 /**
  * 供应商 列表VO
@@ -17,10 +16,6 @@ import java.time.LocalDateTime;
 @Data
 public class SupplierVO extends BaseVO {
     private Long id;
-
-    private String remark;
-
-    private LocalDateTime updateTime;
 
     private String name;
 
