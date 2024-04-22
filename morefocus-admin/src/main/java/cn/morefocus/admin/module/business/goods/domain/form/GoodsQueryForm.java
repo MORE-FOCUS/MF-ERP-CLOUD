@@ -6,20 +6,17 @@ import cn.morefocus.base.common.swagger.SchemaEnum;
 import cn.morefocus.base.common.validator.enumeration.CheckEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
+import lombok.EqualsAndHashCode;
 
 /**
  * 商品 分页查询
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class GoodsQueryForm extends PageParam {
 
     @Schema(description = "商品分类")
     private Integer categoryId;
-
-    @Schema(description = "搜索词")
-    @Length(max = 30, message = "搜索词最多30字符")
-    private String searchWord;
 
     @SchemaEnum(GoodsStatusEnum.class)
     @CheckEnum(message = "商品状态错误", value = GoodsStatusEnum.class)

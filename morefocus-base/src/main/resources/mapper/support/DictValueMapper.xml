@@ -15,8 +15,8 @@
             <if test="query.dictKeyId != null">
                 AND dict_key_id = #{query.dictKeyId}
             </if>
-            <if test="query.searchWord != null and query.searchWord !=''">
-                AND (INSTR(value_code,#{query.searchWord}) or INSTR(value_name,#{query.searchWord}))
+            <if test="query.keywords != null and query.keywords !=''">
+                AND (INSTR(value_code,#{query.keywords}) or INSTR(value_name,#{query.keywords}))
             </if>
             <if test="query.isDeleted != null">
                 AND is_deleted = #{query.isDeleted}

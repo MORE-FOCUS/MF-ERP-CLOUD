@@ -2,8 +2,7 @@ package cn.morefocus.admin.module.business.supplier.domain.form;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 /**
  * 供应商 新建表单
@@ -13,17 +12,88 @@ import java.time.LocalDateTime;
  */
 @Data
 public class SupplierAddForm {
+    /**
+     * 名称
+     */
+    private String name;
 
-    @NotNull(message = "分类id 不能为空")
-    private Long id;
+    /**
+     * 全称
+     */
+    private String fullName;
 
-    @NotNull(message = "更新时间 不能为空")
-    private LocalDateTime updateTime;
+    /**
+     * 是否默认
+     */
+    private Boolean isDefault;
 
-    @NotNull(message = "是否删除 不能为空")
-    private Integer isDeleted;
+    /**
+     * 供应商编码
+     */
+    private String code;
 
-    @NotNull(message = "创建时间 不能为空")
-    private LocalDateTime createTime;
+    /**
+     * 类别id
+     */
+    private Long categoryId;
 
+    /**
+     * 联系人
+     */
+    private String contacts;
+
+    /**
+     * 联系地址
+     */
+    private String address;
+
+    /**
+     * 联系电话
+     */
+    private String phone;
+
+    /**
+     * 单位电话
+     */
+    private String workTelephone;
+
+    /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
+     * 微信号
+     */
+    private String wechat;
+
+    /**
+     * 邮编
+     */
+    private String postal;
+
+    /**
+     * QQ
+     */
+    private String qq;
+
+    /**
+     * 传真
+     */
+    private String tax;
+
+    /**
+     * 0-禁用 1-启用
+     */
+    private Boolean isDisabled;
+
+    /**
+     * 初始欠款
+     */
+    private BigDecimal originDebt;
+
+    /**
+     * 欠款
+     */
+    private BigDecimal debt;
 }

@@ -6,15 +6,15 @@ import cn.morefocus.base.common.validator.enumeration.CheckEnum;
 import cn.morefocus.base.module.support.file.constant.FileFolderTypeEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
 
 /**
  * 文件信息查询
- *
- *
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class FileQueryForm extends PageParam {
 
     @SchemaEnum(value = FileFolderTypeEnum.class, desc = "文件夹类型")

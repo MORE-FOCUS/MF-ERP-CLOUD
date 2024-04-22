@@ -1,6 +1,7 @@
 package cn.morefocus.base.common.domain;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ public class BaseBo {
     /**
      * 查询关键字
      */
+    @Length(max = 25, message = "搜索词最多25字符")
     private String keywords;
 
     /**

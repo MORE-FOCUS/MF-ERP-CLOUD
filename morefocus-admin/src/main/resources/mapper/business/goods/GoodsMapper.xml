@@ -14,8 +14,8 @@
     <select id="query" resultType="cn.morefocus.admin.module.business.goods.domain.vo.GoodsVO">
         SELECT * FROM t_goods
         <where>
-            <if test="query.searchWord != null and query.searchWord !=''">
-                INSTR(goods_name,#{query.searchWord})
+            <if test="query.keywords != null and query.keywords !=''">
+                INSTR(goods_name,#{query.keywords})
             </if>
             <if test="query.place != null">
                 AND place = #{query.place}

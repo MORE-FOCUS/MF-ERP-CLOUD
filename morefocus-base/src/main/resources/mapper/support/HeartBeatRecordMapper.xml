@@ -21,8 +21,8 @@
         FROM
         t_heart_beat_record
         <where>
-            <if test="query.startDate != null ">
-                AND DATE_FORMAT(heart_beat_time, '%Y-%m-%d') &gt;= #{query.startDate}
+            <if test="query.beginDate != null ">
+                AND DATE_FORMAT(heart_beat_time, '%Y-%m-%d') &gt;= #{query.beginDate}
             </if>
             <if test="query.endDate != null ">
                 AND DATE_FORMAT(heart_beat_time, '%Y-%m-%d') &lt;= #{query.endDate}

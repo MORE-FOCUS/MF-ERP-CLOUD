@@ -1,17 +1,14 @@
 package cn.morefocus.base.module.support.codegenerator.domain.form;
 
 import cn.morefocus.base.common.domain.PageParam;
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-
+import lombok.EqualsAndHashCode;
 
 /**
  * 查询表数据
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class TableQueryForm extends PageParam {
-
-    @Schema(description = "表名关键字")
-    private String tableNameKeywords;
 
 }

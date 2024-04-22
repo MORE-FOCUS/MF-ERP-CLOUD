@@ -6,14 +6,14 @@
         select *
         from t_feedback
         <where>
-            <if test="query.searchWord != null and query.searchWord != '' ">
+            <if test="query.keywords != null and query.keywords != '' ">
                 AND (
-                INSTR(feedback_content,#{query.searchWord})
-                OR INSTR(create_name,#{query.searchWord})
+                INSTR(feedback_content,#{query.keywords})
+                OR INSTR(create_name,#{query.keywords})
                 )
             </if>
-            <if test="query.startDate != null">
-                AND DATE_FORMAT(create_time, '%Y-%m-%d') &gt;= #{query.startDate}
+            <if test="query.beginDate != null">
+                AND DATE_FORMAT(create_time, '%Y-%m-%d') &gt;= #{query.beginDate}
             </if>
             <if test="query.endDate != null">
                 AND DATE_FORMAT(create_time, '%Y-%m-%d') &lt;= #{query.endDate}

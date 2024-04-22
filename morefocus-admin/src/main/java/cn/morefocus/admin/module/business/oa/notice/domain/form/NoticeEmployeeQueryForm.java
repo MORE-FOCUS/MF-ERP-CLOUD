@@ -3,6 +3,7 @@ package cn.morefocus.admin.module.business.oa.notice.domain.form;
 import cn.morefocus.base.common.domain.PageParam;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
 
@@ -10,11 +11,8 @@ import java.time.LocalDate;
  * 通知公告 员工查询表单
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class NoticeEmployeeQueryForm extends PageParam {
-
-    @Schema(description = "标题、作者、来源、文号")
-    private String keywords;
-
     @Schema(description = "分类")
     private Long noticeTypeId;
 

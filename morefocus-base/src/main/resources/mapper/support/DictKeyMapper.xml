@@ -12,8 +12,8 @@
     <select id="query" resultType="cn.morefocus.base.module.support.dict.domain.vo.DictKeyVO">
         SELECT * FROM t_dict_key
         <where>
-            <if test="query.searchWord != null and query.searchWord !=''">
-                AND (INSTR(key_code,#{query.searchWord}) or INSTR(key_name,#{query.searchWord}))
+            <if test="query.keywords != null and query.keywords !=''">
+                AND (INSTR(key_code,#{query.keywords}) or INSTR(key_name,#{query.keywords}))
             </if>
             <if test="query.isDeleted != null">
                 AND is_deleted = #{query.isDeleted}

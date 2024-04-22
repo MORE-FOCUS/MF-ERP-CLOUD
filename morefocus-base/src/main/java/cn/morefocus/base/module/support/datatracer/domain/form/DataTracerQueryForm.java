@@ -5,12 +5,14 @@ import cn.morefocus.base.common.swagger.SchemaEnum;
 import cn.morefocus.base.module.support.datatracer.constant.DataTracerTypeEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
 
 /**
  * 查询表单
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class DataTracerQueryForm extends PageParam {
 
@@ -20,7 +22,4 @@ public class DataTracerQueryForm extends PageParam {
     @Schema(description = "业务id")
     @NotNull(message = "业务id不能为空")
     private Long dataId;
-
-    @Schema(description = "关键字")
-    private String keywords;
 }

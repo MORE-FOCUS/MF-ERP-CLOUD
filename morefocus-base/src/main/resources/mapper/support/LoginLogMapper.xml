@@ -7,8 +7,8 @@
         *
         from t_login_log
         <where>
-            <if test="query.startDate != null and query.startDate != ''">
-                AND DATE_FORMAT(create_time, '%Y-%m-%d') &gt;= #{query.startDate}
+            <if test="query.beginDate != null and query.beginDate != ''">
+                AND DATE_FORMAT(create_time, '%Y-%m-%d') &gt;= #{query.beginDate}
             </if>
             <if test="query.endDate != null and query.endDate != ''">
                 AND DATE_FORMAT(create_time, '%Y-%m-%d') &lt;= #{query.endDate}
