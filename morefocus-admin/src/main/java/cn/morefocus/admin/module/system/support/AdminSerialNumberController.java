@@ -8,9 +8,10 @@ import cn.morefocus.base.common.util.LocalEnumUtil;
 import cn.morefocus.base.constant.SwaggerTagConst;
 import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberIdEnum;
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberEntity;
-import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberGenerateForm;
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberRecordEntity;
-import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberRecordQueryForm;
+import cn.morefocus.base.module.support.serialnumber.domain.bo.SerialNumberGenerateForm;
+import cn.morefocus.base.module.support.serialnumber.domain.bo.SerialNumberGenerateOneForm;
+import cn.morefocus.base.module.support.serialnumber.domain.bo.SerialNumberRecordQueryForm;
 import cn.morefocus.base.module.support.serialnumber.mapper.SerialNumberMapper;
 import cn.morefocus.base.module.support.serialnumber.service.SerialNumberRecordService;
 import cn.morefocus.base.module.support.serialnumber.strategy.SerialNumberService;
@@ -42,7 +43,18 @@ public class AdminSerialNumberController extends SupportBaseController {
     private SerialNumberRecordService serialNumberRecordService;
 
     @Operation(summary = "生成单号")
-    @PostMapping("/serialNumber/generate")
+    @PostMapping("/serial-number/generate-one")
+    @SaCheckPermission("support:serialNumber:generate")
+    public R<String> generateOne(@RequestBody @Valid SerialNumberGenerateOneForm generateForm) {
+        SerialNumberIdEnum serialNumberIdEnum = LocalEnumUtil.getEnumByValue(generateForm.getSerialNumberId(), SerialNumberIdEnum.class);
+        if (null == serialNumberIdEnum) {
+            return R.userErrorParam("SerialNumberId，不存在" + generateForm.getSerialNumberId());
+        }
+        return R.ok(serialNumberService.generate(serialNumberIdEnum));
+    }
+
+    @Operation(summary = "生成单号")
+    @PostMapping("/serial-number/generate")
     @SaCheckPermission("support:serialNumber:generate")
     public R<List<String>> generate(@RequestBody @Valid SerialNumberGenerateForm generateForm) {
         SerialNumberIdEnum serialNumberIdEnum = LocalEnumUtil.getEnumByValue(generateForm.getSerialNumberId(), SerialNumberIdEnum.class);
@@ -53,13 +65,13 @@ public class AdminSerialNumberController extends SupportBaseController {
     }
 
     @Operation(summary = "获取所有单号定义")
-    @GetMapping("/serialNumber/all")
+    @GetMapping("/serial-number/all")
     public R<List<SerialNumberEntity>> getAll() {
         return R.ok(serialNumberMapper.selectList(null));
     }
 
     @Operation(summary = "获取生成记录")
-    @PostMapping("/serialNumber/queryRecord")
+    @PostMapping("/serial-number/queryRecord")
     @SaCheckPermission("support:serialNumber:record")
     public R<PageResult<SerialNumberRecordEntity>> queryRecord(@RequestBody @Valid SerialNumberRecordQueryForm queryForm) {
         return R.ok(serialNumberRecordService.query(queryForm));

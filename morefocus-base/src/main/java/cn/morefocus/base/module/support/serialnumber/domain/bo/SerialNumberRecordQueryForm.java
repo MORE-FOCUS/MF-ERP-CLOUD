@@ -1,4 +1,4 @@
-package cn.morefocus.base.module.support.serialnumber.domain;
+package cn.morefocus.base.module.support.serialnumber.domain.bo;
 
 import cn.morefocus.base.common.domain.PageParam;
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -31,6 +31,11 @@ public class SupplierEntity extends BaseEntity {
     private String name;
 
     /**
+     * 全称
+     */
+    private String fullName;
+
+    /**
      * 是否默认
      */
     private Boolean isDefault;
@@ -91,9 +96,9 @@ public class SupplierEntity extends BaseEntity {
     private String tax;
 
     /**
-     * 0-禁用 1-启用
+     * 1-禁用 0-启用
      */
-    private Boolean state;
+    private Boolean isDisabled;
 
     /**
      * 初始欠款
@@ -101,7 +106,7 @@ public class SupplierEntity extends BaseEntity {
     private BigDecimal originDebt;
 
     /**
-     * 欠款
+     * 应付欠款
      */
     private BigDecimal debt;
 

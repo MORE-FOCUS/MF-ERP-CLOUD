@@ -1,4 +1,4 @@
-package cn.morefocus.base.module.support.serialnumber.domain;
+package cn.morefocus.base.module.support.serialnumber.domain.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SerialNumberLastGenerateBO {
+public class SerialNumberLastGenerateDTO {
 
     /**
      * 序号id
@@ -36,6 +36,4 @@ public class SerialNumberLastGenerateBO {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime lastTime;
-
-
 }

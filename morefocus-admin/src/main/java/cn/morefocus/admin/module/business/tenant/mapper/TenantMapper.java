@@ -29,5 +29,5 @@ public interface TenantMapper extends BaseMapper<TenantEntity> {
     /**
      * 更新禁用|启用状态
      */
-    void updateDisableFlag(@Param("id") Long id, @Param("isDisabled") Boolean isDisabled);
+    void updateIsDisabled(@Param("id") Long id, @Param("isDisabled") Boolean isDisabled);
 }

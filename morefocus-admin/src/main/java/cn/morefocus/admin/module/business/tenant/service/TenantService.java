@@ -104,7 +104,7 @@ public class TenantService {
     /**
      * 更新禁用/启用状态
      */
-    public R<String> updateDisableFlag(Long id) {
+    public R<String> updateIsDisabled(Long id) {
         if (null == id) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
@@ -112,7 +112,7 @@ public class TenantService {
         if (null == tenantEntity) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
-        tenantMapper.updateDisableFlag(id, !tenantEntity.getIsDisabled());
+        tenantMapper.updateIsDisabled(id, !tenantEntity.getIsDisabled());
 
         return R.ok();
     }

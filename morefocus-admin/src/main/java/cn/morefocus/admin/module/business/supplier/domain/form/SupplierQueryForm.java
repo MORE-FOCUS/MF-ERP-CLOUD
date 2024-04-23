@@ -13,5 +13,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class SupplierQueryForm extends PageParam {
-
+    /**
+     * 分类ID
+     */
+    private Long categoryId;
 }

@@ -5,16 +5,16 @@
     <select id="queryByPage" resultType="cn.morefocus.base.module.support.operatelog.domain.OperateLogEntity">
         select
         *
-        from t_operate_log
+        from t_operate_log t_operate_log
         <where>
             <if test="query.beginDate != null and query.beginDate != ''">
-                AND DATE_FORMAT(create_time, '%Y-%m-%d') &gt;= #{query.beginDate}
+                AND DATE_FORMAT(t_operate_log.create_time, '%Y-%m-%d') &gt;= #{query.beginDate}
             </if>
             <if test="query.endDate != null and query.endDate != ''">
-                AND DATE_FORMAT(create_time, '%Y-%m-%d') &lt;= #{query.endDate}
+                AND DATE_FORMAT(t_operate_log.create_time, '%Y-%m-%d') &lt;= #{query.endDate}
             </if>
-            <if test="query.userName != null and query.userName != ''">
-                AND INSTR(operate_user_name,#{query.userName})
+            <if test="query.keywords != null and query.keywords != ''">
+                AND INSTR(t_operate_log.operate_user_name,#{query.keywords})
             </if>
             <if test="query.successFlag != null">
                 AND success_flag = #{query.successFlag}

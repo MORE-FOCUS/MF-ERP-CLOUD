@@ -5,8 +5,26 @@
     <!-- 分页查询 -->
     <select id="queryPage" resultType="cn.morefocus.admin.module.business.supplier.domain.vo.SupplierVO">
         SELECT *
-        FROM t_supplier
+        FROM t_supplier t_suppier
+        <where>
+            is_deleted = 0
+            <if test="queryForm.keywords != null and queryForm.keywords !=''">
+                AND (
+                INSTR(t_suppier.name,#{queryForm.keywords})
+                OR INSTR(t_suppier.full_name,#{queryForm.keywords})
+                OR INSTR(t_suppier.contacts,#{queryForm.keywords})
+                )
+            </if>
+
+            <if test="queryForm.categoryId != null">
+                AND t_suppier.category_id = #{queryForm.categoryId}
+            </if>
+        </where>
     </select>
 
-
+    <update id="updateIsDisabled">
+        UPDATE t_tenant
+        SET is_disabled = #{isDisabled}
+        WHERE id = #{id}
+    </update>
 </mapper>

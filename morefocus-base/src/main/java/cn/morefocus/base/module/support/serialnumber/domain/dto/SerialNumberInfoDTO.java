@@ -1,4 +1,4 @@
-package cn.morefocus.base.module.support.serialnumber.domain;
+package cn.morefocus.base.module.support.serialnumber.domain.dto;
 
 import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberIdEnum;
 import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberRuleTypeEnum;
@@ -9,15 +9,13 @@ import lombok.NoArgsConstructor;
 
 /**
  * 单据序列号 信息
- *
- *
  */
 
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SerialNumberInfoBO {
+public class SerialNumberInfoDTO {
 
     /**
      * 主键id
@@ -43,7 +41,6 @@ public class SerialNumberInfoBO {
      */
     private String ruleType;
 
-
     /**
      * 初始值
      */
@@ -63,7 +60,6 @@ public class SerialNumberInfoBO {
      * 规则枚举
      */
     private SerialNumberRuleTypeEnum serialNumberRuleTypeEnum;
-
 
     /**
      * 存在[nnnnnn]中 n 的数量

@@ -3,7 +3,7 @@ package cn.morefocus.base.module.support.serialnumber.service;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.util.PageUtil;
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberRecordEntity;
-import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberRecordQueryForm;
+import cn.morefocus.base.module.support.serialnumber.domain.bo.SerialNumberRecordQueryForm;
 import cn.morefocus.base.module.support.serialnumber.mapper.SerialNumberRecordMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
@@ -12,9 +12,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * 单据序列号 记录
- *
- *
+ * 单据序列号记录
  */
 @Service
 public class SerialNumberRecordService {

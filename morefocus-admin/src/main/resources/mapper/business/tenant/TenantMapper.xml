@@ -10,7 +10,7 @@
                  left join t_tenant_industry t_tenant_industry on (t_tenant_industry.id = t_tenant.industry_id)
     </select>
 
-    <update id="updateDisableFlag">
+    <update id="updateIsDisabled">
         UPDATE t_tenant
         SET is_disabled = #{isDisabled}
         WHERE id = #{id}

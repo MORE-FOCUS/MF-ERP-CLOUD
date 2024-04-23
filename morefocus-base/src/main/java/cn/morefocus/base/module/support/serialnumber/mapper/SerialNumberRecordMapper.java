@@ -1,7 +1,7 @@
 package cn.morefocus.base.module.support.serialnumber.mapper;
 
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberRecordEntity;
-import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberRecordQueryForm;
+import cn.morefocus.base.module.support.serialnumber.domain.bo.SerialNumberRecordQueryForm;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Mapper;

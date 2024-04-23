@@ -1,9 +1,9 @@
 package cn.morefocus.base.module.support.serialnumber.strategy;
 
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberEntity;
-import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberGenerateResultBO;
-import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberInfoBO;
-import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberLastGenerateBO;
+import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberGenerateResultDTO;
+import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberInfoDTO;
+import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberLastGenerateDTO;
 import cn.morefocus.base.module.support.serialnumber.service.SerialNumberBaseService;
 import com.google.common.collect.Interner;
 import com.google.common.collect.Interners;
@@ -25,8 +25,7 @@ public class SerialNumberInternService extends SerialNumberBaseService {
      */
     private static final Interner<Integer> POOL = Interners.newStrongInterner();
 
-
-    private ConcurrentHashMap<Integer, SerialNumberLastGenerateBO> serialNumberLastGenerateMap = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<Integer, SerialNumberLastGenerateDTO> serialNumberLastGenerateMap = new ConcurrentHashMap<>();
 
     @Override
     public void initLastGenerateData(List<SerialNumberEntity> serialNumberEntityList) {
@@ -35,7 +34,7 @@ public class SerialNumberInternService extends SerialNumberBaseService {
         }
 
         for (SerialNumberEntity serialNumberEntity : serialNumberEntityList) {
-            SerialNumberLastGenerateBO lastGenerateBO = SerialNumberLastGenerateBO
+            SerialNumberLastGenerateDTO lastGenerateBO = SerialNumberLastGenerateDTO
                     .builder()
                     .serialNumberId(serialNumberEntity.getSerialNumberId())
                     .lastNumber(serialNumberEntity.getLastNumber())
@@ -46,12 +45,12 @@ public class SerialNumberInternService extends SerialNumberBaseService {
     }
 
     @Override
-    public List<String> generateSerialNumberList(SerialNumberInfoBO serialNumberInfo, int count) {
-        SerialNumberGenerateResultBO serialNumberGenerateResult = null;
+    public List<String> generateSerialNumberList(SerialNumberInfoDTO serialNumberInfo, int count) {
+        SerialNumberGenerateResultDTO serialNumberGenerateResult = null;
         synchronized (POOL.intern(serialNumberInfo.getSerialNumberId())) {
 
             // 获取上次的生成结果
-            SerialNumberLastGenerateBO lastGenerateBO = serialNumberLastGenerateMap.get(serialNumberInfo.getSerialNumberId());
+            SerialNumberLastGenerateDTO lastGenerateBO = serialNumberLastGenerateMap.get(serialNumberInfo.getSerialNumberId());
 
             // 生成
             serialNumberGenerateResult = super.loopNumberList(lastGenerateBO, serialNumberInfo, count);

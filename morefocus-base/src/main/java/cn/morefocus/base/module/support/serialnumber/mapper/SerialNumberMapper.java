@@ -10,8 +10,6 @@ import java.time.LocalDateTime;
 
 /**
  * 单据序列号
- *
- *
  */
 @Mapper
 @Component
@@ -19,18 +17,11 @@ public interface SerialNumberMapper extends BaseMapper<SerialNumberEntity> {
 
     /**
      * 排他锁查询
-     *
-     * @param serialNumberId
-     * @return
      */
     SerialNumberEntity selectForUpdate(@Param("serialNumberId") Integer serialNumberId);
 
     /**
      * 更新上一次的 数值和时间
-     *
-     * @param serialNumberId
-     * @param lastNumber
-     * @param lastTime
      */
     void updateLastNumberAndTime(@Param("serialNumberId") Integer serialNumberId, @Param("lastNumber") Long lastNumber, @Param("lastTime") LocalDateTime lastTime);
 

@@ -4,10 +4,11 @@
     <!-- 分页查询系统配置 -->
     <select id="queryByPage" resultType="cn.morefocus.base.module.support.config.domain.ConfigEntity">
         SELECT *
-        FROM t_config
+        FROM t_config t_config
         <where>
-            <if test="query.configKey != null and query.configKey != ''">
-                AND INSTR(config_key,#{query.configKey})
+            is_deleted = 0
+            <if test="query.keywords != null and query.keywords != ''">
+                AND INSTR(t_config.config_key,#{query.keywords})
             </if>
         </where>
     </select>

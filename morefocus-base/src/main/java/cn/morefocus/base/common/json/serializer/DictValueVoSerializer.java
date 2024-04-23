@@ -15,14 +15,11 @@ import java.util.List;
 
 /**
  * 字典序列化
- *
- *
  */
 public class DictValueVoSerializer extends JsonSerializer<String> {
 
     @Resource
     private DictCacheService dictCacheService;
-
 
     @Override
     public void serialize(String value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {

@@ -1,4 +1,4 @@
-package cn.morefocus.base.module.support.serialnumber.domain;
+package cn.morefocus.base.module.support.serialnumber.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,14 +10,12 @@ import java.util.List;
 
 /**
  * 单据序列号 生成结果
- *
- *
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SerialNumberGenerateResultBO {
+public class SerialNumberGenerateResultDTO {
 
     /**
      * 序号id
@@ -43,6 +41,5 @@ public class SerialNumberGenerateResultBO {
      * 生成的 number  集合
      */
     private List<Long> numberList;
-
 
 }

@@ -83,7 +83,7 @@ public class SupplierAddForm {
     private String tax;
 
     /**
-     * 0-禁用 1-启用
+     * 1-禁用 0-启用
      */
     private Boolean isDisabled;
 
@@ -93,7 +93,12 @@ public class SupplierAddForm {
     private BigDecimal originDebt;
 
     /**
-     * 欠款
+     * 应付欠款
      */
     private BigDecimal debt;
+
+    /**
+     * 备注
+     */
+    private String remark;
 }

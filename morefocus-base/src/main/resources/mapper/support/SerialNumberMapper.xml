@@ -4,17 +4,16 @@
 
     <update id="updateLastNumberAndTime">
         update t_serial_number
-        set
-        last_number = #{lastNumber},
-        last_time = #{lastTime}
-        where
-        serial_number_id = #{serialNumberId}
-
+        set last_number = #{lastNumber},
+            last_time   = #{lastTime}
+        where serial_number_id = #{serialNumberId}
     </update>
 
     <!-- 查询最后生成记录 -->
     <select id="selectForUpdate" resultType="cn.morefocus.base.module.support.serialnumber.domain.SerialNumberEntity">
-       select * from t_serial_number where serial_number_id = #{serialNumberId} for update
+        select *
+        from t_serial_number t_serial_number
+        where t_serial_number.serial_number_id = #{serialNumberId} for update
     </select>
 
 

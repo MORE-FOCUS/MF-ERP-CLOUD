@@ -4,9 +4,9 @@ import cn.morefocus.base.common.exception.BusinessException;
 import cn.morefocus.base.constant.RedisKeyConst;
 import cn.morefocus.base.module.support.redis.RedisService;
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberEntity;
-import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberGenerateResultBO;
-import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberInfoBO;
-import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberLastGenerateBO;
+import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberGenerateResultDTO;
+import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberInfoDTO;
+import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberLastGenerateDTO;
 import cn.morefocus.base.module.support.serialnumber.service.SerialNumberBaseService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,8 +15,6 @@ import java.util.List;
 
 /**
  * 单据序列号 基于redis锁实现
- *
- *
  */
 @Slf4j
 public class SerialNumberRedisService extends SerialNumberBaseService {
@@ -38,7 +36,7 @@ public class SerialNumberRedisService extends SerialNumberBaseService {
         redisService.delete(RedisKeyConst.Support.SERIAL_NUMBER_LAST_INFO);
 
         for (SerialNumberEntity serialNumberEntity : serialNumberEntityList) {
-            SerialNumberLastGenerateBO lastGenerateBO = SerialNumberLastGenerateBO
+            SerialNumberLastGenerateDTO lastGenerateBO = SerialNumberLastGenerateDTO
                     .builder()
                     .serialNumberId(serialNumberEntity.getSerialNumberId())
                     .lastNumber(serialNumberEntity.getLastNumber())
@@ -53,8 +51,8 @@ public class SerialNumberRedisService extends SerialNumberBaseService {
     }
 
     @Override
-    public List<String> generateSerialNumberList(SerialNumberInfoBO serialNumberInfo, int count) {
-        SerialNumberGenerateResultBO serialNumberGenerateResult = null;
+    public List<String> generateSerialNumberList(SerialNumberInfoDTO serialNumberInfo, int count) {
+        SerialNumberGenerateResultDTO serialNumberGenerateResult;
         String lockKey = RedisKeyConst.Support.SERIAL_NUMBER + serialNumberInfo.getSerialNumberId();
         try {
             boolean lock = false;
@@ -72,8 +70,9 @@ public class SerialNumberRedisService extends SerialNumberBaseService {
             if (!lock) {
                 throw new BusinessException("SerialNumber 尝试5次，未能生成单号");
             }
+
             // 获取上次的生成结果
-            SerialNumberLastGenerateBO lastGenerateBO = (SerialNumberLastGenerateBO) redisService.mget(
+            SerialNumberLastGenerateDTO lastGenerateBO = (SerialNumberLastGenerateDTO) redisService.mget(
                     RedisKeyConst.Support.SERIAL_NUMBER_LAST_INFO,
                     String.valueOf(serialNumberInfo.getSerialNumberId()));
 

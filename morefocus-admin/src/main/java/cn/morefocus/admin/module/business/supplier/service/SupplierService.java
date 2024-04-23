@@ -6,6 +6,7 @@ import cn.morefocus.admin.module.business.supplier.domain.form.SupplierQueryForm
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierUpdateForm;
 import cn.morefocus.admin.module.business.supplier.domain.vo.SupplierVO;
 import cn.morefocus.admin.module.business.supplier.mapper.SupplierMapper;
+import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
@@ -78,6 +79,22 @@ public class SupplierService {
         }
 
         supplierMapper.deleteById(id);
+        return R.ok();
+    }
+
+    /**
+     * 更新禁用/启用状态
+     */
+    public R<String> updateIsDisabled(Long id) {
+        if (null == id) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+        SupplierEntity supplierEntity = supplierMapper.selectById(id);
+        if (null == supplierEntity) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+        supplierMapper.updateIsDisabled(id, !supplierEntity.getIsDisabled());
+
         return R.ok();
     }
 }

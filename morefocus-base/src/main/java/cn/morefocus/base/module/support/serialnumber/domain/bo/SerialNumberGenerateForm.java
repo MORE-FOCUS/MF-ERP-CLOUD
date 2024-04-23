@@ -1,4 +1,4 @@
-package cn.morefocus.base.module.support.serialnumber.domain;
+package cn.morefocus.base.module.support.serialnumber.domain.bo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -11,8 +11,8 @@ import javax.validation.constraints.NotNull;
 @Data
 public class SerialNumberGenerateForm {
 
-    @Schema(description = "单号id")
-    @NotNull(message = "单号id不能为空")
+    @Schema(description = "单号ID")
+    @NotNull(message = "单号ID不能为空")
     private Integer serialNumberId;
 
     @Schema(description = "生成的数量")

@@ -1,5 +1,6 @@
 package cn.morefocus.admin.module.business.supplier.controller;
 
+import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierAddForm;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierQueryForm;
@@ -37,6 +38,7 @@ public class SupplierController {
      */
     @Operation(summary = "查询分页列表")
     @PostMapping("/supplier/queryPage")
+    @SaCheckPermission("business:supplier:query")
     public R<PageResult<SupplierVO>> queryPage(@RequestBody @Valid SupplierQueryForm queryForm) {
         return R.ok(supplierService.queryPage(queryForm));
     }
@@ -45,6 +47,7 @@ public class SupplierController {
      * 查询所有
      */
     @PostMapping("/supplier/queryAll")
+    @SaCheckPermission("business:supplier:query")
     public R<PageResult<SupplierVO>> queryAll(@RequestBody @Valid SupplierQueryForm queryForm) {
         return R.ok(supplierService.queryPage(queryForm));
     }
@@ -54,6 +57,7 @@ public class SupplierController {
      */
     @Operation(summary = "新增")
     @PostMapping("/supplier/add")
+    @SaCheckPermission("business:supplier:add")
     public R<String> add(@RequestBody @Valid SupplierAddForm addForm) {
         return supplierService.add(addForm);
     }
@@ -63,6 +67,7 @@ public class SupplierController {
      */
     @Operation(summary = "编辑")
     @PostMapping("/supplier/update")
+    @SaCheckPermission("business:supplier:update")
     public R<String> update(@RequestBody @Valid SupplierUpdateForm updateForm) {
         return supplierService.update(updateForm);
     }
@@ -72,6 +77,7 @@ public class SupplierController {
      */
     @Operation(summary = "批量删除")
     @PostMapping("/supplier/batchDelete")
+    @SaCheckPermission("business:supplier:delete")
     public R<String> batchDelete(@RequestBody List<Long> idList) {
         return supplierService.batchDelete(idList);
     }
@@ -81,7 +87,18 @@ public class SupplierController {
      */
     @Operation(summary = "单个删除")
     @PostMapping("/supplier/delete/{id}")
+    @SaCheckPermission("business:supplier:delete")
     public R<String> batchDelete(@PathVariable Long id) {
         return supplierService.delete(id);
+    }
+
+    /**
+     * 更新员工禁用/启用状态
+     */
+    @Operation(summary = "更新租户禁用/启用状态")
+    @PostMapping("/supplier/disabled/{id}")
+    @SaCheckPermission("business:supplier:disabled")
+    public R<String> updateDisableFlag(@PathVariable("id") Long id) {
+        return supplierService.updateIsDisabled(id);
     }
 }

@@ -6,27 +6,16 @@ import java.util.List;
 
 /**
  * 单据序列号
- *
- *
  */
 public interface SerialNumberService {
 
     /**
-     * 生成
-     *
-     * @param serialNumberIdEnum
-     * @return
+     * 生成1个
      */
     String generate(SerialNumberIdEnum serialNumberIdEnum);
 
-
     /**
      * 生成n个
-     *
-     * @param serialNumberIdEnum
-     * @param count
-     * @return
      */
-    List<String> generate(SerialNumberIdEnum serialNumberIdEnum, int count);
-
+    List<String> generate(SerialNumberIdEnum serialNumberIdEnum, Integer count);
 }
