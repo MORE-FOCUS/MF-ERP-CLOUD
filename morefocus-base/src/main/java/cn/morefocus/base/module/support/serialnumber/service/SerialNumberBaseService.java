@@ -11,7 +11,7 @@ import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberInfo
 import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberLastGenerateDTO;
 import cn.morefocus.base.module.support.serialnumber.mapper.SerialNumberMapper;
 import cn.morefocus.base.module.support.serialnumber.mapper.SerialNumberRecordMapper;
-import cn.morefocus.base.module.support.serialnumber.strategy.SerialNumberService;
+import cn.morefocus.base.module.support.serialnumber.strategy.SerialNumberGenerateService;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.RandomUtils;
 
@@ -26,7 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 单据序列号 基类
  */
-public abstract class SerialNumberBaseService implements SerialNumberService {
+public abstract class SerialNumberBaseService implements SerialNumberGenerateService {
 
     @Resource
     protected SerialNumberRecordMapper serialNumberRecordMapper;
@@ -36,7 +36,7 @@ public abstract class SerialNumberBaseService implements SerialNumberService {
 
     private final ConcurrentHashMap<Integer, SerialNumberInfoDTO> serialNumberMap = new ConcurrentHashMap<>();
 
-    public abstract List<String> generateSerialNumberList(SerialNumberInfoDTO serialNumber, int count);
+    public abstract List<String> generateSerialNumberList(SerialNumberInfoDTO serialNumber, Integer count);
 
     @PostConstruct
     void init() {
@@ -93,13 +93,13 @@ public abstract class SerialNumberBaseService implements SerialNumberService {
     public String generate(SerialNumberIdEnum serialNumberIdEnum) {
         List<String> generateList = this.generate(serialNumberIdEnum, 1);
         if (generateList == null || generateList.isEmpty()) {
-            throw new BusinessException("cannot generate : " + serialNumberIdEnum.toString());
+            throw new BusinessException("cannot generate : " + serialNumberIdEnum);
         }
         return generateList.get(0);
     }
 
     @Override
-    public List<String> generate(SerialNumberIdEnum serialNumberIdEnum, int count) {
+    public List<String> generate(SerialNumberIdEnum serialNumberIdEnum, Integer count) {
         SerialNumberInfoDTO serialNumberInfoBO = serialNumberMap.get(serialNumberIdEnum.getSerialNumberId());
         if (serialNumberInfoBO == null) {
             throw new BusinessException("cannot found SerialNumberId : " + serialNumberIdEnum);
@@ -110,7 +110,7 @@ public abstract class SerialNumberBaseService implements SerialNumberService {
     /**
      * 循环生成 number 集合
      */
-    protected SerialNumberGenerateResultDTO loopNumberList(SerialNumberLastGenerateDTO lastGenerate, SerialNumberInfoDTO serialNumberInfo, int count) {
+    protected SerialNumberGenerateResultDTO loopNumberList(SerialNumberLastGenerateDTO lastGenerate, SerialNumberInfoDTO serialNumberInfo, Integer count) {
         Long lastNumber = lastGenerate.getLastNumber();
         boolean isReset = false;
         if (isResetInitNumber(lastGenerate, serialNumberInfo)) {
@@ -193,7 +193,6 @@ public abstract class SerialNumberBaseService implements SerialNumberService {
      * 替换特殊rule，即替换[yyyy][mm][dd][nnn]等规则
      */
     protected List<String> formatNumberList(SerialNumberGenerateResultDTO generateResult, SerialNumberInfoDTO serialNumberInfo) {
-
         /**
          * 第一步：替换年、月、日
          */
@@ -218,7 +217,6 @@ public abstract class SerialNumberBaseService implements SerialNumberService {
         /**
          * 第二步：替换数字
          */
-
         List<String> numberList = Lists.newArrayListWithCapacity(generateResult.getNumberList().size());
         for (Long number : generateResult.getNumberList()) {
             StringBuilder numberStringBuilder = new StringBuilder();

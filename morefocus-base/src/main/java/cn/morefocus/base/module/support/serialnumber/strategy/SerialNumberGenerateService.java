@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * 单据序列号
  */
-public interface SerialNumberService {
+public interface SerialNumberGenerateService {
 
     /**
      * 生成1个

@@ -14,8 +14,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 单据序列号 基于内存锁实现
- *
- *
  */
 @Service
 public class SerialNumberInternService extends SerialNumberBaseService {
@@ -45,7 +43,7 @@ public class SerialNumberInternService extends SerialNumberBaseService {
     }
 
     @Override
-    public List<String> generateSerialNumberList(SerialNumberInfoDTO serialNumberInfo, int count) {
+    public List<String> generateSerialNumberList(SerialNumberInfoDTO serialNumberInfo, Integer count) {
         SerialNumberGenerateResultDTO serialNumberGenerateResult = null;
         synchronized (POOL.intern(serialNumberInfo.getSerialNumberId())) {
 
@@ -68,6 +66,5 @@ public class SerialNumberInternService extends SerialNumberBaseService {
 
         return formatNumberList(serialNumberGenerateResult, serialNumberInfo);
     }
-
 
 }

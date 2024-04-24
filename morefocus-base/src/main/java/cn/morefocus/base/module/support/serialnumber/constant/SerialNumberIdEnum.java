@@ -6,16 +6,14 @@ import lombok.Getter;
 
 /**
  * 单据序列号 枚举
- *
- *
  */
 @AllArgsConstructor
 @Getter
 public enum SerialNumberIdEnum implements BaseEnum {
 
-    ORDER(1, "订单id"),
+    ORDER(1, "订单ID"),
 
-    CONTRACT(2, "合同id"),
+    CONTRACT(2, "合同ID"),
 
     ;
 

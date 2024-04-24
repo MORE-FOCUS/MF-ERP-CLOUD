@@ -28,6 +28,11 @@ public class SerialNumberEntity extends BaseEntity {
     private Integer serialNumberId;
 
     /**
+     * 编码前缀
+     */
+    private String serialNumberPrefix;
+
+    /**
      * 业务
      */
     private String businessName;

@@ -7,6 +7,7 @@ import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberInfo
 import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberLastGenerateDTO;
 import cn.morefocus.base.module.support.serialnumber.service.SerialNumberBaseService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -14,12 +15,13 @@ import java.util.List;
 /**
  * 单据序列号 基于mysql锁实现
  */
+@Service
 @Slf4j
 public class SerialNumberMysqlService extends SerialNumberBaseService {
 
     @Override
     @Transactional(rollbackFor = Throwable.class)
-    public List<String> generateSerialNumberList(SerialNumberInfoDTO serialNumberInfo, int count) {
+    public List<String> generateSerialNumberList(SerialNumberInfoDTO serialNumberInfo, Integer count) {
         // // 获取上次的生成结果
         SerialNumberEntity serialNumberEntity = serialNumberMapper.selectForUpdate(serialNumberInfo.getSerialNumberId());
         if (serialNumberEntity == null) {

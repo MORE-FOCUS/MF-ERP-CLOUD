@@ -7,8 +7,6 @@ import lombok.Getter;
 
 /**
  * 单据序列号 周期
- *
- *
  */
 @AllArgsConstructor
 @Getter
@@ -35,6 +33,4 @@ public enum SerialNumberRuleTypeEnum implements BaseEnum {
     private final String regex;
 
     private final String desc;
-
-
 }

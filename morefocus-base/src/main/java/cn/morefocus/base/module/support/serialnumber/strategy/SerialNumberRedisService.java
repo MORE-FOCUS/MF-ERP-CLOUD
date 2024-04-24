@@ -9,6 +9,8 @@ import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberInfo
 import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberLastGenerateDTO;
 import cn.morefocus.base.module.support.serialnumber.service.SerialNumberBaseService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,7 +18,9 @@ import java.util.List;
 /**
  * 单据序列号 基于redis锁实现
  */
+@Primary
 @Slf4j
+@Service
 public class SerialNumberRedisService extends SerialNumberBaseService {
 
     private static final int MAX_GET_LOCK_COUNT = 5;
@@ -51,7 +55,7 @@ public class SerialNumberRedisService extends SerialNumberBaseService {
     }
 
     @Override
-    public List<String> generateSerialNumberList(SerialNumberInfoDTO serialNumberInfo, int count) {
+    public List<String> generateSerialNumberList(SerialNumberInfoDTO serialNumberInfo, Integer count) {
         SerialNumberGenerateResultDTO serialNumberGenerateResult;
         String lockKey = RedisKeyConst.Support.SERIAL_NUMBER + serialNumberInfo.getSerialNumberId();
         try {
