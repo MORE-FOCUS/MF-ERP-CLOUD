@@ -9,7 +9,7 @@
 
     <name>MF-ERP-CLOUD</name>
 
-	<modules>
+    <modules>
         <module>morefocus-admin</module>
         <module>morefocus-base</module>
     </modules>
@@ -51,6 +51,7 @@
         <jackson-datatype-jsr310.version>2.13.4</jackson-datatype-jsr310.version>
         <smartdb.version>1.2.0</smartdb.version>
         <quartz.version>2.3.2</quartz.version>
+        <ooxml-schemas.version>1.4</ooxml-schemas.version>
     </properties>
 
     <dependencyManagement>
@@ -310,6 +311,11 @@
                         <artifactId>c3p0</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>ooxml-schemas</artifactId>
+                <version>${ooxml-schemas.version}</version>
             </dependency>
         </dependencies>
 

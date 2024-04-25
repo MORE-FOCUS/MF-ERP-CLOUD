@@ -30,11 +30,11 @@
                 AND INSTR(t_file.creator_name,#{queryForm.creatorName})
             </if>
             <!--创建时间-->
-            <if test="queryForm.createTimeBegin != null">
-                AND DATE_FORMAT(t_file.create_time, '%Y-%m-%d') &gt;= #{queryForm.createTimeBegin}
+            <if test="queryForm.beginDate != null">
+                AND DATE_FORMAT(t_file.create_time, '%Y-%m-%d') &gt;= #{queryForm.beginDate}
             </if>
-            <if test="queryForm.createTimeEnd != null">
-                AND DATE_FORMAT(t_file.create_time, '%Y-%m-%d') &lt;= #{queryForm.createTimeEnd}
+            <if test="queryForm.endDate != null">
+                AND DATE_FORMAT(t_file.create_time, '%Y-%m-%d') &lt;= #{queryForm.endDate}
             </if>
         </where>
         <if test="queryForm.sortItemList == null or queryForm.sortItemList.size == 0">

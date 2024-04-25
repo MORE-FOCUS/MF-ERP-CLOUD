@@ -8,8 +8,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.time.LocalDate;
-
 /**
  * 文件信息查询
  */
@@ -32,11 +30,4 @@ public class FileQueryForm extends PageParam {
 
     @Schema(description = "创建人")
     private String creatorName;
-
-    @Schema(description = "创建时间")
-    private LocalDate createTimeBegin;
-
-    @Schema(description = "创建时间")
-    private LocalDate createTimeEnd;
-
 }

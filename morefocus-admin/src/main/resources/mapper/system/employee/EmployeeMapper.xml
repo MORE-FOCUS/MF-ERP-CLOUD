@@ -9,7 +9,7 @@
         FROM t_employee
         LEFT JOIN t_department ON t_department.id = t_employee.dept_id
         <where>
-            <if test="queryForm.keyword != null and queryForm.keyword != ''">
+            <if test="queryForm.keywords != null and queryForm.keywords != ''">
                 AND (
                 INSTR(t_employee.actual_name,#{queryForm.keyword})
                 OR INSTR(t_employee.phone,#{queryForm.keyword})

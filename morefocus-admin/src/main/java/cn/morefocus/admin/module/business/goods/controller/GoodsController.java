@@ -11,8 +11,7 @@ import cn.morefocus.admin.module.business.goods.service.GoodsService;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.ValidateList;
-import cn.morefocus.base.common.util.ResponseUtil;
-import com.alibaba.excel.EasyExcel;
+import cn.morefocus.base.common.util.ExcelUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
@@ -82,17 +81,8 @@ public class GoodsController {
     @GetMapping("/goods/exportGoods")
     @SaCheckPermission("goods:exportGoods")
     public void exportGoods(HttpServletResponse response) throws IOException {
-
         List<GoodsExcelVO> goodsList = goodsService.getAllGoods();
-
-        // 设置下载消息头
-        ResponseUtil.setDownloadFileHeader(response, "商品列表.xls", null);
-
-        // 下载
-        EasyExcel.write(response.getOutputStream(), GoodsExcelVO.class)
-                .autoCloseStream(Boolean.FALSE)
-                .sheet("商品")
-                .doWrite(goodsList);
+        ExcelUtil.exportExcel(response, "商品列表.xlsx", "商品", GoodsExcelVO.class, goodsList);
     }
 
 }

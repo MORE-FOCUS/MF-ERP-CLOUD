@@ -84,7 +84,7 @@
         left join t_oa_enterprise on t_oa_enterprise_employee.enterprise_id = t_oa_enterprise.enterprise_id
         left join t_employee on t_oa_enterprise_employee.employee_id = t_employee.employee_id
         where t_oa_enterprise_employee.enterprise_id = #{queryForm.enterpriseId}
-        <if test="queryForm.keyword != null and queryForm.keyword != ''">
+        <if test="queryForm.keywords != null and queryForm.keywords != ''">
             AND (
             INSTR(t_employee.actual_name,#{queryForm.keyword})
             OR INSTR(t_employee.phone,#{queryForm.keyword})

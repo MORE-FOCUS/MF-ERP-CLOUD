@@ -62,20 +62,12 @@
             <if test="query.isDeleted != null">
                 and t_notice.is_deleted = #{query.isDeleted}
             </if>
-            <if test="query.createTimeBegin != null">
-                AND DATE_FORMAT(t_notice.create_time, '%Y-%m-%d') &gt;= DATE_FORMAT(#{query.createTimeBegin},
+            <if test="query.beginDate != null">
+                AND DATE_FORMAT(t_notice.create_time, '%Y-%m-%d') &gt;= DATE_FORMAT(#{query.beginDate},
                 '%Y-%m-%d')
             </if>
-            <if test="query.createTimeEnd != null">
-                AND DATE_FORMAT(t_notice.create_time, '%Y-%m-%d') &lt;= DATE_FORMAT(#{query.createTimeEnd}, '%Y-%m-%d')
-            </if>
-            <if test="query.publishTimeBegin != null">
-                AND DATE_FORMAT(t_notice.publish_time, '%Y-%m-%d') &gt;= DATE_FORMAT(#{query.publishTimeBegin},
-                '%Y-%m-%d')
-            </if>
-            <if test="query.publishTimeEnd != null">
-                AND DATE_FORMAT(t_notice.publish_time, '%Y-%m-%d') &lt;= DATE_FORMAT(#{query.publishTimeEnd},
-                '%Y-%m-%d')
+            <if test="query.endDate != null">
+                AND DATE_FORMAT(t_notice.create_time, '%Y-%m-%d') &lt;= DATE_FORMAT(#{query.endDate}, '%Y-%m-%d')
             </if>
         </where>
         <if test="query.sortItemList == null or query.sortItemList.size == 0">

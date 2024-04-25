@@ -26,12 +26,12 @@
                 OR INSTR(t_help_doc.author,#{query.keywords})
                 )
             </if>
-            <if test="query.createTimeBegin != null">
-                AND DATE_FORMAT(t_help_doc.create_time, '%Y-%m-%d') &gt;= DATE_FORMAT(#{query.createTimeBegin},
+            <if test="query.beginDate != null">
+                AND DATE_FORMAT(t_help_doc.create_time, '%Y-%m-%d') &gt;= DATE_FORMAT(#{query.beginDate},
                 '%Y-%m-%d')
             </if>
-            <if test="query.createTimeEnd != null">
-                AND DATE_FORMAT(t_help_doc.create_time, '%Y-%m-%d') &lt;= DATE_FORMAT(#{query.createTimeEnd},
+            <if test="query.endDate != null">
+                AND DATE_FORMAT(t_help_doc.create_time, '%Y-%m-%d') &lt;= DATE_FORMAT(#{query.endDate},
                 '%Y-%m-%d')
             </if>
         </where>
