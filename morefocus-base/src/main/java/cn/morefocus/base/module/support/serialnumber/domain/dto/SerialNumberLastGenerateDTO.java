@@ -23,7 +23,7 @@ public class SerialNumberLastGenerateDTO {
     /**
      * 序号id
      */
-    private Integer serialNumberId;
+    private Long serialNumberId;
 
     /**
      * 上次生成的数字

@@ -1,6 +1,6 @@
 package cn.morefocus.base.module.support.feedback.domain;
 
-import cn.morefocus.base.common.enumeration.UserTypeEnum;
+import cn.morefocus.base.common.enums.UserTypeEnum;
 import cn.morefocus.base.common.json.deserializer.FileKeyVoDeserializer;
 import cn.morefocus.base.common.json.serializer.FileKeyVoSerializer;
 import cn.morefocus.base.common.swagger.SchemaEnum;

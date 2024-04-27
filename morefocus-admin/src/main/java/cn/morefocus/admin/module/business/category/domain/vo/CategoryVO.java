@@ -13,11 +13,14 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class CategoryVO extends BaseVO {
-    @Schema(description = "类目id")
+    @Schema(description = "分类ID")
     private Long categoryId;
 
-    @Schema(description = "类目名称")
+    @Schema(description = "分类名称")
     private String categoryName;
+
+    @Schema(description = "分类编码")
+    private String categoryCode;
 
     @SchemaEnum(desc = "分类类型", value = CategoryTypeEnum.class)
     private Integer categoryType;
@@ -27,4 +30,7 @@ public class CategoryVO extends BaseVO {
 
     @Schema(description = "禁用状态")
     private Boolean isDisabled;
+
+    @Schema(description = "默认状态")
+    private Boolean isDefault;
 }

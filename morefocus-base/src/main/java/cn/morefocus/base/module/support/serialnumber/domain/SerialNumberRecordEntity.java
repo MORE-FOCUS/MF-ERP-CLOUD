@@ -26,7 +26,7 @@ public class SerialNumberRecordEntity extends BaseEntity {
      * 单号id
      */
     @TableId(type = IdType.NONE)
-    private Integer serialNumberId;
+    private Long serialNumberId;
 
     /**
      * 记录日期

@@ -1,7 +1,7 @@
 package cn.morefocus.base.module.support.redis;
 
 import cn.morefocus.base.common.domain.SystemEnvironment;
-import cn.morefocus.base.common.enumeration.SystemEnvironmentEnum;
+import cn.morefocus.base.common.enums.SystemEnvironmentEnum;
 import cn.morefocus.base.common.util.LocalStringUtils;
 import cn.morefocus.base.constant.RedisKeyConst;
 import com.alibaba.fastjson.JSON;

@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.system.datascope.constant;
 
-import cn.morefocus.base.common.enumeration.BaseEnum;
+import cn.morefocus.base.common.enums.BaseEnum;
 
 /**
  * 数据范围 sql where

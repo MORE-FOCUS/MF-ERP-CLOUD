@@ -1,6 +1,6 @@
 package cn.morefocus.base.common.swagger;
 
-import cn.morefocus.base.common.enumeration.BaseEnum;
+import cn.morefocus.base.common.enums.BaseEnum;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

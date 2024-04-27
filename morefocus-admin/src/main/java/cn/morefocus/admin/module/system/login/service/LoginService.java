@@ -21,7 +21,7 @@ import cn.morefocus.base.common.constant.StringConst;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.RequestUser;
 import cn.morefocus.base.common.domain.UserPermission;
-import cn.morefocus.base.common.enumeration.UserTypeEnum;
+import cn.morefocus.base.common.enums.UserTypeEnum;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import cn.morefocus.base.common.util.LocalEnumUtil;
 import cn.morefocus.base.common.util.LocalIpUtil;

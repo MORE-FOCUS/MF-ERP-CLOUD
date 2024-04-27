@@ -1,8 +1,8 @@
 package cn.morefocus.admin.module.system.login.domain;
 
 import cn.morefocus.base.common.domain.RequestUser;
-import cn.morefocus.base.common.enumeration.GenderEnum;
-import cn.morefocus.base.common.enumeration.UserTypeEnum;
+import cn.morefocus.base.common.enums.GenderEnum;
+import cn.morefocus.base.common.enums.UserTypeEnum;
 import cn.morefocus.base.common.swagger.SchemaEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

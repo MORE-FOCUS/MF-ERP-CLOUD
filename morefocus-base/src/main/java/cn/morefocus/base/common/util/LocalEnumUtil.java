@@ -1,6 +1,6 @@
 package cn.morefocus.base.common.util;
 
-import cn.morefocus.base.common.enumeration.BaseEnum;
+import cn.morefocus.base.common.enums.BaseEnum;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 

@@ -1,7 +1,7 @@
 package cn.morefocus.base.config;
 
 import cn.morefocus.base.common.domain.SystemEnvironment;
-import cn.morefocus.base.common.enumeration.SystemEnvironmentEnum;
+import cn.morefocus.base.common.enums.SystemEnvironmentEnum;
 import cn.morefocus.base.common.util.LocalEnumUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;

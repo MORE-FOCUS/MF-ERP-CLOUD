@@ -18,11 +18,11 @@ public interface SerialNumberMapper extends BaseMapper<SerialNumberEntity> {
     /**
      * 排他锁查询
      */
-    SerialNumberEntity selectForUpdate(@Param("serialNumberId") Integer serialNumberId);
+    SerialNumberEntity selectForUpdate(@Param("serialNumberId") Long serialNumberId);
 
     /**
      * 更新上一次的 数值和时间
      */
-    void updateLastNumberAndTime(@Param("serialNumberId") Integer serialNumberId, @Param("lastNumber") Long lastNumber, @Param("lastTime") LocalDateTime lastTime);
+    void updateLastNumberAndTime(@Param("serialNumberId") Long serialNumberId, @Param("lastNumber") Long lastNumber, @Param("lastTime") LocalDateTime lastTime);
 
 }

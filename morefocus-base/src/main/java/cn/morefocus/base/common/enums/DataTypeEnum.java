@@ -1,4 +1,4 @@
-package cn.morefocus.base.common.enumeration;
+package cn.morefocus.base.common.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,7 +6,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum DataTypeEnum implements BaseEnum {
-
     /**
      * 普通数据
      */
@@ -20,5 +19,4 @@ public enum DataTypeEnum implements BaseEnum {
     private final Integer value;
 
     private final String desc;
-
 }

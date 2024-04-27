@@ -3,7 +3,7 @@ package cn.morefocus.base.listener;
 import cn.hutool.core.net.NetUtil;
 import cn.hutool.core.util.URLUtil;
 import cn.morefocus.base.common.code.ErrorCodeRegister;
-import cn.morefocus.base.common.enumeration.SystemEnvironmentEnum;
+import cn.morefocus.base.common.enums.SystemEnvironmentEnum;
 import cn.morefocus.base.common.util.LocalEnumUtil;
 import cn.morefocus.base.module.support.reload.core.SmartReloadManager;
 import cn.morefocus.base.module.support.reload.service.ReloadCommand;

@@ -25,6 +25,11 @@ public class CategoryEntity extends BaseEntity {
     private String categoryName;
 
     /**
+     * 类目编码
+     */
+    private String categoryCode;
+
+    /**
      * 类目 类型
      *
      * @see CategoryTypeEnum

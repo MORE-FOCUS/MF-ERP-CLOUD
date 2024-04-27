@@ -4,9 +4,7 @@ import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.morefocus.base.common.controller.SupportBaseController;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
-import cn.morefocus.base.common.util.LocalEnumUtil;
 import cn.morefocus.base.constant.SwaggerTagConst;
-import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberIdEnum;
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberEntity;
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberRecordEntity;
 import cn.morefocus.base.module.support.serialnumber.domain.bo.*;
@@ -41,22 +39,14 @@ public class AdminSerialNumberController extends SupportBaseController {
     @PostMapping("/serial-number/generate-one")
     @SaCheckPermission("support:serialNumber:generate")
     public R<String> generateOne(@RequestBody @Valid SerialNumberGenerateOneForm generateForm) {
-        SerialNumberIdEnum serialNumberIdEnum = LocalEnumUtil.getEnumByValue(generateForm.getSerialNumberId(), SerialNumberIdEnum.class);
-        if (null == serialNumberIdEnum) {
-            return R.userErrorParam("SerialNumberId，不存在" + generateForm.getSerialNumberId());
-        }
-        return R.ok(serialNumberGenerateService.generate(serialNumberIdEnum));
+        return R.ok(serialNumberGenerateService.generate(generateForm.getSerialNumberId()));
     }
 
     @Operation(summary = "生成单号")
     @PostMapping("/serial-number/generate")
     @SaCheckPermission("support:serialNumber:generate")
     public R<List<String>> generate(@RequestBody @Valid SerialNumberGenerateForm generateForm) {
-        SerialNumberIdEnum serialNumberIdEnum = LocalEnumUtil.getEnumByValue(generateForm.getSerialNumberId(), SerialNumberIdEnum.class);
-        if (null == serialNumberIdEnum) {
-            return R.userErrorParam("SerialNumberId，不存在" + generateForm.getSerialNumberId());
-        }
-        return R.ok(serialNumberGenerateService.generate(serialNumberIdEnum, generateForm.getCount()));
+        return R.ok(serialNumberGenerateService.generate(generateForm.getSerialNumberId(), generateForm.getCount()));
     }
 
     @Operation(summary = "获取所有单号定义")

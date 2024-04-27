@@ -1,4 +1,4 @@
-package cn.morefocus.base.common.enumeration;
+package cn.morefocus.base.common.enums;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONAware;

@@ -3,7 +3,7 @@ package cn.morefocus.base.common.domain;
 
 import cn.morefocus.base.common.code.ErrorCode;
 import cn.morefocus.base.common.code.UserErrorCode;
-import cn.morefocus.base.common.enumeration.DataTypeEnum;
+import cn.morefocus.base.common.enums.DataTypeEnum;
 import cn.morefocus.base.common.swagger.SchemaEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

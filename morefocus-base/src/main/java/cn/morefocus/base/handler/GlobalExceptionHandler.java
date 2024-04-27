@@ -5,7 +5,7 @@ import cn.morefocus.base.common.code.SystemErrorCode;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.SystemEnvironment;
-import cn.morefocus.base.common.enumeration.SystemEnvironmentEnum;
+import cn.morefocus.base.common.enums.SystemEnvironmentEnum;
 import cn.morefocus.base.common.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.TypeMismatchException;

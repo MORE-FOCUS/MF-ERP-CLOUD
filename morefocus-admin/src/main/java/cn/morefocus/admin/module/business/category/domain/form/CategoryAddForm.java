@@ -25,6 +25,9 @@ public class CategoryAddForm {
     @CheckEnum(value = CategoryTypeEnum.class, required = true, message = "分类错误")
     private Integer categoryType;
 
+    @Schema(description = "类目编码")
+    private String categoryCode;
+
     @Schema(description = "父级类目id|可选")
     private Long pid;
 

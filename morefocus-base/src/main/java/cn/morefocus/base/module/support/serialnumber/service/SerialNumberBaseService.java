@@ -2,7 +2,6 @@ package cn.morefocus.base.module.support.serialnumber.service;
 
 import cn.morefocus.base.common.exception.BusinessException;
 import cn.morefocus.base.common.util.LocalEnumUtil;
-import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberIdEnum;
 import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberRuleTypeEnum;
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberEntity;
 import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberRecordEntity;
@@ -34,7 +33,7 @@ public abstract class SerialNumberBaseService implements SerialNumberGenerateSer
     @Resource
     protected SerialNumberMapper serialNumberMapper;
 
-    private final ConcurrentHashMap<Integer, SerialNumberInfoDTO> serialNumberMap = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Long, SerialNumberInfoDTO> serialNumberMap = new ConcurrentHashMap<>();
 
     public abstract List<String> generateSerialNumberList(SerialNumberInfoDTO serialNumber, Integer count);
 
@@ -48,20 +47,20 @@ public abstract class SerialNumberBaseService implements SerialNumberGenerateSer
         for (SerialNumberEntity serialNumberEntity : serialNumberEntityList) {
             SerialNumberRuleTypeEnum ruleTypeEnum = LocalEnumUtil.getEnumByName(serialNumberEntity.getRuleType().toUpperCase(), SerialNumberRuleTypeEnum.class);
             if (ruleTypeEnum == null) {
-                throw new ExceptionInInitializerError("cannot find rule type , id : " + serialNumberEntity.getSerialNumberId());
+                throw new ExceptionInInitializerError("编码生成规则不存在");
             }
 
             String format = serialNumberEntity.getFormat();
             int startIndex = format.indexOf("[n");
             int endIndex = format.indexOf("n]");
             if (startIndex == -1 || endIndex == -1 || endIndex <= startIndex) {
-                throw new ExceptionInInitializerError("[nnn] 配置错误，请仔细查看 id : " + serialNumberEntity.getSerialNumberId());
+                throw new ExceptionInInitializerError("编码生成规则错误 serialNumberId:" + serialNumberEntity.getSerialNumberId());
             }
 
             String numberFormat = format.substring(startIndex + 1, endIndex + 1);
 
             if (serialNumberEntity.getStepRandomRange() < 1) {
-                throw new ExceptionInInitializerError("random step range must greater than 1 " + serialNumberEntity.getSerialNumberId());
+                throw new ExceptionInInitializerError("编码生成规则错误 serialNumberId:" + serialNumberEntity.getSerialNumberId());
             }
 
             SerialNumberInfoDTO serialNumberInfoBO = SerialNumberInfoDTO.builder()
@@ -90,19 +89,19 @@ public abstract class SerialNumberBaseService implements SerialNumberGenerateSer
     public abstract void initLastGenerateData(List<SerialNumberEntity> serialNumberEntityList);
 
     @Override
-    public String generate(SerialNumberIdEnum serialNumberIdEnum) {
-        List<String> generateList = this.generate(serialNumberIdEnum, 1);
+    public String generate(Long serialNumberId) {
+        List<String> generateList = this.generate(serialNumberId, 1);
         if (generateList == null || generateList.isEmpty()) {
-            throw new BusinessException("cannot generate : " + serialNumberIdEnum);
+            throw new BusinessException("生成编码失败");
         }
         return generateList.get(0);
     }
 
     @Override
-    public List<String> generate(SerialNumberIdEnum serialNumberIdEnum, Integer count) {
-        SerialNumberInfoDTO serialNumberInfoBO = serialNumberMap.get(serialNumberIdEnum.getSerialNumberId());
+    public List<String> generate(Long serialNumberId, Integer count) {
+        SerialNumberInfoDTO serialNumberInfoBO = serialNumberMap.get(serialNumberId);
         if (serialNumberInfoBO == null) {
-            throw new BusinessException("cannot found SerialNumberId : " + serialNumberIdEnum);
+            throw new BusinessException("生成编码失败");
         }
         return this.generateSerialNumberList(serialNumberInfoBO, count);
     }

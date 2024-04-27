@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.system.employee.domain.vo;
 
-import cn.morefocus.base.common.enumeration.GenderEnum;
+import cn.morefocus.base.common.enums.GenderEnum;
 import cn.morefocus.base.common.swagger.SchemaEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

@@ -16,7 +16,6 @@ public class LogVariableListener implements ApplicationListener<ApplicationEnvir
 
     @Override
     public void onApplicationEvent(ApplicationEnvironmentPreparedEvent applicationEvent) {
-
         ConfigurableEnvironment environment = applicationEvent.getEnvironment();
         String filePath = environment.getProperty(LOG_DIRECTORY);
         if (filePath != null) {

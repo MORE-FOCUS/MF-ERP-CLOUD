@@ -16,7 +16,7 @@ import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.constant.StringConst;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
-import cn.morefocus.base.common.enumeration.UserTypeEnum;
+import cn.morefocus.base.common.enums.UserTypeEnum;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import cn.morefocus.base.common.util.PageUtil;
 import cn.morefocus.base.module.support.securityprotect.service.ProtectPasswordService;

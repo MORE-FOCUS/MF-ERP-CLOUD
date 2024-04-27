@@ -1,7 +1,5 @@
 package cn.morefocus.base.module.support.serialnumber.strategy;
 
-import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberIdEnum;
-
 import java.util.List;
 
 /**
@@ -12,10 +10,10 @@ public interface SerialNumberGenerateService {
     /**
      * 生成1个
      */
-    String generate(SerialNumberIdEnum serialNumberIdEnum);
+    String generate(Long serialNumberId);
 
     /**
      * 生成n个
      */
-    List<String> generate(SerialNumberIdEnum serialNumberIdEnum, Integer count);
+    List<String> generate(Long serialNumberId, Integer count);
 }

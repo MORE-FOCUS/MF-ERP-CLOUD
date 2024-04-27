@@ -1,6 +1,6 @@
 package cn.morefocus.base.module.support.file.domain.vo;
 
-import cn.morefocus.base.common.enumeration.UserTypeEnum;
+import cn.morefocus.base.common.enums.UserTypeEnum;
 import cn.morefocus.base.common.swagger.SchemaEnum;
 import cn.morefocus.base.module.support.file.constant.FileFolderTypeEnum;
 import io.swagger.v3.oas.annotations.media.Schema;

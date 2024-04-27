@@ -1,7 +1,7 @@
 package cn.morefocus.base.module.support.serialnumber.constant;
 
 import cn.morefocus.base.common.constant.StringConst;
-import cn.morefocus.base.common.enumeration.BaseEnum;
+import cn.morefocus.base.common.enums.BaseEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

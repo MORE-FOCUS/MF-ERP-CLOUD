@@ -1,6 +1,6 @@
 package cn.morefocus.base.common.domain;
 
-import cn.morefocus.base.common.enumeration.UserTypeEnum;
+import cn.morefocus.base.common.enums.UserTypeEnum;
 
 /**
  * 请求用户

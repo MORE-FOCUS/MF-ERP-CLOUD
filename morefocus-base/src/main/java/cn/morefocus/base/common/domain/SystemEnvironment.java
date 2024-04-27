@@ -1,7 +1,6 @@
 package cn.morefocus.base.common.domain;
 
-
-import cn.morefocus.base.common.enumeration.SystemEnvironmentEnum;
+import cn.morefocus.base.common.enums.SystemEnvironmentEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

@@ -1,13 +1,10 @@
-package cn.morefocus.base.common.enumeration;
-
+package cn.morefocus.base.common.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
  * 系统环境枚举类
- *
- *
  */
 @AllArgsConstructor
 @Getter

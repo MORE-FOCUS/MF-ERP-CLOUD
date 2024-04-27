@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.business.category.constant;
 
-import cn.morefocus.base.common.enumeration.BaseEnum;
+import cn.morefocus.base.common.enums.BaseEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

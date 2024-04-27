@@ -1,6 +1,6 @@
 package cn.morefocus.base.common.swagger;
 
-import cn.morefocus.base.common.enumeration.BaseEnum;
+import cn.morefocus.base.common.enums.BaseEnum;
 import cn.morefocus.base.common.validator.enumeration.CheckEnum;
 import io.swagger.v3.core.converter.AnnotatedType;
 import io.swagger.v3.oas.models.media.Schema;

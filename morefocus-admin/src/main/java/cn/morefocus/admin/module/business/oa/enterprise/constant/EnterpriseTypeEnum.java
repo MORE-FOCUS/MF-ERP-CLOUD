@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.business.oa.enterprise.constant;
 
-import cn.morefocus.base.common.enumeration.BaseEnum;
+import cn.morefocus.base.common.enums.BaseEnum;
 
 /**
  * 企业类型

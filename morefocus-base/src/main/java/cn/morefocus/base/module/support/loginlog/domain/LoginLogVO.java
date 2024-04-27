@@ -1,6 +1,6 @@
 package cn.morefocus.base.module.support.loginlog.domain;
 
-import cn.morefocus.base.common.enumeration.UserTypeEnum;
+import cn.morefocus.base.common.enums.UserTypeEnum;
 import cn.morefocus.base.common.swagger.SchemaEnum;
 import cn.morefocus.base.module.support.loginlog.constant.LoginLogResultEnum;
 import io.swagger.v3.oas.annotations.media.Schema;

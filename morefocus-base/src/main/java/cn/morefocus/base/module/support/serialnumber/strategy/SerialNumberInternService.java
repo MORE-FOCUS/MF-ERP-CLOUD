@@ -21,9 +21,9 @@ public class SerialNumberInternService extends SerialNumberBaseService {
     /**
      * 按照 serialNumberId 进行锁
      */
-    private static final Interner<Integer> POOL = Interners.newStrongInterner();
+    private static final Interner<Long> POOL = Interners.newStrongInterner();
 
-    private ConcurrentHashMap<Integer, SerialNumberLastGenerateDTO> serialNumberLastGenerateMap = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<Long, SerialNumberLastGenerateDTO> serialNumberLastGenerateMap = new ConcurrentHashMap<>();
 
     @Override
     public void initLastGenerateData(List<SerialNumberEntity> serialNumberEntityList) {
@@ -44,7 +44,7 @@ public class SerialNumberInternService extends SerialNumberBaseService {
 
     @Override
     public List<String> generateSerialNumberList(SerialNumberInfoDTO serialNumberInfo, Integer count) {
-        SerialNumberGenerateResultDTO serialNumberGenerateResult = null;
+        SerialNumberGenerateResultDTO serialNumberGenerateResult;
         synchronized (POOL.intern(serialNumberInfo.getSerialNumberId())) {
 
             // 获取上次的生成结果

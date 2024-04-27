@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.system.employee.domain.form;
 
-import cn.morefocus.base.common.enumeration.GenderEnum;
+import cn.morefocus.base.common.enums.GenderEnum;
 import cn.morefocus.base.common.swagger.SchemaEnum;
 import cn.morefocus.base.common.util.LocalVerificationUtil;
 import cn.morefocus.base.common.validator.enumeration.CheckEnum;

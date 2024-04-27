@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.system.menu.constant;
 
-import cn.morefocus.base.common.enumeration.BaseEnum;
+import cn.morefocus.base.common.enums.BaseEnum;
 
 /**
  * 权限类型

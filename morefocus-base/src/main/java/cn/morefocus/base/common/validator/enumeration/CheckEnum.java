@@ -1,6 +1,6 @@
 package cn.morefocus.base.common.validator.enumeration;
 
-import cn.morefocus.base.common.enumeration.BaseEnum;
+import cn.morefocus.base.common.enums.BaseEnum;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

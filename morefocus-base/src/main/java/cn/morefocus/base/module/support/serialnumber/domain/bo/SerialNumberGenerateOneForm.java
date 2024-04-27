@@ -13,5 +13,5 @@ public class SerialNumberGenerateOneForm {
 
     @Schema(description = "单号ID")
     @NotNull(message = "单号ID不能为空")
-    private Integer serialNumberId;
+    private Long serialNumberId;
 }

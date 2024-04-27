@@ -2,7 +2,7 @@ package cn.morefocus.base.module.support.loginlog.service;
 
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
-import cn.morefocus.base.common.enumeration.UserTypeEnum;
+import cn.morefocus.base.common.enums.UserTypeEnum;
 import cn.morefocus.base.common.util.PageUtil;
 import cn.morefocus.base.module.support.loginlog.constant.LoginLogResultEnum;
 import cn.morefocus.base.module.support.loginlog.domain.LoginLogEntity;

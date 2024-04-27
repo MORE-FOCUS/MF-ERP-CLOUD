@@ -1,4 +1,4 @@
-package cn.morefocus.base.common.enumeration;
+package cn.morefocus.base.common.enums;
 
 /**
  * 用户类型

@@ -1,6 +1,6 @@
 package cn.morefocus.base.module.support.codegenerator.constant;
 
-import cn.morefocus.base.common.enumeration.BaseEnum;
+import cn.morefocus.base.common.enums.BaseEnum;
 
 /**
  * 前端组件类型

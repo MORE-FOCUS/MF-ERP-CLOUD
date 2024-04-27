@@ -1,7 +1,6 @@
 package cn.morefocus.base.module.support.serialnumber.domain;
 
 import cn.morefocus.base.common.domain.BaseEntity;
-import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberIdEnum;
 import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberRuleTypeEnum;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -21,11 +20,9 @@ public class SerialNumberEntity extends BaseEntity {
 
     /**
      * 主键id
-     *
-     * @see SerialNumberIdEnum
      */
     @TableId(type = IdType.INPUT)
-    private Integer serialNumberId;
+    private Long serialNumberId;
 
     /**
      * 编码前缀

@@ -1,6 +1,6 @@
 package cn.morefocus.base.constant;
 
-import cn.morefocus.base.common.enumeration.BaseEnum;
+import cn.morefocus.base.common.enums.BaseEnum;
 
 /**
  * 登录设备类型

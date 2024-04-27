@@ -1,7 +1,7 @@
 package cn.morefocus.base.module.support.apiencrypt.advice;
 
 import cn.morefocus.base.common.domain.R;
-import cn.morefocus.base.common.enumeration.DataTypeEnum;
+import cn.morefocus.base.common.enums.DataTypeEnum;
 import cn.morefocus.base.module.support.apiencrypt.annotation.ApiEncrypt;
 import cn.morefocus.base.module.support.apiencrypt.service.ApiEncryptService;
 import com.alibaba.fastjson.JSON;

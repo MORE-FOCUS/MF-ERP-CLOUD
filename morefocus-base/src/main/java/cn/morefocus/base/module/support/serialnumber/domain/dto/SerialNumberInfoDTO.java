@@ -1,6 +1,5 @@
 package cn.morefocus.base.module.support.serialnumber.domain.dto;
 
-import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberIdEnum;
 import cn.morefocus.base.module.support.serialnumber.constant.SerialNumberRuleTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,10 +18,8 @@ public class SerialNumberInfoDTO {
 
     /**
      * 主键id
-     *
-     * @see SerialNumberIdEnum
      */
-    private Integer serialNumberId;
+    private Long serialNumberId;
 
     /**
      * 业务

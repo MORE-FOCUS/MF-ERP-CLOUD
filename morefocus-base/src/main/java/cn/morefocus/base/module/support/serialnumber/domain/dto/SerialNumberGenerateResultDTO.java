@@ -20,7 +20,7 @@ public class SerialNumberGenerateResultDTO {
     /**
      * 序号id
      */
-    private Integer serialNumberId;
+    private Long serialNumberId;
 
     /**
      * 是否重置的初始值
