@@ -15,6 +15,9 @@ public class DepartmentVO {
     @Schema(description = "部门名称")
     private String name;
 
+    @Schema(description = "部门编码")
+    private String code;
+
     @Schema(description = "部门负责人姓名")
     private String managerName;
 
@@ -27,4 +30,9 @@ public class DepartmentVO {
     @Schema(description = "排序")
     private Integer sortValue;
 
+    @Schema(description = "默认")
+    private Boolean isDefault;
+
+    @Schema(description = "禁用")
+    private Boolean isDisabled;
 }

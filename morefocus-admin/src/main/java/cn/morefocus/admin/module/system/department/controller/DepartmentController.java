@@ -27,9 +27,15 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @Operation(summary = "查询部门树形列表")
-    @GetMapping("/department/treeList")
+    @GetMapping("/department/tree")
     public R<List<DepartmentTreeVO>> departmentTree() {
         return departmentService.departmentTree();
+    }
+
+    @Operation(summary = "查询部门列表")
+    @GetMapping("/department/queryAll")
+    public R<List<DepartmentVO>> queryAll() {
+        return R.ok(departmentService.queryAll());
     }
 
     @Operation(summary = "添加部门")
@@ -51,12 +57,6 @@ public class DepartmentController {
     @SaCheckPermission("system:department:delete")
     public R<String> deleteDepartment(@PathVariable Long deptId) {
         return departmentService.deleteDepartment(deptId);
-    }
-
-    @Operation(summary = "查询部门列表")
-    @GetMapping("/department/queryAll")
-    public R<List<DepartmentVO>> queryAll() {
-        return R.ok(departmentService.queryAll());
     }
 
 }

@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 public class SerialNumberAddFrom {
 
     @NotNull(message = "ID不能为空")
-    private Integer serialNumberId;
+    private Long serialNumberId;
 
     /**
      * 编码前缀

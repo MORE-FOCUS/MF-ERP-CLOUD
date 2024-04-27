@@ -5,7 +5,7 @@ import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberEntity;
 import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberGenerateResultDTO;
 import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberInfoDTO;
 import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberLastGenerateDTO;
-import cn.morefocus.base.module.support.serialnumber.service.SerialNumberBaseService;
+import cn.morefocus.base.module.support.serialnumber.service.SerialNumberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class SerialNumberMysqlService extends SerialNumberBaseService {
+public class SerialNumberMysqlService extends SerialNumberService {
 
     @Override
     @Transactional(rollbackFor = Throwable.class)

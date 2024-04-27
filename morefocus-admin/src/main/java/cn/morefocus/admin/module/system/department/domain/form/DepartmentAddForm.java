@@ -17,6 +17,11 @@ public class DepartmentAddForm {
     @NotNull(message = "请输入正确的部门名称(1-50个字符)")
     private String name;
 
+    @Schema(description = "部门编码")
+    @Length(min = 1, max = 10, message = "请输入正确的部门编码(1-10个字符)")
+    @NotNull(message = "请输入正确的部门编码(1-10个字符)")
+    private String code;
+
     @Schema(description = "排序")
     @NotNull(message = "排序值")
     private Integer sortValue;
@@ -27,4 +32,9 @@ public class DepartmentAddForm {
     @Schema(description = "上级部门id (可选)")
     private Long pid;
 
+    @Schema(description = "是否默认")
+    private Boolean isDefault;
+
+    @Schema(description = "是否禁用")
+    private Boolean isDisabled;
 }

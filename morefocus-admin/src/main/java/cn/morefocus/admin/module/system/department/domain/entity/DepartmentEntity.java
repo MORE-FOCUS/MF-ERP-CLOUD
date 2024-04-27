@@ -27,6 +27,11 @@ public class DepartmentEntity extends BaseEntity {
     private String name;
 
     /**
+     * 部门编码
+     */
+    private String code;
+
+    /**
      * 负责人员工 id
      */
     private Long managerId;
@@ -35,4 +40,14 @@ public class DepartmentEntity extends BaseEntity {
      * 部门父级id
      */
     private Long pid;
+
+    /**
+     * 是否默认
+     */
+    private Boolean isDefault;
+
+    /**
+     * 是否禁用
+     */
+    private Boolean isDisabled;
 }

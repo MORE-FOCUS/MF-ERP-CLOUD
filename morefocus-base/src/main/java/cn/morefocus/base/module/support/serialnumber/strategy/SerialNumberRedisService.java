@@ -7,7 +7,7 @@ import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberEntity;
 import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberGenerateResultDTO;
 import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberInfoDTO;
 import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberLastGenerateDTO;
-import cn.morefocus.base.module.support.serialnumber.service.SerialNumberBaseService;
+import cn.morefocus.base.module.support.serialnumber.service.SerialNumberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ import java.util.List;
 @Primary
 @Slf4j
 @Service
-public class SerialNumberRedisService extends SerialNumberBaseService {
+public class SerialNumberRedisService extends SerialNumberService {
 
     private static final int MAX_GET_LOCK_COUNT = 5;
 

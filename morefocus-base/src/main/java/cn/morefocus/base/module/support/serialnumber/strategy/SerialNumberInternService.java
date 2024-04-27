@@ -4,7 +4,7 @@ import cn.morefocus.base.module.support.serialnumber.domain.SerialNumberEntity;
 import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberGenerateResultDTO;
 import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberInfoDTO;
 import cn.morefocus.base.module.support.serialnumber.domain.dto.SerialNumberLastGenerateDTO;
-import cn.morefocus.base.module.support.serialnumber.service.SerialNumberBaseService;
+import cn.morefocus.base.module.support.serialnumber.service.SerialNumberService;
 import com.google.common.collect.Interner;
 import com.google.common.collect.Interners;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 单据序列号 基于内存锁实现
  */
 @Service
-public class SerialNumberInternService extends SerialNumberBaseService {
+public class SerialNumberInternService extends SerialNumberService {
 
     /**
      * 按照 serialNumberId 进行锁
