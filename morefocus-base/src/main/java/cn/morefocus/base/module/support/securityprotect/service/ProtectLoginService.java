@@ -21,10 +21,7 @@ import java.util.List;
 
 /**
  * 三级等保 登录 相关
- *
- *
  */
-
 @Service
 public class ProtectLoginService {
 
@@ -47,13 +44,8 @@ public class ProtectLoginService {
     @Resource
     private LoginFailMapper loginFailMapper;
 
-
     /**
      * 检查是否可以登录
-     *
-     * @param userId
-     * @param userType
-     * @return
      */
     public R<LoginFailEntity> checkLogin(Long userId, UserTypeEnum userType) {
 
@@ -61,7 +53,6 @@ public class ProtectLoginService {
         if (loginMaxFailTimes < 1) {
             return R.ok();
         }
-
 
         LoginFailEntity loginFailEntity = loginFailMapper.selectByUserIdAndUserType(userId, userType.getValue());
         if (loginFailEntity == null) {
@@ -85,10 +76,6 @@ public class ProtectLoginService {
 
     /**
      * 登录失败后记录
-     *
-     * @param userId
-     * @param userType
-     * @param loginFailEntity
      */
     public String recordLoginFail(Long userId, UserTypeEnum userType, String loginName, LoginFailEntity loginFailEntity) {
 
@@ -134,9 +121,6 @@ public class ProtectLoginService {
 
     /**
      * 清除登录失败
-     *
-     * @param userId
-     * @param userType
      */
     public void removeLoginFail(Long userId, UserTypeEnum userType) {
         // 无需校验
@@ -149,9 +133,6 @@ public class ProtectLoginService {
 
     /**
      * 分页查询
-     *
-     * @param queryForm
-     * @return
      */
     public PageResult<LoginFailVO> queryPage(LoginFailQueryForm queryForm) {
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
@@ -162,9 +143,6 @@ public class ProtectLoginService {
 
     /**
      * 批量删除
-     *
-     * @param idList
-     * @return
      */
     public R<String> batchDelete(List<Long> idList) {
         if (CollectionUtils.isEmpty(idList)) {
@@ -174,6 +152,4 @@ public class ProtectLoginService {
         loginFailMapper.deleteBatchIds(idList);
         return R.ok();
     }
-
 }
-;

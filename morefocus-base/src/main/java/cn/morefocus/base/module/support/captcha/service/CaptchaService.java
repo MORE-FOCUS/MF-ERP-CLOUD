@@ -24,8 +24,6 @@ import java.util.UUID;
 
 /**
  * 图形验证码 服务
- *
- *
  */
 @Slf4j
 @Service
@@ -90,7 +88,6 @@ public class CaptchaService {
         /*
          * 1、校验redis里的验证码
          * 2、校验成功后，删除redis
-
          */
         String redisCaptchaKey = redisService.generateRedisKey(RedisKeyConst.Support.CAPTCHA, captchaForm.getCaptchaUuid());
         String redisCaptchaCode = redisService.get(redisCaptchaKey);

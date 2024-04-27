@@ -18,8 +18,6 @@ import java.time.format.DateTimeParseException;
 
 /**
  * java8 localDate 时间类格式化配置
- *
- *
  */
 @Configuration
 public class DateConfig {
@@ -33,7 +31,6 @@ public class DateConfig {
             builder.serializers(new LocalDateTimeSerializer(DatePattern.NORM_DATETIME_FORMAT.getDateTimeFormatter()));
         };
     }
-
 
     /**
      * string 转为 LocalDateTime 配置类
@@ -55,7 +52,6 @@ public class DateConfig {
             return localDateTime;
         }
     }
-
 
     /**
      * string 转为 LocalDate 配置类

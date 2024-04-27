@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
 /**
- * admin 拦截器
+ * 拦截器
  */
 @Component
 @Slf4j
@@ -48,8 +48,6 @@ public class AdminInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-
-        // OPTIONS请求直接return
         if (HttpMethod.OPTIONS.toString().equals(request.getMethod())) {
             response.setStatus(HttpStatus.NO_CONTENT.value());
             return false;
@@ -61,12 +59,11 @@ public class AdminInterceptor implements HandlerInterceptor {
         }
 
         try {
-            // --------------- 第一步： 根据token 获取用户 ---------------
-
+            //根据token获取用户
             String tokenValue = StpUtil.getTokenValue();
             boolean debugNumberTokenFlag = isDevDebugNumberToken(tokenValue);
 
-            String loginId = null;
+            String loginId;
             if (debugNumberTokenFlag) {
                 //开发、测试环境，且为数字的话，则表明为 调试临时用户，即需要调用 sa-token switch
                 loginId = UserTypeEnum.ADMIN_EMPLOYEE.getValue() + StringConst.COLON + tokenValue;

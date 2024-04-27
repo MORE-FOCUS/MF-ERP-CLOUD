@@ -148,7 +148,6 @@ public class LoginService implements StpInterface {
 
         // 万能密码特殊操作
         if (superPasswordFlag) {
-
             // 对于万能密码：受限制sa token 要求loginId唯一，万能密码只能插入一段uuid
             String saTokenLoginId = SUPER_PASSWORD_LOGIN_ID_PREFIX + StringConst.COLON + UUID.randomUUID().toString().replace("-", "") + StringConst.COLON + employeeEntity.getEmployeeId();
             // 万能密码登录只能登录15分钟
@@ -288,7 +287,7 @@ public class LoginService implements StpInterface {
 
         try {
             // 如果是 万能密码 登录的用户
-            String employeeIdStr = null;
+            String employeeIdStr;
             if (loginId.startsWith(SUPER_PASSWORD_LOGIN_ID_PREFIX)) {
                 employeeIdStr = loginId.split(StringConst.COLON)[2];
             } else {

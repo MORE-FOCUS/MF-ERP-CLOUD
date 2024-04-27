@@ -10,8 +10,6 @@ import javax.annotation.Resource;
 
 /**
  * 心跳配置
- *
- *
  */
 @Configuration
 public class HeartBeatConfig {
@@ -29,6 +27,5 @@ public class HeartBeatConfig {
     public HeartBeatManager heartBeatManager() {
         return new HeartBeatManager(intervalSeconds * 1000L, heartBeatRecordHandler);
     }
-
 
 }

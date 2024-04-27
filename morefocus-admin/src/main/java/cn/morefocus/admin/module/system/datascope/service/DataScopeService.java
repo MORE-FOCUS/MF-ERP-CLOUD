@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 数据范围 保存
@@ -40,12 +41,14 @@ public class DataScopeService {
         DataScopeViewTypeEnum[] enums = DataScopeViewTypeEnum.class.getEnumConstants();
         DataScopeViewTypeVO dataScopeViewTypeDTO;
         for (DataScopeViewTypeEnum viewTypeEnum : enums) {
-            dataScopeViewTypeDTO = DataScopeViewTypeVO.builder().viewType(viewTypeEnum.getValue()).viewTypeLevel(viewTypeEnum.getLevel()).viewTypeName(viewTypeEnum.getDesc()).build();
+            dataScopeViewTypeDTO = DataScopeViewTypeVO.builder()
+                    .viewType(viewTypeEnum.getValue())
+                    .viewTypeLevel(viewTypeEnum.getLevel())
+                    .viewTypeName(viewTypeEnum.getDesc())
+                    .build();
             viewTypeList.add(dataScopeViewTypeDTO);
         }
-        Comparator<DataScopeViewTypeVO> comparator = (h1, h2) -> h1.getViewTypeLevel().compareTo(h2.getViewTypeLevel());
-        viewTypeList.sort(comparator);
-        return viewTypeList;
+        return viewTypeList.stream().sorted(Comparator.comparing(DataScopeViewTypeVO::getViewTypeLevel)).collect(Collectors.toList());
     }
 
     public List<DataScopeDTO> getDataScopeType() {
@@ -53,13 +56,15 @@ public class DataScopeService {
         DataScopeTypeEnum[] enums = DataScopeTypeEnum.class.getEnumConstants();
         DataScopeDTO dataScopeDTO;
         for (DataScopeTypeEnum typeEnum : enums) {
-            dataScopeDTO =
-                    DataScopeDTO.builder().dataScopeType(typeEnum.getValue()).dataScopeTypeDesc(typeEnum.getDesc()).dataScopeTypeName(typeEnum.getName()).dataScopeTypeSort(typeEnum.getSort()).build();
+            dataScopeDTO = DataScopeDTO.builder()
+                    .dataScopeType(typeEnum.getValue())
+                    .dataScopeTypeDesc(typeEnum.getDesc())
+                    .dataScopeTypeName(typeEnum.getName())
+                    .dataScopeTypeSort(typeEnum.getSort())
+                    .build();
             dataScopeTypeList.add(dataScopeDTO);
         }
-        Comparator<DataScopeDTO> comparator = (h1, h2) -> h1.getDataScopeTypeSort().compareTo(h2.getDataScopeTypeSort());
-        dataScopeTypeList.sort(comparator);
-        return dataScopeTypeList;
+        return dataScopeTypeList.stream().sorted(Comparator.comparing(DataScopeDTO::getDataScopeTypeSort)).collect(Collectors.toList());
     }
 
 }

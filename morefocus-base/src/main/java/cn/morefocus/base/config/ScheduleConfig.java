@@ -12,28 +12,26 @@ import java.util.stream.Collectors;
 
 /**
  * 定时任务调度 配置
- *
- *
  */
 @Slf4j
 @Configuration
 public class ScheduleConfig implements SchedulingConfigurer {
 
-    private ScheduledTaskRegistrar taskRegistrar;
+    private ScheduledTaskRegistrar scheduledTaskRegistrar;
 
     @Override
-    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
-        this.taskRegistrar = taskRegistrar;
+    public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
+        this.scheduledTaskRegistrar = scheduledTaskRegistrar;
     }
 
     public String destroy() {
         List<Task> taskList = new ArrayList<>();
-        taskList.addAll(taskRegistrar.getCronTaskList());
-        taskList.addAll(taskRegistrar.getTriggerTaskList());
-        taskList.addAll(taskRegistrar.getFixedDelayTaskList());
-        taskList.addAll(taskRegistrar.getFixedRateTaskList());
+        taskList.addAll(scheduledTaskRegistrar.getCronTaskList());
+        taskList.addAll(scheduledTaskRegistrar.getTriggerTaskList());
+        taskList.addAll(scheduledTaskRegistrar.getFixedDelayTaskList());
+        taskList.addAll(scheduledTaskRegistrar.getFixedRateTaskList());
 
-        taskRegistrar.destroy();
+        scheduledTaskRegistrar.destroy();
 
         List<String> taskNameList = taskList.stream().map(Task::toString).collect(Collectors.toList());
         return "已关闭 @Scheduled定时任务：" + taskNameList.size() + "个！";
