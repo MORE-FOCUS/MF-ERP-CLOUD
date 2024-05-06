@@ -18,6 +18,4 @@
         FROM t_department
         WHERE pid = #{deptId}
     </select>
-
-
 </mapper>
