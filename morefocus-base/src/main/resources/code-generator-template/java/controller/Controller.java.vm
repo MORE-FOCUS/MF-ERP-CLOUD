@@ -41,7 +41,7 @@ public class ${name.upperCamel}Controller {
     * 查询所有
     */
     @PostMapping("/${name.lowerCamel}/queryAll")
-    public R<PageResult<${name.upperCamel}VO>> queryAll() {
+    public R<List<${name.upperCamel}VO>> queryAll() {
         return R.ok(${name.lowerCamel}Service.queryAll());
     }
 

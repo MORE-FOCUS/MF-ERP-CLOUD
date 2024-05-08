@@ -29,8 +29,8 @@
         from information_schema.tables tables
         left join t_code_generator_config on tables.table_name = t_code_generator_config.table_name
         where tables.table_schema = (select database())
-        <if test="queryForm.tableNameKeywords != null and queryForm.tableNameKeywords != ''">
-            AND INSTR(tables.table_name,#{queryForm.tableNameKeywords})
+        <if test="queryForm.keywords != null and queryForm.keywords != ''">
+            AND INSTR(tables.table_name,#{queryForm.keywords})
         </if>
     </select>
 </mapper>

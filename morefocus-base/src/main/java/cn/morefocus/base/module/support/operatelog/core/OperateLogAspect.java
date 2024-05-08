@@ -237,9 +237,6 @@ public abstract class OperateLogAspect {
 
     /**
      * 保存操作日志
-     *
-     * @param operateLogEntity
-     * @return
      */
     private Boolean saveLog(OperateLogEntity operateLogEntity) {
         OperateLogConfig operateLogConfig = getOperateLogConfig();

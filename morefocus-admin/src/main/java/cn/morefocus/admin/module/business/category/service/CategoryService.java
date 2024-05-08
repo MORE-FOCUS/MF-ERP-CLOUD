@@ -14,6 +14,7 @@ import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Service;
 
@@ -61,7 +62,7 @@ public class CategoryService {
         }
 
         //层级
-        categoryEntity.setLevel(categoryEntity.getPath().split(StringConst.SEPARATOR).length + 1);
+        categoryEntity.setLevel(getLevel(categoryEntity));
 
         //是否叶子节点
         categoryEntity.setIsLeaf(Boolean.TRUE);
@@ -105,12 +106,16 @@ public class CategoryService {
             categoryEntity.setPath(NumberUtils.LONG_ZERO.toString());
         } else {
             pid = updateForm.getPid();
-            CategoryEntity parentCategoryEntity = categoryMapper.selectById(pid);
-            categoryEntity.setPath(parentCategoryEntity.getPath() + StringConst.SEPARATOR + pid);
+            if (!pid.equals(NumberUtils.LONG_ZERO)) {
+                CategoryEntity parentCategoryEntity = categoryMapper.selectById(pid);
+                if (null != parentCategoryEntity) {
+                    categoryEntity.setPath(parentCategoryEntity.getPath() + StringConst.SEPARATOR + pid);
+                }
+            }
         }
 
         //层级
-        categoryEntity.setLevel(categoryEntity.getPath().split(StringConst.SEPARATOR).length + 1);
+        categoryEntity.setLevel(getLevel(categoryEntity));
 
         //是否叶子节点,判断是否有子节点
         categoryEntity.setIsLeaf(CollectionUtils.isEmpty(categoryMapper.queryByPid(Collections.singletonList(categoryEntity.getCategoryId()), Boolean.TRUE)) ? Boolean.TRUE : Boolean.FALSE);
@@ -120,6 +125,21 @@ public class CategoryService {
         // 更新缓存
         categoryCacheManager.removeCache();
         return R.ok();
+    }
+
+    /**
+     * 获取层级
+     */
+    private Integer getLevel(CategoryEntity categoryEntity) {
+        if (null == categoryEntity) {
+            return 1;
+        }
+
+        if (StringUtils.isBlank(categoryEntity.getPath())) {
+            return 1;
+        }
+
+        return categoryEntity.getPath().split(StringConst.SEPARATOR).length + 1;
     }
 
     /**

@@ -28,6 +28,8 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
         public static final String TENANT_INDUSTRY = "租户-所属行业";
 
         public static final String SUPPLIER = "供应商";
+
+        public static final String WAREHOUSE = "仓库";
     }
 
     /**

@@ -8,8 +8,6 @@ import java.util.function.Function;
 
 /**
  * 配置
- *
- *
  */
 @Data
 @Builder
@@ -29,6 +27,5 @@ public class OperateLogConfig {
      * 队列大小
      */
     private Integer queueCapacity;
-
 
 }

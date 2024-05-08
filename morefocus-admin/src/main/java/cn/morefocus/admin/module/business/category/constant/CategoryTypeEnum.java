@@ -21,7 +21,10 @@ public enum CategoryTypeEnum implements BaseEnum {
      */
     SUPPLIER(2, "供应商"),
 
-    ;
+    /**
+     * 仓库
+     */
+    WAREHOUSE(3, "仓库");
 
     private final Integer value;
 
