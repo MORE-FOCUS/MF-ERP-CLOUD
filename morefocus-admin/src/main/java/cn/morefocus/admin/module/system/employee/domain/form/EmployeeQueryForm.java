@@ -16,7 +16,7 @@ public class EmployeeQueryForm {
      * 搜索词
      */
     @Length(max = 20, message = "搜索词最多20字符")
-    private String keyword;
+    private String keywords;
 
     /**
      * 部门id

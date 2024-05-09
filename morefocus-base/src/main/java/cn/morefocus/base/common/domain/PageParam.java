@@ -16,7 +16,7 @@ import java.util.List;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class PageParam extends BaseBo {
+public class PageParam extends BaseForm {
     /**
      * 页码 默认1
      */

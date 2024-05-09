@@ -73,7 +73,7 @@ public class TenantIndustryService {
     /**
      * 批量更新行业状态
      */
-    public R<String> updateDisableFlag(Long id) {
+    public R<String> updateIsDisabled(Long id) {
         if (null == id) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
@@ -81,7 +81,7 @@ public class TenantIndustryService {
         if (null == tenantIndustryEntity) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
-        tenantIndustryMapper.updateDisableFlag(id, !tenantIndustryEntity.getIsDisabled());
+        tenantIndustryMapper.updateIsDisabled(id, !tenantIndustryEntity.getIsDisabled());
 
         return R.ok();
     }

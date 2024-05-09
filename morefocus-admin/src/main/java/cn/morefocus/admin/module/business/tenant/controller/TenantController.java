@@ -80,7 +80,7 @@ public class TenantController {
     @Operation(summary = "更新租户禁用/启用状态")
     @PostMapping("/tenant/update/disabled/{id}")
     @SaCheckPermission("tenant:tenant:disabled")
-    public R<String> updateDisableFlag(@PathVariable("id") Long id) {
+    public R<String> updateIsDisabled(@PathVariable("id") Long id) {
         return tenantService.updateIsDisabled(id);
     }
 }

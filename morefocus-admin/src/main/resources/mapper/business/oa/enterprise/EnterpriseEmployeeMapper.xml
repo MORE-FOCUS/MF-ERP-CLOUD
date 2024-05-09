@@ -86,9 +86,9 @@
         where t_oa_enterprise_employee.enterprise_id = #{queryForm.enterpriseId}
         <if test="queryForm.keywords != null and queryForm.keywords != ''">
             AND (
-            INSTR(t_employee.actual_name,#{queryForm.keyword})
-            OR INSTR(t_employee.phone,#{queryForm.keyword})
-            OR INSTR(t_employee.login_name,#{queryForm.keyword})
+            INSTR(t_employee.actual_name,#{queryForm.keywords})
+            OR INSTR(t_employee.phone,#{queryForm.keywords})
+            OR INSTR(t_employee.login_name,#{queryForm.keywords})
             )
         </if>
         <if test="queryForm.isDeleted != null">

@@ -11,9 +11,8 @@ import javax.validation.constraints.NotNull;
  * @date 2024-04-16 23:57:58
  */
 @Data
-public class WarehouseUpdateForm {
+public class WarehouseUpdateForm extends WarehouseAddForm {
 
     @NotNull(message = "分类id 不能为空")
     private Long id;
-
 }

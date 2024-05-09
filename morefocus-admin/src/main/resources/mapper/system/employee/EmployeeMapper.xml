@@ -11,9 +11,9 @@
         <where>
             <if test="queryForm.keywords != null and queryForm.keywords != ''">
                 AND (
-                INSTR(t_employee.actual_name,#{queryForm.keyword})
-                OR INSTR(t_employee.phone,#{queryForm.keyword})
-                OR INSTR(t_employee.login_name,#{queryForm.keyword})
+                INSTR(t_employee.actual_name,#{queryForm.keywords})
+                OR INSTR(t_employee.phone,#{queryForm.keywords})
+                OR INSTR(t_employee.login_name,#{queryForm.keywords})
                 )
             </if>
             <if test="deptIdList != null and deptIdList.size > 0">
@@ -34,7 +34,7 @@
     </select>
 
 
-    <update id="updateDisableFlag">
+    <update id="updateIsDisabled">
         UPDATE t_employee
         SET is_disabled = #{isDisabled}
         WHERE employee_id = #{employeeId}

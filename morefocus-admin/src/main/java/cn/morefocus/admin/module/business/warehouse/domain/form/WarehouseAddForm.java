@@ -31,6 +31,11 @@ public class WarehouseAddForm {
     private Boolean isDefault;
 
     /**
+     * 禁用 1-是
+     */
+    private Boolean isDisabled;
+
+    /**
      * 联系人
      */
     private String contact;

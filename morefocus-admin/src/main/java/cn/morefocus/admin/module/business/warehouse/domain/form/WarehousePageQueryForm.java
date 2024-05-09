@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.business.warehouse.domain.form;
 
-import cn.morefocus.base.common.domain.BaseForm;
+import cn.morefocus.base.common.domain.PageParam;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,6 +12,5 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class WarehouseQueryForm extends BaseForm {
-
+public class WarehousePageQueryForm extends PageParam {
 }

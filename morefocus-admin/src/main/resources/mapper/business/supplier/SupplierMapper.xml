@@ -23,7 +23,7 @@
     </select>
 
     <update id="updateIsDisabled">
-        UPDATE t_tenant
+        UPDATE t_supplier
         SET is_disabled = #{isDisabled}
         WHERE id = #{id}
     </update>

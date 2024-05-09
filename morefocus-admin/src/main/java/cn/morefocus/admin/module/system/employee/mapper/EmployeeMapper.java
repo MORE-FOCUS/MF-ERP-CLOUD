@@ -31,7 +31,7 @@ public interface EmployeeMapper extends BaseMapper<EmployeeEntity> {
     /**
      * 更新单个
      */
-    void updateDisableFlag(@Param("employeeId") Long employeeId, @Param("isDisabled") Boolean isDisabled);
+    void updateIsDisabled(@Param("employeeId") Long employeeId, @Param("isDisabled") Boolean isDisabled);
 
     /**
      * 通过登录名查询

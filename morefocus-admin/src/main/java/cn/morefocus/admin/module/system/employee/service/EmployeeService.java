@@ -176,7 +176,7 @@ public class EmployeeService {
     /**
      * 更新禁用/启用状态
      */
-    public R<String> updateDisableFlag(Long employeeId) {
+    public R<String> updateIsDisabled(Long employeeId) {
         if (null == employeeId) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
@@ -184,7 +184,7 @@ public class EmployeeService {
         if (null == employeeEntity) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
-        employeeMapper.updateDisableFlag(employeeId, !employeeEntity.getIsDisabled());
+        employeeMapper.updateIsDisabled(employeeId, !employeeEntity.getIsDisabled());
 
         if (employeeEntity.getIsDisabled()) {
             // 强制退出登录

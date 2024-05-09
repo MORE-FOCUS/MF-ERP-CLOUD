@@ -51,4 +51,8 @@ public class WarehouseVO extends BaseVO {
      */
     private Boolean isDeleted;
 
+    /**
+     * 是否锁定 1-锁定 0-未锁定
+     */
+    private Boolean isLocked;
 }

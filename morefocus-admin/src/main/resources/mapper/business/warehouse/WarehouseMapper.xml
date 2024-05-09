@@ -4,15 +4,59 @@
 
     <!-- 分页查询 -->
     <select id="queryPage" resultType="cn.morefocus.admin.module.business.warehouse.domain.vo.WarehouseVO">
-        SELECT *
-        FROM t_warehouse
+        SELECT t_warehouse.*
+        FROM t_warehouse t_warehouse
+        <where>
+            <if test="queryForm.keywords!=null and queryForm.keywords != ''">
+                AND ( INSTR(t_warehouse.code,#{queryForm.keywords})
+                OR INSTR(t_warehouse.name,#{queryForm.keywords})
+                )
+            </if>
+
+            <if test="queryForm.isDeleted != null">
+                and t_warehouse.is_deleted = #{queryForm.isDeleted}
+            </if>
+
+            <if test="queryForm.isDisabled != null">
+                and t_warehouse.is_disabled = #{queryForm.isDisabled}
+            </if>
+
+            <if test="queryForm.isDefault != null">
+                and t_warehouse.is_default = #{queryForm.isDefault}
+            </if>
+        </where>
     </select>
 
     <!-- 分页查询 -->
     <select id="queryAll" resultType="cn.morefocus.admin.module.business.warehouse.domain.vo.WarehouseVO">
-        SELECT *
-        FROM t_warehouse
+        SELECT t_warehouse.*
+        FROM t_warehouse t_warehouse
+
+        <where>
+            <if test="queryForm.isDeleted != null">
+                and t_warehouse.is_deleted = #{queryForm.isDeleted}
+            </if>
+
+            <if test="queryForm.isDisabled != null">
+                and t_warehouse.is_disabled = #{queryForm.isDisabled}
+            </if>
+
+            <if test="queryForm.isDefault != null">
+                and t_warehouse.is_default = #{queryForm.isDefault}
+            </if>
+        </where>
     </select>
 
+    <update id="updateIsDisabled">
+        UPDATE t_warehouse
+        SET is_disabled = #{isDisabled}
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateIsLocked">
+        UPDATE t_warehouse
+        SET is_locked = #{isLocked}
+        WHERE id = #{id}
+    </update>
 
 </mapper>

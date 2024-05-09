@@ -8,7 +8,7 @@
         FROM t_tenant_industry
     </select>
 
-    <update id="updateDisableFlag">
+    <update id="updateIsDisabled">
         UPDATE t_tenant_industry
         SET is_disabled = #{isDisabled}
         WHERE id = #{id}

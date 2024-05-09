@@ -1,7 +1,7 @@
 package cn.morefocus.admin.module.business.warehouse.mapper;
 
 import cn.morefocus.admin.module.business.warehouse.domain.entity.WarehouseEntity;
-import cn.morefocus.admin.module.business.warehouse.domain.form.WarehouseQueryForm;
+import cn.morefocus.admin.module.business.warehouse.domain.form.WarehousePageQueryForm;
 import cn.morefocus.admin.module.business.warehouse.domain.vo.WarehouseVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -24,11 +24,20 @@ public interface WarehouseMapper extends BaseMapper<WarehouseEntity> {
     /**
      * 分页 查询
      */
-    List<WarehouseVO> queryPage(Page page, @Param("queryForm") WarehouseQueryForm queryForm);
+    List<WarehouseVO> queryPage(Page page, @Param("queryForm") WarehousePageQueryForm queryForm);
 
     /**
      * 分页 查询
      */
-    List<WarehouseVO> queryAll();
+    List<WarehouseVO> queryAll(@Param("queryForm") WarehousePageQueryForm queryForm);
 
+    /**
+     * 更新禁用|启用状态
+     */
+    void updateIsDisabled(@Param("id") Long id, @Param("isDisabled") Boolean isDisabled);
+
+    /**
+     * 更新锁定状态
+     */
+    void updateIsLocked(@Param("id") Long id, @Param("isLocked") Boolean isLocked);
 }

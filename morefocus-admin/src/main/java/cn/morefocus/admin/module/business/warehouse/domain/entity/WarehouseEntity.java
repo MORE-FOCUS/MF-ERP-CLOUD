@@ -59,4 +59,13 @@ public class WarehouseEntity extends BaseEntity {
      */
     private Boolean isDeleted;
 
+    /**
+     * 是否锁定 1-锁定 0-未锁定
+     */
+    private Boolean isLocked;
+
+    /**
+     * 禁用状态 1-禁用 0-启用
+     */
+    private Boolean isDisabled;
 }

@@ -63,8 +63,8 @@ public class TenantIndustryController {
     @Operation(summary = "更新行业禁用/启用状态")
     @GetMapping("/tenant/industry/update/disabled/{id}")
     @SaCheckPermission("tenant:industry:disabled")
-    public R<String> updateDisableFlag(@PathVariable("id") Long id) {
-        return tenantIndustryService.updateDisableFlag(id);
+    public R<String> updateIsDisabled(@PathVariable("id") Long id) {
+        return tenantIndustryService.updateIsDisabled(id);
     }
 
     @Operation(summary = "批量删除")

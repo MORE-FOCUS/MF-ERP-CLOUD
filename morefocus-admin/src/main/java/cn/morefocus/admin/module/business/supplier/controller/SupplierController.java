@@ -93,12 +93,12 @@ public class SupplierController {
     }
 
     /**
-     * 更新员工禁用/启用状态
+     * 更新禁用/启用状态
      */
-    @Operation(summary = "更新租户禁用/启用状态")
+    @Operation(summary = "更新禁用/启用状态")
     @PostMapping("/supplier/disabled/{id}")
     @SaCheckPermission("business:supplier:disabled")
-    public R<String> updateDisableFlag(@PathVariable("id") Long id) {
+    public R<String> updateIsDisabled(@PathVariable("id") Long id) {
         return supplierService.updateIsDisabled(id);
     }
 }

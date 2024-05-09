@@ -63,8 +63,8 @@ public class EmployeeController {
     @Operation(summary = "更新员工禁用/启用状态")
     @GetMapping("/employee/update/disabled/{employeeId}")
     @SaCheckPermission("system:employee:disabled")
-    public R<String> updateDisableFlag(@PathVariable Long employeeId) {
-        return employeeService.updateDisableFlag(employeeId);
+    public R<String> updateIsDisabled(@PathVariable Long employeeId) {
+        return employeeService.updateIsDisabled(employeeId);
     }
 
     /**

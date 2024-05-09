@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  * 请求参数
  */
 @Data
-public class BaseBo {
+public class BaseForm {
     /**
      * 查询关键字
      */
@@ -36,4 +36,19 @@ public class BaseBo {
      * 查询结束日期
      */
     private LocalDate endDate;
+
+    /**
+     * 删除标志
+     */
+    private Boolean isDeleted;
+
+    /**
+     * 是否禁用
+     */
+    private Boolean isDisabled;
+
+    /**
+     * 是否默认
+     */
+    private Boolean isDefault;
 }
