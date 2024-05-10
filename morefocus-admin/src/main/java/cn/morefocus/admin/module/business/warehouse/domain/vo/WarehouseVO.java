@@ -55,4 +55,9 @@ public class WarehouseVO extends BaseVO {
      * 是否锁定 1-锁定 0-未锁定
      */
     private Boolean isLocked;
+
+    /**
+     * 禁用
+     */
+    private Boolean isDisabled;
 }
