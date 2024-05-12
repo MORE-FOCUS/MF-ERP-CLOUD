@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.morefocus.admin.module.business.goods.mapper.GoodsMapper">
+<mapper namespace="cn.morefocus.admin.module.business.spu.mapper.SpuMapper">
     <update id="batchUpdateDeleted">
-        update t_goods
+        update t_spu
         set is_deleted = #{isDeleted}
-        WHERE goods_id IN
-        <foreach collection="goodsIdList" open="(" close=")" separator="," item="item">
+        WHERE id IN
+        <foreach collection="ids" open="(" close=")" separator="," item="item">
             #{item}
         </foreach>
     </update>
 
     <!-- 分页 查询商品 -->
-    <select id="query" resultType="cn.morefocus.admin.module.business.goods.domain.vo.GoodsVO">
-        SELECT * FROM t_goods
+    <select id="query" resultType="cn.morefocus.admin.module.business.spu.domain.vo.SpuVO">
+        SELECT * FROM t_spu
         <where>
             <if test="query.keywords != null and query.keywords !=''">
-                INSTR(goods_name,#{query.keywords})
+                INSTR(name,#{query.keywords})
             </if>
             <if test="query.place != null">
                 AND place = #{query.place}
             </if>
-            <if test="query.goodsStatus != null">
-                AND goods_status = #{query.goodsStatus}
+            <if test="query.status != null">
+                AND status = #{query.goodsStatus}
             </if>
             <if test="query.categoryId != null">
                 AND category_id = #{query.categoryId}
@@ -34,7 +34,7 @@
             </if>
         </where>
         <if test="query.sortItemList == null or query.sortItemList.size == 0">
-            ORDER BY goods_id DESC
+            ORDER BY id DESC
         </if>
     </select>
 

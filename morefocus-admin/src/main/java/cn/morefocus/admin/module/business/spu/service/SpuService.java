@@ -1,17 +1,17 @@
-package cn.morefocus.admin.module.business.goods.service;
+package cn.morefocus.admin.module.business.spu.service;
 
 import cn.morefocus.admin.module.business.category.constant.CategoryTypeEnum;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.service.CategoryQueryService;
-import cn.morefocus.admin.module.business.goods.constant.GoodsStatusEnum;
-import cn.morefocus.admin.module.business.goods.domain.entity.GoodsEntity;
-import cn.morefocus.admin.module.business.goods.domain.form.GoodsAddForm;
-import cn.morefocus.admin.module.business.goods.domain.form.GoodsImportForm;
-import cn.morefocus.admin.module.business.goods.domain.form.GoodsQueryForm;
-import cn.morefocus.admin.module.business.goods.domain.form.GoodsUpdateForm;
-import cn.morefocus.admin.module.business.goods.domain.vo.GoodsExcelVO;
-import cn.morefocus.admin.module.business.goods.domain.vo.GoodsVO;
-import cn.morefocus.admin.module.business.goods.mapper.GoodsMapper;
+import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
+import cn.morefocus.admin.module.business.spu.domain.entity.SpuEntity;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuAddForm;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuImportForm;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuPageQueryForm;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuUpdateForm;
+import cn.morefocus.admin.module.business.spu.domain.vo.SpuExportVO;
+import cn.morefocus.admin.module.business.spu.domain.vo.SpuVO;
+import cn.morefocus.admin.module.business.spu.mapper.SpuMapper;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
@@ -44,10 +44,10 @@ import java.util.stream.Collectors;
  */
 @Service
 @Slf4j
-public class GoodsService {
+public class SpuService {
 
     @Resource
-    private GoodsMapper goodsMapper;
+    private SpuMapper spuMapper;
 
     @Resource
     private CategoryQueryService categoryQueryService;
@@ -62,16 +62,16 @@ public class GoodsService {
      * 添加商品
      */
     @Transactional(rollbackFor = Exception.class)
-    public R<String> add(GoodsAddForm addForm) {
+    public R<String> add(SpuAddForm addForm) {
         // 商品校验
         R<String> res = this.checkGoods(addForm);
         if (!res.getOk()) {
             return res;
         }
-        GoodsEntity goodsEntity = LocalBeanUtil.copy(addForm, GoodsEntity.class);
+        SpuEntity goodsEntity = LocalBeanUtil.copy(addForm, SpuEntity.class);
         goodsEntity.setIsDeleted(Boolean.FALSE);
-        goodsMapper.insert(goodsEntity);
-        dataTracerService.insert(goodsEntity.getGoodsId(), DataTracerTypeEnum.GOODS);
+        spuMapper.insert(goodsEntity);
+        dataTracerService.insert(goodsEntity.getId(), DataTracerTypeEnum.GOODS);
         return R.ok();
     }
 
@@ -79,23 +79,23 @@ public class GoodsService {
      * 更新商品
      */
     @Transactional(rollbackFor = Exception.class)
-    public R<String> update(GoodsUpdateForm updateForm) {
+    public R<String> update(SpuUpdateForm updateForm) {
         // 商品校验
         R<String> res = this.checkGoods(updateForm);
         if (!res.getOk()) {
             return res;
         }
-        GoodsEntity originEntity = goodsMapper.selectById(updateForm.getGoodsId());
-        GoodsEntity goodsEntity = LocalBeanUtil.copy(updateForm, GoodsEntity.class);
-        goodsMapper.updateById(goodsEntity);
-        dataTracerService.update(updateForm.getGoodsId(), DataTracerTypeEnum.GOODS, originEntity, goodsEntity);
+        SpuEntity originEntity = spuMapper.selectById(updateForm.getId());
+        SpuEntity goodsEntity = LocalBeanUtil.copy(updateForm, SpuEntity.class);
+        spuMapper.updateById(goodsEntity);
+        dataTracerService.update(updateForm.getId(), DataTracerTypeEnum.GOODS, originEntity, goodsEntity);
         return R.ok();
     }
 
     /**
      * 添加/更新 商品校验
      */
-    private R<String> checkGoods(GoodsAddForm addForm) {
+    private R<String> checkGoods(SpuAddForm addForm) {
         // 校验类目id
         Long categoryId = addForm.getCategoryId();
         Optional<CategoryEntity> optional = categoryQueryService.queryCategory(categoryId);
@@ -111,12 +111,12 @@ public class GoodsService {
      */
     @Transactional(rollbackFor = Exception.class)
     public R<String> delete(Long goodsId) {
-        GoodsEntity goodsEntity = goodsMapper.selectById(goodsId);
+        SpuEntity goodsEntity = spuMapper.selectById(goodsId);
         if (goodsEntity == null) {
             return R.userErrorParam("商品不存在");
         }
 
-        if (!goodsEntity.getGoodsStatus().equals(GoodsStatusEnum.SELL_OUT.getValue())) {
+        if (!goodsEntity.getStatus().equals(SpuStatusEnum.SELL_OUT.getValue())) {
             return R.userErrorParam("只有售罄的商品才可以删除");
         }
 
@@ -133,23 +133,23 @@ public class GoodsService {
             return R.ok();
         }
 
-        goodsMapper.batchUpdateDeleted(goodsIdList, Boolean.TRUE);
+        spuMapper.batchUpdateDeleted(goodsIdList, Boolean.TRUE);
         return R.ok();
     }
 
     /**
      * 分页查询
      */
-    public R<PageResult<GoodsVO>> query(GoodsQueryForm queryForm) {
+    public R<PageResult<SpuVO>> query(SpuPageQueryForm queryForm) {
         queryForm.setIsDeleted(false);
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
-        List<GoodsVO> list = goodsMapper.query(page, queryForm);
-        PageResult<GoodsVO> pageResult = PageUtil.convert2PageResult(page, list);
+        List<SpuVO> list = spuMapper.query(page, queryForm);
+        PageResult<SpuVO> pageResult = PageUtil.convert2PageResult(page, list);
         if (pageResult.getEmptyFlag()) {
             return R.ok(pageResult);
         }
         // 查询分类名称
-        List<Long> categoryIdList = list.stream().map(GoodsVO::getCategoryId).distinct().collect(Collectors.toList());
+        List<Long> categoryIdList = list.stream().map(SpuVO::getCategoryId).distinct().collect(Collectors.toList());
         Map<Long, CategoryEntity> categoryMap = categoryQueryService.queryCategoryList(categoryIdList);
         list.forEach(e -> {
             CategoryEntity categoryEntity = categoryMap.get(e.getCategoryId());
@@ -167,9 +167,9 @@ public class GoodsService {
      * @return 结果
      */
     public R<String> importGoods(MultipartFile file) {
-        List<GoodsImportForm> dataList;
+        List<SpuImportForm> dataList;
         try {
-            dataList = EasyExcel.read(file.getInputStream()).head(GoodsImportForm.class)
+            dataList = EasyExcel.read(file.getInputStream()).head(SpuImportForm.class)
                     .sheet()
                     .doReadSync();
         } catch (IOException e) {
@@ -187,16 +187,16 @@ public class GoodsService {
     /**
      * 商品导出
      */
-    public List<GoodsExcelVO> getAllGoods() {
-        List<GoodsEntity> goodsEntityList = goodsMapper.selectList(null);
+    public List<SpuExportVO> getAllGoods() {
+        List<SpuEntity> goodsEntityList = spuMapper.selectList(null);
         return goodsEntityList.stream()
                 .map(e ->
-                        GoodsExcelVO.builder()
-                                .goodsStatus(LocalEnumUtil.getEnumDescByValue(e.getGoodsStatus(), GoodsStatusEnum.class))
+                        SpuExportVO.builder()
+                                .status(LocalEnumUtil.getEnumDescByValue(e.getStatus(), SpuStatusEnum.class))
                                 .categoryName(categoryQueryService.queryCategoryName(e.getCategoryId()))
                                 .place(dictCacheService.selectValueNameByValueCode(e.getPlace()))
                                 .price(e.getPrice())
-                                .goodsName(e.getGoodsName())
+                                .name(e.getName())
                                 .remark(e.getRemark())
                                 .build()
                 )

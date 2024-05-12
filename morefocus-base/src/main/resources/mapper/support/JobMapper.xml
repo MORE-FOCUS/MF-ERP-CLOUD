@@ -7,7 +7,7 @@
         <where>
             is_deleted = 0
             <if test="query.keywords != null and query.keywords !=''">
-                AND INSTR(goods_name,#{query.keywords})
+                AND INSTR(job_name,#{query.keywords})
             </if>
             <if test="query.status != null">
                 AND status = #{query.status}

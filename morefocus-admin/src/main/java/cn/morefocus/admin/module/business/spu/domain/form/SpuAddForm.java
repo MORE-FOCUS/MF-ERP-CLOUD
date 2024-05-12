@@ -1,6 +1,6 @@
-package cn.morefocus.admin.module.business.goods.domain.form;
+package cn.morefocus.admin.module.business.spu.domain.form;
 
-import cn.morefocus.admin.module.business.goods.constant.GoodsStatusEnum;
+import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
 import cn.morefocus.base.common.json.deserializer.DictValueVoDeserializer;
 import cn.morefocus.base.common.swagger.SchemaEnum;
 import cn.morefocus.base.common.validator.enumeration.CheckEnum;
@@ -17,7 +17,7 @@ import java.math.BigDecimal;
  * 商品 添加表单
  */
 @Data
-public class GoodsAddForm {
+public class SpuAddForm {
 
     @Schema(description = "商品分类")
     @NotNull(message = "商品分类不能为空")
@@ -25,11 +25,11 @@ public class GoodsAddForm {
 
     @Schema(description = "商品名称")
     @NotBlank(message = "商品名称不能为空")
-    private String goodsName;
+    private String name;
 
-    @SchemaEnum(GoodsStatusEnum.class)
-    @CheckEnum(message = "商品状态错误", value = GoodsStatusEnum.class, required = true)
-    private Integer goodsStatus;
+    @SchemaEnum(SpuStatusEnum.class)
+    @CheckEnum(message = "商品状态错误", value = SpuStatusEnum.class, required = true)
+    private Integer status;
 
     @Schema(description = "产地")
     @NotBlank(message = "产地 不能为空 ")

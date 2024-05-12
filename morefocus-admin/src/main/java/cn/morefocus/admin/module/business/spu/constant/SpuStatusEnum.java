@@ -1,4 +1,4 @@
-package cn.morefocus.admin.module.business.goods.constant;
+package cn.morefocus.admin.module.business.spu.constant;
 
 import cn.morefocus.base.common.enums.BaseEnum;
 import lombok.AllArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor
 @Getter
-public enum GoodsStatusEnum implements BaseEnum {
+public enum SpuStatusEnum implements BaseEnum {
 
     /**
      * 1 预约中

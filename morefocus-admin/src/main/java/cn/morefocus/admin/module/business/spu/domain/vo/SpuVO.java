@@ -1,6 +1,6 @@
-package cn.morefocus.admin.module.business.goods.domain.vo;
+package cn.morefocus.admin.module.business.spu.domain.vo;
 
-import cn.morefocus.admin.module.business.goods.constant.GoodsStatusEnum;
+import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
 import cn.morefocus.base.common.json.serializer.DictValueVoSerializer;
 import cn.morefocus.base.common.swagger.SchemaEnum;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -14,16 +14,16 @@ import java.time.LocalDateTime;
  * 商品
  */
 @Data
-public class GoodsVO {
+public class SpuVO {
 
     @Schema(description = "商品分类")
     private Long categoryId;
 
     @Schema(description = "商品名称")
-    private String goodsName;
+    private String name;
 
-    @SchemaEnum(GoodsStatusEnum.class)
-    private Integer goodsStatus;
+    @SchemaEnum(SpuStatusEnum.class)
+    private Integer status;
 
     @Schema(description = "产地")
     @JsonSerialize(using = DictValueVoSerializer.class)
@@ -39,7 +39,7 @@ public class GoodsVO {
     private String remark;
 
     @Schema(description = "商品id")
-    private Long goodsId;
+    private Long id;
 
     @Schema(description = "商品分类")
     private String categoryName;

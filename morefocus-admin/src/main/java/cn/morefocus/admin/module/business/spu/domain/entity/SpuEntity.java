@@ -1,4 +1,4 @@
-package cn.morefocus.admin.module.business.goods.domain.entity;
+package cn.morefocus.admin.module.business.spu.domain.entity;
 
 import cn.morefocus.base.common.domain.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -14,16 +14,16 @@ import java.math.BigDecimal;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("t_goods")
-public class GoodsEntity extends BaseEntity {
+@TableName("t_spu")
+public class SpuEntity extends BaseEntity {
 
     @TableId(type = IdType.AUTO)
-    private Long goodsId;
+    private Long id;
 
     /**
      * 商品状态:[1:预约中,2:售卖中,3:售罄]
      */
-    private Integer goodsStatus;
+    private Integer status;
 
     /**
      * 商品分类
@@ -33,7 +33,7 @@ public class GoodsEntity extends BaseEntity {
     /**
      * 商品名称
      */
-    private String goodsName;
+    private String name;
 
     /**
      * 产地

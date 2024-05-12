@@ -1,30 +1,24 @@
-package cn.morefocus.admin.module.business.goods.domain.vo;
+package cn.morefocus.admin.module.business.spu.domain.form;
 
 import com.alibaba.excel.annotation.ExcelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 /**
- * excel商品
+ * 商品 导入表单
  */
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class GoodsExcelVO {
+public class SpuImportForm {
 
     @ExcelProperty("商品分类")
     private String categoryName;
 
     @ExcelProperty("商品名称")
-    private String goodsName;
+    private String name;
 
     @ExcelProperty("商品状态错误")
-    private String goodsStatus;
+    private String status;
 
     @ExcelProperty("产地")
     private String place;
