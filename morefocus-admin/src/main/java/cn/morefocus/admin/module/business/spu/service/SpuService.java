@@ -68,10 +68,10 @@ public class SpuService {
         if (!res.getOk()) {
             return res;
         }
-        SpuEntity goodsEntity = LocalBeanUtil.copy(addForm, SpuEntity.class);
-        goodsEntity.setIsDeleted(Boolean.FALSE);
-        spuMapper.insert(goodsEntity);
-        dataTracerService.insert(goodsEntity.getId(), DataTracerTypeEnum.GOODS);
+        SpuEntity spuEntity = LocalBeanUtil.copy(addForm, SpuEntity.class);
+        spuEntity.setIsDeleted(Boolean.FALSE);
+        spuMapper.insert(spuEntity);
+        dataTracerService.insert(spuEntity.getId(), DataTracerTypeEnum.GOODS);
         return R.ok();
     }
 
@@ -86,9 +86,9 @@ public class SpuService {
             return res;
         }
         SpuEntity originEntity = spuMapper.selectById(updateForm.getId());
-        SpuEntity goodsEntity = LocalBeanUtil.copy(updateForm, SpuEntity.class);
-        spuMapper.updateById(goodsEntity);
-        dataTracerService.update(updateForm.getId(), DataTracerTypeEnum.GOODS, originEntity, goodsEntity);
+        SpuEntity spuEntity = LocalBeanUtil.copy(updateForm, SpuEntity.class);
+        spuMapper.updateById(spuEntity);
+        dataTracerService.update(updateForm.getId(), DataTracerTypeEnum.GOODS, originEntity, spuEntity);
         return R.ok();
     }
 
@@ -111,12 +111,12 @@ public class SpuService {
      */
     @Transactional(rollbackFor = Exception.class)
     public R<String> delete(Long goodsId) {
-        SpuEntity goodsEntity = spuMapper.selectById(goodsId);
-        if (goodsEntity == null) {
+        SpuEntity spuEntity = spuMapper.selectById(goodsId);
+        if (spuEntity == null) {
             return R.userErrorParam("商品不存在");
         }
 
-        if (!goodsEntity.getStatus().equals(SpuStatusEnum.SELL_OUT.getValue())) {
+        if (!spuEntity.getStatus().equals(SpuStatusEnum.SELL_OUT.getValue())) {
             return R.userErrorParam("只有售罄的商品才可以删除");
         }
 
@@ -188,8 +188,8 @@ public class SpuService {
      * 商品导出
      */
     public List<SpuExportVO> getAllGoods() {
-        List<SpuEntity> goodsEntityList = spuMapper.selectList(null);
-        return goodsEntityList.stream()
+        List<SpuEntity> spuEntityList = spuMapper.selectList(null);
+        return spuEntityList.stream()
                 .map(e ->
                         SpuExportVO.builder()
                                 .status(LocalEnumUtil.getEnumDescByValue(e.getStatus(), SpuStatusEnum.class))

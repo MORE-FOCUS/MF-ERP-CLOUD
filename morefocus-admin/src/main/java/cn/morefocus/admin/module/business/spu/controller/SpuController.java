@@ -34,7 +34,7 @@ public class SpuController {
     private SpuService spuService;
 
     @Operation(summary = "分页查询 ")
-    @PostMapping("/spu/query")
+    @PostMapping("/spu/queryPage")
     @SaCheckPermission("business:spu:query")
     public R<PageResult<SpuVO>> query(@RequestBody @Valid SpuPageQueryForm queryForm) {
         return spuService.query(queryForm);

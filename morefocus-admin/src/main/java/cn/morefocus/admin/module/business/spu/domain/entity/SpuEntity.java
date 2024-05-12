@@ -49,4 +49,54 @@ public class SpuEntity extends BaseEntity {
      * 上架状态
      */
     private Boolean shelvesFlag;
+
+    /**
+     * 编码
+     */
+    private String spuNo;
+
+    /**
+     * 规格
+     */
+    private String specs;
+
+    /**
+     * 单位ID
+     */
+    private Long unitId;
+
+    /**
+     * 品牌ID
+     */
+    private Long brandId;
+
+    /**
+     * 是否开启保质期批次
+     */
+    private Boolean enableShelfLife;
+
+    /**
+     * 是否开启辅助属性
+     */
+    private Boolean enableAttr;
+
+    /**
+     * 是否开启多单位
+     */
+    private Boolean enableMultiUnit;
+
+    /**
+     * 是否禁用
+     */
+    private Boolean isDisabled;
+
+    /**
+     * 主图片
+     */
+    private String mainPicture;
+
+    /**
+     * 附加图片,多张逗号拼接
+     */
+    private String attachedPicture;
 }

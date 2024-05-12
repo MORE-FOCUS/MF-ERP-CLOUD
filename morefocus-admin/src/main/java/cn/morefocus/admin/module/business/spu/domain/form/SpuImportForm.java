@@ -17,7 +17,7 @@ public class SpuImportForm {
     @ExcelProperty("商品名称")
     private String name;
 
-    @ExcelProperty("商品状态错误")
+    @ExcelProperty("商品状态")
     private String status;
 
     @ExcelProperty("产地")
