@@ -185,7 +185,7 @@
 
     // ---------------------------- 查询数据表单和方法 ----------------------------
 
-    const queryFormState = {
+  const defaultQueryForm = {
 #foreach ($field in $queryFields)
 #if($field.queryTypeEnum == "DateRange")
         $!{field.fieldName}: [], //$!{field.label}
@@ -200,7 +200,7 @@
         pageSize: 10,
     };
     // 查询表单form
-    const queryForm = reactive({ ...queryFormState });
+  const queryForm = reactive({...defaultQueryForm});
     // 表格加载loading
     const tableLoading = ref(false);
     // 表格数据
@@ -211,7 +211,7 @@
     // 重置查询条件
     function resetQuery() {
         let pageSize = queryForm.pageSize;
-        Object.assign(queryForm, queryFormState);
+      Object.assign(queryForm, defaultQueryForm);
         queryForm.pageSize = pageSize;
         queryData();
     }
