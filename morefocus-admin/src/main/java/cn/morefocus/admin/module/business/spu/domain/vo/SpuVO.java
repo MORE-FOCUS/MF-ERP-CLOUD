@@ -22,6 +22,9 @@ public class SpuVO extends BaseVO {
     @Schema(description = "商品名称")
     private String name;
 
+    @Schema(description = "商品别名")
+    private String alias;
+
     @SchemaEnum(SpuStatusEnum.class)
     private Integer status;
 
@@ -101,4 +104,9 @@ public class SpuVO extends BaseVO {
      * 附加图片,多张逗号拼接
      */
     private String attachedPicture;
+
+    /**
+     * 是否上架
+     */
+    private Boolean isListed;
 }

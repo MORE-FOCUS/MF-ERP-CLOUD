@@ -36,6 +36,11 @@ public class SpuEntity extends BaseEntity {
     private String name;
 
     /**
+     * 商品别名
+     */
+    private String alias;
+
+    /**
      * 产地
      */
     private String place;
@@ -99,4 +104,9 @@ public class SpuEntity extends BaseEntity {
      * 附加图片,多张逗号拼接
      */
     private String attachedPicture;
+
+    /**
+     * 是否上架
+     */
+    private Boolean isListed;
 }

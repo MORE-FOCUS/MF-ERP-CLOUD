@@ -27,6 +27,9 @@ public class SpuAddForm {
     @NotBlank(message = "商品名称不能为空")
     private String name;
 
+    @Schema(description = "商品别名")
+    private String alias;
+
     @SchemaEnum(SpuStatusEnum.class)
     @CheckEnum(message = "商品状态错误", value = SpuStatusEnum.class, required = true)
     private Integer status;
@@ -99,4 +102,9 @@ public class SpuAddForm {
      * 附加图片,多张逗号拼接
      */
     private String attachedPicture;
+
+    /**
+     * 是否上架
+     */
+    private Boolean isListed;
 }
