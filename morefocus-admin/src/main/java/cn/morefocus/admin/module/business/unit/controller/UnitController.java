@@ -4,6 +4,7 @@ import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.unit.domain.form.UnitAddForm;
 import cn.morefocus.admin.module.business.unit.domain.form.UnitPageQueryForm;
+import cn.morefocus.admin.module.business.unit.domain.form.UnitQueryForm;
 import cn.morefocus.admin.module.business.unit.domain.form.UnitUpdateForm;
 import cn.morefocus.admin.module.business.unit.domain.vo.UnitVO;
 import cn.morefocus.admin.module.business.unit.service.UnitService;
@@ -48,7 +49,7 @@ public class UnitController {
      */
     @PostMapping("/unit/queryAll")
     @SaCheckPermission("business:unit:query")
-    public R<List<UnitVO>> queryAll(@RequestBody @Valid UnitPageQueryForm queryForm) {
+    public R<List<UnitVO>> queryAll(@RequestBody UnitQueryForm queryForm) {
         return R.ok(unitService.queryAll(queryForm));
     }
 

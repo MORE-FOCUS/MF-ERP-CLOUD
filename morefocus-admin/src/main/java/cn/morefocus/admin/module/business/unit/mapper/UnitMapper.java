@@ -2,6 +2,7 @@ package cn.morefocus.admin.module.business.unit.mapper;
 
 import cn.morefocus.admin.module.business.unit.domain.entity.UnitEntity;
 import cn.morefocus.admin.module.business.unit.domain.form.UnitPageQueryForm;
+import cn.morefocus.admin.module.business.unit.domain.form.UnitQueryForm;
 import cn.morefocus.admin.module.business.unit.domain.vo.UnitVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -29,7 +30,7 @@ public interface UnitMapper extends BaseMapper<UnitEntity> {
     /**
      * 分页 查询
      */
-    List<UnitVO> queryAll(@Param("queryForm") UnitPageQueryForm queryForm);
+    List<UnitVO> queryAll(@Param("queryForm") UnitQueryForm queryForm);
 
     /**
      * 更新禁用|启用状态

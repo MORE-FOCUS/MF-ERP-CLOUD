@@ -3,6 +3,7 @@ package cn.morefocus.admin.module.business.unit.service;
 import cn.morefocus.admin.module.business.unit.domain.entity.UnitEntity;
 import cn.morefocus.admin.module.business.unit.domain.form.UnitAddForm;
 import cn.morefocus.admin.module.business.unit.domain.form.UnitPageQueryForm;
+import cn.morefocus.admin.module.business.unit.domain.form.UnitQueryForm;
 import cn.morefocus.admin.module.business.unit.domain.form.UnitUpdateForm;
 import cn.morefocus.admin.module.business.unit.domain.vo.UnitVO;
 import cn.morefocus.admin.module.business.unit.mapper.UnitMapper;
@@ -43,7 +44,7 @@ public class UnitService {
     /**
      * 查询所有
      */
-    public List<UnitVO> queryAll(UnitPageQueryForm queryForm) {
+    public List<UnitVO> queryAll(UnitQueryForm queryForm) {
         List<UnitVO> list = unitMapper.queryAll(queryForm);
         return list;
     }
