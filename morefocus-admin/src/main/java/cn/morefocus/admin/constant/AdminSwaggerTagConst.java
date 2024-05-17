@@ -34,6 +34,8 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
         public static final String UNIT = "单位";
 
         public static final String BRAND = "品牌";
+
+        public static final String SPU_UNIT = "商品单位";
     }
 
     /**
