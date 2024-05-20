@@ -38,7 +38,7 @@ public class SpuUnitController {
      * 分页查询
      */
     @Operation(summary = "查询分页列表")
-    @PostMapping("/unit/queryPage")
+    @PostMapping("/spu-unit/queryPage")
     @SaCheckPermission("business:unit:query")
     public R<PageResult<SpuUnitVO>> queryPage(@RequestBody @Valid SpuUnitPageQueryForm queryForm) {
         return R.ok(spuUnitService.queryPage(queryForm));
@@ -47,7 +47,7 @@ public class SpuUnitController {
     /**
      * 查询所有
      */
-    @PostMapping("/unit/queryAll")
+    @PostMapping("/spu-unit/queryAll")
     @SaCheckPermission("business:unit:query")
     public R<List<SpuUnitVO>> queryAll(@RequestBody SpuUnitQueryForm queryForm) {
         return R.ok(spuUnitService.queryAll(queryForm));
@@ -57,7 +57,7 @@ public class SpuUnitController {
      * 新增
      */
     @Operation(summary = "新增")
-    @PostMapping("/unit/add")
+    @PostMapping("/spu-unit/add")
     @SaCheckPermission("business:unit:add")
     public R<String> add(@RequestBody @Valid SpuUnitAddForm addForm) {
         return spuUnitService.add(addForm);
@@ -67,7 +67,7 @@ public class SpuUnitController {
      * 编辑
      */
     @Operation(summary = "编辑")
-    @PostMapping("/unit/update")
+    @PostMapping("/spu-unit/update")
     @SaCheckPermission("business:unit:update")
     public R<String> update(@RequestBody @Valid SpuUnitUpdateForm updateForm) {
         return spuUnitService.update(updateForm);
@@ -77,7 +77,7 @@ public class SpuUnitController {
      * 批量删除
      */
     @Operation(summary = "批量删除")
-    @PostMapping("/unit/batchDelete")
+    @PostMapping("/spu-unit/batchDelete")
     @SaCheckPermission("business:unit:delete")
     public R<String> batchDelete(@RequestBody List<Long> idList) {
         return spuUnitService.batchDelete(idList);
@@ -87,7 +87,7 @@ public class SpuUnitController {
      * 删除
      */
     @Operation(summary = "单个删除")
-    @PostMapping("/unit/delete/{id}")
+    @PostMapping("/spu-unit/delete/{id}")
     @SaCheckPermission("business:unit:delete")
     public R<String> batchDelete(@PathVariable Long id) {
         return spuUnitService.delete(id);
@@ -97,7 +97,7 @@ public class SpuUnitController {
      * 更新禁用/启用状态
      */
     @Operation(summary = "更新禁用/启用状态")
-    @PostMapping("/unit/disabled/{id}")
+    @PostMapping("/spu-unit/disabled/{id}")
     @SaCheckPermission("business:unit:disabled")
     public R<String> updateIsDisabled(@PathVariable("id") Long id) {
         return spuUnitService.updateIsDisabled(id);
@@ -107,7 +107,7 @@ public class SpuUnitController {
      * 更新锁定状态
      */
     @Operation(summary = "更新锁定状态")
-    @PostMapping("/unit/locked/{id}")
+    @PostMapping("/spu-unit/locked/{id}")
     @SaCheckPermission("business:unit:locked")
     public R<String> updateIsLocked(@PathVariable("id") Long id) {
         return spuUnitService.updateIsDisabled(id);
