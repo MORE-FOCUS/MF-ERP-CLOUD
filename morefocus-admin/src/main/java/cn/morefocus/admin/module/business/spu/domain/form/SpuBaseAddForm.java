@@ -8,16 +8,14 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 
 /**
  * 商品 添加表单
  */
 @Data
-public class SpuAddForm {
+public class SpuBaseAddForm {
 
     @Schema(description = "商品分类")
     @NotNull(message = "商品分类不能为空")
@@ -39,14 +37,9 @@ public class SpuAddForm {
     @JsonDeserialize(using = DictValueVoDeserializer.class)
     private String place;
 
-    @Schema(description = "商品价格")
-    @NotNull(message = "商品价格不能为空")
-    @DecimalMin(value = "0", message = "商品价格最低0")
-    private BigDecimal price;
-
     @Schema(description = "上架状态")
     @NotNull(message = "上架状态不能为空")
-    private Boolean shelvesFlag;
+    private Boolean isListed;
 
     @Schema(description = "备注|可选")
     private String remark;
@@ -74,37 +67,7 @@ public class SpuAddForm {
     private Long brandId;
 
     /**
-     * 是否开启保质期批次
-     */
-    private Boolean enableShelfLife;
-
-    /**
-     * 是否开启辅助属性
-     */
-    private Boolean enableAttr;
-
-    /**
-     * 是否开启多单位
-     */
-    private Boolean enableMultiUnit;
-
-    /**
      * 是否禁用
      */
     private Boolean isDisabled;
-
-    /**
-     * 主图片
-     */
-    private String mainPicture;
-
-    /**
-     * 附加图片,多张逗号拼接
-     */
-    private String attachedPicture;
-
-    /**
-     * 是否上架
-     */
-    private Boolean isListed;
 }

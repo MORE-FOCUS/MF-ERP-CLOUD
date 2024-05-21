@@ -5,10 +5,10 @@ import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.service.CategoryQueryService;
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
 import cn.morefocus.admin.module.business.spu.domain.entity.SpuEntity;
-import cn.morefocus.admin.module.business.spu.domain.form.SpuAddForm;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuBaseAddForm;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuBaseUpdateForm;
 import cn.morefocus.admin.module.business.spu.domain.form.SpuImportForm;
 import cn.morefocus.admin.module.business.spu.domain.form.SpuPageQueryForm;
-import cn.morefocus.admin.module.business.spu.domain.form.SpuUpdateForm;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuExportVO;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuVO;
 import cn.morefocus.admin.module.business.spu.mapper.SpuMapper;
@@ -62,7 +62,7 @@ public class SpuService {
      * 添加商品
      */
     @Transactional(rollbackFor = Exception.class)
-    public R<String> add(SpuAddForm addForm) {
+    public R<String> addSpuBase(SpuBaseAddForm addForm) {
         // 商品校验
         R<String> res = this.checkGoods(addForm);
         if (!res.getOk()) {
@@ -79,7 +79,7 @@ public class SpuService {
      * 更新商品
      */
     @Transactional(rollbackFor = Exception.class)
-    public R<String> update(SpuUpdateForm updateForm) {
+    public R<String> updateSpuBase(SpuBaseUpdateForm updateForm) {
         // 商品校验
         R<String> res = this.checkGoods(updateForm);
         if (!res.getOk()) {
@@ -95,7 +95,7 @@ public class SpuService {
     /**
      * 添加/更新 商品校验
      */
-    private R<String> checkGoods(SpuAddForm addForm) {
+    private R<String> checkGoods(SpuBaseAddForm addForm) {
         // 校验类目id
         Long categoryId = addForm.getCategoryId();
         Optional<CategoryEntity> optional = categoryQueryService.queryCategory(categoryId);

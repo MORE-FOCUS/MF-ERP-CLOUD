@@ -2,9 +2,9 @@ package cn.morefocus.admin.module.business.spu.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
-import cn.morefocus.admin.module.business.spu.domain.form.SpuAddForm;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuBaseAddForm;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuBaseUpdateForm;
 import cn.morefocus.admin.module.business.spu.domain.form.SpuPageQueryForm;
-import cn.morefocus.admin.module.business.spu.domain.form.SpuUpdateForm;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuExportVO;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuVO;
 import cn.morefocus.admin.module.business.spu.service.SpuService;
@@ -33,35 +33,35 @@ public class SpuController {
     @Resource
     private SpuService spuService;
 
-    @Operation(summary = "分页查询 ")
+    @Operation(summary = "分页查询")
     @PostMapping("/spu/queryPage")
     @SaCheckPermission("business:spu:query")
     public R<PageResult<SpuVO>> query(@RequestBody @Valid SpuPageQueryForm queryForm) {
         return spuService.query(queryForm);
     }
 
-    @Operation(summary = "添加商品 ")
-    @PostMapping("/spu/add")
+    @Operation(summary = "添加商品基本信息")
+    @PostMapping("/spu/base/add")
     @SaCheckPermission("business:spu:add")
-    public R<String> add(@RequestBody @Valid SpuAddForm addForm) {
-        return spuService.add(addForm);
+    public R<String> addSpuBase(@RequestBody @Valid SpuBaseAddForm addForm) {
+        return spuService.addSpuBase(addForm);
     }
 
-    @Operation(summary = "更新商品 ")
-    @PostMapping("/spu/update")
+    @Operation(summary = "更新商品基本信息")
+    @PostMapping("/spu/base/update")
     @SaCheckPermission("business:spu:update")
-    public R<String> update(@RequestBody @Valid SpuUpdateForm updateForm) {
-        return spuService.update(updateForm);
+    public R<String> updateSpuBase(@RequestBody @Valid SpuBaseUpdateForm updateForm) {
+        return spuService.updateSpuBase(updateForm);
     }
 
-    @Operation(summary = "删除 ")
+    @Operation(summary = "删除")
     @GetMapping("/spu/delete/{spuId}")
     @SaCheckPermission("business:spu:delete")
     public R<String> delete(@PathVariable Long spuId) {
         return spuService.delete(spuId);
     }
 
-    @Operation(summary = "批量 ")
+    @Operation(summary = "批量")
     @PostMapping("/spu/batchDelete")
     @SaCheckPermission("business:spu:batchDelete")
     public R<String> batchDelete(@RequestBody @Valid ValidateList<Long> idList) {
@@ -70,14 +70,14 @@ public class SpuController {
 
     // --------------- 导出和导入 -------------------
 
-    @Operation(summary = "导入 ")
+    @Operation(summary = "导入")
     @PostMapping("/spu/importSpu")
     @SaCheckPermission("business:spu:importSpu")
     public R<String> importGoods(@RequestParam MultipartFile file) {
         return spuService.importGoods(file);
     }
 
-    @Operation(summary = "导出 ")
+    @Operation(summary = "导出")
     @GetMapping("/spu/exportSpu")
     @SaCheckPermission("business:spu:exportSpu")
     public void exportGoods(HttpServletResponse response) throws IOException {
