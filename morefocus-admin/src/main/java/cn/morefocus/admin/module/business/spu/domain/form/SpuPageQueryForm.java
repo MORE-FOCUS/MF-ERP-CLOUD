@@ -26,8 +26,11 @@ public class SpuPageQueryForm extends PageParam {
     private String place;
 
     @Schema(description = "上架状态")
-    private Boolean shelvesFlag;
+    private Boolean isListed;
 
     @Schema(hidden = true)
     private Boolean isDeleted;
+
+    @Schema(description = "启用")
+    private Boolean isDisabled;
 }

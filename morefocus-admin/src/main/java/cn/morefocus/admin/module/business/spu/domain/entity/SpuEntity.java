@@ -51,11 +51,6 @@ public class SpuEntity extends BaseEntity {
     private BigDecimal price;
 
     /**
-     * 上架状态
-     */
-    private Boolean shelvesFlag;
-
-    /**
      * 编码
      */
     private String spuNo;

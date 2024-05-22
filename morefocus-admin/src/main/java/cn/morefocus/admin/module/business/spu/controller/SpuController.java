@@ -40,6 +40,13 @@ public class SpuController {
         return spuService.query(queryForm);
     }
 
+    @Operation(summary = "查询商品详情")
+    @GetMapping("/spu/queryDetail/{id}")
+    @SaCheckPermission("business:spu:detail")
+    public R<SpuVO> queryDetail(@PathVariable("id") Long id) {
+        return spuService.queryDetail(id);
+    }
+
     @Operation(summary = "添加商品基本信息")
     @PostMapping("/spu/base/add")
     @SaCheckPermission("business:spu:add")

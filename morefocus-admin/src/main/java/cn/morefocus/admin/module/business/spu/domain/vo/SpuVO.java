@@ -2,9 +2,7 @@ package cn.morefocus.admin.module.business.spu.domain.vo;
 
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
 import cn.morefocus.base.common.domain.BaseVO;
-import cn.morefocus.base.common.json.serializer.DictValueVoSerializer;
 import cn.morefocus.base.common.swagger.SchemaEnum;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -29,14 +27,10 @@ public class SpuVO extends BaseVO {
     private Integer status;
 
     @Schema(description = "产地")
-    @JsonSerialize(using = DictValueVoSerializer.class)
     private String place;
 
     @Schema(description = "商品价格")
     private BigDecimal price;
-
-    @Schema(description = "上架状态")
-    private Boolean shelvesFlag;
 
     @Schema(description = "备注|可选")
     private String remark;
@@ -108,5 +102,6 @@ public class SpuVO extends BaseVO {
     /**
      * 是否上架
      */
+    @Schema(description = "上架状态")
     private Boolean isListed;
 }

@@ -161,6 +161,22 @@ public class SpuService {
     }
 
     /**
+     * 查询 商品详情
+     */
+    public R<SpuVO> queryDetail(Long id) {
+        SpuEntity spuEntity = spuMapper.selectById(id);
+        if (null == spuEntity) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+
+        //基本信息
+        SpuVO spuVO = LocalBeanUtil.copy(spuEntity, SpuVO.class);
+
+        //
+        return R.ok(spuVO);
+    }
+
+    /**
      * 商品导入
      *
      * @param file 上传文件

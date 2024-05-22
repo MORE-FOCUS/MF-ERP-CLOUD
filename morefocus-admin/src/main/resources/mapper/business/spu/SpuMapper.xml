@@ -26,11 +26,14 @@
             <if test="query.categoryId != null">
                 AND category_id = #{query.categoryId}
             </if>
-            <if test="query.shelvesFlag != null">
-                AND shelves_flag = #{query.shelvesFlag}
+            <if test="query.isListed != null">
+                AND is_listed = #{query.isListed}
             </if>
             <if test="query.isDeleted != null">
                 AND is_deleted = #{query.isDeleted}
+            </if>
+            <if test="query.isDisabled != null">
+                AND is_disabled = #{query.isDisabled}
             </if>
         </where>
         <if test="query.sortItemList == null or query.sortItemList.size == 0">

@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class SpuUpdateForm extends SpuAddForm {
+public class SpuBaseUpdateForm extends SpuBaseAddForm {
 
     @Schema(description = "商品id")
     @NotNull(message = "商品id不能为空")

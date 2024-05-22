@@ -40,6 +40,5 @@ public class DictValueVoSerializer extends JsonSerializer<String> {
             }
         });
         jsonGenerator.writeObject(dictValueVOList);
-
     }
 }
