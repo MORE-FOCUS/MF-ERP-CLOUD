@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * 单位 分页查询表单
+ * 商品单位 查询表单
  *
  * @author loki
  * @date 2024-04-16 23:57:58
@@ -13,5 +13,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class SpuUnitQueryForm extends BaseForm {
-
+    private Boolean isDisabled;
+    private Long spuId;
 }

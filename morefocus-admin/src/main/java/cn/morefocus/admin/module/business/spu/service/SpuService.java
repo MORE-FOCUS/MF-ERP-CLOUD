@@ -5,13 +5,13 @@ import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.service.CategoryQueryService;
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
 import cn.morefocus.admin.module.business.spu.domain.entity.SpuEntity;
-import cn.morefocus.admin.module.business.spu.domain.form.SpuBaseAddForm;
-import cn.morefocus.admin.module.business.spu.domain.form.SpuBaseUpdateForm;
-import cn.morefocus.admin.module.business.spu.domain.form.SpuImportForm;
-import cn.morefocus.admin.module.business.spu.domain.form.SpuPageQueryForm;
+import cn.morefocus.admin.module.business.spu.domain.form.*;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuExportVO;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuVO;
 import cn.morefocus.admin.module.business.spu.mapper.SpuMapper;
+import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitQueryForm;
+import cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO;
+import cn.morefocus.admin.module.business.spuunit.service.SpuUnitService;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
@@ -58,6 +58,9 @@ public class SpuService {
     @Resource
     private DictCacheService dictCacheService;
 
+    @Resource
+    private SpuUnitService spuUnitService;
+
     /**
      * 添加商品
      */
@@ -89,6 +92,15 @@ public class SpuService {
         SpuEntity spuEntity = LocalBeanUtil.copy(updateForm, SpuEntity.class);
         spuMapper.updateById(spuEntity);
         dataTracerService.update(updateForm.getId(), DataTracerTypeEnum.GOODS, originEntity, spuEntity);
+        return R.ok();
+    }
+
+    /**
+     * 更新商品单位
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public R<String> updateSpuUnit(SpuUnitUpdateForm updateForm) {
+        
         return R.ok();
     }
 
@@ -172,7 +184,14 @@ public class SpuService {
         //基本信息
         SpuVO spuVO = LocalBeanUtil.copy(spuEntity, SpuVO.class);
 
-        //
+        //多单位
+        SpuUnitQueryForm spuUnitQueryForm = new SpuUnitQueryForm();
+        spuUnitQueryForm.setSpuId(id);
+        List<SpuUnitVO> spuUnitVOList = spuUnitService.queryAll(spuUnitQueryForm);
+        spuVO.setMultiUnitList(spuUnitVOList);
+
+        //图片
+
         return R.ok(spuVO);
     }
 

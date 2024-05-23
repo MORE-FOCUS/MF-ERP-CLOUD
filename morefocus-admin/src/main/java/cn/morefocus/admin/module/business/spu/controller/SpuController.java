@@ -5,6 +5,7 @@ import cn.morefocus.admin.constant.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.spu.domain.form.SpuBaseAddForm;
 import cn.morefocus.admin.module.business.spu.domain.form.SpuBaseUpdateForm;
 import cn.morefocus.admin.module.business.spu.domain.form.SpuPageQueryForm;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuUnitUpdateForm;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuExportVO;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuVO;
 import cn.morefocus.admin.module.business.spu.service.SpuService;
@@ -59,6 +60,13 @@ public class SpuController {
     @SaCheckPermission("business:spu:update")
     public R<String> updateSpuBase(@RequestBody @Valid SpuBaseUpdateForm updateForm) {
         return spuService.updateSpuBase(updateForm);
+    }
+
+    @Operation(summary = "更新商品单位")
+    @PostMapping("/spu/unit/update")
+    @SaCheckPermission("business:spu:update")
+    public R<String> updateSpuUnit(@RequestBody @Valid SpuUnitUpdateForm updateForm) {
+        return spuService.updateSpuUnit(updateForm);
     }
 
     @Operation(summary = "删除")

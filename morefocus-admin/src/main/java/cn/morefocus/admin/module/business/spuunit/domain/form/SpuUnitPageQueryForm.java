@@ -13,4 +13,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class SpuUnitPageQueryForm extends PageParam {
+    private Boolean isDisabled;
+    private Long spuId;
 }

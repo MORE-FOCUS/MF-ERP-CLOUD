@@ -1,12 +1,14 @@
 package cn.morefocus.admin.module.business.spu.domain.vo;
 
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
+import cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO;
 import cn.morefocus.base.common.domain.BaseVO;
 import cn.morefocus.base.common.swagger.SchemaEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * 商品
@@ -104,4 +106,9 @@ public class SpuVO extends BaseVO {
      */
     @Schema(description = "上架状态")
     private Boolean isListed;
+
+    /**
+     * 多单位
+     */
+    private List<SpuUnitVO> multiUnitList;
 }

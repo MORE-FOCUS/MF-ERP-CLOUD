@@ -2,10 +2,8 @@ package cn.morefocus.admin.module.business.spuunit.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
-import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitAddForm;
 import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitPageQueryForm;
 import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitQueryForm;
-import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitUpdateForm;
 import cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO;
 import cn.morefocus.admin.module.business.spuunit.service.SpuUnitService;
 import cn.morefocus.base.common.domain.PageResult;
@@ -51,26 +49,6 @@ public class SpuUnitController {
     @SaCheckPermission("business:spu-unit:query")
     public R<List<SpuUnitVO>> queryAll(@RequestBody SpuUnitQueryForm queryForm) {
         return R.ok(spuUnitService.queryAll(queryForm));
-    }
-
-    /**
-     * 新增
-     */
-    @Operation(summary = "新增")
-    @PostMapping("/spu-unit/add")
-    @SaCheckPermission("business:spu-unit:add")
-    public R<String> add(@RequestBody @Valid SpuUnitAddForm addForm) {
-        return spuUnitService.add(addForm);
-    }
-
-    /**
-     * 编辑
-     */
-    @Operation(summary = "编辑")
-    @PostMapping("/spu-unit/update")
-    @SaCheckPermission("business:spu-unit:update")
-    public R<String> update(@RequestBody @Valid SpuUnitUpdateForm updateForm) {
-        return spuUnitService.update(updateForm);
     }
 
     /**

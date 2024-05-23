@@ -8,8 +8,6 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 自定义表格列
- *
- *
  */
 @Data
 public class TableColumnItemForm {
@@ -28,6 +26,5 @@ public class TableColumnItemForm {
     @NotNull(message = "排序不能为空")
     @Schema(description = "排序")
     private Integer sort;
-
 
 }

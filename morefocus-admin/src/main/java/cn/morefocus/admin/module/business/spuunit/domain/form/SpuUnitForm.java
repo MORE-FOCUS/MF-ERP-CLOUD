@@ -1,27 +1,15 @@
-package cn.morefocus.admin.module.business.spuunit.domain.entity;
+package cn.morefocus.admin.module.business.spuunit.domain.form;
 
-import cn.morefocus.base.common.domain.BaseEntity;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
- * 商品多单位 实体类
+ * 单位 新建表单
  *
  * @author loki
  * @date 2024-04-16 23:57:58
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("t_spu_unit")
-public class SpuUnitEntity extends BaseEntity {
-
-    /**
-     * ID
-     */
-    @TableId(type = IdType.AUTO)
+public class SpuUnitForm {
     private Long id;
 
     /**

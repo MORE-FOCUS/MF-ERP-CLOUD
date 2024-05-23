@@ -1,10 +1,9 @@
 package cn.morefocus.admin.module.business.spuunit.service;
 
 import cn.morefocus.admin.module.business.spuunit.domain.entity.SpuUnitEntity;
-import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitAddForm;
+import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitForm;
 import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitPageQueryForm;
 import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitQueryForm;
-import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitUpdateForm;
 import cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO;
 import cn.morefocus.admin.module.business.spuunit.mapper.SpuUnitMapper;
 import cn.morefocus.base.common.code.UserErrorCode;
@@ -52,7 +51,7 @@ public class SpuUnitService {
     /**
      * 添加
      */
-    public R<String> add(SpuUnitAddForm addForm) {
+    public R<String> add(SpuUnitForm addForm) {
         SpuUnitEntity warehouseEntity = LocalBeanUtil.copy(addForm, SpuUnitEntity.class);
         spuUnitMapper.insert(warehouseEntity);
         return R.ok();
