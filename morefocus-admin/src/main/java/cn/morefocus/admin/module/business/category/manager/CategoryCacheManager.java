@@ -36,7 +36,7 @@ public class CategoryCacheManager {
     }
 
     /**
-     * 查詢类目
+     * 查询类目
      */
     @Cacheable(AdminCacheConst.Category.CATEGORY_ENTITY)
     public CategoryEntity queryCategory(Long categoryId) {

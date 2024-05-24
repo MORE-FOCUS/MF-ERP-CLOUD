@@ -58,8 +58,14 @@ public class SpuVO extends BaseVO {
     /**
      * 单位ID
      */
-    @Schema(description = "单位")
+    @Schema(description = "单位ID")
     private Long unitId;
+
+    /**
+     * 单位名称
+     */
+    @Schema(description = "单位名称")
+    private String unitName;
 
     /**
      * 品牌

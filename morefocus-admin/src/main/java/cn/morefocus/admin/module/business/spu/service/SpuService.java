@@ -12,6 +12,8 @@ import cn.morefocus.admin.module.business.spu.mapper.SpuMapper;
 import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitQueryForm;
 import cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO;
 import cn.morefocus.admin.module.business.spuunit.service.SpuUnitService;
+import cn.morefocus.admin.module.business.unit.domain.entity.UnitEntity;
+import cn.morefocus.admin.module.business.unit.manager.UnitManager;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
@@ -60,6 +62,8 @@ public class SpuService {
 
     @Resource
     private SpuUnitService spuUnitService;
+    @Resource
+    private UnitManager unitManager;
 
     /**
      * 添加商品
@@ -197,6 +201,14 @@ public class SpuService {
 
         //基本信息
         SpuVO spuVO = LocalBeanUtil.copy(spuEntity, SpuVO.class);
+
+        //单位
+        if (null != spuEntity.getUnitId()) {
+            UnitEntity unitEntity = unitManager.queryUnit(spuEntity.getUnitId());
+            if (null != unitEntity) {
+                spuVO.setUnitName(unitEntity.getName());
+            }
+        }
 
         //多单位
         SpuUnitQueryForm spuUnitQueryForm = new SpuUnitQueryForm();

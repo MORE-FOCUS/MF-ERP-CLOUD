@@ -6,6 +6,7 @@ import cn.morefocus.admin.module.business.unit.domain.form.UnitPageQueryForm;
 import cn.morefocus.admin.module.business.unit.domain.form.UnitQueryForm;
 import cn.morefocus.admin.module.business.unit.domain.form.UnitUpdateForm;
 import cn.morefocus.admin.module.business.unit.domain.vo.UnitVO;
+import cn.morefocus.admin.module.business.unit.manager.UnitManager;
 import cn.morefocus.admin.module.business.unit.mapper.UnitMapper;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.PageResult;
@@ -30,6 +31,8 @@ public class UnitService {
 
     @Resource
     private UnitMapper unitMapper;
+    @Resource
+    private UnitManager unitManager;
 
     /**
      * 分页查询
@@ -45,7 +48,7 @@ public class UnitService {
      * 查询所有
      */
     public List<UnitVO> queryAll(UnitQueryForm queryForm) {
-        List<UnitVO> list = unitMapper.queryAll(queryForm);
+        List<UnitVO> list = unitManager.queryUnit(queryForm);
         return list;
     }
 
@@ -55,6 +58,8 @@ public class UnitService {
     public R<String> add(UnitAddForm addForm) {
         UnitEntity warehouseEntity = LocalBeanUtil.copy(addForm, UnitEntity.class);
         unitMapper.insert(warehouseEntity);
+
+        unitManager.removeCache();
         return R.ok();
     }
 
@@ -64,6 +69,8 @@ public class UnitService {
     public R<String> update(UnitUpdateForm updateForm) {
         UnitEntity warehouseEntity = LocalBeanUtil.copy(updateForm, UnitEntity.class);
         unitMapper.updateById(warehouseEntity);
+
+        unitManager.removeCache();
         return R.ok();
     }
 
@@ -78,6 +85,8 @@ public class UnitService {
         //TODO 单位被使用不能删除
 
         unitMapper.deleteBatchIds(idList);
+
+        unitManager.removeCache();
         return R.ok();
     }
 
@@ -92,6 +101,8 @@ public class UnitService {
         //TODO 单位被使用不能删除
 
         unitMapper.deleteById(id);
+
+        unitManager.removeCache();
         return R.ok();
     }
 
@@ -108,6 +119,7 @@ public class UnitService {
         }
         unitMapper.updateIsDisabled(id, !warehouseEntity.getIsDisabled());
 
+        unitManager.removeCache();
         return R.ok();
     }
 }

@@ -50,4 +50,14 @@ public class AdminCacheConst extends CacheKeyConst {
         public static final String CATEGORY_LIST = "category_list_cache";
     }
 
+    /**
+     * 单位相关缓存
+     */
+    public static class Unit {
+
+        public static final String UNIT_ENTITY = "unit_cache";
+
+        public static final String UNIT_LIST = "unit_list_cache";
+    }
+
 }
