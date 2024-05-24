@@ -11,12 +11,16 @@ import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import cn.morefocus.base.common.util.PageUtil;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 单位 Service
@@ -49,64 +53,66 @@ public class SpuUnitService {
     }
 
     /**
-     * 添加
-     */
-    public R<String> add(SpuUnitForm addForm) {
-        SpuUnitEntity warehouseEntity = LocalBeanUtil.copy(addForm, SpuUnitEntity.class);
-        spuUnitMapper.insert(warehouseEntity);
-        return R.ok();
-    }
-
-    /**
-     * 更新
-     */
-    public R<String> update(SpuUnitUpdateForm updateForm) {
-        SpuUnitEntity warehouseEntity = LocalBeanUtil.copy(updateForm, SpuUnitEntity.class);
-        spuUnitMapper.updateById(warehouseEntity);
-        return R.ok();
-    }
-
-    /**
-     * 批量删除
-     */
-    public R<String> batchDelete(List<Long> idList) {
-        if (CollectionUtils.isEmpty(idList)) {
-            return R.ok();
-        }
-
-        //TODO 单位被使用不能删除
-
-        spuUnitMapper.deleteBatchIds(idList);
-        return R.ok();
-    }
-
-    /**
-     * 单个删除
-     */
-    public R<String> delete(Long id) {
-        if (null == id) {
-            return R.ok();
-        }
-
-        //TODO 单位被使用不能删除
-
-        spuUnitMapper.deleteById(id);
-        return R.ok();
-    }
-
-    /**
      * 更新禁用/启用状态
      */
     public R<String> updateIsDisabled(Long id) {
         if (null == id) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
-        SpuUnitEntity warehouseEntity = spuUnitMapper.selectById(id);
-        if (null == warehouseEntity) {
+        SpuUnitEntity spuUnitEntity = spuUnitMapper.selectById(id);
+        if (null == spuUnitEntity) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
-        spuUnitMapper.updateIsDisabled(id, !warehouseEntity.getIsDisabled());
+        spuUnitMapper.updateIsDisabled(id, !spuUnitEntity.getIsDisabled());
 
         return R.ok();
+    }
+
+    /**
+     * 删除商品多单位
+     */
+    public void deleteBySpuId(Long spuId) {
+        spuUnitMapper.deleteBySpuId(spuId, Boolean.TRUE);
+    }
+
+    /**
+     * 更新多单位
+     */
+    public void updateSpuUnit(Long spuId, List<SpuUnitForm> spuUnitList) {
+        if (CollectionUtils.isEmpty(spuUnitList)) {
+            spuUnitMapper.deleteBySpuId(spuId, Boolean.TRUE);
+            return;
+        }
+
+        Wrapper<SpuUnitEntity> wrapper = new QueryWrapper<SpuUnitEntity>()
+                .eq("spu_id", spuId);
+        List<SpuUnitEntity> orginalSpuUnitList = spuUnitMapper.selectList(wrapper);
+
+        Set<Long> keepUnitList = new HashSet<>();
+        for (SpuUnitForm form : spuUnitList) {
+            wrapper = new QueryWrapper<SpuUnitEntity>()
+                    .eq("spu_id", spuId)
+                    .eq("unit_id", form.getUnitId());
+            SpuUnitEntity spuUnit = spuUnitMapper.selectOne(wrapper);
+            if (null == spuUnit) {
+                spuUnit = LocalBeanUtil.copy(form, SpuUnitEntity.class);
+                spuUnitMapper.insert(spuUnit);
+            } else {
+                keepUnitList.add(spuUnit.getSpuId());
+                spuUnit.setBasicUnitId(form.getBasicUnitId());
+                spuUnit.setBasicUnitName(form.getBasicUnitName());
+                spuUnit.setUnitName(form.getUnitName());
+                spuUnit.setExchange(form.getExchange());
+                spuUnit.setIsDisabled(form.getIsDisabled());
+                spuUnitMapper.updateById(spuUnit);
+            }
+        }
+
+        //清除已经被删除的
+        orginalSpuUnitList.forEach(item -> {
+            if (!keepUnitList.contains(item.getId())) {
+                spuUnitMapper.deleteById(item.getId(), Boolean.TRUE);
+            }
+        });
     }
 }

@@ -36,4 +36,14 @@ public interface SpuUnitMapper extends BaseMapper<SpuUnitEntity> {
      * 更新禁用|启用状态
      */
     void updateIsDisabled(@Param("id") Long id, @Param("isDisabled") Boolean isDisabled);
+
+    /**
+     * 根据商品ID删除
+     */
+    void deleteBySpuId(@Param("spuId") Long spuId, @Param("isDeleted") Boolean isDeleted);
+
+    /**
+     * 根据商品ID删除
+     */
+    void deleteById(@Param("id") Long id, @Param("isDeleted") Boolean isDeleted);
 }

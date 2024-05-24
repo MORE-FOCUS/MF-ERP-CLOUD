@@ -100,7 +100,21 @@ public class SpuService {
      */
     @Transactional(rollbackFor = Exception.class)
     public R<String> updateSpuUnit(SpuUnitUpdateForm updateForm) {
-        
+        SpuEntity spuEntity = spuMapper.selectById(updateForm.getSpuId());
+        if (null == spuEntity) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+
+        spuEntity.setEnableMultiUnit(updateForm.getEnableMultiUnit());
+        spuMapper.updateById(spuEntity);
+
+        if (updateForm.getEnableMultiUnit()) {
+            //开启多单位
+            spuUnitService.updateSpuUnit(updateForm.getSpuId(), updateForm.getMultiUnitList());
+        } else {
+            //关闭多单位
+            spuUnitService.deleteBySpuId(updateForm.getSpuId());
+        }
         return R.ok();
     }
 

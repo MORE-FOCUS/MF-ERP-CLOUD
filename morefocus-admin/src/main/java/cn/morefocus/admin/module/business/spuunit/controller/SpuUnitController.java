@@ -52,26 +52,6 @@ public class SpuUnitController {
     }
 
     /**
-     * 批量删除
-     */
-    @Operation(summary = "批量删除")
-    @PostMapping("/spu-unit/batchDelete")
-    @SaCheckPermission("business:spu-unit:delete")
-    public R<String> batchDelete(@RequestBody List<Long> idList) {
-        return spuUnitService.batchDelete(idList);
-    }
-
-    /**
-     * 删除
-     */
-    @Operation(summary = "单个删除")
-    @PostMapping("/spu-unit/delete/{id}")
-    @SaCheckPermission("business:spu-unit:delete")
-    public R<String> batchDelete(@PathVariable Long id) {
-        return spuUnitService.delete(id);
-    }
-
-    /**
      * 更新禁用/启用状态
      */
     @Operation(summary = "更新禁用/启用状态")

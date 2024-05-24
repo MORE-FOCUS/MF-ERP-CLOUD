@@ -43,4 +43,16 @@
         SET is_disabled = #{isDisabled}
         WHERE id = #{id}
     </update>
+
+    <update id="deleteBySpuId">
+        UPDATE t_spu_unit
+        SET is_deleted = #{isDeleted}
+        WHERE spu_id = #{spuId}
+    </update>
+
+    <update id="deleteById">
+        UPDATE t_spu_unit
+        SET is_deleted = #{isDeleted}
+        WHERE id = #{id}
+    </update>
 </mapper>
