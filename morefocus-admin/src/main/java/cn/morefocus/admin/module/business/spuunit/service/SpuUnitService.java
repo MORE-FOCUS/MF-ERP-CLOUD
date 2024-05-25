@@ -85,14 +85,14 @@ public class SpuUnitService {
         }
 
         Wrapper<SpuUnitEntity> wrapper = new QueryWrapper<SpuUnitEntity>()
-                .eq("spu_id", spuId);
+                .lambda().eq(SpuUnitEntity::getSpuId, spuId);
         List<SpuUnitEntity> orginalSpuUnitList = spuUnitMapper.selectList(wrapper);
 
         Set<Long> keepUnitList = new HashSet<>();
         for (SpuUnitForm form : spuUnitList) {
             wrapper = new QueryWrapper<SpuUnitEntity>()
-                    .eq("spu_id", spuId)
-                    .eq("unit_id", form.getUnitId());
+                    .lambda().eq(SpuUnitEntity::getSpuId, spuId)
+                    .eq(SpuUnitEntity::getUnitId, form.getUnitId());
             SpuUnitEntity spuUnit = spuUnitMapper.selectOne(wrapper);
             if (null == spuUnit) {
                 spuUnit = LocalBeanUtil.copy(form, SpuUnitEntity.class);
