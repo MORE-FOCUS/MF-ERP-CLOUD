@@ -17,22 +17,37 @@ public class SpuUnitVO extends BaseVO {
     private Long id;
 
     /**
+     * 单位ID
+     */
+    private Long unitId;
+
+    /**
      * 单位名称
      */
-    private String name;
+    private String unitName;
 
     /**
-     * 是否删除 1-删除 0-未删除
+     * 基础单位ID
      */
-    private Boolean isDeleted;
+    private Long basicUnitId;
 
     /**
-     * 是否锁定 1-锁定 0-未锁定
+     * 基础单位名称
      */
-    private Boolean isLocked;
+    private String basicUnitName;
 
     /**
-     * 禁用
+     * 转换关系
+     */
+    private Integer exchange;
+
+    /**
+     * spuId
+     */
+    private Long spuId;
+
+    /**
+     * 启用禁用 true-禁用 false-启用
      */
     private Boolean isDisabled;
 }

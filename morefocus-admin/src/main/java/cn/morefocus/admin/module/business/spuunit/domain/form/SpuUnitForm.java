@@ -46,4 +46,9 @@ public class SpuUnitForm {
      * 启用禁用 true-禁用 false-启用
      */
     private Boolean isDisabled;
+
+    /**
+     * 备注
+     */
+    private String remark;
 }
