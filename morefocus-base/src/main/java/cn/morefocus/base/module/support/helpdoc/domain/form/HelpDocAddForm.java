@@ -42,7 +42,7 @@ public class HelpDocAddForm {
 
     @Schema(description = "排序")
     @NotNull(message = "排序不能为空")
-    private Integer sort;
+    private Integer sortValue;
 
     @Schema(description = "关联的集合")
     private List<HelpDocRelationForm> relationList;

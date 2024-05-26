@@ -23,5 +23,5 @@ public class HelpDocCatalogAddForm {
     private Long pid;
 
     @Schema(description = "排序")
-    private Integer sort;
+    private Integer sortValue;
 }

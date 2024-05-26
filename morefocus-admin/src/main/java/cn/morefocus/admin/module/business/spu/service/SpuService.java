@@ -147,6 +147,10 @@ public class SpuService {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
 
+        spuEntity.setShelfLifeDays(updateForm.getShelfLifeDays());
+        spuEntity.setShelfLifeType(updateForm.getShelfLifeType());
+        spuEntity.setEnableShelfLife(updateForm.getEnableShelfLife());
+        spuEntity.setEnableAttr(updateForm.getEnableAttr());
         spuMapper.updateById(spuEntity);
         return R.ok();
     }

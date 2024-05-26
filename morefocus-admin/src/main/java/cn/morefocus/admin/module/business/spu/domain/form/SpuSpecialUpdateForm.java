@@ -22,6 +22,18 @@ public class SpuSpecialUpdateForm {
     private Boolean enableShelfLife;
 
     /**
+     * 保质期类型 1-天 2-月 3-年
+     */
+    @Schema(description = "保质期类型")
+    private Integer shelfLifeType;
+
+    /**
+     * 保质期
+     */
+    @Schema(description = "保质期")
+    private Integer shelfLifeDays;
+
+    /**
      * 是否开启辅助属性
      */
     @Schema(description = "是否开启辅助属性")

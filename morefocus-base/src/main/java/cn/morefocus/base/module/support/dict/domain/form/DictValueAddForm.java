@@ -29,7 +29,7 @@ public class DictValueAddForm {
 
     @Schema(description = "排序")
     @NotNull(message = "排序不能为空")
-    private Integer sort;
+    private Integer sortValue;
 
     @Schema(description = "备注")
     @Length(max = 500, message = "备注太长了")

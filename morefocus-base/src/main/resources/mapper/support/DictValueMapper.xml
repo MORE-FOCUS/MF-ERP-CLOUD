@@ -23,7 +23,7 @@
             </if>
         </where>
         <if test="query.sortItemList == null or query.sortItemList.size == 0">
-            ORDER BY sort,dict_value_id DESC
+            ORDER BY sort_value,dict_value_id DESC
         </if>
     </select>
 

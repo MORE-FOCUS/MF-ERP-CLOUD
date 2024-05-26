@@ -24,7 +24,7 @@ public class DictValueVO {
     private String valueName;
 
     @Schema(description = "排序")
-    private Integer sort;
+    private Integer sortValue;
 
     @Schema(description = "备注")
     private String remark;

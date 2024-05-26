@@ -21,6 +21,6 @@ public class HelpDocCatalogVO {
     private Long pid;
 
     @Schema(description = "帮助文档目录-排序")
-    private Integer sort;
+    private Integer sortValue;
 
 }

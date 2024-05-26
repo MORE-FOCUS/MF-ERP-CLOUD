@@ -23,8 +23,6 @@ import java.util.List;
 
 /**
  * 字典 服务
- *
- *
  */
 @Service
 public class DictService {
@@ -39,7 +37,6 @@ public class DictService {
      * CODE锁
      */
     private static final Interner<String> CODE_POOL = Interners.newWeakInterner();
-
 
     /**
      * key添加
@@ -187,6 +184,5 @@ public class DictService {
         }
         return R.ok(pageResult);
     }
-
 
 }

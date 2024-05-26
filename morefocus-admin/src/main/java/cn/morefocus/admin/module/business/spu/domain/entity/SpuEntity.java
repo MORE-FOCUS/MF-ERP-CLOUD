@@ -76,6 +76,16 @@ public class SpuEntity extends BaseEntity {
     private Boolean enableShelfLife;
 
     /**
+     * 保质期类型 1-天 2-月 3-年
+     */
+    private Integer shelfLifeType;
+
+    /**
+     * 保质期
+     */
+    private Integer shelfLifeDays;
+
+    /**
      * 是否开启辅助属性
      */
     private Boolean enableAttr;

@@ -29,7 +29,7 @@ public class HelpDocVO {
     private String author;
 
     @Schema(description = "排序")
-    private Integer sort;
+    private Integer sortValue;
 
     @Schema(description = "页面浏览量")
     private Integer pageViewCount;
