@@ -2,10 +2,7 @@ package cn.morefocus.admin.module.business.spu.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
-import cn.morefocus.admin.module.business.spu.domain.form.SpuBaseAddForm;
-import cn.morefocus.admin.module.business.spu.domain.form.SpuBaseUpdateForm;
-import cn.morefocus.admin.module.business.spu.domain.form.SpuPageQueryForm;
-import cn.morefocus.admin.module.business.spu.domain.form.SpuUnitUpdateForm;
+import cn.morefocus.admin.module.business.spu.domain.form.*;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuExportVO;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuVO;
 import cn.morefocus.admin.module.business.spu.service.SpuService;
@@ -67,6 +64,20 @@ public class SpuController {
     @SaCheckPermission("business:spu:update")
     public R<String> updateSpuUnit(@RequestBody @Valid SpuUnitUpdateForm updateForm) {
         return spuService.updateSpuUnit(updateForm);
+    }
+
+    @Operation(summary = "更新商品图片")
+    @PostMapping("/spu/images/update")
+    @SaCheckPermission("business:spu:update")
+    public R<String> updateSpuImages(@RequestBody @Valid SpuImagesUpdateForm updateForm) {
+        return spuService.updateSpuImages(updateForm);
+    }
+
+    @Operation(summary = "更新商品属性")
+    @PostMapping("/spu/special/update")
+    @SaCheckPermission("business:spu:update")
+    public R<String> updateSpuSpecial(@RequestBody @Valid SpuSpecialUpdateForm updateForm) {
+        return spuService.updateSpuSpecial(updateForm);
     }
 
     @Operation(summary = "删除")

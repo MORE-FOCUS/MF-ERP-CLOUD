@@ -123,6 +123,35 @@ public class SpuService {
     }
 
     /**
+     * 更新商品图片
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public R<String> updateSpuImages(SpuImagesUpdateForm updateForm) {
+        SpuEntity spuEntity = spuMapper.selectById(updateForm.getSpuId());
+        if (null == spuEntity) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+
+        spuEntity.setImages(updateForm.getImages());
+        spuMapper.updateById(spuEntity);
+        return R.ok();
+    }
+
+    /**
+     * 更新商品属性
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public R<String> updateSpuSpecial(SpuSpecialUpdateForm updateForm) {
+        SpuEntity spuEntity = spuMapper.selectById(updateForm.getSpuId());
+        if (null == spuEntity) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+
+        spuMapper.updateById(spuEntity);
+        return R.ok();
+    }
+
+    /**
      * 添加/更新 商品校验
      */
     private R<String> checkGoods(SpuBaseAddForm addForm) {
