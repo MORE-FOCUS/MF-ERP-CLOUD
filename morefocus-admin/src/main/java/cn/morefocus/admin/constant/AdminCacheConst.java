@@ -60,4 +60,11 @@ public class AdminCacheConst extends CacheKeyConst {
         public static final String UNIT_LIST = "unit_list_cache";
     }
 
+    /**
+     * 单位相关缓存
+     */
+    public static class Attrs {
+        public static final String ATTRS_LIST = "attrs_list_cache";
+    }
+
 }

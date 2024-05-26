@@ -24,7 +24,12 @@ public enum CategoryTypeEnum implements BaseEnum {
     /**
      * 仓库
      */
-    WAREHOUSE(3, "仓库");
+    WAREHOUSE(3, "仓库"),
+
+    /**
+     * 附加属性
+     */
+    ATTRS(4, "附加属性");
 
     private final Integer value;
 

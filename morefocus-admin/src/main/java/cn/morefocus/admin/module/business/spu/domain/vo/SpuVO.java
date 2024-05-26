@@ -104,12 +104,6 @@ public class SpuVO extends BaseVO {
     private Boolean enableMultiUnit;
 
     /**
-     * 是否禁用
-     */
-    @Schema(description = "是否禁用")
-    private Boolean isDisabled;
-
-    /**
      * 主图片
      */
     private String mainPicture;

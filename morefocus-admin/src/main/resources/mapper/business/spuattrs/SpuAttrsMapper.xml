@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.morefocus.admin.module.business.spuattrs.mapper.SpuAttrsMapper">
+
+    <!-- 分页查询 -->
+    <select id="queryPage" resultType="cn.morefocus.admin.module.business.spuattrs.domain.vo.SpuAttrsVO">
+        SELECT t_spu_attrs.*
+        FROM t_spu_attrs t_spu_attrs
+        <where>
+            <if test="queryForm.keywords!=null and queryForm.keywords != ''">
+                AND ( INSTR(t_spu_attrs.name,#{queryForm.keywords})
+                )
+            </if>
+
+            <if test="queryForm.isDeleted != null">
+                and t_spu_attrs.is_deleted = #{queryForm.isDeleted}
+            </if>
+
+            <if test="queryForm.isDisabled != null">
+                and t_spu_attrs.is_disabled = #{queryForm.isDisabled}
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="queryAll" resultType="cn.morefocus.admin.module.business.spuattrs.domain.vo.SpuAttrsVO">
+        SELECT t_spu_attrs.*
+        FROM t_spu_attrs t_spu_attrs
+
+        <where>
+            <if test="queryForm.isDeleted != null">
+                and t_spu_attrs.is_deleted = #{queryForm.isDeleted}
+            </if>
+
+            <if test="queryForm.isDisabled != null">
+                and t_spu_attrs.is_disabled = #{queryForm.isDisabled}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateIsDisabled">
+        UPDATE t_spu_attrs
+        SET is_disabled = #{isDisabled}
+        WHERE id = #{id}
+    </update>
+</mapper>
