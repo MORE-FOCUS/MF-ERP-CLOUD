@@ -109,4 +109,19 @@ public class SpuEntity extends BaseEntity {
      * 是否上架
      */
     private Boolean isListed;
+
+    /**
+     * 默认供应商
+     */
+    private Long supplierId;
+
+    /**
+     * 首选仓库
+     */
+    private Long warehouseId;
+
+    /**
+     * 是否常用 true-常用 false-不是常用 默认false
+     */
+    private Boolean common;
 }
