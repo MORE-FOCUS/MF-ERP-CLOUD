@@ -156,7 +156,7 @@ public class SpuService {
         spuMapper.updateById(spuEntity);
 
         //更新商品附加属性
-        spuAttrsService.updateSpuAttrs(updateForm.getSpuId(), updateForm.getAttrs());
+        spuAttrsService.updateSpuAttrs(updateForm.getSpuId(), updateForm.getAttrsList());
 
         //更新sku
         skuService.updateSku(updateForm.getSkuList());
