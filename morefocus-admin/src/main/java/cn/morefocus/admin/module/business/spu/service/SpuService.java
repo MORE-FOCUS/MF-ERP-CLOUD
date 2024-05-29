@@ -3,12 +3,14 @@ package cn.morefocus.admin.module.business.spu.service;
 import cn.morefocus.admin.module.business.category.constant.CategoryTypeEnum;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.service.CategoryQueryService;
+import cn.morefocus.admin.module.business.sku.service.SkuService;
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
 import cn.morefocus.admin.module.business.spu.domain.entity.SpuEntity;
 import cn.morefocus.admin.module.business.spu.domain.form.*;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuExportVO;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuVO;
 import cn.morefocus.admin.module.business.spu.mapper.SpuMapper;
+import cn.morefocus.admin.module.business.spuattrs.service.SpuAttrsService;
 import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitQueryForm;
 import cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO;
 import cn.morefocus.admin.module.business.spuunit.service.SpuUnitService;
@@ -47,23 +49,22 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 public class SpuService {
-
     @Resource
     private SpuMapper spuMapper;
-
     @Resource
     private CategoryQueryService categoryQueryService;
-
     @Resource
     private DataTracerService dataTracerService;
-
     @Resource
     private DictCacheService dictCacheService;
-
     @Resource
     private SpuUnitService spuUnitService;
     @Resource
     private UnitManager unitManager;
+    @Resource
+    private SpuAttrsService spuAttrsService;
+    @Resource
+    private SkuService skuService;
 
     /**
      * 添加商品
@@ -142,6 +143,7 @@ public class SpuService {
      */
     @Transactional(rollbackFor = Exception.class)
     public R<String> updateSpuSpecial(SpuSpecialUpdateForm updateForm) {
+        //更新商品属性
         SpuEntity spuEntity = spuMapper.selectById(updateForm.getSpuId());
         if (null == spuEntity) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
@@ -152,6 +154,13 @@ public class SpuService {
         spuEntity.setEnableShelfLife(updateForm.getEnableShelfLife());
         spuEntity.setEnableAttr(updateForm.getEnableAttr());
         spuMapper.updateById(spuEntity);
+
+        //更新商品附加属性
+        spuAttrsService.updateSpuAttrs(updateForm.getSpuId(), updateForm.getAttrs());
+
+        //更新sku
+        skuService.updateSku(updateForm.getSkuList());
+
         return R.ok();
     }
 

@@ -1,9 +1,11 @@
 package cn.morefocus.admin.module.business.spu.domain.form;
 
+import cn.morefocus.admin.module.business.sku.domain.form.SkuForm;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * 商品属性 添加表单
@@ -24,13 +26,11 @@ public class SpuSpecialUpdateForm {
     /**
      * 保质期类型 1-天 2-月 3-年
      */
-    @Schema(description = "保质期类型")
     private Integer shelfLifeType;
 
     /**
      * 保质期
      */
-    @Schema(description = "保质期")
     private Integer shelfLifeDays;
 
     /**
@@ -38,4 +38,14 @@ public class SpuSpecialUpdateForm {
      */
     @Schema(description = "是否开启辅助属性")
     private Boolean enableAttr;
+
+    /**
+     * 属性
+     */
+    private String attrs;
+
+    /**
+     * SKU列表
+     */
+    private List<SkuForm> skuList;
 }
