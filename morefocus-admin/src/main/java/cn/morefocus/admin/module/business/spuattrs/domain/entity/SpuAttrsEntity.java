@@ -25,37 +25,12 @@ public class SpuAttrsEntity extends BaseEntity {
     private Long id;
 
     /**
-     * 单位ID
-     */
-    private Long unitId;
-
-    /**
-     * 单位名称
-     */
-    private String unitName;
-
-    /**
-     * 基础单位ID
-     */
-    private Long basicUnitId;
-
-    /**
-     * 基础单位名称
-     */
-    private String basicUnitName;
-
-    /**
-     * 转换关系
-     */
-    private Integer exchange;
-
-    /**
      * spuId
      */
     private Long spuId;
 
     /**
-     * 启用禁用 true-禁用 false-启用
+     * 属性 json
      */
-    private Boolean isDisabled;
+    private String attrs;
 }

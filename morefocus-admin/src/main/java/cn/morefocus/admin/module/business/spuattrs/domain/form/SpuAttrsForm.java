@@ -1,6 +1,11 @@
 package cn.morefocus.admin.module.business.spuattrs.domain.form;
 
+import cn.morefocus.admin.module.business.sku.domain.form.SKUForm;
 import lombok.Data;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * 商品附加属性 新建表单
@@ -10,45 +15,20 @@ import lombok.Data;
  */
 @Data
 public class SpuAttrsForm {
-    private Long id;
-
-    /**
-     * 单位ID
-     */
-    private Long unitId;
-
-    /**
-     * 单位名称
-     */
-    private String unitName;
-
-    /**
-     * 基础单位ID
-     */
-    private Long basicUnitId;
-
-    /**
-     * 基础单位名称
-     */
-    private String basicUnitName;
-
-    /**
-     * 转换关系
-     */
-    private Integer exchange;
-
     /**
      * spuId
      */
+    @NotNull(message = "商品ID不能为空")
     private Long spuId;
 
     /**
-     * 启用禁用 true-禁用 false-启用
+     * 属性
      */
-    private Boolean isDisabled;
+    @NotBlank(message = "辅助属性不能为空")
+    private String attrs;
 
     /**
-     * 备注
+     * SKU列表
      */
-    private String remark;
+    private List<SKUForm> skuList;
 }
