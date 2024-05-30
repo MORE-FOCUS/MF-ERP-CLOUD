@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 @Mapper
 @Component
 public interface SpuAttrsMapper extends BaseMapper<SpuAttrsEntity> {
-
     /**
      * 查询SPU属性
      */

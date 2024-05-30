@@ -3,7 +3,7 @@ package cn.morefocus.admin.module.business.category.service;
 import cn.hutool.core.util.StrUtil;
 import cn.morefocus.admin.module.business.category.domain.dto.CategorySimpleDTO;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
-import cn.morefocus.admin.module.business.category.manager.CategoryCacheManager;
+import cn.morefocus.admin.module.business.category.manager.CategoryManager;
 import cn.morefocus.base.common.constant.StringConst;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -26,7 +26,7 @@ public class CategoryQueryService {
     private static final Long DEFAULT_CATEGORY_PARENT_ID = 0L;
 
     @Resource
-    private CategoryCacheManager categoryCacheManager;
+    private CategoryManager categoryManager;
 
     /**
      * 根据 id 查询未删除的类目
@@ -38,7 +38,7 @@ public class CategoryQueryService {
         if (null == categoryId) {
             return Optional.empty();
         }
-        CategoryEntity entity = categoryCacheManager.queryCategory(categoryId);
+        CategoryEntity entity = categoryManager.queryCategory(categoryId);
         if (null == entity || entity.getIsDeleted()) {
             return Optional.empty();
         }
@@ -55,7 +55,7 @@ public class CategoryQueryService {
         categoryIdList = categoryIdList.stream().distinct().collect(Collectors.toList());
         Map<Long, CategoryEntity> categoryEntityMap = Maps.newHashMap();
         for (Long categoryId : categoryIdList) {
-            CategoryEntity categoryEntity = categoryCacheManager.queryCategory(categoryId);
+            CategoryEntity categoryEntity = categoryManager.queryCategory(categoryId);
             if (categoryEntity != null) {
                 categoryEntityMap.put(categoryId, categoryEntity);
             }
@@ -75,7 +75,7 @@ public class CategoryQueryService {
         //所有子类
         List<CategoryEntity> categoryEntityList = Lists.newArrayList();
         categoryIdList.forEach(e -> {
-            categoryEntityList.addAll(categoryCacheManager.querySubCategory(e));
+            categoryEntityList.addAll(categoryManager.querySubCategory(e));
         });
         Map<Long, List<CategoryEntity>> subTypeMap = categoryEntityList.stream().collect(Collectors.groupingBy(CategoryEntity::getCategoryId));
         // 递归查询子类
@@ -109,7 +109,7 @@ public class CategoryQueryService {
      * 根据类目id 查询类目名称
      */
     public String queryCategoryName(Long categoryId) {
-        CategoryEntity categoryEntity = categoryCacheManager.queryCategory(categoryId);
+        CategoryEntity categoryEntity = categoryManager.queryCategory(categoryId);
         if (null == categoryEntity || categoryEntity.getIsDeleted()) {
             return null;
         }
@@ -120,7 +120,7 @@ public class CategoryQueryService {
      * 根据类目id 查询类目详情 包含类目全称 如：医考/医师资格/临床执业
      */
     public CategorySimpleDTO queryCategoryInfo(Long categoryId) {
-        CategoryEntity categoryEntity = categoryCacheManager.queryCategory(categoryId);
+        CategoryEntity categoryEntity = categoryManager.queryCategory(categoryId);
         if (null == categoryEntity || categoryEntity.getIsDeleted()) {
             return null;
         }
@@ -140,7 +140,7 @@ public class CategoryQueryService {
      */
     public List<CategoryEntity> queryCategoryAndParent(Long categoryId) {
         List<CategoryEntity> parentCategoryList = Lists.newArrayList();
-        CategoryEntity categoryEntity = categoryCacheManager.queryCategory(categoryId);
+        CategoryEntity categoryEntity = categoryManager.queryCategory(categoryId);
         if (null == categoryEntity || categoryEntity.getIsDeleted()) {
             return parentCategoryList;
         }

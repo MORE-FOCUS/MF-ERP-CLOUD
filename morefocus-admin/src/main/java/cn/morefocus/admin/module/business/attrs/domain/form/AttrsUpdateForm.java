@@ -15,6 +15,6 @@ import javax.validation.constraints.NotNull;
 @Data
 public class AttrsUpdateForm extends AttrsAddForm {
 
-    @NotNull(message = "分类id 不能为空")
+    @NotNull(message = "属性ID不能为空")
     private Long id;
 }

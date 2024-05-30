@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class CategoryCacheManager {
+public class CategoryManager {
 
     @Resource
     private CategoryMapper categoryMapper;

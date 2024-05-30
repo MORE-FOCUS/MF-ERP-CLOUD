@@ -26,8 +26,6 @@ import java.util.stream.Collectors;
 
 /**
  * 数据变动记录 Service
- *
- *
  */
 @Slf4j
 @Service
@@ -44,9 +42,6 @@ public class DataTracerService {
 
     /**
      * 获取变更内容
-     *
-     * @param object
-     * @return
      */
     public String getChangeContent(Object object) {
         return dataTracerChangeContentService.getChangeContent(object);
@@ -59,7 +54,6 @@ public class DataTracerService {
         return dataTracerChangeContentService.getChangeContent(oldObject, newObject);
     }
 
-
     /**
      * 获取变更内容
      */
@@ -67,12 +61,8 @@ public class DataTracerService {
         return dataTracerChangeContentService.getChangeContent(oldObjectList, newObjectList);
     }
 
-
     /**
      * 保存【修改】数据变动记录
-     *
-     * @param dataId
-     * @param type
      */
     public void update(Long dataId, DataTracerTypeEnum type, Object oldObject, Object newObject) {
         DataTracerForm form = DataTracerForm.builder()
@@ -83,12 +73,8 @@ public class DataTracerService {
         this.addTrace(form);
     }
 
-
     /**
      * 保存【新增】数据变动记录
-     *
-     * @param dataId
-     * @param type
      */
     public void insert(Long dataId, DataTracerTypeEnum type) {
         DataTracerForm form = DataTracerForm.builder().dataId(dataId).type(type).content(DataTracerConst.INSERT).build();
@@ -97,9 +83,6 @@ public class DataTracerService {
 
     /**
      * 保存【删除】数据变动记录
-     *
-     * @param dataId
-     * @param type
      */
     public void delete(Long dataId, DataTracerTypeEnum type) {
         DataTracerForm form = DataTracerForm.builder().dataId(dataId).type(type).content(DataTracerConst.DELETE).build();
@@ -108,9 +91,6 @@ public class DataTracerService {
 
     /**
      * 保存【删除】数据变动记录
-     *
-     * @param dataId
-     * @param type
      */
     public void delete(Long dataId, DataTracerTypeEnum type, Object object) {
         DataTracerForm form = DataTracerForm.builder().dataId(dataId).type(type).content(DataTracerConst.DELETE).build();
@@ -119,9 +99,6 @@ public class DataTracerService {
 
     /**
      * 保存【批量删除】数据变动记录
-     *
-     * @param dataIdList
-     * @param type
      */
     public void batchDelete(List<Long> dataIdList, DataTracerTypeEnum type) {
         if (CollectionUtils.isEmpty(dataIdList)) {
@@ -139,10 +116,6 @@ public class DataTracerService {
 
     /**
      * 保存数据变动记录
-     *
-     * @param dataId
-     * @param type
-     * @param content
      */
     public void addTrace(Long dataId, DataTracerTypeEnum type, String content) {
         DataTracerForm form = DataTracerForm.builder().dataId(dataId).type(type).content(content).build();
@@ -156,7 +129,6 @@ public class DataTracerService {
         RequestUser requestUser = SecurityContextHolder.getRequestUser();
         this.addTrace(tracerForm, requestUser);
     }
-
 
     /**
      * 保存数据变动记录
@@ -204,7 +176,6 @@ public class DataTracerService {
         }).collect(Collectors.toList());
         dataTracerManger.saveBatch(tracerEntityList);
     }
-
 
     /**
      * 分页查询

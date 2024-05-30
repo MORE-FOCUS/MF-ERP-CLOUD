@@ -28,7 +28,7 @@ public class UnitManager extends ServiceImpl<UnitMapper, UnitEntity> {
 
     @CacheEvict(value = {AdminCacheConst.Unit.UNIT_ENTITY, AdminCacheConst.Unit.UNIT_LIST}, allEntries = true)
     public void removeCache() {
-        log.info("clear CATEGORY ,CATEGORY_SUB ,CATEGORY_TREE");
+        log.info("clear UNIT_ENTITY ,UNIT_LIST");
     }
 
     /**

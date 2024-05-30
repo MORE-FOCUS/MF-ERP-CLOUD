@@ -26,9 +26,9 @@ public class AttrsManager extends ServiceImpl<AttrsMapper, AttrsEntity> {
     @Resource
     private AttrsMapper attrsMapper;
 
-    @CacheEvict(value = {AdminCacheConst.Attrs.ATTRS_LIST}, allEntries = true)
+    @CacheEvict(value = {AdminCacheConst.Attrs.ATTRS_LIST, AdminCacheConst.Attrs.ATTRS_ENTITY}, allEntries = true)
     public void removeCache() {
-        log.info("clear ATTRS_LIST");
+        log.info("clear ATTRS_LIST ATTRS_ENTITY");
     }
 
     /**
@@ -37,5 +37,13 @@ public class AttrsManager extends ServiceImpl<AttrsMapper, AttrsEntity> {
     @Cacheable(AdminCacheConst.Attrs.ATTRS_LIST)
     public List<AttrsVO> queryAttrs(AttrsQueryForm form) {
         return attrsMapper.queryAll(form);
+    }
+
+    /**
+     * 查询辅助属性
+     */
+    @Cacheable(AdminCacheConst.Attrs.ATTRS_ENTITY)
+    public AttrsEntity queryAttrs(Long id) {
+        return attrsMapper.selectById(id);
     }
 }

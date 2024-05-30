@@ -1,7 +1,7 @@
 package cn.morefocus.admin.module.business.spu.domain.form;
 
 import cn.morefocus.admin.module.business.sku.domain.form.SkuForm;
-import cn.morefocus.admin.module.business.spuattrs.domain.form.SpuAttrsForm;
+import cn.morefocus.admin.module.business.spuattrs.domain.form.SpuAttrsSelectedForm;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -43,7 +43,7 @@ public class SpuSpecialUpdateForm {
     /**
      * 属性
      */
-    private List<SpuAttrsForm> attrsList;
+    private List<SpuAttrsSelectedForm> attrsList;
 
     /**
      * SKU列表

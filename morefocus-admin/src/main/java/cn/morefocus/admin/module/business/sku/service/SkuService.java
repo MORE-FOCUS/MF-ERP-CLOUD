@@ -30,7 +30,7 @@ public class SkuService {
     /**
      * 更新商品sku
      */
-    public void updateSku(List<SkuForm> skuList) {
+    public synchronized void updateSku(List<SkuForm> skuList) {
 
     }
 }

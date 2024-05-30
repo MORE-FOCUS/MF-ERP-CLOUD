@@ -155,11 +155,13 @@ public class SpuService {
         spuEntity.setEnableAttr(updateForm.getEnableAttr());
         spuMapper.updateById(spuEntity);
 
-        //更新商品附加属性
-        spuAttrsService.updateSpuAttrs(updateForm.getSpuId(), updateForm.getAttrsList());
+        if (updateForm.getEnableAttr()) {
+            //更新商品附加属性
+            spuAttrsService.updateSpuAttrs(updateForm.getSpuId(), updateForm.getAttrsList());
 
-        //更新sku
-        skuService.updateSku(updateForm.getSkuList());
+            //更新sku
+            skuService.updateSku(updateForm.getSkuList());
+        }
 
         return R.ok();
     }

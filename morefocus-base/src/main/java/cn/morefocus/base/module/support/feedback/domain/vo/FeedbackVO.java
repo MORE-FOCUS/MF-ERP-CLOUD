@@ -1,4 +1,4 @@
-package cn.morefocus.base.module.support.feedback.domain;
+package cn.morefocus.base.module.support.feedback.domain.vo;
 
 import cn.morefocus.base.common.enums.UserTypeEnum;
 import cn.morefocus.base.common.json.deserializer.FileKeyVoDeserializer;

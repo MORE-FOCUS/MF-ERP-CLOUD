@@ -40,9 +40,6 @@ public class DictService {
 
     /**
      * key添加
-     *
-     * @param keyAddForm
-     * @return
      */
     public R<String> keyAdd(DictKeyAddForm keyAddForm) {
         synchronized (CODE_POOL.intern(keyAddForm.getKeyCode())) {
@@ -58,9 +55,6 @@ public class DictService {
 
     /**
      * 值添加
-     *
-     * @param valueAddForm
-     * @return
      */
     public R<String> valueAdd(DictValueAddForm valueAddForm) {
         synchronized (CODE_POOL.intern(valueAddForm.getValueCode())) {
@@ -76,9 +70,6 @@ public class DictService {
 
     /**
      * key 编辑
-     *
-     * @param keyUpdateForm
-     * @return
      */
     public R<String> keyEdit(DictKeyUpdateForm keyUpdateForm) {
         synchronized (CODE_POOL.intern(keyUpdateForm.getKeyCode())) {
@@ -94,9 +85,6 @@ public class DictService {
 
     /**
      * 值编辑
-     *
-     * @param valueUpdateForm
-     * @return
      */
     public R<String> valueEdit(DictValueUpdateForm valueUpdateForm) {
         DictKeyEntity dictKeyEntity = dictKeyMapper.selectById(valueUpdateForm.getDictKeyId());
@@ -116,9 +104,6 @@ public class DictService {
 
     /**
      * key删除
-     *
-     * @param keyIdList
-     * @return
      */
     public R<String> keyDelete(List<Long> keyIdList) {
         if (CollectionUtils.isEmpty(keyIdList)) {
@@ -130,9 +115,6 @@ public class DictService {
 
     /**
      * 值删除
-     *
-     * @param valueIdList
-     * @return
      */
     public R<String> valueDelete(List<Long> valueIdList) {
         if (CollectionUtils.isEmpty(valueIdList)) {
@@ -144,9 +126,6 @@ public class DictService {
 
     /**
      * 分页查询key
-     *
-     * @param queryForm
-     * @return
      */
     public R<PageResult<DictKeyVO>> keyQuery(DictKeyQueryForm queryForm) {
         queryForm.setIsDeleted(false);
@@ -161,8 +140,6 @@ public class DictService {
 
     /**
      * 所有key
-     *
-     * @return
      */
     public List<DictKeyVO> queryAllKey() {
         return LocalBeanUtil.copyList(dictKeyMapper.selectList(null), DictKeyVO.class);
@@ -170,18 +147,12 @@ public class DictService {
 
     /**
      * 分页查询值
-     *
-     * @param queryForm
-     * @return
      */
     public R<PageResult<DictValueVO>> valueQuery(DictValueQueryForm queryForm) {
         queryForm.setIsDeleted(false);
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
         List<DictValueVO> list = dictValueMapper.query(page, queryForm);
         PageResult<DictValueVO> pageResult = PageUtil.convert2PageResult(page, list);
-        if (pageResult.getEmptyFlag()) {
-            return R.ok(pageResult);
-        }
         return R.ok(pageResult);
     }
 

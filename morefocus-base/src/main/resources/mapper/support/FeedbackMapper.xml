@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.morefocus.base.module.support.feedback.mapper.FeedbackMapper">
 
-    <select id="queryPage" resultType="cn.morefocus.base.module.support.feedback.domain.FeedbackVO">
+    <select id="queryPage" resultType="cn.morefocus.base.module.support.feedback.domain.vo.FeedbackVO">
         select *
         from t_feedback
         <where>

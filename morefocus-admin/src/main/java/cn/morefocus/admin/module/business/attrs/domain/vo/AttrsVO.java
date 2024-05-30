@@ -17,7 +17,7 @@ public class AttrsVO extends BaseVO {
     private Long id;
 
     /**
-     * 单位名称
+     * 属性名称
      */
     private String name;
 }

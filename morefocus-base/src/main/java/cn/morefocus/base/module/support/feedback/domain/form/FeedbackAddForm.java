@@ -1,4 +1,4 @@
-package cn.morefocus.base.module.support.feedback.domain;
+package cn.morefocus.base.module.support.feedback.domain.form;
 
 import cn.morefocus.base.common.json.deserializer.FileKeyVoDeserializer;
 import cn.morefocus.base.common.json.serializer.FileKeyVoSerializer;

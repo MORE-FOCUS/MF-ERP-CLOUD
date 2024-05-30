@@ -10,8 +10,6 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * url上传文件
- *
- *
  */
 @Data
 public class FileUrlUploadForm {

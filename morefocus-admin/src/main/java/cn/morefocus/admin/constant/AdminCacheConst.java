@@ -64,6 +64,7 @@ public class AdminCacheConst extends CacheKeyConst {
      * 单位相关缓存
      */
     public static class Attrs {
+        public static final String ATTRS_ENTITY = "attrs_cache";
         public static final String ATTRS_LIST = "attrs_list_cache";
     }
 

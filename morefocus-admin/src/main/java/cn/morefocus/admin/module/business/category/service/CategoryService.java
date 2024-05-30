@@ -6,7 +6,7 @@ import cn.morefocus.admin.module.business.category.domain.form.CategoryAddForm;
 import cn.morefocus.admin.module.business.category.domain.form.CategoryTreeQueryForm;
 import cn.morefocus.admin.module.business.category.domain.form.CategoryUpdateForm;
 import cn.morefocus.admin.module.business.category.domain.vo.CategoryVO;
-import cn.morefocus.admin.module.business.category.manager.CategoryCacheManager;
+import cn.morefocus.admin.module.business.category.manager.CategoryManager;
 import cn.morefocus.admin.module.business.category.mapper.CategoryMapper;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.constant.StringConst;
@@ -37,7 +37,7 @@ public class CategoryService {
     private CategoryQueryService categoryQueryService;
 
     @Resource
-    private CategoryCacheManager categoryCacheManager;
+    private CategoryManager categoryManager;
 
     /**
      * 添加类目
@@ -74,7 +74,7 @@ public class CategoryService {
         categoryMapper.insert(categoryEntity);
 
         // 更新缓存
-        categoryCacheManager.removeCache();
+        categoryManager.removeCache();
         return R.ok();
     }
 
@@ -123,7 +123,7 @@ public class CategoryService {
         categoryMapper.updateById(categoryEntity);
 
         // 更新缓存
-        categoryCacheManager.removeCache();
+        categoryManager.removeCache();
         return R.ok();
     }
 
@@ -210,7 +210,7 @@ public class CategoryService {
             return R.userErrorParam("类目类型不能为空");
         }
 
-        List<CategoryVO> treeList = categoryCacheManager.queryAll(queryForm.getCategoryType());
+        List<CategoryVO> treeList = categoryManager.queryAll(queryForm.getCategoryType());
         return R.ok(treeList);
     }
 
@@ -226,7 +226,7 @@ public class CategoryService {
             queryForm.setPid(NumberUtils.LONG_ZERO);
         }
 
-        return R.ok(categoryCacheManager.queryCategoryTree(queryForm.getPid(), queryForm.getCategoryType()));
+        return R.ok(categoryManager.queryCategoryTree(queryForm.getPid(), queryForm.getCategoryType()));
     }
 
     /**
@@ -251,7 +251,7 @@ public class CategoryService {
         categoryMapper.updateById(categoryEntity);
 
         // 更新缓存
-        categoryCacheManager.removeCache();
+        categoryManager.removeCache();
         return R.ok();
     }
 

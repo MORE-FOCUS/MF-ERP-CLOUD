@@ -1,8 +1,8 @@
 package cn.morefocus.base.module.support.feedback.mapper;
 
-import cn.morefocus.base.module.support.feedback.domain.FeedbackEntity;
-import cn.morefocus.base.module.support.feedback.domain.FeedbackQueryForm;
-import cn.morefocus.base.module.support.feedback.domain.FeedbackVO;
+import cn.morefocus.base.module.support.feedback.domain.entity.FeedbackEntity;
+import cn.morefocus.base.module.support.feedback.domain.form.FeedbackQueryForm;
+import cn.morefocus.base.module.support.feedback.domain.vo.FeedbackVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Mapper;

@@ -1,4 +1,4 @@
-package cn.morefocus.base.module.support.feedback.domain;
+package cn.morefocus.base.module.support.feedback.domain.entity;
 
 import cn.morefocus.base.common.domain.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
