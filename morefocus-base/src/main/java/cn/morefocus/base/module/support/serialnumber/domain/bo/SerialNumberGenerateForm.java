@@ -16,6 +16,6 @@ public class SerialNumberGenerateForm {
     private Long serialNumberId;
 
     @Schema(description = "生成的数量")
-    @NotNull(message = "生成的数量")
+    @NotNull(message = "生成的数量不能为空")
     private Integer count;
 }

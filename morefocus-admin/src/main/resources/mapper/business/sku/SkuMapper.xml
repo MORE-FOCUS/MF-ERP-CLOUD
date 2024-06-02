@@ -8,4 +8,9 @@
         where t_sku.spu_id = #{spuId}
     </select>
 
+    <update id="updateIsDeleted">
+        update t_sku
+        set is_deleted = true
+        where id = #{id}
+    </update>
 </mapper>

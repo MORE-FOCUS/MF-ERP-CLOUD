@@ -1,6 +1,9 @@
 package cn.morefocus.admin.module.business.sku.domain.form;
 
+import cn.morefocus.admin.module.business.attrs.domain.form.AttrsForm;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class SkuForm {
@@ -10,17 +13,17 @@ public class SkuForm {
     private String skuNo;
 
     /**
+     * 名称 蓝色M衬衫
+     */
+    private String skuName;
+
+    /**
      * 属性
      */
-    private String attrs;
+    private List<AttrsForm> attrsList;
 
     /**
-     * 组合属性名称 比如:蓝色,M
+     * 比如:蓝色,M
      */
-    private String key;
-
-    /**
-     * spuId
-     */
-    private String spuId;
+    private String attrsName;
 }

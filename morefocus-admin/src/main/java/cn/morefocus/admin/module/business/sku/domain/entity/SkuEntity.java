@@ -37,7 +37,7 @@ public class SkuEntity extends BaseEntity {
     /**
      * 组合属性名称
      */
-    private String key;
+    private String attrsName;
 
     /**
      * sku编码

@@ -160,7 +160,7 @@ public class SpuService {
             spuAttrsService.updateSpuAttrs(updateForm.getSpuId(), updateForm.getAttrsList());
 
             //更新sku
-            skuService.updateSku(updateForm.getSkuList());
+            skuService.updateSku(updateForm.getSpuId(), updateForm.getSkuList());
         }
 
         return R.ok();

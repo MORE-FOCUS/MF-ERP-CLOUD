@@ -60,7 +60,7 @@ public class SpuAttrsService {
             }
             selected.setCategoryName(categoryEntity.getCategoryName());
 
-            selected.getAttrsList().forEach(attrs -> {
+            selected.getSelectedAttrsList().forEach(attrs -> {
                 AttrsEntity attrsEntity = attrsManager.queryAttrs(attrs.getId());
                 if (null == attrsEntity) {
                     throw new BusinessException("属性不存在");

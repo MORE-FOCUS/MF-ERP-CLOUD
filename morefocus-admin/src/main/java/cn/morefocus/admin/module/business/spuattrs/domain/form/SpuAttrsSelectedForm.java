@@ -26,5 +26,5 @@ public class SpuAttrsSelectedForm {
     /**
      * 选择的属性
      */
-    private List<AttrsForm> attrsList;
+    private List<AttrsForm> selectedAttrsList;
 }

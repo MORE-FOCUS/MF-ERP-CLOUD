@@ -22,4 +22,9 @@ public interface SkuMapper extends BaseMapper<SkuEntity> {
      * 查询sku spu
      */
     List<SkuVO> querySkuBySpuId(@Param("spuId") Long spuId);
+
+    /**
+     * 更新删除状态
+     */
+    void updateIsDeleted(@Param("id") Long id);
 }
