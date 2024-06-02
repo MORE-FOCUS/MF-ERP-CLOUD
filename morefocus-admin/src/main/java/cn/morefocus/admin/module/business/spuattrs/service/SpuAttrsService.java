@@ -5,7 +5,8 @@ import cn.morefocus.admin.module.business.attrs.manager.AttrsManager;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.manager.CategoryManager;
 import cn.morefocus.admin.module.business.spuattrs.domain.entity.SpuAttrsEntity;
-import cn.morefocus.admin.module.business.spuattrs.domain.form.SpuAttrsSelectedForm;
+import cn.morefocus.admin.module.business.spuattrs.domain.form.SpuSelectedAttrsForm;
+import cn.morefocus.admin.module.business.spuattrs.domain.vo.SpuAttrsVO;
 import cn.morefocus.admin.module.business.spuattrs.mapper.SpuAttrsMapper;
 import cn.morefocus.base.common.exception.BusinessException;
 import com.alibaba.fastjson.JSON;
@@ -36,8 +37,10 @@ public class SpuAttrsService {
      * 更新商品属性
      */
     @Transactional(rollbackFor = Exception.class)
-    public synchronized void updateSpuAttrs(Long spuId, List<SpuAttrsSelectedForm> attrsList) {
-        SpuAttrsEntity entity = querySpuAttrs(spuId);
+    public synchronized void updateSpuAttrs(Long spuId, List<SpuSelectedAttrsForm> attrsList) {
+        Wrapper<SpuAttrsEntity> wrapper = new QueryWrapper<SpuAttrsEntity>()
+                .lambda().eq(SpuAttrsEntity::getSpuId, spuId);
+        SpuAttrsEntity entity = spuAttrsMapper.selectOne(wrapper);
         if (null == entity) {
             entity = new SpuAttrsEntity();
             entity.setSpuId(spuId);
@@ -52,8 +55,8 @@ public class SpuAttrsService {
     /**
      * 构建属性
      */
-    private String buildAttrs(List<SpuAttrsSelectedForm> selectedSpuAttrsList) {
-        for (SpuAttrsSelectedForm selected : selectedSpuAttrsList) {
+    private String buildAttrs(List<SpuSelectedAttrsForm> selectedSpuAttrsList) {
+        for (SpuSelectedAttrsForm selected : selectedSpuAttrsList) {
             CategoryEntity categoryEntity = categoryManager.queryCategory(selected.getCategoryId());
             if (null == categoryEntity) {
                 throw new BusinessException("属性类目不存在");
@@ -76,9 +79,7 @@ public class SpuAttrsService {
     /**
      * 查询Spu属性
      */
-    public SpuAttrsEntity querySpuAttrs(Long spuId) {
-        Wrapper<SpuAttrsEntity> wrapper = new QueryWrapper<SpuAttrsEntity>()
-                .lambda().eq(SpuAttrsEntity::getSpuId, spuId);
-        return spuAttrsMapper.selectOne(wrapper);
+    public SpuAttrsVO querySpuAttrs(Long spuId) {
+        return spuAttrsMapper.querySpuAttrs(spuId);
     }
 }

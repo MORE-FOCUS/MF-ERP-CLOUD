@@ -5,7 +5,8 @@
     <select id="querySkuBySpuId" resultType="cn.morefocus.admin.module.business.sku.domain.vo.SkuVO">
         select t_sku.*
         from t_sku t_sku
-        where t_sku.spu_id = #{spuId}
+        where t_sku.is_deleted = false
+          and t_sku.spu_id = #{spuId}
     </select>
 
     <update id="updateIsDeleted">

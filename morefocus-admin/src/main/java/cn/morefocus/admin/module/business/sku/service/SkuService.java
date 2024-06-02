@@ -47,15 +47,16 @@ public class SkuService {
             if (null == skuEntity) {
                 skuEntity = new SkuEntity();
                 skuEntity.setSpuId(spuId);
+                skuEntity.setSkuNo(form.getSkuNo());
                 skuEntity.setAttrsName(form.getAttrsName());
                 skuEntity.setAttrs(JSON.toJSONString(form.getAttrsList()));
-                skuEntity.setSkuName(form.getSkuName());
+                skuEntity.setSkuName(form.getAttrsName());
                 skuMapper.insert(skuEntity);
             } else {
                 updateSkuIdList.add(skuEntity.getId());
                 skuEntity.setAttrsName(form.getAttrsName());
                 skuEntity.setAttrs(JSON.toJSONString(form.getAttrsList()));
-                skuEntity.setSkuName(form.getSkuName());
+                skuEntity.setSkuName(form.getAttrsName());
                 skuMapper.updateById(skuEntity);
             }
         }

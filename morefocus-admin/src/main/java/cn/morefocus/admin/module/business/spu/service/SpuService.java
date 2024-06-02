@@ -1,8 +1,10 @@
 package cn.morefocus.admin.module.business.spu.service;
 
+import cn.morefocus.admin.module.business.attrs.domain.vo.AttrsVO;
 import cn.morefocus.admin.module.business.category.constant.CategoryTypeEnum;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.service.CategoryQueryService;
+import cn.morefocus.admin.module.business.sku.domain.vo.SkuVO;
 import cn.morefocus.admin.module.business.sku.service.SkuService;
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
 import cn.morefocus.admin.module.business.spu.domain.entity.SpuEntity;
@@ -10,6 +12,8 @@ import cn.morefocus.admin.module.business.spu.domain.form.*;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuExportVO;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuVO;
 import cn.morefocus.admin.module.business.spu.mapper.SpuMapper;
+import cn.morefocus.admin.module.business.spuattrs.domain.vo.SpuAttrsVO;
+import cn.morefocus.admin.module.business.spuattrs.domain.vo.SpuSelectedAttrsVo;
 import cn.morefocus.admin.module.business.spuattrs.service.SpuAttrsService;
 import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitQueryForm;
 import cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO;
@@ -31,6 +35,7 @@ import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -260,7 +265,23 @@ public class SpuService {
         List<SpuUnitVO> spuUnitVOList = spuUnitService.queryAll(spuUnitQueryForm);
         spuVO.setMultiUnitList(spuUnitVOList);
 
-        //图片
+        //辅助属性
+        SpuAttrsVO spuAttrsVO = spuAttrsService.querySpuAttrs(id);
+        if (null != spuAttrsVO) {
+            List<SpuSelectedAttrsVo> spuSelectedAttrsVoList = JSON.parseArray(spuAttrsVO.getAttrs(), SpuSelectedAttrsVo.class);
+            spuVO.setAttrsList(spuSelectedAttrsVoList);
+        }
+
+        //SKU
+        List<SkuVO> skuList = skuService.querySpuSku(id);
+        if (CollectionUtils.isEmpty(skuList)) {
+            skuList.forEach(sku -> {
+                if (StringUtils.isNotBlank(sku.getAttrs())) {
+                    sku.setAttrsList(JSON.parseArray(sku.getAttrs(), AttrsVO.class));
+                }
+            });
+            spuVO.setSkuList(skuList);
+        }
 
         return R.ok(spuVO);
     }

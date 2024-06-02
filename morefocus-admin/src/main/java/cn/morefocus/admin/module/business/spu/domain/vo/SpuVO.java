@@ -1,6 +1,8 @@
 package cn.morefocus.admin.module.business.spu.domain.vo;
 
+import cn.morefocus.admin.module.business.sku.domain.vo.SkuVO;
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
+import cn.morefocus.admin.module.business.spuattrs.domain.vo.SpuSelectedAttrsVo;
 import cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO;
 import cn.morefocus.base.common.domain.BaseVO;
 import cn.morefocus.base.common.swagger.SchemaEnum;
@@ -123,4 +125,14 @@ public class SpuVO extends BaseVO {
      * 多单位
      */
     private List<SpuUnitVO> multiUnitList;
+
+    /**
+     * 属性
+     */
+    private List<SpuSelectedAttrsVo> attrsList;
+
+    /**
+     * SKU列表
+     */
+    private List<SkuVO> skuList;
 }

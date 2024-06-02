@@ -1,6 +1,9 @@
 package cn.morefocus.admin.module.business.sku.domain.vo;
 
+import cn.morefocus.admin.module.business.attrs.domain.vo.AttrsVO;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * SKU 实体类
@@ -11,29 +14,28 @@ import lombok.Data;
 @Data
 public class SkuVO {
     private Long id;
-
     /**
-     * spuId
-     */
-    private Long spuId;
-
-    /**
-     * 属性 json
-     */
-    private String attrs;
-
-    /**
-     * 组合属性名称
-     */
-    private String key;
-
-    /**
-     * sku编码
+     * 编码
      */
     private String skuNo;
 
     /**
-     * sku名称
+     * 名称 蓝色M衬衫
      */
     private String skuName;
+
+    /**
+     * 属性
+     */
+    private String attrs;
+
+    /**
+     * 属性
+     */
+    private List<AttrsVO> attrsList;
+
+    /**
+     * 比如:蓝色,M
+     */
+    private String attrsName;
 }
