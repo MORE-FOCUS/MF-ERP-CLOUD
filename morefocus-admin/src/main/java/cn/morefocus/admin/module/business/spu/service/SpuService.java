@@ -274,7 +274,7 @@ public class SpuService {
 
         //SKU
         List<SkuVO> skuList = skuService.querySpuSku(id);
-        if (CollectionUtils.isEmpty(skuList)) {
+        if (!CollectionUtils.isEmpty(skuList)) {
             skuList.forEach(sku -> {
                 if (StringUtils.isNotBlank(sku.getAttrs())) {
                     sku.setAttrsList(JSON.parseArray(sku.getAttrs(), AttrsVO.class));
