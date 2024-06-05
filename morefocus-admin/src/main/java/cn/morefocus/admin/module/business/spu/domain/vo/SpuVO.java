@@ -1,5 +1,6 @@
 package cn.morefocus.admin.module.business.spu.domain.vo;
 
+import cn.morefocus.admin.module.business.barcode.domain.vo.SkuBarcodeVO;
 import cn.morefocus.admin.module.business.sku.domain.vo.SkuVO;
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
 import cn.morefocus.admin.module.business.spuattrs.domain.vo.SpuSelectedAttrsVo;
@@ -135,4 +136,9 @@ public class SpuVO extends BaseVO {
      * SKU列表
      */
     private List<SkuVO> skuList;
+
+    /**
+     * 商品条形码
+     */
+    private List<SkuBarcodeVO> skuBarcodeList;
 }

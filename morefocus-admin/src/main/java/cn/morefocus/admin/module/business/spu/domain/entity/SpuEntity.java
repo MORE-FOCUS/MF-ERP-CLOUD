@@ -96,6 +96,11 @@ public class SpuEntity extends BaseEntity {
     private Boolean enableMultiUnit;
 
     /**
+     * 是否开启条形码
+     */
+    private Boolean enableBarcode;
+
+    /**
      * 是否禁用
      */
     private Boolean isDisabled;

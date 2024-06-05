@@ -80,6 +80,13 @@ public class SpuController {
         return spuService.updateSpuSpecial(updateForm);
     }
 
+    @Operation(summary = "更新商品条码")
+    @PostMapping("/spu/barcode/update")
+    @SaCheckPermission("business:spu:update")
+    public R<String> updateSpuBarcode(@RequestBody @Valid SpuBarcodeUpdateForm updateForm) {
+        return spuService.updateSpuBarcode(updateForm);
+    }
+
     @Operation(summary = "删除")
     @GetMapping("/spu/delete/{spuId}")
     @SaCheckPermission("business:spu:delete")

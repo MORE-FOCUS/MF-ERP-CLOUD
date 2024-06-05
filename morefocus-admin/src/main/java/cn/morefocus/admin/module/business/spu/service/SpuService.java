@@ -1,6 +1,8 @@
 package cn.morefocus.admin.module.business.spu.service;
 
 import cn.morefocus.admin.module.business.attrs.domain.vo.AttrsVO;
+import cn.morefocus.admin.module.business.barcode.domain.vo.SkuBarcodeVO;
+import cn.morefocus.admin.module.business.barcode.service.SkuBarcodeService;
 import cn.morefocus.admin.module.business.category.constant.CategoryTypeEnum;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.service.CategoryQueryService;
@@ -70,6 +72,8 @@ public class SpuService {
     private SpuAttrsService spuAttrsService;
     @Resource
     private SkuService skuService;
+    @Resource
+    private SkuBarcodeService skuBarcodeService;
 
     /**
      * 添加商品
@@ -166,6 +170,26 @@ public class SpuService {
 
             //更新sku
             skuService.updateSku(updateForm.getSpuId(), updateForm.getSkuList());
+        }
+
+        return R.ok();
+    }
+
+    /**
+     * 更新商品条形码
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public R<String> updateSpuBarcode(SpuBarcodeUpdateForm updateForm) {
+        SpuEntity spuEntity = spuMapper.selectById(updateForm.getSpuId());
+        if (null == spuEntity) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+
+        spuEntity.setEnableBarcode(updateForm.getEnableBarcode());
+        spuMapper.updateById(spuEntity);
+
+        if (updateForm.getEnableBarcode()) {
+            skuBarcodeService.updateSkuBarcode(updateForm.getSpuId(), updateForm.getSkuBarcodeList());
         }
 
         return R.ok();
@@ -282,6 +306,10 @@ public class SpuService {
             });
             spuVO.setSkuList(skuList);
         }
+
+        //条形码
+        List<SkuBarcodeVO> skuBarcodeList = skuBarcodeService.querySpuSkuBarcode(id);
+        spuVO.setSkuBarcodeList(skuBarcodeList);
 
         return R.ok(spuVO);
     }
