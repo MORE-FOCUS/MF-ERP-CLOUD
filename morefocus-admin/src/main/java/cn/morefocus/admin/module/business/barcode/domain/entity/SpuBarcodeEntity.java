@@ -15,8 +15,8 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("t_sku_barcode")
-public class SkuBarcodeEntity extends BaseEntity {
+@TableName("t_spu_barcode")
+public class SpuBarcodeEntity extends BaseEntity {
 
     /**
      * ID
@@ -25,14 +25,29 @@ public class SkuBarcodeEntity extends BaseEntity {
     private Long id;
 
     /**
+     * skuId
+     */
+    private Long skuId;
+
+    /**
      * spuId
      */
     private Long spuId;
 
     /**
-     * skuId
+     * 商品名称
      */
-    private Long skuId;
+    private String spuName;
+
+    /**
+     * 单位ID
+     */
+    private Long unitId;
+
+    /**
+     * 单位名称
+     */
+    private String unitName;
 
     /**
      * 商品条形码

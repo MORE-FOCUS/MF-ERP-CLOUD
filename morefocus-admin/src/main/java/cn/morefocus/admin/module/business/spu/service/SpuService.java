@@ -1,8 +1,8 @@
 package cn.morefocus.admin.module.business.spu.service;
 
 import cn.morefocus.admin.module.business.attrs.domain.vo.AttrsVO;
-import cn.morefocus.admin.module.business.barcode.domain.vo.SkuBarcodeVO;
-import cn.morefocus.admin.module.business.barcode.service.SkuBarcodeService;
+import cn.morefocus.admin.module.business.barcode.domain.vo.SpuBarcodeVO;
+import cn.morefocus.admin.module.business.barcode.service.SpuBarcodeService;
 import cn.morefocus.admin.module.business.category.constant.CategoryTypeEnum;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.service.CategoryQueryService;
@@ -73,7 +73,7 @@ public class SpuService {
     @Resource
     private SkuService skuService;
     @Resource
-    private SkuBarcodeService skuBarcodeService;
+    private SpuBarcodeService skuBarcodeService;
 
     /**
      * 添加商品
@@ -308,7 +308,7 @@ public class SpuService {
         }
 
         //条形码
-        List<SkuBarcodeVO> skuBarcodeList = skuBarcodeService.querySpuSkuBarcode(id);
+        List<SpuBarcodeVO> skuBarcodeList = skuBarcodeService.querySpuSkuBarcode(id);
         spuVO.setSkuBarcodeList(skuBarcodeList);
 
         return R.ok(spuVO);

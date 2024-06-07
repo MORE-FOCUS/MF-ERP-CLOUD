@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.business.spu.domain.form;
 
-import cn.morefocus.admin.module.business.barcode.domain.form.SkuBarcodeForm;
+import cn.morefocus.admin.module.business.barcode.domain.form.SpuBarcodeForm;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -26,5 +26,5 @@ public class SpuBarcodeUpdateForm {
     /**
      * 条形码
      */
-    private List<SkuBarcodeForm> skuBarcodeList;
+    private List<SpuBarcodeForm> skuBarcodeList;
 }
