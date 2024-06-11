@@ -3,6 +3,7 @@ package cn.morefocus.admin.module.business.barcode.service;
 import cn.morefocus.admin.module.business.barcode.domain.entity.SpuBarcodeEntity;
 import cn.morefocus.admin.module.business.barcode.domain.form.SpuBarcodeForm;
 import cn.morefocus.admin.module.business.barcode.domain.vo.SpuBarcodeVO;
+import cn.morefocus.admin.module.business.barcode.manager.SpuBarcodeManager;
 import cn.morefocus.admin.module.business.barcode.mapper.SpuBarcodeMapper;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -24,19 +25,23 @@ public class SpuBarcodeService {
 
     @Resource
     private SpuBarcodeMapper spuBarcodeMapper;
+    @Resource
+    private SpuBarcodeManager spuBarcodeManager;
 
     /**
      * 查询商品sku列表
      */
-    public List<SpuBarcodeVO> querySpuSkuBarcode(Long spuId) {
-        return spuBarcodeMapper.queryBarcodeBySpuId(spuId);
+    public List<SpuBarcodeVO> querySpuBarcodeList(Long spuId) {
+        return spuBarcodeManager.querySpuBarcodeList(spuId);
     }
 
     /**
      * 更新商品sku barcode
      */
     public synchronized void updateSkuBarcode(Long spuId, List<SpuBarcodeForm> skuBarcodeList) {
-        List<SpuBarcodeEntity> skuEntityList = querySpuBarcodeList(spuId);
+        Wrapper<SpuBarcodeEntity> spuBarcodeEntityWrapper = new QueryWrapper<SpuBarcodeEntity>()
+                .lambda().eq(SpuBarcodeEntity::getSpuId, spuId);
+        List<SpuBarcodeEntity> skuEntityList = spuBarcodeMapper.selectList(spuBarcodeEntityWrapper);
         Set<Long> updateSkuIdList = new HashSet<>();
         for (SpuBarcodeForm form : skuBarcodeList) {
             Wrapper<SpuBarcodeEntity> wrapper = new QueryWrapper<SpuBarcodeEntity>()
@@ -63,14 +68,7 @@ public class SpuBarcodeService {
                 spuBarcodeMapper.deleteById(item.getId());
             }
         });
-    }
 
-    /**
-     * 查询Spu属性
-     */
-    public List<SpuBarcodeEntity> querySpuBarcodeList(Long spuId) {
-        Wrapper<SpuBarcodeEntity> wrapper = new QueryWrapper<SpuBarcodeEntity>()
-                .lambda().eq(SpuBarcodeEntity::getSpuId, spuId);
-        return spuBarcodeMapper.selectList(wrapper);
+        spuBarcodeManager.removeCache(spuId);
     }
 }

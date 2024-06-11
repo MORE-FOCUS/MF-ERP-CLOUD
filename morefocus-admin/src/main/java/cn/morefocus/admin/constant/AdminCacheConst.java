@@ -68,4 +68,10 @@ public class AdminCacheConst extends CacheKeyConst {
         public static final String ATTRS_LIST = "attrs_list_cache";
     }
 
+    /**
+     * 商品条形码
+     */
+    public static class BARCODE {
+        public static final String SPU_BARCODE = "spu_barcode";
+    }
 }

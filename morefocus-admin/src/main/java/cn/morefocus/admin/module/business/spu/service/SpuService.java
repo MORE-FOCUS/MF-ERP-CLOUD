@@ -23,6 +23,7 @@ import cn.morefocus.admin.module.business.spuunit.service.SpuUnitService;
 import cn.morefocus.admin.module.business.unit.domain.entity.UnitEntity;
 import cn.morefocus.admin.module.business.unit.manager.UnitManager;
 import cn.morefocus.base.common.code.UserErrorCode;
+import cn.morefocus.base.common.domain.BaseVO;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.exception.BusinessException;
@@ -44,10 +45,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -299,17 +297,21 @@ public class SpuService {
         //SKU
         List<SkuVO> skuList = skuService.querySpuSku(id);
         if (!CollectionUtils.isEmpty(skuList)) {
+            //条形码
+            List<SpuBarcodeVO> barcodeList = skuBarcodeService.querySpuBarcodeList(id);
+
             skuList.forEach(sku -> {
                 if (StringUtils.isNotBlank(sku.getAttrs())) {
                     sku.setAttrsList(JSON.parseArray(sku.getAttrs(), AttrsVO.class));
                 }
+
+                //条形码
+                if (!CollectionUtils.isEmpty(barcodeList)) {
+                    sku.setBarcodeList(barcodeList.stream().filter(item -> item.getSkuId().equals(sku.getId())).sorted(Comparator.comparing(BaseVO::getSortValue)).collect(Collectors.toList()));
+                }
             });
             spuVO.setSkuList(skuList);
         }
-
-        //条形码
-        List<SpuBarcodeVO> skuBarcodeList = skuBarcodeService.querySpuSkuBarcode(id);
-        spuVO.setSkuBarcodeList(skuBarcodeList);
 
         return R.ok(spuVO);
     }

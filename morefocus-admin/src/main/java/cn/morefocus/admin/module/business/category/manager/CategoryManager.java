@@ -8,13 +8,13 @@ import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.domain.vo.CategoryVO;
 import cn.morefocus.admin.module.business.category.mapper.CategoryMapper;
 import cn.morefocus.base.common.util.LocalBeanUtil;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -22,10 +22,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class CategoryManager {
-
-    @Resource
-    private CategoryMapper categoryMapper;
+public class CategoryManager extends ServiceImpl<CategoryMapper, CategoryEntity> {
 
     /**
      * 根据类目id 移除缓存
@@ -40,7 +37,7 @@ public class CategoryManager {
      */
     @Cacheable(AdminCacheConst.Category.CATEGORY_ENTITY)
     public CategoryEntity queryCategory(Long categoryId) {
-        return categoryMapper.selectById(categoryId);
+        return baseMapper.selectById(categoryId);
     }
 
     /**
@@ -48,7 +45,7 @@ public class CategoryManager {
      */
     @Cacheable(AdminCacheConst.Category.CATEGORY_SUB)
     public List<CategoryEntity> querySubCategory(Long categoryId) {
-        return categoryMapper.queryByPid(Lists.newArrayList(categoryId), false);
+        return baseMapper.queryByPid(Lists.newArrayList(categoryId), false);
     }
 
     /**
@@ -56,7 +53,7 @@ public class CategoryManager {
      */
     @Cacheable(AdminCacheConst.Category.CATEGORY_LIST)
     public List<CategoryVO> queryAll(Integer categoryType) {
-        List<CategoryEntity> categoryEntityList = categoryMapper.queryByType(categoryType, false);
+        List<CategoryEntity> categoryEntityList = baseMapper.queryByType(categoryType, false);
         return LocalBeanUtil.copyList(categoryEntityList, CategoryVO.class);
     }
 
@@ -66,7 +63,7 @@ public class CategoryManager {
      */
     @Cacheable(AdminCacheConst.Category.CATEGORY_TREE)
     public List<Tree<Long>> queryCategoryTree(Long pid, Integer categoryType) {
-        List<CategoryEntity> categoryList = categoryMapper.queryByType(categoryType, false);
+        List<CategoryEntity> categoryList = baseMapper.queryByType(categoryType, false);
 
         TreeNodeConfig config = new TreeNodeConfig()
                 .setIdKey("value")

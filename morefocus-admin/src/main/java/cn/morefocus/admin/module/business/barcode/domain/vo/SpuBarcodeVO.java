@@ -1,5 +1,6 @@
 package cn.morefocus.admin.module.business.barcode.domain.vo;
 
+import cn.morefocus.base.common.domain.BaseVO;
 import lombok.Data;
 
 /**
@@ -9,14 +10,14 @@ import lombok.Data;
  * @date 2024-04-16 23:57:58
  */
 @Data
-public class SpuBarcodeVO {
+public class SpuBarcodeVO extends BaseVO {
     private Long id;
 
     /**
      * skuId
      */
     private Long skuId;
-    
+
     /**
      * spuId
      */
