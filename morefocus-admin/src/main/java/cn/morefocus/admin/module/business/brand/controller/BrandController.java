@@ -102,14 +102,4 @@ public class BrandController {
     public R<String> updateIsDisabled(@PathVariable("id") Long id) {
         return brandService.updateIsDisabled(id);
     }
-
-    /**
-     * 更新锁定状态
-     */
-    @Operation(summary = "更新锁定状态")
-    @PostMapping("/brand/locked/{id}")
-    @SaCheckPermission("business:brand:locked")
-    public R<String> updateIsLocked(@PathVariable("id") Long id) {
-        return brandService.updateIsDisabled(id);
-    }
 }

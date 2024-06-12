@@ -60,8 +60,8 @@ public class TenantIndustryController {
     /**
      * 更新行业禁用/启用状态
      */
-    @Operation(summary = "更新行业禁用/启用状态")
-    @GetMapping("/tenant/industry/update/disabled/{id}")
+    @Operation(summary = "更新禁用/启用状态")
+    @PostMapping("/tenant/industry/update/disabled/{id}")
     @SaCheckPermission("tenant:industry:disabled")
     public R<String> updateIsDisabled(@PathVariable("id") Long id) {
         return tenantIndustryService.updateIsDisabled(id);

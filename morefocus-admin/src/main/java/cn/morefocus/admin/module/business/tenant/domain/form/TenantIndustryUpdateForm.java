@@ -1,6 +1,7 @@
 package cn.morefocus.admin.module.business.tenant.domain.form;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
 
@@ -10,10 +11,10 @@ import javax.validation.constraints.NotNull;
  * @author loki
  * @date 2024-04-09 00:06:08
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class TenantIndustryUpdateForm {
+public class TenantIndustryUpdateForm extends TenantIndustryAddForm {
 
-    @NotNull(message = "分类id 不能为空")
+    @NotNull(message = "ID不能为空")
     private Long id;
-
 }

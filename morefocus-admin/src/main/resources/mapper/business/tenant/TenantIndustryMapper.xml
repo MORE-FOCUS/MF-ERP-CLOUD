@@ -4,8 +4,13 @@
 
     <!-- 分页查询 -->
     <select id="queryPage" resultType="cn.morefocus.admin.module.business.tenant.domain.vo.TenantIndustryVO">
-        SELECT *
-        FROM t_tenant_industry
+        SELECT t_tenant_industry.*
+        FROM t_tenant_industry t_tenant_industry
+        <where>
+            <if test="queryForm.keywords != null and queryForm.keywords != ''">
+                AND INSTR(t_tenant_industry.name,#{queryForm.keywords})
+            </if>
+        </where>
     </select>
 
     <update id="updateIsDisabled">

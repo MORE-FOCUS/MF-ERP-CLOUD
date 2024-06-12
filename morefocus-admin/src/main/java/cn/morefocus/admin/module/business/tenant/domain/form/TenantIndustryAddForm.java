@@ -2,8 +2,8 @@ package cn.morefocus.admin.module.business.tenant.domain.form;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 
 /**
  * 租户所属行业 新建表单
@@ -13,17 +13,29 @@ import java.time.LocalDateTime;
  */
 @Data
 public class TenantIndustryAddForm {
+    /**
+     * 名称
+     */
+    @NotBlank(message = "行业不能为空")
+    private String name;
 
-    @NotNull(message = "分类id 不能为空")
-    private Long id;
+    /**
+     * 图标
+     */
+    @NotBlank(message = "图标不能为空")
+    private String icon;
 
-    @NotNull(message = "更新时间 不能为空")
-    private LocalDateTime updateTime;
+    /**
+     * 是否被禁用
+     * 0-否
+     * 1-是
+     */
+    @NotNull(message = "状态不能为空")
+    private Boolean isDisabled;
 
-    @NotNull(message = "是否删除 不能为空")
-    private Integer isDeleted;
-
-    @NotNull(message = "创建时间 不能为空")
-    private LocalDateTime createTime;
-
+    /**
+     * 排序
+     */
+    @NotNull(message = "排序不能为空")
+    private Integer sortValue;
 }
