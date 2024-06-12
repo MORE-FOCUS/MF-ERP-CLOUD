@@ -74,14 +74,4 @@ public class BaseEntity implements Serializable {
      * 删除时间
      */
     private LocalDateTime deleteTime;
-
-    /**
-     * 删除人ID
-     */
-    private Long deleteBy;
-
-    /**
-     * 删除人名称
-     */
-    private String deleteByName;
 }

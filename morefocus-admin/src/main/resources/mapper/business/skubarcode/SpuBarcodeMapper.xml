@@ -3,9 +3,9 @@
 <mapper namespace="cn.morefocus.admin.module.business.barcode.mapper.SpuBarcodeMapper">
 
     <select id="queryBarcodeBySpuId" resultType="cn.morefocus.admin.module.business.barcode.domain.vo.SpuBarcodeVO">
-        select t_sku.*
-        from t_sku t_sku
-        where t_sku.is_deleted = false
-          and t_sku.spu_id = #{spuId}
+        select t_spu_barcode.*
+        from t_spu_barcode t_spu_barcode
+        where t_spu_barcode.is_deleted = false
+          and t_spu_barcode.spu_id = #{spuId}
     </select>
 </mapper>

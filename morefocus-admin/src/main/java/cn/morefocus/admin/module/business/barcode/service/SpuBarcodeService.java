@@ -42,7 +42,7 @@ public class SpuBarcodeService {
         Wrapper<SpuBarcodeEntity> spuBarcodeEntityWrapper = new QueryWrapper<SpuBarcodeEntity>()
                 .lambda().eq(SpuBarcodeEntity::getSpuId, spuId);
         List<SpuBarcodeEntity> skuEntityList = spuBarcodeMapper.selectList(spuBarcodeEntityWrapper);
-        Set<Long> updateSkuIdList = new HashSet<>();
+        Set<Long> updateBarcodeIdList = new HashSet<>();
         for (SpuBarcodeForm form : skuBarcodeList) {
             Wrapper<SpuBarcodeEntity> wrapper = new QueryWrapper<SpuBarcodeEntity>()
                     .lambda().eq(SpuBarcodeEntity::getSpuId, spuId)
@@ -56,7 +56,7 @@ public class SpuBarcodeService {
                 skuBarcodeEntity.setBarcode(form.getBarcode());
                 spuBarcodeMapper.insert(skuBarcodeEntity);
             } else {
-                updateSkuIdList.add(skuBarcodeEntity.getId());
+                updateBarcodeIdList.add(skuBarcodeEntity.getId());
                 skuBarcodeEntity.setBarcode(form.getBarcode());
                 spuBarcodeMapper.updateById(skuBarcodeEntity);
             }
@@ -64,7 +64,7 @@ public class SpuBarcodeService {
 
         //移除删除
         skuEntityList.forEach(item -> {
-            if (updateSkuIdList.add(item.getId())) {
+            if (updateBarcodeIdList.add(item.getId())) {
                 spuBarcodeMapper.deleteById(item.getId());
             }
         });

@@ -26,5 +26,5 @@ public class SpuBarcodeUpdateForm {
     /**
      * 条形码
      */
-    private List<SpuBarcodeForm> skuBarcodeList;
+    private List<SpuBarcodeForm> barcodeList;
 }

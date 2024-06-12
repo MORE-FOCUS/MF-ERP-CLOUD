@@ -187,7 +187,7 @@ public class SpuService {
         spuMapper.updateById(spuEntity);
 
         if (updateForm.getEnableBarcode()) {
-            skuBarcodeService.updateSkuBarcode(updateForm.getSpuId(), updateForm.getSkuBarcodeList());
+            skuBarcodeService.updateSkuBarcode(updateForm.getSpuId(), updateForm.getBarcodeList());
         }
 
         return R.ok();
@@ -249,13 +249,23 @@ public class SpuService {
         if (pageResult.getEmptyFlag()) {
             return R.ok(pageResult);
         }
+
         // 查询分类名称
         List<Long> categoryIdList = list.stream().map(SpuVO::getCategoryId).distinct().collect(Collectors.toList());
         Map<Long, CategoryEntity> categoryMap = categoryQueryService.queryCategoryList(categoryIdList);
         list.forEach(e -> {
+            //类目
             CategoryEntity categoryEntity = categoryMap.get(e.getCategoryId());
             if (categoryEntity != null) {
                 e.setCategoryName(categoryEntity.getCategoryName());
+            }
+
+            //基础单位
+            if (null != e.getUnitId()) {
+                UnitEntity unitEntity = unitManager.queryUnit(e.getUnitId());
+                if (null != unitEntity) {
+                    e.setUnitName(unitEntity.getName());
+                }
             }
         });
         return R.ok(pageResult);
@@ -325,9 +335,7 @@ public class SpuService {
     public R<String> importGoods(MultipartFile file) {
         List<SpuImportForm> dataList;
         try {
-            dataList = EasyExcel.read(file.getInputStream()).head(SpuImportForm.class)
-                    .sheet()
-                    .doReadSync();
+            dataList = EasyExcel.read(file.getInputStream()).head(SpuImportForm.class).sheet().doReadSync();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
             throw new BusinessException("数据格式存在问题，无法读取");
@@ -345,18 +353,7 @@ public class SpuService {
      */
     public List<SpuExportVO> getAllGoods() {
         List<SpuEntity> spuEntityList = spuMapper.selectList(null);
-        return spuEntityList.stream()
-                .map(e ->
-                        SpuExportVO.builder()
-                                .status(LocalEnumUtil.getEnumDescByValue(e.getStatus(), SpuStatusEnum.class))
-                                .categoryName(categoryQueryService.queryCategoryName(e.getCategoryId()))
-                                .place(dictCacheService.selectValueNameByValueCode(e.getPlace()))
-                                .price(e.getPrice())
-                                .name(e.getName())
-                                .remark(e.getRemark())
-                                .build()
-                )
-                .collect(Collectors.toList());
+        return spuEntityList.stream().map(e -> SpuExportVO.builder().status(LocalEnumUtil.getEnumDescByValue(e.getStatus(), SpuStatusEnum.class)).categoryName(categoryQueryService.queryCategoryName(e.getCategoryId())).place(dictCacheService.selectValueNameByValueCode(e.getPlace())).price(e.getPrice()).name(e.getName()).remark(e.getRemark()).build()).collect(Collectors.toList());
 
     }
 }

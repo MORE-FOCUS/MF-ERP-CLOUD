@@ -106,14 +106,9 @@ public class SpuVO extends BaseVO {
     private Boolean enableMultiUnit;
 
     /**
-     * 主图片
+     * 图片
      */
-    private String mainPicture;
-
-    /**
-     * 附加图片,多张逗号拼接
-     */
-    private String attachedPicture;
+    private String images;
 
     /**
      * 是否上架
