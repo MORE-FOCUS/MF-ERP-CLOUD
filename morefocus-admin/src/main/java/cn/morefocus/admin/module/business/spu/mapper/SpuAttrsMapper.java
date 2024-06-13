@@ -1,7 +1,7 @@
-package cn.morefocus.admin.module.business.spuattrs.mapper;
+package cn.morefocus.admin.module.business.spu.mapper;
 
-import cn.morefocus.admin.module.business.spuattrs.domain.entity.SpuAttrsEntity;
-import cn.morefocus.admin.module.business.spuattrs.domain.vo.SpuAttrsVO;
+import cn.morefocus.admin.module.business.spu.domain.entity.SpuAttrsEntity;
+import cn.morefocus.admin.module.business.spu.domain.vo.SpuAttrsVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

@@ -2,8 +2,6 @@ package cn.morefocus.admin.module.business.spu.domain.vo;
 
 import cn.morefocus.admin.module.business.sku.domain.vo.SkuVO;
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
-import cn.morefocus.admin.module.business.spuattrs.domain.vo.SpuSelectedAttrsVo;
-import cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO;
 import cn.morefocus.base.common.domain.BaseVO;
 import cn.morefocus.base.common.swagger.SchemaEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -36,7 +34,7 @@ public class SpuVO extends BaseVO {
     @Schema(description = "商品价格")
     private BigDecimal price;
 
-    @Schema(description = "备注|可选")
+    @Schema(description = "备注")
     private String remark;
 
     @Schema(description = "商品id")
@@ -119,7 +117,7 @@ public class SpuVO extends BaseVO {
     /**
      * 多单位
      */
-    private List<SpuUnitVO> multiUnitList;
+    private List<SpuUnitVO> unitList;
 
     /**
      * 属性
@@ -130,4 +128,10 @@ public class SpuVO extends BaseVO {
      * SKU列表
      */
     private List<SkuVO> skuList;
+
+    /**
+     * 开启条形码
+     */
+    @Schema(description = "是否开启条形码")
+    private Boolean enableBarcode;
 }

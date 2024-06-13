@@ -1,6 +1,5 @@
 package cn.morefocus.admin.module.business.spu.domain.form;
 
-import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitForm;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

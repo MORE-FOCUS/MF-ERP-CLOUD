@@ -1,13 +1,13 @@
-package cn.morefocus.admin.module.business.spuattrs.service;
+package cn.morefocus.admin.module.business.spu.service;
 
 import cn.morefocus.admin.module.business.attrs.domain.entity.AttrsEntity;
 import cn.morefocus.admin.module.business.attrs.manager.AttrsManager;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.manager.CategoryManager;
-import cn.morefocus.admin.module.business.spuattrs.domain.entity.SpuAttrsEntity;
-import cn.morefocus.admin.module.business.spuattrs.domain.form.SpuSelectedAttrsForm;
-import cn.morefocus.admin.module.business.spuattrs.domain.vo.SpuAttrsVO;
-import cn.morefocus.admin.module.business.spuattrs.mapper.SpuAttrsMapper;
+import cn.morefocus.admin.module.business.spu.domain.entity.SpuAttrsEntity;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuSelectedAttrsForm;
+import cn.morefocus.admin.module.business.spu.domain.vo.SpuAttrsVO;
+import cn.morefocus.admin.module.business.spu.mapper.SpuAttrsMapper;
 import cn.morefocus.base.common.exception.BusinessException;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;

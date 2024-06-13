@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.morefocus.admin.module.business.spuattrs.mapper.SpuAttrsMapper">
+<mapper namespace="cn.morefocus.admin.module.business.spu.mapper.SpuAttrsMapper">
 
     <!-- 分页查询 -->
-    <select id="querySpuAttrs" resultType="cn.morefocus.admin.module.business.spuattrs.domain.vo.SpuAttrsVO">
+    <select id="querySpuAttrs" resultType="cn.morefocus.admin.module.business.spu.domain.vo.SpuAttrsVO">
         SELECT t_spu_attrs.*
         FROM t_spu_attrs t_spu_attrs
         where t_spu_attrs.spu_id = #{spuId}

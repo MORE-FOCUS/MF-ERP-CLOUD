@@ -1,9 +1,9 @@
-package cn.morefocus.admin.module.business.spuunit.mapper;
+package cn.morefocus.admin.module.business.spu.mapper;
 
-import cn.morefocus.admin.module.business.spuunit.domain.entity.SpuUnitEntity;
-import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitPageQueryForm;
-import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitQueryForm;
-import cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO;
+import cn.morefocus.admin.module.business.spu.domain.entity.SpuUnitEntity;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuUnitPageQueryForm;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuUnitQueryForm;
+import cn.morefocus.admin.module.business.spu.domain.vo.SpuUnitVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Mapper;

@@ -1,7 +1,6 @@
 package cn.morefocus.admin.module.business.spu.domain.form;
 
 import cn.morefocus.admin.module.business.sku.domain.form.SkuForm;
-import cn.morefocus.admin.module.business.spuattrs.domain.form.SpuSelectedAttrsForm;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

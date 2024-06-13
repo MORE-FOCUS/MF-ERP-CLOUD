@@ -1,11 +1,11 @@
-package cn.morefocus.admin.module.business.spuunit.service;
+package cn.morefocus.admin.module.business.spu.service;
 
-import cn.morefocus.admin.module.business.spuunit.domain.entity.SpuUnitEntity;
-import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitForm;
-import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitPageQueryForm;
-import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitQueryForm;
-import cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO;
-import cn.morefocus.admin.module.business.spuunit.mapper.SpuUnitMapper;
+import cn.morefocus.admin.module.business.spu.domain.entity.SpuUnitEntity;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuUnitForm;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuUnitPageQueryForm;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuUnitQueryForm;
+import cn.morefocus.admin.module.business.spu.domain.vo.SpuUnitVO;
+import cn.morefocus.admin.module.business.spu.mapper.SpuUnitMapper;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;

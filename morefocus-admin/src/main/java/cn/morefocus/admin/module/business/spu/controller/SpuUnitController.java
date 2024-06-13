@@ -1,11 +1,11 @@
-package cn.morefocus.admin.module.business.spuunit.controller;
+package cn.morefocus.admin.module.business.spu.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
-import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitPageQueryForm;
-import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitQueryForm;
-import cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO;
-import cn.morefocus.admin.module.business.spuunit.service.SpuUnitService;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuUnitPageQueryForm;
+import cn.morefocus.admin.module.business.spu.domain.form.SpuUnitQueryForm;
+import cn.morefocus.admin.module.business.spu.domain.vo.SpuUnitVO;
+import cn.morefocus.admin.module.business.spu.service.SpuUnitService;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import io.swagger.v3.oas.annotations.Operation;

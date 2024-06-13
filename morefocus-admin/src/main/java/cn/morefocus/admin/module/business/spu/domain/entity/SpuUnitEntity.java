@@ -1,4 +1,4 @@
-package cn.morefocus.admin.module.business.spuunit.domain.entity;
+package cn.morefocus.admin.module.business.spu.domain.entity;
 
 import cn.morefocus.base.common.domain.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;

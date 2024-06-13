@@ -1,19 +1,15 @@
-package cn.morefocus.admin.module.business.spuunit.domain.vo;
+package cn.morefocus.admin.module.business.spu.domain.form;
 
-import cn.morefocus.base.common.domain.BaseVO;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
- * 单位 列表VO
+ * 单位 新建表单
  *
  * @author loki
  * @date 2024-04-16 23:57:58
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class SpuUnitVO extends BaseVO {
-
+public class SpuUnitForm {
     private Long id;
 
     /**
@@ -50,4 +46,9 @@ public class SpuUnitVO extends BaseVO {
      * 启用禁用 true-禁用 false-启用
      */
     private Boolean isDisabled;
+
+    /**
+     * 备注
+     */
+    private String remark;
 }

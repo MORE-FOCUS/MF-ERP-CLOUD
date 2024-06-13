@@ -11,15 +11,8 @@ import cn.morefocus.admin.module.business.sku.service.SkuService;
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
 import cn.morefocus.admin.module.business.spu.domain.entity.SpuEntity;
 import cn.morefocus.admin.module.business.spu.domain.form.*;
-import cn.morefocus.admin.module.business.spu.domain.vo.SpuExportVO;
-import cn.morefocus.admin.module.business.spu.domain.vo.SpuVO;
+import cn.morefocus.admin.module.business.spu.domain.vo.*;
 import cn.morefocus.admin.module.business.spu.mapper.SpuMapper;
-import cn.morefocus.admin.module.business.spuattrs.domain.vo.SpuAttrsVO;
-import cn.morefocus.admin.module.business.spuattrs.domain.vo.SpuSelectedAttrsVo;
-import cn.morefocus.admin.module.business.spuattrs.service.SpuAttrsService;
-import cn.morefocus.admin.module.business.spuunit.domain.form.SpuUnitQueryForm;
-import cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO;
-import cn.morefocus.admin.module.business.spuunit.service.SpuUnitService;
 import cn.morefocus.admin.module.business.unit.domain.entity.UnitEntity;
 import cn.morefocus.admin.module.business.unit.manager.UnitManager;
 import cn.morefocus.base.common.code.UserErrorCode;
@@ -295,7 +288,7 @@ public class SpuService {
         SpuUnitQueryForm spuUnitQueryForm = new SpuUnitQueryForm();
         spuUnitQueryForm.setSpuId(id);
         List<SpuUnitVO> spuUnitVOList = spuUnitService.queryAll(spuUnitQueryForm);
-        spuVO.setMultiUnitList(spuUnitVOList);
+        spuVO.setUnitList(spuUnitVOList);
 
         //辅助属性
         SpuAttrsVO spuAttrsVO = spuAttrsService.querySpuAttrs(id);

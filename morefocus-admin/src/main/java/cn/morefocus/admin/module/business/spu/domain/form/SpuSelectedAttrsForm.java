@@ -1,4 +1,4 @@
-package cn.morefocus.admin.module.business.spuattrs.domain.form;
+package cn.morefocus.admin.module.business.spu.domain.form;
 
 import cn.morefocus.admin.module.business.attrs.domain.form.AttrsForm;
 import lombok.Data;

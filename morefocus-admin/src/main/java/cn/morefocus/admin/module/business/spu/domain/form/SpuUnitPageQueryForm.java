@@ -1,4 +1,4 @@
-package cn.morefocus.admin.module.business.spuunit.domain.form;
+package cn.morefocus.admin.module.business.spu.domain.form;
 
 import cn.morefocus.base.common.domain.PageParam;
 import lombok.Data;

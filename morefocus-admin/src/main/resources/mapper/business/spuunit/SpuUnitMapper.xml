@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.morefocus.admin.module.business.spuunit.mapper.SpuUnitMapper">
+<mapper namespace="cn.morefocus.admin.module.business.spu.mapper.SpuUnitMapper">
 
     <!-- 分页查询 -->
-    <select id="queryPage" resultType="cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO">
+    <select id="queryPage" resultType="cn.morefocus.admin.module.business.spu.domain.vo.SpuUnitVO">
         SELECT t_spu_unit.*
         FROM t_spu_unit t_spu_unit
         <where>
@@ -23,7 +23,7 @@
     </select>
 
     <!-- 分页查询 -->
-    <select id="queryAll" resultType="cn.morefocus.admin.module.business.spuunit.domain.vo.SpuUnitVO">
+    <select id="queryAll" resultType="cn.morefocus.admin.module.business.spu.domain.vo.SpuUnitVO">
         SELECT t_spu_unit.*
         FROM t_spu_unit t_spu_unit
 

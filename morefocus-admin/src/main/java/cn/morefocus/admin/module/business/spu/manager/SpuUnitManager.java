@@ -1,7 +1,7 @@
-package cn.morefocus.admin.module.business.spuunit.manager;
+package cn.morefocus.admin.module.business.spu.manager;
 
-import cn.morefocus.admin.module.business.spuunit.domain.entity.SpuUnitEntity;
-import cn.morefocus.admin.module.business.spuunit.mapper.SpuUnitMapper;
+import cn.morefocus.admin.module.business.spu.domain.entity.SpuUnitEntity;
+import cn.morefocus.admin.module.business.spu.mapper.SpuUnitMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

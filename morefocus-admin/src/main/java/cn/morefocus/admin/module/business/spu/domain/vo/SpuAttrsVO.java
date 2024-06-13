@@ -1,4 +1,4 @@
-package cn.morefocus.admin.module.business.spuattrs.domain.vo;
+package cn.morefocus.admin.module.business.spu.domain.vo;
 
 import lombok.Data;
 

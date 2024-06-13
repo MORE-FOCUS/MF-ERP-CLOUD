@@ -1,7 +1,7 @@
-package cn.morefocus.admin.module.business.spuattrs.controller;
+package cn.morefocus.admin.module.business.spu.controller;
 
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
-import cn.morefocus.admin.module.business.spuattrs.service.SpuAttrsService;
+import cn.morefocus.admin.module.business.spu.service.SpuAttrsService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RestController;
 
