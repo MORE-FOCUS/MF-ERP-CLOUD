@@ -45,8 +45,9 @@ public class SpuBarcodeService {
         Set<Long> updateBarcodeIdList = new HashSet<>();
         for (SpuBarcodeForm form : skuBarcodeList) {
             Wrapper<SpuBarcodeEntity> wrapper = new QueryWrapper<SpuBarcodeEntity>()
-                    .lambda().eq(SpuBarcodeEntity::getSpuId, spuId)
+                    .lambda()
                     .eq(SpuBarcodeEntity::getSkuId, form.getSkuId())
+                    .eq(SpuBarcodeEntity::getUnitId, form.getUnitId())
                     .eq(SpuBarcodeEntity::getBarcode, form.getBarcode());
             SpuBarcodeEntity skuBarcodeEntity = spuBarcodeMapper.selectOne(wrapper);
             if (null == skuBarcodeEntity) {
@@ -54,6 +55,8 @@ public class SpuBarcodeService {
                 skuBarcodeEntity.setSpuId(spuId);
                 skuBarcodeEntity.setSkuId(form.getSkuId());
                 skuBarcodeEntity.setBarcode(form.getBarcode());
+                skuBarcodeEntity.setUnitId(form.getUnitId());
+                skuBarcodeEntity.setUnitName(form.getUnitName());
                 spuBarcodeMapper.insert(skuBarcodeEntity);
             } else {
                 updateBarcodeIdList.add(skuBarcodeEntity.getId());
