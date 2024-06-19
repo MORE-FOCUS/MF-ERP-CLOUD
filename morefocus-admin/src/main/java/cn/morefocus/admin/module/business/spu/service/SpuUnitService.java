@@ -6,6 +6,8 @@ import cn.morefocus.admin.module.business.spu.domain.form.SpuUnitPageQueryForm;
 import cn.morefocus.admin.module.business.spu.domain.form.SpuUnitQueryForm;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuUnitVO;
 import cn.morefocus.admin.module.business.spu.mapper.SpuUnitMapper;
+import cn.morefocus.admin.module.business.unit.domain.entity.UnitEntity;
+import cn.morefocus.admin.module.business.unit.manager.UnitManager;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
@@ -33,6 +35,8 @@ public class SpuUnitService {
 
     @Resource
     private SpuUnitMapper spuUnitMapper;
+    @Resource
+    private UnitManager unitManager;
 
     /**
      * 分页查询
@@ -78,8 +82,8 @@ public class SpuUnitService {
     /**
      * 更新多单位
      */
-    public void updateSpuUnit(Long spuId, List<SpuUnitForm> spuUnitList) {
-        if (CollectionUtils.isEmpty(spuUnitList)) {
+    public void updateSpuUnit(Long spuId, List<SpuUnitForm> unitList) {
+        if (CollectionUtils.isEmpty(unitList)) {
             spuUnitMapper.deleteBySpuId(spuId, Boolean.TRUE);
             return;
         }
@@ -89,21 +93,34 @@ public class SpuUnitService {
         List<SpuUnitEntity> orginalSpuUnitList = spuUnitMapper.selectList(wrapper);
 
         Set<Long> keepUnitList = new HashSet<>();
-        for (SpuUnitForm form : spuUnitList) {
+        for (SpuUnitForm form : unitList) {
             wrapper = new QueryWrapper<SpuUnitEntity>()
                     .lambda().eq(SpuUnitEntity::getSpuId, spuId)
                     .eq(SpuUnitEntity::getUnitId, form.getUnitId());
             SpuUnitEntity spuUnit = spuUnitMapper.selectOne(wrapper);
             if (null == spuUnit) {
                 spuUnit = LocalBeanUtil.copy(form, SpuUnitEntity.class);
+                spuUnit.setSpuId(spuId);
+
+                UnitEntity unitEntity = unitManager.queryUnit(form.getUnitId());
+                if (null != unitEntity) {
+                    spuUnit.setUnitName(unitEntity.getName());
+                }
+
                 spuUnitMapper.insert(spuUnit);
             } else {
-                keepUnitList.add(spuUnit.getSpuId());
+                keepUnitList.add(spuUnit.getId());
+                spuUnit.setSpuId(spuId);
+                spuUnit.setIsBasicUnit(form.getIsBasicUnit());
                 spuUnit.setBasicUnitId(form.getBasicUnitId());
                 spuUnit.setBasicUnitName(form.getBasicUnitName());
-                spuUnit.setUnitName(form.getUnitName());
                 spuUnit.setExchange(form.getExchange());
                 spuUnit.setIsDisabled(form.getIsDisabled());
+
+                UnitEntity unitEntity = unitManager.queryUnit(form.getUnitId());
+                if (null != unitEntity) {
+                    spuUnit.setUnitName(unitEntity.getName());
+                }
                 spuUnitMapper.updateById(spuUnit);
             }
         }

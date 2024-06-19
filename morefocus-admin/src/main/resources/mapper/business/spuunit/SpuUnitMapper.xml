@@ -35,6 +35,10 @@
             <if test="queryForm.isDisabled != null">
                 and t_spu_unit.is_disabled = #{queryForm.isDisabled}
             </if>
+
+            <if test="queryForm.spuId != null">
+                and t_spu_unit.spu_id = #{queryForm.spuId}
+            </if>
         </where>
     </select>
 

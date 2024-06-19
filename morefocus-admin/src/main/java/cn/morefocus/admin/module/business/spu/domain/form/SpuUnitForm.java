@@ -51,4 +51,9 @@ public class SpuUnitForm {
      * 备注
      */
     private String remark;
+
+    /**
+     * 是否基础单位
+     */
+    private Boolean isBasicUnit;
 }

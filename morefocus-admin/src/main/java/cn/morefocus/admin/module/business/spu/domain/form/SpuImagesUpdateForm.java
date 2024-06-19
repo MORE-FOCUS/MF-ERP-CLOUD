@@ -16,5 +16,5 @@ public class SpuImagesUpdateForm {
     private Long spuId;
 
     @Schema(description = "商品图片")
-    private String images;
+    private String image;
 }

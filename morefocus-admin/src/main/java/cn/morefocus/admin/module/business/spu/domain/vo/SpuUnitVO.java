@@ -50,4 +50,9 @@ public class SpuUnitVO extends BaseVO {
      * 启用禁用 true-禁用 false-启用
      */
     private Boolean isDisabled;
+
+    /**
+     * 是否基础单位
+     */
+    private Boolean isBasicUnit;
 }

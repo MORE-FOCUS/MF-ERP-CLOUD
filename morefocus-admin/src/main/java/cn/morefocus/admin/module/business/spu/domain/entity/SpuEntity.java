@@ -61,11 +61,6 @@ public class SpuEntity extends BaseEntity {
     private String specs;
 
     /**
-     * 单位ID
-     */
-    private Long unitId;
-
-    /**
      * 品牌ID
      */
     private Long brandId;
@@ -108,7 +103,7 @@ public class SpuEntity extends BaseEntity {
     /**
      * 图片
      */
-    private String images;
+    private String image;
 
     /**
      * 是否上架

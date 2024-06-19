@@ -56,18 +56,6 @@ public class SpuVO extends BaseVO {
     private String specs;
 
     /**
-     * 单位ID
-     */
-    @Schema(description = "单位ID")
-    private Long unitId;
-
-    /**
-     * 单位名称
-     */
-    @Schema(description = "单位名称")
-    private String unitName;
-
-    /**
      * 品牌
      */
     @Schema(description = "品牌")
@@ -106,7 +94,7 @@ public class SpuVO extends BaseVO {
     /**
      * 图片
      */
-    private String images;
+    private String image;
 
     /**
      * 是否上架

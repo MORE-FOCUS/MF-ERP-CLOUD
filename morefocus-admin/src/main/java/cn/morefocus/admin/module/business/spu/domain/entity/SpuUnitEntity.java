@@ -58,4 +58,9 @@ public class SpuUnitEntity extends BaseEntity {
      * 启用禁用 true-禁用 false-启用
      */
     private Boolean isDisabled;
+
+    /**
+     * 是否基础单位 1-是 0-否
+     */
+    private Boolean isBasicUnit;
 }

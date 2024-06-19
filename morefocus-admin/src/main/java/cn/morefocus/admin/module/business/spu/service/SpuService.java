@@ -13,7 +13,6 @@ import cn.morefocus.admin.module.business.spu.domain.entity.SpuEntity;
 import cn.morefocus.admin.module.business.spu.domain.form.*;
 import cn.morefocus.admin.module.business.spu.domain.vo.*;
 import cn.morefocus.admin.module.business.spu.mapper.SpuMapper;
-import cn.morefocus.admin.module.business.unit.domain.entity.UnitEntity;
 import cn.morefocus.admin.module.business.unit.manager.UnitManager;
 import cn.morefocus.base.common.code.UserErrorCode;
 import cn.morefocus.base.common.domain.BaseVO;
@@ -79,6 +78,10 @@ public class SpuService {
         SpuEntity spuEntity = LocalBeanUtil.copy(addForm, SpuEntity.class);
         spuEntity.setIsDeleted(Boolean.FALSE);
         spuMapper.insert(spuEntity);
+
+        //更新基础单位
+        spuUnitService.updateSpuUnit(spuEntity.getId(), addForm.getUnitList());
+
         dataTracerService.insert(spuEntity.getId(), DataTracerTypeEnum.GOODS);
         return R.ok();
     }
@@ -93,9 +96,15 @@ public class SpuService {
         if (!res.getOk()) {
             return res;
         }
+
+        //更新spu
         SpuEntity originEntity = spuMapper.selectById(updateForm.getId());
         SpuEntity spuEntity = LocalBeanUtil.copy(updateForm, SpuEntity.class);
         spuMapper.updateById(spuEntity);
+
+        //更新基础单位
+        spuUnitService.updateSpuUnit(updateForm.getId(), updateForm.getUnitList());
+
         dataTracerService.update(updateForm.getId(), DataTracerTypeEnum.GOODS, originEntity, spuEntity);
         return R.ok();
     }
@@ -133,7 +142,7 @@ public class SpuService {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
 
-        spuEntity.setImages(updateForm.getImages());
+        spuEntity.setImage(updateForm.getImage());
         spuMapper.updateById(spuEntity);
         return R.ok();
     }
@@ -253,13 +262,12 @@ public class SpuService {
                 e.setCategoryName(categoryEntity.getCategoryName());
             }
 
-            //基础单位
-            if (null != e.getUnitId()) {
-                UnitEntity unitEntity = unitManager.queryUnit(e.getUnitId());
-                if (null != unitEntity) {
-                    e.setUnitName(unitEntity.getName());
-                }
-            }
+            //单位
+            SpuUnitQueryForm spuUnitQueryForm = new SpuUnitQueryForm();
+            spuUnitQueryForm.setSpuId(e.getId());
+            spuUnitQueryForm.setIsDeleted(Boolean.FALSE);
+            List<SpuUnitVO> spuUnitVOList = spuUnitService.queryAll(spuUnitQueryForm);
+            e.setUnitList(spuUnitVOList);
         });
         return R.ok(pageResult);
     }
@@ -276,17 +284,10 @@ public class SpuService {
         //基本信息
         SpuVO spuVO = LocalBeanUtil.copy(spuEntity, SpuVO.class);
 
-        //单位
-        if (null != spuEntity.getUnitId()) {
-            UnitEntity unitEntity = unitManager.queryUnit(spuEntity.getUnitId());
-            if (null != unitEntity) {
-                spuVO.setUnitName(unitEntity.getName());
-            }
-        }
-
         //多单位
         SpuUnitQueryForm spuUnitQueryForm = new SpuUnitQueryForm();
         spuUnitQueryForm.setSpuId(id);
+        spuUnitQueryForm.setIsDeleted(Boolean.FALSE);
         List<SpuUnitVO> spuUnitVOList = spuUnitService.queryAll(spuUnitQueryForm);
         spuVO.setUnitList(spuUnitVOList);
 
