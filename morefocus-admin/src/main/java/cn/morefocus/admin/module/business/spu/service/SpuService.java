@@ -264,11 +264,11 @@ public class SpuService {
             }
 
             //单位
-            SpuUnitQueryForm spuUnitQueryForm = new SpuUnitQueryForm();
-            spuUnitQueryForm.setSpuId(e.getId());
-            spuUnitQueryForm.setIsDeleted(Boolean.FALSE);
-            List<SpuUnitVO> spuUnitVOList = spuUnitService.queryAll(spuUnitQueryForm);
-            e.setUnitList(spuUnitVOList);
+            SpuUnitVO basicUnit = spuUnitService.querySpuBasicUnit(e.getId());
+            if (null != basicUnit) {
+                e.setUnitId(basicUnit.getUnitId());
+                e.setUnitName(basicUnit.getUnitName());
+            }
         });
         return R.ok(pageResult);
     }
@@ -285,12 +285,20 @@ public class SpuService {
         //基本信息
         SpuVO spuVO = LocalBeanUtil.copy(spuEntity, SpuVO.class);
 
-        //基础单位
+        //基本单位
         SpuUnitVO basicUnit = spuUnitService.querySpuBasicUnit(id);
         if (null != basicUnit) {
             spuVO.setUnitId(basicUnit.getUnitId());
             spuVO.setUnitName(basicUnit.getUnitName());
         }
+
+        //商品多单位
+        SpuUnitQueryForm spuUnitQueryForm = new SpuUnitQueryForm();
+        spuUnitQueryForm.setSpuId(id);
+        spuUnitQueryForm.setIsDeleted(Boolean.FALSE);
+        spuUnitQueryForm.setIsBasicUnit(Boolean.FALSE);
+        List<SpuUnitVO> spuUnitVOList = spuUnitService.queryAll(spuUnitQueryForm);
+        spuVO.setUnitList(spuUnitVOList);
 
         //辅助属性
         SpuAttrsVO spuAttrsVO = spuAttrsService.querySpuAttrs(id);
