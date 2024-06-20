@@ -42,6 +42,13 @@
         </where>
     </select>
 
+    <select id="querySpuBasicUnit" resultType="cn.morefocus.admin.module.business.spu.domain.vo.SpuUnitVO">
+        SELECT t_spu_unit.*
+        FROM t_spu_unit t_spu_unit
+        where t_spu_unit.spu_id = #{spuId}
+          and is_basic_unit = true limit 1
+    </select>
+
     <update id="updateIsDisabled">
         UPDATE t_spu_unit
         SET is_disabled = #{isDisabled}
@@ -52,6 +59,13 @@
         UPDATE t_spu_unit
         SET is_deleted = #{isDeleted}
         WHERE spu_id = #{spuId}
+    </update>
+
+    <update id="deleteBySpuIdExcludeBasicUnit">
+        UPDATE t_spu_unit
+        SET is_deleted = #{isDeleted}
+        WHERE is_basic_unit = false
+          and spu_id = #{spuId}
     </update>
 
     <update id="deleteById">

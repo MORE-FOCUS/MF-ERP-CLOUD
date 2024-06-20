@@ -103,6 +103,16 @@ public class SpuVO extends BaseVO {
     private Boolean isListed;
 
     /**
+     * 基础单位
+     */
+    private Long unitId;
+
+    /**
+     * 基础单位名称
+     */
+    private String unitName;
+
+    /**
      * 多单位
      */
     private List<SpuUnitVO> unitList;

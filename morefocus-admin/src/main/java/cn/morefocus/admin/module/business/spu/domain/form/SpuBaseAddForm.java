@@ -10,7 +10,6 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 /**
  * 商品 添加表单
@@ -67,7 +66,7 @@ public class SpuBaseAddForm {
     private Boolean isDisabled;
 
     /**
-     * 单位
+     * 基础单位ID
      */
-    private List<SpuUnitForm> unitList;
+    public Long unitId;
 }

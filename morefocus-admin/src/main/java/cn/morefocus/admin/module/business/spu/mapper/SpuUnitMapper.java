@@ -33,6 +33,11 @@ public interface SpuUnitMapper extends BaseMapper<SpuUnitEntity> {
     List<SpuUnitVO> queryAll(@Param("queryForm") SpuUnitQueryForm queryForm);
 
     /**
+     * 查询spu基础单位
+     */
+    SpuUnitVO querySpuBasicUnit(@Param("spuId") Long spuId);
+
+    /**
      * 更新禁用|启用状态
      */
     void updateIsDisabled(@Param("id") Long id, @Param("isDisabled") Boolean isDisabled);
@@ -40,7 +45,12 @@ public interface SpuUnitMapper extends BaseMapper<SpuUnitEntity> {
     /**
      * 根据商品ID删除
      */
-    void deleteBySpuId(@Param("spuId") Long spuId, @Param("isDeleted") Boolean isDeleted);
+    void deleteBySpuId(@Param("spuId") Long spuId);
+
+    /**
+     * 根据商品ID删除
+     */
+    void deleteBySpuIdExcludeBasicUnit(@Param("spuId") Long spuId);
 
     /**
      * 根据商品ID删除

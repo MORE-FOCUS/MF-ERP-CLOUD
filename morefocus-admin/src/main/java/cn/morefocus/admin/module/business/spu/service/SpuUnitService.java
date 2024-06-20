@@ -57,6 +57,13 @@ public class SpuUnitService {
     }
 
     /**
+     * 查询商品基础单位
+     */
+    public SpuUnitVO querySpuBasicUnit(Long spuId) {
+        return spuUnitMapper.querySpuBasicUnit(spuId);
+    }
+
+    /**
      * 更新禁用/启用状态
      */
     public R<String> updateIsDisabled(Long id) {
@@ -76,7 +83,43 @@ public class SpuUnitService {
      * 删除商品多单位
      */
     public void deleteBySpuId(Long spuId) {
-        spuUnitMapper.deleteBySpuId(spuId, Boolean.TRUE);
+        spuUnitMapper.deleteBySpuId(spuId);
+    }
+
+    /**
+     * 删除商品多单位
+     */
+    public void deleteBySpuIdExcludeBasicUnit(Long spuId) {
+        spuUnitMapper.deleteBySpuIdExcludeBasicUnit(spuId);
+    }
+
+    /**
+     * 更新基础单位
+     */
+    public void updateSpuBasicUnit(Long spuId, Long unitId) {
+        Wrapper<SpuUnitEntity> wrapper = new QueryWrapper<SpuUnitEntity>()
+                .lambda().eq(SpuUnitEntity::getSpuId, spuId)
+                .eq(SpuUnitEntity::getIsBasicUnit, Boolean.TRUE);
+        SpuUnitEntity basicUnit = spuUnitMapper.selectOne(wrapper);
+        if (null == basicUnit) {
+            basicUnit = new SpuUnitEntity();
+            basicUnit.setSpuId(spuId);
+            basicUnit.setUnitId(unitId);
+            basicUnit.setIsBasicUnit(Boolean.TRUE);
+            basicUnit.setIsDisabled(Boolean.FALSE);
+            UnitEntity unitEntity = unitManager.queryUnit(unitId);
+            if (null != unitEntity) {
+                basicUnit.setUnitName(unitEntity.getName());
+            }
+            spuUnitMapper.insert(basicUnit);
+        } else {
+            basicUnit.setUnitId(unitId);
+            UnitEntity unitEntity = unitManager.queryUnit(unitId);
+            if (null != unitEntity) {
+                basicUnit.setUnitName(unitEntity.getName());
+            }
+            spuUnitMapper.updateById(basicUnit);
+        }
     }
 
     /**
@@ -84,7 +127,7 @@ public class SpuUnitService {
      */
     public void updateSpuUnit(Long spuId, List<SpuUnitForm> unitList) {
         if (CollectionUtils.isEmpty(unitList)) {
-            spuUnitMapper.deleteBySpuId(spuId, Boolean.TRUE);
+            spuUnitMapper.deleteBySpuIdExcludeBasicUnit(spuId);
             return;
         }
 

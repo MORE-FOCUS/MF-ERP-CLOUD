@@ -80,7 +80,7 @@ public class SpuService {
         spuMapper.insert(spuEntity);
 
         //更新基础单位
-        spuUnitService.updateSpuUnit(spuEntity.getId(), addForm.getUnitList());
+        spuUnitService.updateSpuBasicUnit(spuEntity.getId(), addForm.getUnitId());
 
         dataTracerService.insert(spuEntity.getId(), DataTracerTypeEnum.GOODS);
         return R.ok();
@@ -103,7 +103,7 @@ public class SpuService {
         spuMapper.updateById(spuEntity);
 
         //更新基础单位
-        spuUnitService.updateSpuUnit(updateForm.getId(), updateForm.getUnitList());
+        spuUnitService.updateSpuBasicUnit(updateForm.getId(), updateForm.getUnitId());
 
         dataTracerService.update(updateForm.getId(), DataTracerTypeEnum.GOODS, originEntity, spuEntity);
         return R.ok();
@@ -127,7 +127,8 @@ public class SpuService {
             spuUnitService.updateSpuUnit(updateForm.getSpuId(), updateForm.getMultiUnitList());
         } else {
             //关闭多单位
-            spuUnitService.deleteBySpuId(updateForm.getSpuId());
+            //删除非基础单位
+            spuUnitService.deleteBySpuIdExcludeBasicUnit(updateForm.getSpuId());
         }
         return R.ok();
     }
@@ -284,12 +285,12 @@ public class SpuService {
         //基本信息
         SpuVO spuVO = LocalBeanUtil.copy(spuEntity, SpuVO.class);
 
-        //多单位
-        SpuUnitQueryForm spuUnitQueryForm = new SpuUnitQueryForm();
-        spuUnitQueryForm.setSpuId(id);
-        spuUnitQueryForm.setIsDeleted(Boolean.FALSE);
-        List<SpuUnitVO> spuUnitVOList = spuUnitService.queryAll(spuUnitQueryForm);
-        spuVO.setUnitList(spuUnitVOList);
+        //基础单位
+        SpuUnitVO basicUnit = spuUnitService.querySpuBasicUnit(id);
+        if (null != basicUnit) {
+            spuVO.setUnitId(basicUnit.getUnitId());
+            spuVO.setUnitName(basicUnit.getUnitName());
+        }
 
         //辅助属性
         SpuAttrsVO spuAttrsVO = spuAttrsService.querySpuAttrs(id);

@@ -15,4 +15,5 @@ import lombok.EqualsAndHashCode;
 public class SpuUnitQueryForm extends BaseForm {
     private Boolean isDisabled;
     private Long spuId;
+    private Boolean isBasicUnit;
 }
