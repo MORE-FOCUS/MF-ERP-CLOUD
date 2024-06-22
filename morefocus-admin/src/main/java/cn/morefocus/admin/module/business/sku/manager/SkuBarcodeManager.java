@@ -1,9 +1,9 @@
-package cn.morefocus.admin.module.business.barcode.manager;
+package cn.morefocus.admin.module.business.sku.manager;
 
 import cn.morefocus.admin.constant.AdminCacheConst;
-import cn.morefocus.admin.module.business.barcode.domain.entity.SpuBarcodeEntity;
-import cn.morefocus.admin.module.business.barcode.domain.vo.SpuBarcodeVO;
-import cn.morefocus.admin.module.business.barcode.mapper.SpuBarcodeMapper;
+import cn.morefocus.admin.module.business.sku.domain.entity.SkuBarcodeEntity;
+import cn.morefocus.admin.module.business.sku.domain.vo.SkuBarcodeVO;
+import cn.morefocus.admin.module.business.sku.mapper.SkuBarcodeMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Slf4j
 @Service
-public class SpuBarcodeManager extends ServiceImpl<SpuBarcodeMapper, SpuBarcodeEntity> {
+public class SkuBarcodeManager extends ServiceImpl<SkuBarcodeMapper, SkuBarcodeEntity> {
     /**
      * 根据id 移除缓存
      */
@@ -33,7 +33,7 @@ public class SpuBarcodeManager extends ServiceImpl<SpuBarcodeMapper, SpuBarcodeE
      * 查询商品条形码
      */
     @Cacheable(AdminCacheConst.BARCODE.SPU_BARCODE)
-    public List<SpuBarcodeVO> querySpuBarcodeList(Long spuId) {
+    public List<SkuBarcodeVO> querySpuBarcodeList(Long spuId) {
         return this.baseMapper.queryBarcodeBySpuId(spuId);
     }
 }

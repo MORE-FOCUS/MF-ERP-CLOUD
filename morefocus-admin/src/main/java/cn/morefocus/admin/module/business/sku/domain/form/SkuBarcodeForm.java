@@ -1,9 +1,9 @@
-package cn.morefocus.admin.module.business.barcode.domain.form;
+package cn.morefocus.admin.module.business.sku.domain.form;
 
 import lombok.Data;
 
 @Data
-public class SpuBarcodeForm {
+public class SkuBarcodeForm {
     /**
      * skuId
      */

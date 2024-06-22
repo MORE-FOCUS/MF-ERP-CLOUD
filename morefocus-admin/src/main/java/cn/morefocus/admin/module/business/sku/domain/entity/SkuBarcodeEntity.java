@@ -1,7 +1,11 @@
-package cn.morefocus.admin.module.business.barcode.domain.vo;
+package cn.morefocus.admin.module.business.sku.domain.entity;
 
-import cn.morefocus.base.common.domain.BaseVO;
+import cn.morefocus.base.common.domain.BaseEntity;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 条形码 实体类
@@ -9,8 +13,15 @@ import lombok.Data;
  * @author loki
  * @date 2024-04-16 23:57:58
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class SpuBarcodeVO extends BaseVO {
+@TableName("t_sku_barcode")
+public class SkuBarcodeEntity extends BaseEntity {
+
+    /**
+     * ID
+     */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**

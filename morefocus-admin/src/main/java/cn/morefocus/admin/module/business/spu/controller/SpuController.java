@@ -2,6 +2,7 @@ package cn.morefocus.admin.module.business.spu.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.module.business.sku.domain.form.SkuBarcodeUpdateForm;
 import cn.morefocus.admin.module.business.spu.domain.form.*;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuExportVO;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuVO;
@@ -83,7 +84,7 @@ public class SpuController {
     @Operation(summary = "更新商品条码")
     @PostMapping("/spu/barcode/update")
     @SaCheckPermission("business:spu:update")
-    public R<String> updateSpuBarcode(@RequestBody @Valid SpuBarcodeUpdateForm updateForm) {
+    public R<String> updateSpuBarcode(@RequestBody @Valid SkuBarcodeUpdateForm updateForm) {
         return spuService.updateSpuBarcode(updateForm);
     }
 

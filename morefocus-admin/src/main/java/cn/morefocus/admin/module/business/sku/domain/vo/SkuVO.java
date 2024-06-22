@@ -1,7 +1,6 @@
 package cn.morefocus.admin.module.business.sku.domain.vo;
 
 import cn.morefocus.admin.module.business.attrs.domain.vo.AttrsVO;
-import cn.morefocus.admin.module.business.barcode.domain.vo.SpuBarcodeVO;
 import lombok.Data;
 
 import java.util.List;
@@ -43,5 +42,5 @@ public class SkuVO {
     /**
      * 条形码
      */
-    private List<SpuBarcodeVO> barcodeList;
+    private List<SkuBarcodeVO> barcodeList;
 }

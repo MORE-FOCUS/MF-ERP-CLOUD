@@ -1,12 +1,13 @@
 package cn.morefocus.admin.module.business.spu.service;
 
 import cn.morefocus.admin.module.business.attrs.domain.vo.AttrsVO;
-import cn.morefocus.admin.module.business.barcode.domain.vo.SpuBarcodeVO;
-import cn.morefocus.admin.module.business.barcode.service.SpuBarcodeService;
 import cn.morefocus.admin.module.business.category.constant.CategoryTypeEnum;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.service.CategoryQueryService;
+import cn.morefocus.admin.module.business.sku.domain.form.SkuBarcodeUpdateForm;
+import cn.morefocus.admin.module.business.sku.domain.vo.SkuBarcodeVO;
 import cn.morefocus.admin.module.business.sku.domain.vo.SkuVO;
+import cn.morefocus.admin.module.business.sku.service.SkuBarcodeService;
 import cn.morefocus.admin.module.business.sku.service.SkuService;
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
 import cn.morefocus.admin.module.business.spu.domain.entity.SpuEntity;
@@ -63,7 +64,7 @@ public class SpuService {
     @Resource
     private SkuService skuService;
     @Resource
-    private SpuBarcodeService skuBarcodeService;
+    private SkuBarcodeService skuBarcodeService;
 
     /**
      * 添加商品
@@ -180,7 +181,7 @@ public class SpuService {
      * 更新商品条形码
      */
     @Transactional(rollbackFor = Exception.class)
-    public R<String> updateSpuBarcode(SpuBarcodeUpdateForm updateForm) {
+    public R<String> updateSpuBarcode(SkuBarcodeUpdateForm updateForm) {
         SpuEntity spuEntity = spuMapper.selectById(updateForm.getSpuId());
         if (null == spuEntity) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
@@ -311,7 +312,7 @@ public class SpuService {
         List<SkuVO> skuList = skuService.querySpuSku(id);
         if (!CollectionUtils.isEmpty(skuList)) {
             //条形码
-            List<SpuBarcodeVO> barcodeList = skuBarcodeService.querySpuBarcodeList(id);
+            List<SkuBarcodeVO> barcodeList = skuBarcodeService.querySpuBarcodeList(id);
 
             skuList.forEach(sku -> {
                 if (StringUtils.isNotBlank(sku.getAttrs())) {
