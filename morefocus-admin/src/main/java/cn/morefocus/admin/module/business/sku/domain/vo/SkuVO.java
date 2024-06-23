@@ -43,4 +43,9 @@ public class SkuVO {
      * 条形码
      */
     private List<SkuBarcodeVO> barcodeList;
+
+    /**
+     * 单价
+     */
+    private List<SkuPriceVO> priceList;
 }

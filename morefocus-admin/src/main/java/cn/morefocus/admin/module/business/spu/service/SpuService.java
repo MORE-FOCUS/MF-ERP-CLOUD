@@ -6,8 +6,10 @@ import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.service.CategoryQueryService;
 import cn.morefocus.admin.module.business.sku.domain.form.SkuBarcodeUpdateForm;
 import cn.morefocus.admin.module.business.sku.domain.vo.SkuBarcodeVO;
+import cn.morefocus.admin.module.business.sku.domain.vo.SkuPriceVO;
 import cn.morefocus.admin.module.business.sku.domain.vo.SkuVO;
 import cn.morefocus.admin.module.business.sku.service.SkuBarcodeService;
+import cn.morefocus.admin.module.business.sku.service.SkuPriceService;
 import cn.morefocus.admin.module.business.sku.service.SkuService;
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
 import cn.morefocus.admin.module.business.spu.domain.entity.SpuEntity;
@@ -65,6 +67,8 @@ public class SpuService {
     private SkuService skuService;
     @Resource
     private SkuBarcodeService skuBarcodeService;
+    @Resource
+    private SkuPriceService skuPriceService;
 
     /**
      * 添加商品
@@ -314,6 +318,9 @@ public class SpuService {
             //条形码
             List<SkuBarcodeVO> barcodeList = skuBarcodeService.querySpuBarcodeList(id);
 
+            //商品单价
+            List<SkuPriceVO> priceList = skuPriceService.querySkuPriceList(id);
+
             skuList.forEach(sku -> {
                 if (StringUtils.isNotBlank(sku.getAttrs())) {
                     sku.setAttrsList(JSON.parseArray(sku.getAttrs(), AttrsVO.class));
@@ -322,6 +329,11 @@ public class SpuService {
                 //条形码
                 if (!CollectionUtils.isEmpty(barcodeList)) {
                     sku.setBarcodeList(barcodeList.stream().filter(item -> item.getSkuId().equals(sku.getId())).sorted(Comparator.comparing(BaseVO::getSortValue)).collect(Collectors.toList()));
+                }
+
+                //商品单价
+                if (!CollectionUtils.isEmpty(priceList)) {
+                    sku.setPriceList(priceList.stream().filter(item -> item.getSkuId().equals(sku.getId())).sorted(Comparator.comparing(BaseVO::getSortValue)).collect(Collectors.toList()));
                 }
             });
             spuVO.setSkuList(skuList);

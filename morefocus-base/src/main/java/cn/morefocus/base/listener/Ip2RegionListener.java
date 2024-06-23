@@ -15,8 +15,6 @@ import java.io.IOException;
 
 /**
  * 初初始化ip工具类
- *
- *
  */
 @Order(value = LoggingApplicationListener.DEFAULT_ORDER)
 @Slf4j
@@ -56,7 +54,6 @@ public class Ip2RegionListener implements ApplicationListener<ApplicationEnviron
             // 2、初始化
             LocalIpUtil.init(tempFilePath);
 
-
         } catch (IOException e) {
             log.error("无法复制ip数据文件 ip2region.xdb", e);
             throw new ExceptionInInitializerError("无法复制ip数据文件");
@@ -67,6 +64,5 @@ public class Ip2RegionListener implements ApplicationListener<ApplicationEnviron
         }
 
     }
-
 
 }
