@@ -13,4 +13,12 @@
         SELECT t_sku_initial_stock.*
         FROM t_sku_initial_stock t_sku_initial_stock
     </select>
+
+    <select id="querySkuInitalStockList"
+            resultType="cn.morefocus.admin.module.business.sku.domain.vo.SkuInitialStockVO">
+        SELECT t_sku_initial_stock.*
+        FROM t_sku_initial_stock t_sku_initial_stock
+        where t_sku_initial_stock.is_deleted = false
+          and t_sku_initial_stock.spu_id = #{spuId}
+    </select>
 </mapper>

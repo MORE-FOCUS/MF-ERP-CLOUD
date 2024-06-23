@@ -40,4 +40,11 @@ public class SkuInitialStockService {
         List<SkuInitialStockVO> list = skuInitialStockMapper.queryAll();
         return list;
     }
+
+    /**
+     * 查询商品sku单价列表
+     */
+    public List<SkuInitialStockVO> querySkuInitalStockList(Long spuId) {
+        return skuInitialStockMapper.querySkuInitalStockList(spuId);
+    }
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.morefocus.admin.module.business.sku.mapper.SkuWarnConfigMapper">
+
+    <!-- 分页查询 -->
+    <select id="queryPage" resultType="cn.morefocus.admin.module.business.sku.domain.vo.SkuWarnConfigVO">
+        SELECT t_sku_warn_list.*
+        FROM t_sku_warn_list t_sku_warn_list
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="queryAll" resultType="cn.morefocus.admin.module.business.sku.domain.vo.SkuWarnConfigVO">
+        SELECT t_sku_warn_list.*
+        FROM t_sku_warn_list t_sku_warn_list
+    </select>
+
+    <select id="querySkuWarnConfigBySpuId"
+            resultType="cn.morefocus.admin.module.business.sku.domain.vo.SkuWarnConfigVO">
+        SELECT t_sku_warn_list.*
+        FROM t_sku_warn_list t_sku_warn_list
+        where t_sku_warn_list.spu_id = #{spuId}
+          and t_sku_warn_list.is_deleted = false
+    </select>
+</mapper>

@@ -30,4 +30,9 @@ public interface SkuInitialStockMapper extends BaseMapper<SkuInitialStockEntity>
      * 分页 查询
      */
     List<SkuInitialStockVO> queryAll();
+
+    /**
+     * 查询搜初始库存
+     */
+    List<SkuInitialStockVO> querySkuInitalStockList(@Param("spuId") Long spuId);
 }

@@ -5,12 +5,8 @@ import cn.morefocus.admin.module.business.category.constant.CategoryTypeEnum;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.service.CategoryQueryService;
 import cn.morefocus.admin.module.business.sku.domain.form.SkuBarcodeUpdateForm;
-import cn.morefocus.admin.module.business.sku.domain.vo.SkuBarcodeVO;
-import cn.morefocus.admin.module.business.sku.domain.vo.SkuPriceVO;
-import cn.morefocus.admin.module.business.sku.domain.vo.SkuVO;
-import cn.morefocus.admin.module.business.sku.service.SkuBarcodeService;
-import cn.morefocus.admin.module.business.sku.service.SkuPriceService;
-import cn.morefocus.admin.module.business.sku.service.SkuService;
+import cn.morefocus.admin.module.business.sku.domain.vo.*;
+import cn.morefocus.admin.module.business.sku.service.*;
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
 import cn.morefocus.admin.module.business.spu.domain.entity.SpuEntity;
 import cn.morefocus.admin.module.business.spu.domain.form.*;
@@ -69,6 +65,10 @@ public class SpuService {
     private SkuBarcodeService skuBarcodeService;
     @Resource
     private SkuPriceService skuPriceService;
+    @Resource
+    private SkuWarnConfigService skuWarnConfigService;
+    @Resource
+    private SkuInitialStockService skuInitialStockService;
 
     /**
      * 添加商品
@@ -320,6 +320,12 @@ public class SpuService {
 
             //商品单价
             List<SkuPriceVO> priceList = skuPriceService.querySkuPriceList(id);
+
+            //商品初始库存
+            List<SkuInitialStockVO> initialStockList = skuInitialStockService.querySkuInitalStockList(id);
+
+            //商品库存预警
+            List<SkuWarnConfigVO> warnConfigList = skuWarnConfigService.querySkuWarnConfigList(id);
 
             skuList.forEach(sku -> {
                 if (StringUtils.isNotBlank(sku.getAttrs())) {

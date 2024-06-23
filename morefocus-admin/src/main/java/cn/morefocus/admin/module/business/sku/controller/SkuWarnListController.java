@@ -1,9 +1,9 @@
 package cn.morefocus.admin.module.business.sku.controller;
 
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
-import cn.morefocus.admin.module.business.sku.domain.form.SkuWarnLisQueryForm;
-import cn.morefocus.admin.module.business.sku.domain.vo.SkuWarnLisVO;
-import cn.morefocus.admin.module.business.sku.service.SkuWarnLisService;
+import cn.morefocus.admin.module.business.sku.domain.form.SkuWarnConfigQueryForm;
+import cn.morefocus.admin.module.business.sku.domain.vo.SkuWarnConfigVO;
+import cn.morefocus.admin.module.business.sku.service.SkuWarnConfigService;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import io.swagger.v3.oas.annotations.Operation;
@@ -27,14 +27,14 @@ import java.util.List;
 public class SkuWarnListController {
 
     @Resource
-    private SkuWarnLisService skuWarnLisService;
+    private SkuWarnConfigService skuWarnLisService;
 
     /**
      * 分页查询
      */
     @Operation(summary = "查询分页列表")
     @PostMapping("/sku/warn/list/queryPage")
-    public R<PageResult<SkuWarnLisVO>> queryPage(@RequestBody @Valid SkuWarnLisQueryForm queryForm) {
+    public R<PageResult<SkuWarnConfigVO>> queryPage(@RequestBody @Valid SkuWarnConfigQueryForm queryForm) {
         return R.ok(skuWarnLisService.queryPage(queryForm));
     }
 
@@ -42,7 +42,7 @@ public class SkuWarnListController {
      * 查询所有
      */
     @PostMapping("/sku/warn/list/queryAll")
-    public R<List<SkuWarnLisVO>> queryAll() {
+    public R<List<SkuWarnConfigVO>> queryAll() {
         return R.ok(skuWarnLisService.queryAll());
     }
 }

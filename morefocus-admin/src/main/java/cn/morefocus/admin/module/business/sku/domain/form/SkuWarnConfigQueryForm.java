@@ -12,6 +12,6 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class SkuWarnLisQueryForm extends PageParam {
+public class SkuWarnConfigQueryForm extends PageParam {
 
 }
