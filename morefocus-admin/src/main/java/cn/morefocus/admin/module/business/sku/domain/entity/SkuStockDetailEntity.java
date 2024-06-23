@@ -21,30 +21,30 @@ import java.math.BigDecimal;
 public class SkuStockDetailEntity extends BaseEntity {
 
     /**
-     * 分类id
+     * id
      */
     @TableId(type = IdType.AUTO)
-    private Integer id;
+    private Long id;
 
     /**
      * 门店ID
      */
-    private Integer storeId;
+    private Long storeId;
 
     /**
      * 仓库ID
      */
-    private Integer warehouseId;
+    private Long warehouseId;
 
     /**
      * spuId
      */
-    private Integer spuId;
+    private Long spuId;
 
     /**
      * skuId
      */
-    private Integer skuId;
+    private Long skuId;
 
     /**
      * 数量
@@ -59,11 +59,11 @@ public class SkuStockDetailEntity extends BaseEntity {
     /**
      * 入库批次ID
      */
-    private Integer batchId;
+    private Long batchId;
 
     /**
      * sku库存ID
      */
-    private Integer stockId;
+    private Long stockId;
 
 }

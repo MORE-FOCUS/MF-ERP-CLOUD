@@ -4,6 +4,7 @@ import cn.morefocus.admin.module.business.sku.domain.entity.SkuPriceEntity;
 import cn.morefocus.admin.module.business.sku.domain.form.SkuPriceForm;
 import cn.morefocus.admin.module.business.sku.domain.vo.SkuPriceVO;
 import cn.morefocus.admin.module.business.sku.mapper.SkuPriceMapper;
+import cn.morefocus.base.common.util.LocalBeanUtil;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.stereotype.Service;
@@ -39,29 +40,30 @@ public class SkuPriceService {
         Wrapper<SkuPriceEntity> spuBarcodeEntityWrapper = new QueryWrapper<SkuPriceEntity>()
                 .lambda().eq(SkuPriceEntity::getSpuId, spuId);
         List<SkuPriceEntity> skuEntityList = skuPriceMapper.selectList(spuBarcodeEntityWrapper);
-        Set<Long> updateBarcodeIdList = new HashSet<>();
+        Set<Long> updateIdList = new HashSet<>();
         for (SkuPriceForm form : skuPriceList) {
             Wrapper<SkuPriceEntity> wrapper = new QueryWrapper<SkuPriceEntity>()
                     .lambda()
                     .eq(SkuPriceEntity::getSkuId, form.getSkuId())
                     .eq(SkuPriceEntity::getUnitId, form.getUnitId());
-            SkuPriceEntity skuBarcodeEntity = skuPriceMapper.selectOne(wrapper);
-            if (null == skuBarcodeEntity) {
-                skuBarcodeEntity = new SkuPriceEntity();
-                skuBarcodeEntity.setSpuId(spuId);
-                skuBarcodeEntity.setSkuId(form.getSkuId());
-                skuBarcodeEntity.setUnitId(form.getUnitId());
-                skuBarcodeEntity.setUnitName(form.getUnitName());
-                skuPriceMapper.insert(skuBarcodeEntity);
+            SkuPriceEntity skuPriceEntity = skuPriceMapper.selectOne(wrapper);
+            if (null == skuPriceEntity) {
+                skuPriceEntity = LocalBeanUtil.copy(form, SkuPriceEntity.class);
+                skuPriceEntity.setSpuId(spuId);
+                skuPriceMapper.insert(skuPriceEntity);
             } else {
-                updateBarcodeIdList.add(skuBarcodeEntity.getId());
-                skuPriceMapper.updateById(skuBarcodeEntity);
+                updateIdList.add(skuPriceEntity.getId());
+                LocalBeanUtil.copyProperties(form, skuPriceEntity);
+                skuPriceMapper.updateById(skuPriceEntity);
             }
+
+            //单价变化记录
+            //TODO
         }
 
         //移除删除
         skuEntityList.forEach(item -> {
-            if (updateBarcodeIdList.add(item.getId())) {
+            if (updateIdList.add(item.getId())) {
                 skuPriceMapper.deleteById(item.getId());
             }
         });

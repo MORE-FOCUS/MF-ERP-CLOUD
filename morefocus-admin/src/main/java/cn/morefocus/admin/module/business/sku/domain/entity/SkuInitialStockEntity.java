@@ -47,6 +47,11 @@ public class SkuInitialStockEntity extends BaseEntity {
     private Long skuId;
 
     /**
+     * 单位ID
+     */
+    private Long unitId;
+
+    /**
      * 单价
      */
     private BigDecimal price;

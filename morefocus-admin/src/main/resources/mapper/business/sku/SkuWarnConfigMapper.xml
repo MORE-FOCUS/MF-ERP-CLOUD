@@ -4,21 +4,21 @@
 
     <!-- 分页查询 -->
     <select id="queryPage" resultType="cn.morefocus.admin.module.business.sku.domain.vo.SkuWarnConfigVO">
-        SELECT t_sku_warn_list.*
-        FROM t_sku_warn_list t_sku_warn_list
+        SELECT t_sku_warn_config.*
+        FROM t_sku_warn_config t_sku_warn_config
     </select>
 
     <!-- 分页查询 -->
     <select id="queryAll" resultType="cn.morefocus.admin.module.business.sku.domain.vo.SkuWarnConfigVO">
-        SELECT t_sku_warn_list.*
-        FROM t_sku_warn_list t_sku_warn_list
+        SELECT t_sku_warn_config.*
+        FROM t_sku_warn_config t_sku_warn_config
     </select>
 
     <select id="querySkuWarnConfigBySpuId"
             resultType="cn.morefocus.admin.module.business.sku.domain.vo.SkuWarnConfigVO">
-        SELECT t_sku_warn_list.*
-        FROM t_sku_warn_list t_sku_warn_list
-        where t_sku_warn_list.spu_id = #{spuId}
-          and t_sku_warn_list.is_deleted = false
+        SELECT t_sku_warn_config.*
+        FROM t_sku_warn_config t_sku_warn_config
+        where t_sku_warn_config.spu_id = #{spuId}
+          and t_sku_warn_config.is_deleted = false
     </select>
 </mapper>

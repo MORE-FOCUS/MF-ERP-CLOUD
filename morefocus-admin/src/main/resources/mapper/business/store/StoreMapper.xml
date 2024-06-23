@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.morefocus.admin.module.business.store.mapper.StoreMapper">
+
+    <!-- 分页查询 -->
+    <select id="queryPage" resultType="cn.morefocus.admin.module.business.store.domain.vo.StoreVO">
+        SELECT
+        t_store.*
+        FROM t_store t_store
+        <where>
+            <if test="queryForm.keywords != null and queryForm.keywords != ''">
+                AND INSTR(t_store.name,#{queryForm.keywords})
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="queryAll" resultType="cn.morefocus.admin.module.business.store.domain.vo.StoreVO">
+        SELECT
+        t_store.*
+        FROM t_store t_store
+        <where>
+            <if test="queryForm.keywords != null and queryForm.keywords != ''">
+                AND INSTR(t_store.name,#{queryForm.keywords})
+            </if>
+        </where>
+    </select>
+
+
+    <update id="batchUpdateDeleted">
+        update t_store set is_deleted = #{isDeleted}
+        where id in
+        <foreach collection="idList" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="updateDeleted">
+        update t_store
+        set is_deleted = #{isDeleted}
+        where id = #{id}
+    </update>
+</mapper>

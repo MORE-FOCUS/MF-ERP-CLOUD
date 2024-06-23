@@ -24,7 +24,7 @@ public class SkuWarnConfigEntity extends BaseEntity {
      * id
      */
     @TableId(type = IdType.AUTO)
-    private Integer id;
+    private Long id;
 
     /**
      * 门店ID
@@ -45,6 +45,11 @@ public class SkuWarnConfigEntity extends BaseEntity {
      * spuId
      */
     private Long spuId;
+
+    /**
+     * 单位ID
+     */
+    private Long unitId;
 
     /**
      * 最小库存预警

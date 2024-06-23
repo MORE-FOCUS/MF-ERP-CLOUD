@@ -42,11 +42,6 @@ public class SkuPriceEntity extends BaseEntity {
     private Long unitId;
 
     /**
-     * 单位名称
-     */
-    private String unitName;
-
-    /**
      * 参考进价
      */
     private BigDecimal referencePurchasePrice;

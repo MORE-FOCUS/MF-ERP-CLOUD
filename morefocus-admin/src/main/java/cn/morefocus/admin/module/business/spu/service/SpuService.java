@@ -5,6 +5,9 @@ import cn.morefocus.admin.module.business.category.constant.CategoryTypeEnum;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.service.CategoryQueryService;
 import cn.morefocus.admin.module.business.sku.domain.form.SkuBarcodeUpdateForm;
+import cn.morefocus.admin.module.business.sku.domain.form.SkuInitialStockUpdateForm;
+import cn.morefocus.admin.module.business.sku.domain.form.SkuPriceUpdateForm;
+import cn.morefocus.admin.module.business.sku.domain.form.SkuWarnConfigUpdateForm;
 import cn.morefocus.admin.module.business.sku.domain.vo.*;
 import cn.morefocus.admin.module.business.sku.service.*;
 import cn.morefocus.admin.module.business.spu.constant.SpuStatusEnum;
@@ -197,6 +200,51 @@ public class SpuService {
         if (updateForm.getEnableBarcode()) {
             skuBarcodeService.updateSkuBarcode(updateForm.getSpuId(), updateForm.getBarcodeList());
         }
+
+        return R.ok();
+    }
+
+    /**
+     * 更新商品单价
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public R<String> updateSpuPrice(SkuPriceUpdateForm updateForm) {
+        SpuEntity spuEntity = spuMapper.selectById(updateForm.getSpuId());
+        if (null == spuEntity) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+
+        skuPriceService.updateSkuPrice(updateForm.getSpuId(), updateForm.getPriceList());
+
+        return R.ok();
+    }
+
+    /**
+     * 更新初始库存
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public R<String> updateSpuInitialStock(SkuInitialStockUpdateForm updateForm) {
+        SpuEntity spuEntity = spuMapper.selectById(updateForm.getSpuId());
+        if (null == spuEntity) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+
+        skuInitialStockService.updateSkuInitialStock(updateForm.getSpuId(), updateForm.getStockList());
+
+        return R.ok();
+    }
+
+    /**
+     * 更新商品库存预警
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public R<String> updateSpuWarnConfig(SkuWarnConfigUpdateForm updateForm) {
+        SpuEntity spuEntity = spuMapper.selectById(updateForm.getSpuId());
+        if (null == spuEntity) {
+            return R.error(UserErrorCode.DATA_NOT_EXIST);
+        }
+
+        skuWarnConfigService.updateSkuWarnConfig(updateForm.getSpuId(), updateForm.getWarnConfigList());
 
         return R.ok();
     }

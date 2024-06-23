@@ -96,6 +96,11 @@ public class SpuEntity extends BaseEntity {
     private Boolean enableBarcode;
 
     /**
+     * 是否开启库存预警
+     */
+    private Boolean enableStockWarn;
+
+    /**
      * 是否禁用
      */
     private Boolean isDisabled;

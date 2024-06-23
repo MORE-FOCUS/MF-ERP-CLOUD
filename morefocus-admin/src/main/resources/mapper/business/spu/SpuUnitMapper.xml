@@ -36,6 +36,10 @@
                 and t_spu_unit.is_disabled = #{queryForm.isDisabled}
             </if>
 
+            <if test="queryForm.isBasicUnit != null">
+                and t_spu_unit.is_basic_unit = #{queryForm.isBasicUnit}
+            </if>
+
             <if test="queryForm.spuId != null">
                 and t_spu_unit.spu_id = #{queryForm.spuId}
             </if>

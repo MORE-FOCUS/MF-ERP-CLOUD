@@ -3,6 +3,9 @@ package cn.morefocus.admin.module.business.spu.controller;
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.morefocus.admin.constant.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.sku.domain.form.SkuBarcodeUpdateForm;
+import cn.morefocus.admin.module.business.sku.domain.form.SkuInitialStockUpdateForm;
+import cn.morefocus.admin.module.business.sku.domain.form.SkuPriceUpdateForm;
+import cn.morefocus.admin.module.business.sku.domain.form.SkuWarnConfigUpdateForm;
 import cn.morefocus.admin.module.business.spu.domain.form.*;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuExportVO;
 import cn.morefocus.admin.module.business.spu.domain.vo.SpuVO;
@@ -86,6 +89,27 @@ public class SpuController {
     @SaCheckPermission("business:spu:update")
     public R<String> updateSpuBarcode(@RequestBody @Valid SkuBarcodeUpdateForm updateForm) {
         return spuService.updateSpuBarcode(updateForm);
+    }
+
+    @Operation(summary = "更新商品单价")
+    @PostMapping("/spu/price/update")
+    @SaCheckPermission("business:spu:update")
+    public R<String> updateSpuPrice(@RequestBody @Valid SkuPriceUpdateForm updateForm) {
+        return spuService.updateSpuPrice(updateForm);
+    }
+
+    @Operation(summary = "更新商品初始库存")
+    @PostMapping("/spu/initial-stock/update")
+    @SaCheckPermission("business:spu:update")
+    public R<String> updateSpuInitialStock(@RequestBody @Valid SkuInitialStockUpdateForm updateForm) {
+        return spuService.updateSpuInitialStock(updateForm);
+    }
+
+    @Operation(summary = "更新商品库存预警")
+    @PostMapping("/spu/stock-warn-config/update")
+    @SaCheckPermission("business:spu:update")
+    public R<String> updateSpuWarnConfig(@RequestBody @Valid SkuWarnConfigUpdateForm updateForm) {
+        return spuService.updateSpuWarnConfig(updateForm);
     }
 
     @Operation(summary = "删除")

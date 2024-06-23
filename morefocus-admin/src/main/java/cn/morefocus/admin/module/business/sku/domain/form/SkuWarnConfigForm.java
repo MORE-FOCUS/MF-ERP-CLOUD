@@ -1,8 +1,6 @@
-package cn.morefocus.admin.module.business.sku.domain.vo;
+package cn.morefocus.admin.module.business.sku.domain.form;
 
-import cn.morefocus.base.common.domain.BaseVO;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 
@@ -12,9 +10,8 @@ import java.math.BigDecimal;
  * @author loki
  * @date 2024-06-23 12:20:59
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class SkuWarnConfigVO extends BaseVO {
+public class SkuWarnConfigForm {
 
     private Integer id;
 
