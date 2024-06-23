@@ -40,6 +40,8 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
         public static final String ATTRS = "商品属性";
 
         public static final String SPU_ATTRS = "商品辅助属性";
+
+        public static final String SPU_INIT_STOCK = "进销存-初始库存";
     }
 
     /**
