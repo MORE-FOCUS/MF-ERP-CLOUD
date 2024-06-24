@@ -31,8 +31,7 @@ public class DictService {
     private DictKeyMapper dictKeyMapper;
     @Resource
     private DictValueMapper dictValueMapper;
-    @Resource
-    private DictCacheService dictCacheService;
+
     /**
      * CODE锁
      */
@@ -58,7 +57,7 @@ public class DictService {
      */
     public R<String> valueAdd(DictValueAddForm valueAddForm) {
         synchronized (CODE_POOL.intern(valueAddForm.getValueCode())) {
-            DictValueEntity dictValueEntity = dictValueMapper.selectByCode(valueAddForm.getValueCode(), false);
+            DictValueEntity dictValueEntity = dictValueMapper.selectByCode(valueAddForm.getDictKeyId(), valueAddForm.getValueCode(), false);
             if (dictValueEntity != null) {
                 return R.error(UserErrorCode.ALREADY_EXIST);
             }
@@ -91,8 +90,9 @@ public class DictService {
         if (dictKeyEntity == null || dictKeyEntity.getIsDeleted()) {
             return R.userErrorParam("key不能存在");
         }
+
         synchronized (CODE_POOL.intern(valueUpdateForm.getValueCode())) {
-            DictValueEntity dictValueEntity = dictValueMapper.selectByCode(valueUpdateForm.getValueCode(), false);
+            DictValueEntity dictValueEntity = dictValueMapper.selectByCode(valueUpdateForm.getDictValueId(), valueUpdateForm.getValueCode(), false);
             if (dictValueEntity != null && !dictValueEntity.getDictValueId().equals(valueUpdateForm.getDictValueId())) {
                 return R.error(UserErrorCode.ALREADY_EXIST);
             }
@@ -131,11 +131,7 @@ public class DictService {
         queryForm.setIsDeleted(false);
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
         List<DictKeyVO> list = dictKeyMapper.query(page, queryForm);
-        PageResult<DictKeyVO> pageResult = PageUtil.convert2PageResult(page, list);
-        if (pageResult.getEmptyFlag()) {
-            return R.ok(pageResult);
-        }
-        return R.ok(pageResult);
+        return R.ok(PageUtil.convert2PageResult(page, list));
     }
 
     /**
@@ -155,5 +151,4 @@ public class DictService {
         PageResult<DictValueVO> pageResult = PageUtil.convert2PageResult(page, list);
         return R.ok(pageResult);
     }
-
 }

@@ -37,4 +37,7 @@ public class DepartmentAddForm {
 
     @Schema(description = "是否禁用")
     private Boolean isDisabled;
+
+    @Schema(description = "类型")
+    private Integer type;
 }

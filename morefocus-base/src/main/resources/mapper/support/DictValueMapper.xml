@@ -31,7 +31,8 @@
             resultType="cn.morefocus.base.module.support.dict.domain.entity.DictValueEntity">
         select *
         from t_dict_value
-        where value_code = #{valueCode}
+        where dict_key_id = #{dictKeyId}
+          and value_code = #{valueCode}
           and is_deleted = #{isDeleted}
     </select>
 

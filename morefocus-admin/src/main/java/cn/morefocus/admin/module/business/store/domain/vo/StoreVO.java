@@ -40,5 +40,4 @@ public class StoreVO extends BaseVO {
      * 联系电话
      */
     private String tel;
-
 }

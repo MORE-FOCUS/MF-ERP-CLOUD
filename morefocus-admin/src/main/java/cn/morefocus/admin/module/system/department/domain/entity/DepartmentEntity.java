@@ -2,6 +2,7 @@ package cn.morefocus.admin.module.system.department.domain.entity;
 
 import cn.morefocus.base.common.domain.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -50,4 +51,15 @@ public class DepartmentEntity extends BaseEntity {
      * 是否禁用
      */
     private Boolean isDisabled;
+
+    /**
+     * 类型 1-门店 2-组织机构
+     */
+    private Integer type;
+
+    /**
+     * 忽略字段
+     */
+    @TableField(exist = false)
+    private Long deptId;
 }

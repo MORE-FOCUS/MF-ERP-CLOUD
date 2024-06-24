@@ -34,12 +34,9 @@ public class DepartmentService {
     @Resource
     private DepartmentCacheManager departmentCacheManager;
 
-    // ---------------------------- 增加、修改、删除 ----------------------------
-
     /**
      * 新增添加部门
      */
-
     public R<String> addDepartment(DepartmentAddForm departmentAddForm) {
         DepartmentEntity departmentEntity = LocalBeanUtil.copy(departmentAddForm, DepartmentEntity.class);
         departmentMapper.insert(departmentEntity);

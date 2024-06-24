@@ -29,19 +29,19 @@ public class DictController extends SupportBaseController {
     @Resource
     private DictCacheService dictCacheService;
 
-    @Operation(summary = "查询全部字典key -")
+    @Operation(summary = "查询全部字典key")
     @GetMapping("/dict/key/queryAll")
     public R<List<DictKeyVO>> queryAll() {
         return R.ok(dictService.queryAllKey());
     }
 
-    @Operation(summary = "分页查询数据字典value -")
+    @Operation(summary = "分页查询数据字典value")
     @PostMapping("/dict/value/query")
     public R<PageResult<DictValueVO>> valueQuery(@Valid @RequestBody DictValueQueryForm queryForm) {
         return dictService.valueQuery(queryForm);
     }
 
-    @Operation(summary = "数据字典-值列表-")
+    @Operation(summary = "数据字典-值列表")
     @GetMapping("/dict/value/list/{keyCode}")
     public R<List<DictValueVO>> valueList(@PathVariable String keyCode) {
         List<DictValueVO> dictValueVOList = dictCacheService.selectByKeyCode(keyCode);

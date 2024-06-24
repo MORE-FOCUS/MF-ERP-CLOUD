@@ -41,7 +41,7 @@ public interface DictValueMapper extends BaseMapper<DictValueEntity> {
     List<DictValueVO> query(Page page, @Param("query") DictValueQueryForm queryForm);
 
     /**
-     * 跟进code查询
+     * 根据code查询
      */
-    DictValueEntity selectByCode(@Param("valueCode") String valueCode, @Param("isDeleted") Boolean isDeleted);
+    DictValueEntity selectByCode(@Param("dictKeyId") Long dictKeyId, @Param("valueCode") String valueCode, @Param("isDeleted") Boolean isDeleted);
 }

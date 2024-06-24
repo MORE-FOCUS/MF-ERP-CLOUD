@@ -25,7 +25,7 @@ public class StringConst {
     /**
      * 全局通用 横杠
      */
-    public static final String HORIZONTAL = "-";
+    public static final String HORIZONTAL = "";
 
     /**
      * 全局通用分隔符
