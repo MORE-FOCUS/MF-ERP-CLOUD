@@ -27,5 +27,4 @@ public class OperateLogConfig {
      * 队列大小
      */
     private Integer queueCapacity;
-
 }

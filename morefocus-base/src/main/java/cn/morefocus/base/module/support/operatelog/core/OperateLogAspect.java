@@ -9,7 +9,6 @@ import cn.morefocus.base.module.support.operatelog.annotation.OperateLog;
 import cn.morefocus.base.module.support.operatelog.domain.OperateLogEntity;
 import cn.morefocus.base.module.support.operatelog.mapper.OperateLogMapper;
 import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
@@ -47,14 +46,13 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Aspect
 public abstract class OperateLogAspect {
 
-    private static final String POINT_CUT = "@within(cn.morefocus.base.module.support.operatelog.annotation.OperateLog) || @annotation(cn.morefocus.base.module.support.operatelog.annotation.OperateLog)";
+    private static final String POINT_CUT = "@within(cn.morefocus.base.module.support.operatelog.annotation.OperateLog) " +
+            "|| @annotation(cn.morefocus.base.module.support.operatelog.annotation.OperateLog)";
 
     @Resource
     private ApplicationContext applicationContext;
-    /**
-     * 线程池
-     */
-    private ThreadPoolTaskExecutor taskExecutor;
+
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
     public abstract OperateLogConfig getOperateLogConfig();
 
@@ -85,23 +83,15 @@ public abstract class OperateLogAspect {
         if (null != config.getCorePoolSize()) {
             corePoolSize = config.getCorePoolSize();
         }
-        taskExecutor = new ThreadPoolTaskExecutor();
-        //线程初始化
-        taskExecutor.initialize();
-        // 设置核心线程数
-        taskExecutor.setCorePoolSize(corePoolSize);
-        // 设置最大线程数
-        taskExecutor.setMaxPoolSize(corePoolSize * 2);
-        // 设置队列容量
-        taskExecutor.setQueueCapacity(1000);
-        // 设置线程活跃时间（秒）
-        taskExecutor.setKeepAliveSeconds(60);
-        // 设置默认线程名称
-        taskExecutor.setThreadNamePrefix("sys-operate-log");
-        // 设置拒绝策略
-        taskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
-        // 等待所有任务结束后再关闭线程池
-        taskExecutor.setWaitForTasksToCompleteOnShutdown(true);
+        threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
+        threadPoolTaskExecutor.initialize();
+        threadPoolTaskExecutor.setCorePoolSize(corePoolSize);
+        threadPoolTaskExecutor.setMaxPoolSize(corePoolSize * 2);
+        threadPoolTaskExecutor.setQueueCapacity(1000);
+        threadPoolTaskExecutor.setKeepAliveSeconds(60);
+        threadPoolTaskExecutor.setThreadNamePrefix("sys-operate-log");
+        threadPoolTaskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        threadPoolTaskExecutor.setWaitForTasksToCompleteOnShutdown(true);
     }
 
     protected void handleLog(final JoinPoint joinPoint, final Exception e) {
@@ -113,7 +103,6 @@ public abstract class OperateLogAspect {
             this.submitLog(joinPoint, e);
         } catch (Exception ex) {
             log.error("保存操作日志异常:{}", ex.getMessage());
-            ex.printStackTrace();
         }
     }
 
@@ -125,8 +114,7 @@ public abstract class OperateLogAspect {
         if (classAnnotation != null) {
             return classAnnotation;
         }
-        OperateLog methodAnnotation = AnnotationUtils.findAnnotation(method, OperateLog.class);
-        return methodAnnotation;
+        return AnnotationUtils.findAnnotation(method, OperateLog.class);
     }
 
     /**
@@ -158,7 +146,6 @@ public abstract class OperateLogAspect {
      */
     private void submitLog(final JoinPoint joinPoint, final Throwable e) {
         HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
-        //设置用户信息
         RequestUser user = SecurityContextHolder.getRequestUser();
         if (user == null) {
             return;
@@ -200,7 +187,7 @@ public abstract class OperateLogAspect {
             operateLogEntity.setModule(StrUtil.join(",", name));
         }
 
-        taskExecutor.execute(() -> {
+        threadPoolTaskExecutor.execute(() -> {
             this.saveLog(operateLogEntity);
         });
     }
@@ -238,17 +225,12 @@ public abstract class OperateLogAspect {
     /**
      * 保存操作日志
      */
-    private Boolean saveLog(OperateLogEntity operateLogEntity) {
+    private void saveLog(OperateLogEntity operateLogEntity) {
         OperateLogConfig operateLogConfig = getOperateLogConfig();
         if (operateLogConfig.getSaveFunction() == null) {
-            BaseMapper mapper = applicationContext.getBean(OperateLogMapper.class);
-            if (mapper == null) {
-                return false;
-            }
+            OperateLogMapper mapper = applicationContext.getBean(OperateLogMapper.class);
             mapper.insert(operateLogEntity);
-            return true;
         }
-        return operateLogConfig.getSaveFunction().apply(operateLogEntity);
+        operateLogConfig.getSaveFunction().apply(operateLogEntity);
     }
-
 }

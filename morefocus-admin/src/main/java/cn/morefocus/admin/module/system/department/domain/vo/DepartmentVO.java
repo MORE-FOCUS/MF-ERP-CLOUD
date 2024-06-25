@@ -1,5 +1,7 @@
 package cn.morefocus.admin.module.system.department.domain.vo;
 
+import cn.morefocus.base.common.json.serializer.DictValueVoSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -35,4 +37,8 @@ public class DepartmentVO {
 
     @Schema(description = "禁用")
     private Boolean isDisabled;
+
+    @Schema(description = "类别")
+    @JsonSerialize(using = DictValueVoSerializer.class)
+    private String type;
 }

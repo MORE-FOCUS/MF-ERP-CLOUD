@@ -23,8 +23,6 @@ import java.util.stream.Collectors;
 
 /**
  * 字典缓存 服务
- *
- *
  */
 @Slf4j
 @Service
@@ -38,7 +36,6 @@ public class DictCacheService {
     private ConcurrentHashMap<String, List<DictValueVO>> DICT_CACHE = new ConcurrentHashMap<>();
 
     private ConcurrentHashMap<String, DictValueVO> VALUE_CACHE = new ConcurrentHashMap<>();
-
 
     @PostConstruct
     public void dictCache() {
@@ -59,6 +56,7 @@ public class DictCacheService {
             Long dictKeyId = dictKeyEntity.getDictKeyId();
             DICT_CACHE.put(keyCode, valueListMap.getOrDefault(dictKeyId, Lists.newArrayList()));
         }
+
         //字典值缓存
         dictValueVOList.forEach(e -> {
             VALUE_CACHE.put(e.getValueCode(), e);
@@ -78,9 +76,6 @@ public class DictCacheService {
 
     /**
      * 查询某个key对应的字典值列表
-     *
-     * @param keyCode
-     * @return
      */
     public List<DictValueVO> selectByKeyCode(String keyCode) {
         return DICT_CACHE.getOrDefault(keyCode, Lists.newArrayList());
@@ -88,9 +83,6 @@ public class DictCacheService {
 
     /**
      * 查询值code名称
-     *
-     * @param valueCode
-     * @return
      */
     public String selectValueNameByValueCode(String valueCode) {
         if (StrUtil.isEmpty(valueCode)) {
@@ -125,5 +117,4 @@ public class DictCacheService {
         }
         return StringUtils.join(valueNameList, ",");
     }
-
 }

@@ -55,7 +55,7 @@ public class DepartmentEntity extends BaseEntity {
     /**
      * 类型 1-门店 2-组织机构
      */
-    private Integer type;
+    private String type;
 
     /**
      * 忽略字段

@@ -19,6 +19,7 @@ import java.util.List;
 
 /**
  * 门店 Service
+ * 合并到组织机构
  *
  * @author loki
  * @date 2024-06-23 23:29:01

@@ -51,7 +51,7 @@ public class DepartmentService {
         if (updateDTO.getPid() == null) {
             return R.userErrorParam("父级部门id不能为空");
         }
-        DepartmentEntity entity = departmentMapper.selectById(updateDTO.getDeptId());
+        DepartmentEntity entity = departmentMapper.selectById(updateDTO.getId());
         if (entity == null) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
@@ -67,23 +67,23 @@ public class DepartmentService {
      * 1、需要判断当前部门是否有子部门,有子部门则不允许删除
      * 2、需要判断当前部门是否有员工，有员工则不能删除
      */
-    public R<String> deleteDepartment(Long deptId) {
-        DepartmentEntity departmentEntity = departmentMapper.selectById(deptId);
+    public R<String> deleteDepartment(Long id) {
+        DepartmentEntity departmentEntity = departmentMapper.selectById(id);
         if (null == departmentEntity) {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
         // 是否有子级部门
-        int subDepartmentNum = departmentMapper.countSubDepartment(deptId);
+        int subDepartmentNum = departmentMapper.countSubDepartment(id);
         if (subDepartmentNum > 0) {
             return R.userErrorParam("请先删除子级部门");
         }
 
         // 是否有未删除员工
-        int employeeNum = employeeMapper.countByDepartmentId(deptId);
+        int employeeNum = employeeMapper.countByDepartmentId(id);
         if (employeeNum > 0) {
             return R.userErrorParam("请先删除部门员工");
         }
-        departmentMapper.deleteById(deptId);
+        departmentMapper.deleteById(id);
         // 清除缓存
         this.clearCache();
         return R.ok();

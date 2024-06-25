@@ -17,5 +17,4 @@ public class DepartmentEmployeeTreeVO extends DepartmentVO {
 
     @Schema(description = "子部门")
     private List<DepartmentEmployeeTreeVO> children;
-
 }

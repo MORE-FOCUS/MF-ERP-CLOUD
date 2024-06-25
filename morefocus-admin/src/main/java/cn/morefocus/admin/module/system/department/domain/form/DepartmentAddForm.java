@@ -38,6 +38,7 @@ public class DepartmentAddForm {
     @Schema(description = "是否禁用")
     private Boolean isDisabled;
 
+    @NotNull(message = "请选择部门类型")
     @Schema(description = "类型")
-    private Integer type;
+    private String type;
 }

@@ -22,5 +22,4 @@ public class DepartmentTreeVO extends DepartmentVO {
 
     @Schema(description = "自己和所有递归子部门的id集合")
     private List<Long> selfAndAllChildrenIdList;
-
 }
