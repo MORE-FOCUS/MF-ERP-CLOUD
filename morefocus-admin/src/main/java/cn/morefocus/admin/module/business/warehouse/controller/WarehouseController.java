@@ -1,7 +1,7 @@
 package cn.morefocus.admin.module.business.warehouse.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.warehouse.domain.form.WarehouseAddForm;
 import cn.morefocus.admin.module.business.warehouse.domain.form.WarehousePageQueryForm;
 import cn.morefocus.admin.module.business.warehouse.domain.form.WarehouseUpdateForm;

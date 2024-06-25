@@ -1,7 +1,7 @@
 package cn.morefocus.admin.module.business.oa.enterprise.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.oa.enterprise.domain.form.*;
 import cn.morefocus.admin.module.business.oa.enterprise.domain.vo.EnterpriseEmployeeVO;
 import cn.morefocus.admin.module.business.oa.enterprise.domain.vo.EnterpriseExcelVO;

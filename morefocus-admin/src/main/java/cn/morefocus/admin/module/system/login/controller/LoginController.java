@@ -2,7 +2,7 @@ package cn.morefocus.admin.module.system.login.controller;
 
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.extra.servlet.ServletUtil;
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.system.login.domain.LoginForm;
 import cn.morefocus.admin.module.system.login.domain.LoginResultVO;
 import cn.morefocus.admin.module.system.login.domain.RequestEmployee;

@@ -1,4 +1,4 @@
-package cn.morefocus.admin.constant;
+package cn.morefocus.admin.constants;
 
 import cn.morefocus.base.constant.RedisKeyConst;
 

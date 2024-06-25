@@ -18,8 +18,6 @@ import javax.validation.Valid;
 
 /**
  * 系统更新日志 Controller
- *
- *
  */
 
 @RestController
@@ -29,7 +27,7 @@ public class ChangeLogController extends SupportBaseController {
     @Resource
     private ChangeLogService changeLogService;
 
-    @Operation(summary = "分页查询 ")
+    @Operation(summary = "分页查询")
     @PostMapping("/changeLog/queryPage")
     public R<PageResult<ChangeLogVO>> queryPage(@RequestBody @Valid ChangeLogQueryForm queryForm) {
         return R.ok(changeLogService.queryPage(queryForm));

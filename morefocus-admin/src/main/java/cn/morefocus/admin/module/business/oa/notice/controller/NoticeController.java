@@ -2,7 +2,7 @@ package cn.morefocus.admin.module.business.oa.notice.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.hutool.extra.servlet.ServletUtil;
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.oa.notice.domain.form.*;
 import cn.morefocus.admin.module.business.oa.notice.domain.vo.*;
 import cn.morefocus.admin.module.business.oa.notice.service.NoticeEmployeeService;

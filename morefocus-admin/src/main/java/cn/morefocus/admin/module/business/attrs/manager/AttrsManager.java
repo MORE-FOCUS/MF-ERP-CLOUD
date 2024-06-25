@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.business.attrs.manager;
 
-import cn.morefocus.admin.constant.AdminCacheConst;
+import cn.morefocus.admin.constants.AdminCacheConst;
 import cn.morefocus.admin.module.business.attrs.domain.entity.AttrsEntity;
 import cn.morefocus.admin.module.business.attrs.domain.form.AttrsQueryForm;
 import cn.morefocus.admin.module.business.attrs.domain.vo.AttrsVO;

@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.business.sku.controller;
 
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.sku.domain.form.SkuStockDetailChangeRecordQueryForm;
 import cn.morefocus.admin.module.business.sku.domain.vo.SkuStockDetailChangeRecordVO;
 import cn.morefocus.admin.module.business.sku.service.SkuStockDetailChangeRecordService;

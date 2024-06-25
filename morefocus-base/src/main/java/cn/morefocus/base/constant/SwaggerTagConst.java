@@ -2,8 +2,6 @@ package cn.morefocus.base.constant;
 
 /**
  * swagger
- *
- *
  */
 public class SwaggerTagConst {
 

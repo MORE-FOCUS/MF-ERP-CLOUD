@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.system.department.manager;
 
-import cn.morefocus.admin.constant.AdminCacheConst;
+import cn.morefocus.admin.constants.AdminCacheConst;
 import cn.morefocus.admin.module.system.department.domain.vo.DepartmentTreeVO;
 import cn.morefocus.admin.module.system.department.domain.vo.DepartmentVO;
 import cn.morefocus.admin.module.system.department.mapper.DepartmentMapper;
@@ -50,7 +50,7 @@ public class DepartmentCacheManager {
      */
     @Cacheable(AdminCacheConst.Department.DEPARTMENT_LIST_CACHE)
     public List<DepartmentVO> getDepartmentList() {
-        return departmentMapper.listAll();
+        return departmentMapper.queryAll();
     }
 
     /**
@@ -58,7 +58,7 @@ public class DepartmentCacheManager {
      */
     @Cacheable(AdminCacheConst.Department.DEPARTMENT_MAP_CACHE)
     public Map<Long, DepartmentVO> getDepartmentMap() {
-        return departmentMapper.listAll().stream().collect(Collectors.toMap(DepartmentVO::getId, Function.identity()));
+        return departmentMapper.queryAll().stream().collect(Collectors.toMap(DepartmentVO::getId, Function.identity()));
     }
 
     /**
@@ -66,7 +66,7 @@ public class DepartmentCacheManager {
      */
     @Cacheable(AdminCacheConst.Department.DEPARTMENT_TREE_CACHE)
     public List<DepartmentTreeVO> getDepartmentTree() {
-        List<DepartmentVO> departmentVOList = departmentMapper.listAll();
+        List<DepartmentVO> departmentVOList = departmentMapper.queryAll();
         return this.buildTree(departmentVOList);
     }
 
@@ -75,7 +75,7 @@ public class DepartmentCacheManager {
      */
     @Cacheable(AdminCacheConst.Department.DEPARTMENT_SELF_CHILDREN_CACHE)
     public List<Long> getDepartmentSelfAndChildren(Long deptId) {
-        List<DepartmentVO> departmentVOList = departmentMapper.listAll();
+        List<DepartmentVO> departmentVOList = departmentMapper.queryAll();
         return this.selfAndChildrenIdList(deptId, departmentVOList);
     }
 
@@ -84,7 +84,7 @@ public class DepartmentCacheManager {
      */
     @Cacheable(AdminCacheConst.Department.DEPARTMENT_PATH_CACHE)
     public Map<Long, String> getDepartmentPathMap() {
-        List<DepartmentVO> departmentVOList = departmentMapper.listAll();
+        List<DepartmentVO> departmentVOList = departmentMapper.queryAll();
         Map<Long, DepartmentVO> departmentMap = departmentVOList.stream().collect(Collectors.toMap(DepartmentVO::getId, Function.identity()));
 
         Map<Long, String> pathNameMap = Maps.newHashMap();

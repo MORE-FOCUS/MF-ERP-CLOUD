@@ -1,4 +1,4 @@
-package cn.morefocus.admin.constant;
+package cn.morefocus.admin.constants;
 
 import cn.morefocus.base.constant.SwaggerTagConst;
 
@@ -46,6 +46,7 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
         public static final String SPU_STOCK_WARN = "商品库存预警";
 
         public static final String SPU_STOCK = "商品库存";
+        public static final String STORE = "门店";
     }
 
     /**
@@ -53,25 +54,22 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
      */
     public static class System {
 
-        public static final String SYSTEM_LOGIN = "系统-员工登录";
+        public static final String SYSTEM_LOGIN = "员工登录";
 
-        public static final String SYSTEM_EMPLOYEE = "系统-员工管理";
+        public static final String SYSTEM_EMPLOYEE = "员工管理";
 
-        public static final String SYSTEM_DEPARTMENT = "系统-部门管理";
+        public static final String SYSTEM_DEPARTMENT = "部门管理";
 
-        public static final String SYSTEM_MENU = "系统-菜单";
+        public static final String SYSTEM_MENU = "菜单管理";
 
-        public static final String SYSTEM_DATA_SCOPE = "系统-系统-数据范围";
+        public static final String SYSTEM_DATA_SCOPE = "数据范围";
 
-        public static final String SYSTEM_ROLE = "系统-角色";
+        public static final String SYSTEM_ROLE = "角色管理";
 
-        public static final String SYSTEM_ROLE_DATA_SCOPE = "系统-角色-数据范围";
+        public static final String SYSTEM_ROLE_DATA_SCOPE = "角色数据范围";
 
-        public static final String SYSTEM_ROLE_EMPLOYEE = "系统-角色-员工";
+        public static final String SYSTEM_ROLE_EMPLOYEE = "角色员工";
 
-        public static final String SYSTEM_ROLE_MENU = "系统-角色-菜单";
-
-        public static final String SYSTEM_JOB = "系统-定时任务";
-
+        public static final String SYSTEM_ROLE_MENU = "角色菜单";
     }
 }

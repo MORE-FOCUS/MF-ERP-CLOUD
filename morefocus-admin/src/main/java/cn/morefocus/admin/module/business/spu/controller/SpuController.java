@@ -1,7 +1,7 @@
 package cn.morefocus.admin.module.business.spu.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.sku.domain.form.SkuBarcodeUpdateForm;
 import cn.morefocus.admin.module.business.sku.domain.form.SkuInitialStockUpdateForm;
 import cn.morefocus.admin.module.business.sku.domain.form.SkuPriceUpdateForm;

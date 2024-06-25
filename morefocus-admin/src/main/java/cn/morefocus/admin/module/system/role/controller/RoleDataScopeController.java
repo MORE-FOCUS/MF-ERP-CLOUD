@@ -1,7 +1,7 @@
 package cn.morefocus.admin.module.system.role.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.system.role.domain.form.RoleDataScopeUpdateForm;
 import cn.morefocus.admin.module.system.role.domain.vo.RoleDataScopeVO;
 import cn.morefocus.admin.module.system.role.service.RoleDataScopeService;

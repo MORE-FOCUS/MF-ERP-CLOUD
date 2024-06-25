@@ -1,7 +1,7 @@
 package cn.morefocus.admin.module.business.supplier.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierAddForm;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierQueryForm;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierUpdateForm;

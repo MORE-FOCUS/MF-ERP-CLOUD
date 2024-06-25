@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.system.datascope;
 
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.system.datascope.domain.DataScopeAndViewTypeVO;
 import cn.morefocus.admin.module.system.datascope.service.DataScopeService;
 import cn.morefocus.base.common.domain.R;

@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.business.sku.manager;
 
-import cn.morefocus.admin.constant.AdminCacheConst;
+import cn.morefocus.admin.constants.AdminCacheConst;
 import cn.morefocus.admin.module.business.sku.domain.entity.SkuBarcodeEntity;
 import cn.morefocus.admin.module.business.sku.domain.vo.SkuBarcodeVO;
 import cn.morefocus.admin.module.business.sku.mapper.SkuBarcodeMapper;

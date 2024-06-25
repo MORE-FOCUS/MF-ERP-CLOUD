@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.business.oa.invoice.controller;
 
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.oa.invoice.domain.InvoiceAddForm;
 import cn.morefocus.admin.module.business.oa.invoice.domain.InvoiceQueryForm;
 import cn.morefocus.admin.module.business.oa.invoice.domain.InvoiceUpdateForm;

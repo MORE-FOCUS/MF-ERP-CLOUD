@@ -1,6 +1,6 @@
 package cn.morefocus.admin.module.business.oa.bank.controler;
 
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.oa.bank.domain.BankCreateForm;
 import cn.morefocus.admin.module.business.oa.bank.domain.BankQueryForm;
 import cn.morefocus.admin.module.business.oa.bank.domain.BankUpdateForm;

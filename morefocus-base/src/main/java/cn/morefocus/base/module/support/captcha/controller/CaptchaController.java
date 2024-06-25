@@ -14,8 +14,6 @@ import javax.annotation.Resource;
 
 /**
  * 图形验证码业务
- *
- *
  */
 @Tag(name = SwaggerTagConst.Support.CAPTCHA)
 @RestController
@@ -29,5 +27,4 @@ public class CaptchaController extends SupportBaseController {
     public R<CaptchaVO> generateCaptcha() {
         return R.ok(captchaService.generateCaptcha());
     }
-
 }

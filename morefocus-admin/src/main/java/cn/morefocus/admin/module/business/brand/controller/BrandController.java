@@ -1,7 +1,7 @@
 package cn.morefocus.admin.module.business.brand.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.brand.domain.form.BrandAddForm;
 import cn.morefocus.admin.module.business.brand.domain.form.BrandPageQueryForm;
 import cn.morefocus.admin.module.business.brand.domain.form.BrandQueryForm;

@@ -1,7 +1,7 @@
 package cn.morefocus.admin.module.system.department.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.system.department.domain.form.DepartmentAddForm;
 import cn.morefocus.admin.module.system.department.domain.form.DepartmentUpdateForm;
 import cn.morefocus.admin.module.system.department.domain.vo.DepartmentTreeVO;

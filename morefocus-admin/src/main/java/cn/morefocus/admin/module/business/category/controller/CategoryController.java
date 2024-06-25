@@ -2,7 +2,7 @@ package cn.morefocus.admin.module.business.category.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.hutool.core.lang.tree.Tree;
-import cn.morefocus.admin.constant.AdminSwaggerTagConst;
+import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.category.domain.form.CategoryAddForm;
 import cn.morefocus.admin.module.business.category.domain.form.CategoryTreeQueryForm;
 import cn.morefocus.admin.module.business.category.domain.form.CategoryUpdateForm;

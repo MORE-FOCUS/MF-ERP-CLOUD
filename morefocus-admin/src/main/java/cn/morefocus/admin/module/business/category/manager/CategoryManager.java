@@ -3,7 +3,7 @@ package cn.morefocus.admin.module.business.category.manager;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
-import cn.morefocus.admin.constant.AdminCacheConst;
+import cn.morefocus.admin.constants.AdminCacheConst;
 import cn.morefocus.admin.module.business.category.domain.entity.CategoryEntity;
 import cn.morefocus.admin.module.business.category.domain.vo.CategoryVO;
 import cn.morefocus.admin.module.business.category.mapper.CategoryMapper;
