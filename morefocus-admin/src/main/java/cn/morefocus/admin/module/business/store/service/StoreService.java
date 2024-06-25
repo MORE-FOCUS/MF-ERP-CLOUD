@@ -1,9 +1,9 @@
 package cn.morefocus.admin.module.business.store.service;
 
+import cn.morefocus.admin.module.business.store.mapper.StoreMapper;
 import cn.morefocus.admin.module.system.department.domain.form.DepartmentPageQueryForm;
 import cn.morefocus.admin.module.system.department.domain.form.DepartmentQueryForm;
 import cn.morefocus.admin.module.system.department.domain.vo.DepartmentVO;
-import cn.morefocus.admin.module.system.department.mapper.DepartmentMapper;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.util.PageUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -23,14 +23,14 @@ import java.util.List;
 public class StoreService {
 
     @Resource
-    private DepartmentMapper departmentMapper;
+    private StoreMapper storeMapper;
 
     /**
      * 分页查询
      */
     public PageResult<DepartmentVO> queryPage(DepartmentPageQueryForm queryForm) {
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
-        List<DepartmentVO> list = departmentMapper.queryPage(page, queryForm);
+        List<DepartmentVO> list = storeMapper.queryPage(page, queryForm);
         PageResult<DepartmentVO> pageResult = PageUtil.convert2PageResult(page, list);
         return pageResult;
     }
@@ -39,7 +39,7 @@ public class StoreService {
      * 查询所有
      */
     public List<DepartmentVO> queryAll(DepartmentQueryForm queryForm) {
-        List<DepartmentVO> list = departmentMapper.queryAll(queryForm);
+        List<DepartmentVO> list = storeMapper.queryAll(queryForm);
         return list;
     }
 }

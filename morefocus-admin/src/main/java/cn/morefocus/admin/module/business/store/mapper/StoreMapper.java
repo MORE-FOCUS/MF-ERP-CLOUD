@@ -1,8 +1,9 @@
 package cn.morefocus.admin.module.business.store.mapper;
 
 import cn.morefocus.admin.module.business.store.domain.entity.StoreEntity;
-import cn.morefocus.admin.module.business.store.domain.form.StoreQueryForm;
-import cn.morefocus.admin.module.business.store.domain.vo.StoreVO;
+import cn.morefocus.admin.module.system.department.domain.form.DepartmentPageQueryForm;
+import cn.morefocus.admin.module.system.department.domain.form.DepartmentQueryForm;
+import cn.morefocus.admin.module.system.department.domain.vo.DepartmentVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Mapper;
@@ -20,25 +21,13 @@ import java.util.List;
 @Mapper
 @Component
 public interface StoreMapper extends BaseMapper<StoreEntity> {
+    /**
+     * 获取全部部门列表
+     */
+    List<DepartmentVO> queryPage(Page<?> page, @Param("queryForm") DepartmentPageQueryForm queryForm);
 
     /**
-     * 分页 查询
+     * 获取全部部门列表
      */
-    List<StoreVO> queryPage(Page page, @Param("queryForm") StoreQueryForm queryForm);
-
-    /**
-     * 分页 查询
-     */
-    List<StoreVO> queryAll();
-
-    /**
-     * 更新删除状态
-     */
-    long updateDeleted(@Param("id") Long id, @Param("${isDeleted}") boolean isDeleted);
-
-    /**
-     * 批量更新删除状态
-     */
-    void batchUpdateDeleted(@Param("idList") List<Long> idList, @Param("${isDeleted}") boolean isDeleted);
-
+    List<DepartmentVO> queryAll(@Param("queryForm") DepartmentQueryForm queryForm);
 }

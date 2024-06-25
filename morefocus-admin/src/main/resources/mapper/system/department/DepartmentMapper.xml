@@ -1,39 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.morefocus.admin.module.system.department.mapper.DepartmentMapper">
-
-    <select id="queryPage"
-            parameterType="cn.morefocus.admin.module.system.department.domain.form.DepartmentPageQueryForm"
-            resultType="cn.morefocus.admin.module.system.department.domain.vo.DepartmentVO">
-        SELECT t_department.*,
-        t_employee.actual_name as managerName,
-        parent_department.`name` as parentName
-        FROM t_department
-        left join t_employee on t_department.manager_id = t_employee.employee_id
-        left join t_department parent_department on t_department.pid = parent_department.id
-        <where>
-            <if test="queryForm.type != null">and t_department.type = #{queryForm.type}</if>
-            <if test="queryForm.keywords != null and queryForm.keywords != ''">
-                and INSTR(t_department.name,#{queryForm.keywords})
-            </if>
-        </where>
-        order by sort_value
-    </select>
-
     <select id="queryAll" resultType="cn.morefocus.admin.module.system.department.domain.vo.DepartmentVO">
         SELECT t_department.*,
                t_employee.actual_name   as managerName,
                parent_department.`name` as parentName
         FROM t_department
                  left join t_employee on t_department.manager_id = t_employee.employee_id
-                 left join t_department parent_department on t_department.pid = parent_department.id
-        <where>
-            <if test="queryForm.type != null">and t_department.type = #{queryForm.type}</if>
-            <if test="queryForm.keywords != null and queryForm.keywords != ''">
-                and INSTR(t_department.name,#{queryForm.keywords})
-            </if>
-        </where>
-        Ï
         order by sort_value
     </select>
 
