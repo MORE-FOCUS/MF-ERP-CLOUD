@@ -2,6 +2,7 @@ package cn.morefocus.admin.module.business.warehouse.mapper;
 
 import cn.morefocus.admin.module.business.warehouse.domain.entity.WarehouseEntity;
 import cn.morefocus.admin.module.business.warehouse.domain.form.WarehousePageQueryForm;
+import cn.morefocus.admin.module.business.warehouse.domain.form.WarehouseQueryForm;
 import cn.morefocus.admin.module.business.warehouse.domain.vo.WarehouseVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -29,7 +30,7 @@ public interface WarehouseMapper extends BaseMapper<WarehouseEntity> {
     /**
      * 分页 查询
      */
-    List<WarehouseVO> queryAll(@Param("queryForm") WarehousePageQueryForm queryForm);
+    List<WarehouseVO> queryAll(@Param("queryForm") WarehouseQueryForm queryForm);
 
     /**
      * 更新禁用|启用状态

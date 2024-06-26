@@ -4,6 +4,7 @@ import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.warehouse.domain.form.WarehouseAddForm;
 import cn.morefocus.admin.module.business.warehouse.domain.form.WarehousePageQueryForm;
+import cn.morefocus.admin.module.business.warehouse.domain.form.WarehouseQueryForm;
 import cn.morefocus.admin.module.business.warehouse.domain.form.WarehouseUpdateForm;
 import cn.morefocus.admin.module.business.warehouse.domain.vo.WarehouseVO;
 import cn.morefocus.admin.module.business.warehouse.service.WarehouseService;
@@ -48,7 +49,7 @@ public class WarehouseController {
      */
     @PostMapping("/warehouse/queryAll")
     @SaCheckPermission("business:warehouse:query")
-    public R<List<WarehouseVO>> queryAll(@RequestBody @Valid WarehousePageQueryForm queryForm) {
+    public R<List<WarehouseVO>> queryAll(@RequestBody @Valid WarehouseQueryForm queryForm) {
         return R.ok(warehouseService.queryAll(queryForm));
     }
 

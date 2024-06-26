@@ -3,6 +3,7 @@ package cn.morefocus.admin.module.business.warehouse.service;
 import cn.morefocus.admin.module.business.warehouse.domain.entity.WarehouseEntity;
 import cn.morefocus.admin.module.business.warehouse.domain.form.WarehouseAddForm;
 import cn.morefocus.admin.module.business.warehouse.domain.form.WarehousePageQueryForm;
+import cn.morefocus.admin.module.business.warehouse.domain.form.WarehouseQueryForm;
 import cn.morefocus.admin.module.business.warehouse.domain.form.WarehouseUpdateForm;
 import cn.morefocus.admin.module.business.warehouse.domain.vo.WarehouseVO;
 import cn.morefocus.admin.module.business.warehouse.mapper.WarehouseMapper;
@@ -43,7 +44,7 @@ public class WarehouseService {
     /**
      * 查询所有
      */
-    public List<WarehouseVO> queryAll(WarehousePageQueryForm queryForm) {
+    public List<WarehouseVO> queryAll(WarehouseQueryForm queryForm) {
         List<WarehouseVO> list = warehouseMapper.queryAll(queryForm);
         return list;
     }
