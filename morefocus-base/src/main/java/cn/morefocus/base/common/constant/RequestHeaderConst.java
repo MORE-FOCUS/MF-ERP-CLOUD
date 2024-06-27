@@ -11,4 +11,6 @@ public class RequestHeaderConst {
 
     public static final String USER_AGENT = "user-agent";
 
+    public static final String SELECTED_STORE = "store-id";
+
 }

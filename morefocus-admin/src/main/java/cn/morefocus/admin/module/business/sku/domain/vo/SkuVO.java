@@ -48,4 +48,14 @@ public class SkuVO {
      * 单价
      */
     private List<SkuPriceVO> priceList;
+
+    /**
+     * 初始库存
+     */
+    private SkuInitialStockVO initialStock;
+
+    /**
+     * 库存预警
+     */
+    private SkuWarnConfigVO skuWarnConfig;
 }

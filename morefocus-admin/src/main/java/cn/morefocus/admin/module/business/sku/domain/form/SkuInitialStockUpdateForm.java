@@ -19,5 +19,5 @@ public class SkuInitialStockUpdateForm {
     /**
      * 条形码
      */
-    private List<SkuInitialStockForm> stockList;
+    private List<SkuInitialStockForm> initialStockList;
 }

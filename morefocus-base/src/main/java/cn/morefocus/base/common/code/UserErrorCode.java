@@ -14,15 +14,15 @@ public enum UserErrorCode implements ErrorCode {
 
     DATA_NOT_EXIST(30002, "数据不存在"),
 
-    ALREADY_EXIST(30003, "数据已存在了呀~"),
+    ALREADY_EXIST(30003, "数据已存在"),
 
-    REPEAT_SUBMIT(30004, "亲~您操作的太快了，请稍等下再操作~"),
+    REPEAT_SUBMIT(30004, "您操作的太快了，请稍等下再操作"),
 
-    NO_PERMISSION(30005, "对不起，您没有权限访问此内容哦~"),
+    NO_PERMISSION(30005, "对不起，您没有权限访问此内容"),
 
-    DEVELOPING(30006, "系統正在紧急开发中，敬请期待~"),
+    DEVELOPING(30006, "功能正在紧急开发中，敬请期待~"),
 
-    LOGIN_STATE_INVALID(30007, "您还未登录或登录失效，请重新登录！"),
+    LOGIN_STATE_INVALID(30007, "您还未登录或登录失效，请重新登录"),
 
     USER_STATUS_ERROR(30008, "用户状态异常"),
 

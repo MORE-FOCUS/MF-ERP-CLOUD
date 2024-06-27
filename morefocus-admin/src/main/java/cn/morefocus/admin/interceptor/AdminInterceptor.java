@@ -5,16 +5,19 @@ import cn.dev33.satoken.exception.SaTokenException;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.strategy.SaStrategy;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.extra.servlet.ServletUtil;
 import cn.morefocus.admin.module.system.login.domain.RequestEmployee;
 import cn.morefocus.admin.module.system.login.service.LoginService;
 import cn.morefocus.base.common.annoation.NoNeedLogin;
 import cn.morefocus.base.common.code.SystemErrorCode;
 import cn.morefocus.base.common.code.UserErrorCode;
+import cn.morefocus.base.common.constant.RequestHeaderConst;
 import cn.morefocus.base.common.constant.StringConst;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.domain.SystemEnvironment;
 import cn.morefocus.base.common.enums.SystemEnvironmentEnum;
 import cn.morefocus.base.common.enums.UserTypeEnum;
+import cn.morefocus.base.common.util.LocalStringUtils;
 import cn.morefocus.base.common.util.ResponseUtil;
 import cn.morefocus.base.common.util.SecurityContextHolder;
 import lombok.extern.slf4j.Slf4j;
@@ -92,6 +95,11 @@ public class AdminInterceptor implements HandlerInterceptor {
             checkActiveTimeout(requestEmployee, debugNumberTokenFlag);
 
             // --------------- 第三步： 校验 权限 ---------------
+            String storeId = ServletUtil.getHeaderIgnoreCase(request, RequestHeaderConst.SELECTED_STORE);
+            log.info("当前门店[{}]", storeId);
+            if (LocalStringUtils.isNotBlank(storeId)) {
+                requestEmployee.setSelectedStoreId(Long.valueOf(storeId));
+            }
 
             SecurityContextHolder.setRequestUser(requestEmployee);
             if (SaStrategy.instance.isAnnotationPresent.apply(method, SaIgnore.class)) {
@@ -109,7 +117,6 @@ public class AdminInterceptor implements HandlerInterceptor {
             /*
              * sa-token 异常状态码
              * 具体请看： https://sa-token.cc/doc.html#/fun/exception-code
-
              */
             int code = e.getCode();
             if (code == 11041 || code == 11051) {

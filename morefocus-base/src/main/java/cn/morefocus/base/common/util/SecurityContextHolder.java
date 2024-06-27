@@ -43,6 +43,14 @@ public class SecurityContextHolder {
         return null == requestUser ? null : requestUser.getDeptId();
     }
 
+    /**
+     * 获取用户选择的门店ID
+     */
+    public static Long getSelectedStoreId() {
+        RequestUser requestUser = getRequestUser();
+        return null == requestUser ? null : requestUser.getSelectedStoreId();
+    }
+
     public static void remove() {
         REQUEST_THREAD_LOCAL.remove();
     }

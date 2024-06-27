@@ -65,16 +65,15 @@ public class SkuInitialStockService {
     /**
      * 更新商品初始库存
      */
-    public void updateSkuInitialStock(Long spuId, List<SkuInitialStockForm> stockList) {
+    public void updateSkuInitialStock(Long spuId, List<SkuInitialStockForm> initialStockList) {
         Wrapper<SkuInitialStockEntity> spuInitialStockEntityWrapper = new QueryWrapper<SkuInitialStockEntity>()
                 .lambda().eq(SkuInitialStockEntity::getSpuId, spuId);
         List<SkuInitialStockEntity> skuEntityList = skuInitialStockMapper.selectList(spuInitialStockEntityWrapper);
         Set<Long> updateIdList = new HashSet<>();
-        for (SkuInitialStockForm form : stockList) {
+        for (SkuInitialStockForm form : initialStockList) {
             Wrapper<SkuInitialStockEntity> wrapper = new QueryWrapper<SkuInitialStockEntity>()
                     .lambda()
-                    .eq(SkuInitialStockEntity::getSkuId, form.getSkuId())
-                    .eq(SkuInitialStockEntity::getUnitId, form.getUnitId());
+                    .eq(SkuInitialStockEntity::getSkuId, form.getSkuId());
             SkuInitialStockEntity skuInitialStockEntity = skuInitialStockMapper.selectOne(wrapper);
             if (null == skuInitialStockEntity) {
                 skuInitialStockEntity = LocalBeanUtil.copy(form, SkuInitialStockEntity.class);

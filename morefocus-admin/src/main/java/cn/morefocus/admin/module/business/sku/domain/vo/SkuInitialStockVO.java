@@ -24,6 +24,11 @@ public class SkuInitialStockVO extends BaseVO {
     private Long storeId;
 
     /**
+     * 门店名称
+     */
+    private String storeName;
+
+    /**
      * 仓库ID
      */
     private Long warehouseId;
@@ -52,6 +57,11 @@ public class SkuInitialStockVO extends BaseVO {
      * 初始库存
      */
     private BigDecimal quantity;
+
+    /**
+     * 初始总金额
+     */
+    private BigDecimal amount;
 
     /**
      * 库存ID

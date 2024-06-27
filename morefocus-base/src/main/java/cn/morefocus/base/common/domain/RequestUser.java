@@ -36,4 +36,9 @@ public interface RequestUser {
      * 获取部门ID
      */
     Long getDeptId();
+
+    /**
+     * 获取用户选择的门店ID
+     */
+    Long getSelectedStoreId();
 }

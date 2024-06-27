@@ -9,6 +9,7 @@ import cn.morefocus.base.module.support.operatelog.annotation.OperateLog;
 import cn.morefocus.base.module.support.operatelog.domain.OperateLogEntity;
 import cn.morefocus.base.module.support.operatelog.mapper.OperateLogMapper;
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
@@ -228,7 +229,10 @@ public abstract class OperateLogAspect {
     private void saveLog(OperateLogEntity operateLogEntity) {
         OperateLogConfig operateLogConfig = getOperateLogConfig();
         if (operateLogConfig.getSaveFunction() == null) {
-            OperateLogMapper mapper = applicationContext.getBean(OperateLogMapper.class);
+            BaseMapper mapper = applicationContext.getBean(OperateLogMapper.class);
+            if (mapper == null) {
+                return;
+            }
             mapper.insert(operateLogEntity);
         }
         operateLogConfig.getSaveFunction().apply(operateLogEntity);

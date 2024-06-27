@@ -24,6 +24,7 @@ import cn.morefocus.base.common.exception.BusinessException;
 import cn.morefocus.base.common.util.LocalBeanUtil;
 import cn.morefocus.base.common.util.LocalEnumUtil;
 import cn.morefocus.base.common.util.PageUtil;
+import cn.morefocus.base.common.util.SecurityContextHolder;
 import cn.morefocus.base.module.support.datatracer.constant.DataTracerTypeEnum;
 import cn.morefocus.base.module.support.datatracer.service.DataTracerService;
 import cn.morefocus.base.module.support.dict.service.DictCacheService;
@@ -39,6 +40,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -229,7 +231,7 @@ public class SpuService {
             return R.error(UserErrorCode.DATA_NOT_EXIST);
         }
 
-        skuInitialStockService.updateSkuInitialStock(updateForm.getSpuId(), updateForm.getStockList());
+        skuInitialStockService.updateSkuInitialStock(updateForm.getSpuId(), updateForm.getInitialStockList());
 
         return R.ok();
     }
@@ -388,6 +390,31 @@ public class SpuService {
                 //商品单价
                 if (!CollectionUtils.isEmpty(priceList)) {
                     sku.setPriceList(priceList.stream().filter(item -> item.getSkuId().equals(sku.getId())).sorted(Comparator.comparing(BaseVO::getSortValue)).collect(Collectors.toList()));
+                }
+
+                //初始库存
+                if (!CollectionUtils.isEmpty(initialStockList)) {
+                    Optional<SkuInitialStockVO> optional = initialStockList.stream().filter(item -> item.getSkuId().equals(sku.getId())).findFirst();
+                    if (optional.isPresent()) {
+                        sku.setInitialStock(optional.get());
+                    } else {
+                        SkuInitialStockVO initialStockVO = new SkuInitialStockVO();
+                        initialStockVO.setSkuId(sku.getId());
+                        initialStockVO.setSpuId(id);
+                        initialStockVO.setQuantity(BigDecimal.ZERO);
+                        initialStockVO.setPrice(BigDecimal.ZERO);
+                        initialStockVO.setAmount(BigDecimal.ZERO);
+
+                        //获取用户所选择的门店
+                        initialStockVO.setStoreId(SecurityContextHolder.getSelectedStoreId());
+                        sku.setInitialStock(initialStockVO);
+                    }
+                }
+
+                //预警配置
+                if (!CollectionUtils.isEmpty(warnConfigList)) {
+                    Optional<SkuWarnConfigVO> optional = warnConfigList.stream().filter(item -> item.getSkuId().equals(sku.getId())).findFirst();
+                    optional.ifPresent(sku::setSkuWarnConfig);
                 }
             });
             spuVO.setSkuList(skuList);

@@ -46,6 +46,9 @@ public class RequestEmployee implements RequestUser {
     @Schema(description = "请求user-agent")
     private String userAgent;
 
+    @Schema(description = "用户选择的门店ID")
+    private Long selectedStoreId;
+
     @Override
     public Long getUserId() {
         return employeeId;
@@ -59,5 +62,10 @@ public class RequestEmployee implements RequestUser {
     @Override
     public Long getDeptId() {
         return deptId;
+    }
+
+    @Override
+    public Long getSelectedStoreId() {
+        return selectedStoreId;
     }
 }

@@ -115,7 +115,6 @@ public class LoginService implements StpInterface {
      * @return 返回用户登录信息
      */
     public R<LoginResultVO> login(LoginForm loginForm, String ip, String userAgent) {
-
         LoginDeviceEnum loginDeviceEnum = LocalEnumUtil.getEnumByValue(loginForm.getLoginDevice(), LoginDeviceEnum.class);
         if (loginDeviceEnum == null) {
             return R.userErrorParam("登录设备暂不支持！");
@@ -130,7 +129,7 @@ public class LoginService implements StpInterface {
         // 验证登录名
         EmployeeEntity employeeEntity = employeeService.getByLoginName(loginForm.getLoginName());
         if (null == employeeEntity) {
-            return R.userErrorParam("登录名不存在！");
+            return R.userErrorParam("登录名或密码错误！");
         }
 
         // 验证账号状态
@@ -154,7 +153,6 @@ public class LoginService implements StpInterface {
             StpUtil.login(saTokenLoginId, 1800);
 
         } else {
-
             // 按照等保登录要求，进行登录失败次数校验
             R<LoginFailEntity> loginFailEntityR = protectLoginService.checkLogin(employeeEntity.getEmployeeId(), UserTypeEnum.ADMIN_EMPLOYEE);
             if (!loginFailEntityR.getOk()) {
@@ -203,7 +201,6 @@ public class LoginService implements StpInterface {
      * 获取登录结果信息
      */
     public LoginResultVO getLoginResult(RequestEmployee requestEmployee) {
-
         // 基础信息
         LoginResultVO loginResultVO = LocalBeanUtil.copy(requestEmployee, LoginResultVO.class);
 
@@ -232,7 +229,6 @@ public class LoginService implements StpInterface {
      * 获取登录的用户信息
      */
     private RequestEmployee loadLoginInfo(EmployeeEntity employeeEntity) {
-
         // 基础信息
         RequestEmployee requestEmployee = LocalBeanUtil.copy(employeeEntity, RequestEmployee.class);
         requestEmployee.setUserType(UserTypeEnum.ADMIN_EMPLOYEE);

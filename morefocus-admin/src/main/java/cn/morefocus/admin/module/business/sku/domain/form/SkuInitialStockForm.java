@@ -12,9 +12,6 @@ import java.math.BigDecimal;
  */
 @Data
 public class SkuInitialStockForm {
-
-    private Long id;
-
     /**
      * 门店ID
      */
@@ -26,19 +23,9 @@ public class SkuInitialStockForm {
     private Long warehouseId;
 
     /**
-     * spuid
-     */
-    private Long spuId;
-
-    /**
-     * skuid
+     * skuId
      */
     private Long skuId;
-
-    /**
-     * 单位ID
-     */
-    private Long unitId;
 
     /**
      * 单价
@@ -51,12 +38,7 @@ public class SkuInitialStockForm {
     private BigDecimal quantity;
 
     /**
-     * 库存ID
+     * 初始总金额
      */
-    private Long stockId;
-
-    /**
-     * sku库存明细ID
-     */
-    private Long stockDetailId;
+    private BigDecimal amount;
 }
