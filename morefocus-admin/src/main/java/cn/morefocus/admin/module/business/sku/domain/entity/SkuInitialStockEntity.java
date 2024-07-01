@@ -70,4 +70,9 @@ public class SkuInitialStockEntity extends BaseEntity {
      * sku库存明细ID
      */
     private Long stockDetailId;
+
+    /**
+     * 金额
+     */
+    private BigDecimal amount;
 }
