@@ -16,7 +16,7 @@ import java.time.LocalDate;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("t_change_log")
+@TableName("t_system_change_log")
 public class ChangeLogEntity extends BaseEntity {
 
     /**

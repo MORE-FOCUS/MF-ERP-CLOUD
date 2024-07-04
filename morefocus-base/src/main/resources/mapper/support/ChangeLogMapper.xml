@@ -6,41 +6,43 @@
     <select id="queryPage" resultType="cn.morefocus.base.module.support.changelog.domain.vo.ChangeLogVO">
         SELECT
         *
-        FROM t_change_log
+        FROM t_system_change_log
         <where>
             <!--更新类型:[1:特大版本功能更新;2:功能更新;3:bug修复]-->
             <if test="queryForm.type != null">
-                AND t_change_log.type = #{queryForm.type}
+                AND t_system_change_log.type = #{queryForm.type}
             </if>
             <!--关键字-->
             <if test="queryForm.keywords != null and queryForm.keywords != ''">
-                AND ( INSTR(t_change_log.version,#{queryForm.keywords})
-                OR INSTR(t_change_log.publish_author,#{queryForm.keywords})
-                OR INSTR(t_change_log.content,#{queryForm.keywords})
+                AND ( INSTR(t_system_change_log.version,#{queryForm.keywords})
+                OR INSTR(t_system_change_log.publish_author,#{queryForm.keywords})
+                OR INSTR(t_system_change_log.content,#{queryForm.keywords})
                 )
             </if>
             <!--发布日期-->
             <if test="queryForm.publicDateBegin != null">
-                AND DATE_FORMAT(t_change_log.public_date, '%Y-%m-%d') &gt;= #{queryForm.publicDateBegin}
+                AND DATE_FORMAT(t_system_change_log.public_date, '%Y-%m-%d') &gt;= #{queryForm.publicDateBegin}
             </if>
             <if test="queryForm.publicDateEnd != null">
-                AND DATE_FORMAT(t_change_log.public_date, '%Y-%m-%d') &lt;= #{queryForm.publicDateEnd}
+                AND DATE_FORMAT(t_system_change_log.public_date, '%Y-%m-%d') &lt;= #{queryForm.publicDateEnd}
             </if>
             <!--创建时间-->
             <if test="queryForm.createTime != null">
-                AND DATE_FORMAT(t_change_log.create_time, '%Y-%m-%d') = #{queryForm.createTime}
+                AND DATE_FORMAT(t_system_change_log.create_time, '%Y-%m-%d') = #{queryForm.createTime}
             </if>
             <!--跳转链接-->
             <if test="queryForm.link != null">
-                AND t_change_log.link = #{queryForm.link}
+                AND t_system_change_log.link = #{queryForm.link}
             </if>
         </where>
-        order by t_change_log.version desc
+        order by t_system_change_log.version desc
     </select>
 
     <select id="selectByVersion"
             resultType="cn.morefocus.base.module.support.changelog.domain.entity.ChangeLogEntity">
-        select * from t_change_log where `version` = #{version}
+        select *
+        from t_system_change_log
+        where `version` = #{version}
     </select>
 
 

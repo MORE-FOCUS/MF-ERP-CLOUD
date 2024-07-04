@@ -19,7 +19,6 @@ import javax.validation.Valid;
 /**
  * 系统更新日志 Controller
  */
-
 @RestController
 @Tag(name = SwaggerTagConst.Support.CHANGE_LOG)
 public class ChangeLogController extends SupportBaseController {
