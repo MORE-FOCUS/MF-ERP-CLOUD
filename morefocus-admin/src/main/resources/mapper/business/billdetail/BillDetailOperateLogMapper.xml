@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.morefocus.admin.module.business.billdetail.mapper.BillDetailOperateLogMapper">
+
+    <!-- 分页查询 -->
+    <select id="queryPage" resultType="cn.morefocus.admin.module.business.billdetail.domain.vo.BillDetailOperateLogVO">
+        SELECT *
+        FROM t_bill_detail_operate_log
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="queryAll" resultType="cn.morefocus.admin.module.business.billdetail.domain.vo.BillDetailOperateLogVO">
+        SELECT *
+        FROM t_bill_detail_operate_log
+    </select>
+
+
+</mapper>
