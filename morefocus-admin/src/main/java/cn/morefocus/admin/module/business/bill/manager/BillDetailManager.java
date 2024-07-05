@@ -1,7 +1,7 @@
-package cn.morefocus.admin.module.business.billdetail.manager;
+package cn.morefocus.admin.module.business.bill.manager;
 
-import cn.morefocus.admin.module.business.billdetail.domain.entity.BillDetailEntity;
-import cn.morefocus.admin.module.business.billdetail.mapper.BillDetailMapper;
+import cn.morefocus.admin.module.business.bill.domain.entity.BillDetailEntity;
+import cn.morefocus.admin.module.business.bill.mapper.BillDetailMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

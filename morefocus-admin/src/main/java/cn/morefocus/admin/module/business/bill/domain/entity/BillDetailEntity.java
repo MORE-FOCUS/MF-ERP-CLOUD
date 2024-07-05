@@ -1,6 +1,9 @@
-package cn.morefocus.admin.module.business.billdetail.domain.vo;
+package cn.morefocus.admin.module.business.bill.domain.entity;
 
-import cn.morefocus.base.common.domain.BaseVO;
+import cn.morefocus.base.common.domain.BaseEntity;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -8,15 +11,20 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
- * 单据明细 列表VO
+ * 单据明细 实体类
  *
  * @author loki
  * @date 2024-07-04 23:47:57
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class BillDetailVO extends BaseVO {
+@TableName("t_bill_detail")
+public class BillDetailEntity extends BaseEntity {
 
+    /**
+     * 分类id
+     */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
@@ -103,4 +111,5 @@ public class BillDetailVO extends BaseVO {
      * 折扣金额
      */
     private BigDecimal discountAmount;
+
 }

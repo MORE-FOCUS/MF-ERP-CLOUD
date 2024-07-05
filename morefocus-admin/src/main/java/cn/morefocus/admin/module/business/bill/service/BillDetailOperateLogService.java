@@ -1,11 +1,11 @@
-package cn.morefocus.admin.module.business.billdetail.service;
+package cn.morefocus.admin.module.business.bill.service;
 
-import cn.morefocus.admin.module.business.billdetail.domain.entity.BillDetailOperateLogEntity;
-import cn.morefocus.admin.module.business.billdetail.domain.form.BillDetailOperateLogAddForm;
-import cn.morefocus.admin.module.business.billdetail.domain.form.BillDetailOperateLogQueryForm;
-import cn.morefocus.admin.module.business.billdetail.domain.form.BillDetailOperateLogUpdateForm;
-import cn.morefocus.admin.module.business.billdetail.domain.vo.BillDetailOperateLogVO;
-import cn.morefocus.admin.module.business.billdetail.mapper.BillDetailOperateLogMapper;
+import cn.morefocus.admin.module.business.bill.domain.entity.BillDetailOperateLogEntity;
+import cn.morefocus.admin.module.business.bill.domain.form.BillDetailOperateLogAddForm;
+import cn.morefocus.admin.module.business.bill.domain.form.BillDetailOperateLogQueryForm;
+import cn.morefocus.admin.module.business.bill.domain.form.BillDetailOperateLogUpdateForm;
+import cn.morefocus.admin.module.business.bill.domain.vo.BillDetailOperateLogVO;
+import cn.morefocus.admin.module.business.bill.mapper.BillDetailOperateLogMapper;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;

@@ -1,20 +1,28 @@
-package cn.morefocus.admin.module.business.billdetail.domain.vo;
+package cn.morefocus.admin.module.business.bill.domain.entity;
 
-import cn.morefocus.base.common.domain.BaseVO;
+import cn.morefocus.base.common.domain.BaseEntity;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
  * 单据操作记录
- * 列表VO
+ * 实体类
  *
  * @author loki
  * @date 2024-07-04 23:57:01
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class BillDetailOperateLogVO extends BaseVO {
+@TableName("t_bill_detail_operate_log")
+public class BillDetailOperateLogEntity extends BaseEntity {
 
+    /**
+     * 分类id
+     */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**

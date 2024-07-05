@@ -1,8 +1,8 @@
-package cn.morefocus.admin.module.business.billdetail.controller;
+package cn.morefocus.admin.module.business.bill.controller;
 
-import cn.morefocus.admin.module.business.billdetail.domain.form.BillDetailQueryForm;
-import cn.morefocus.admin.module.business.billdetail.domain.vo.BillDetailVO;
-import cn.morefocus.admin.module.business.billdetail.service.BillDetailService;
+import cn.morefocus.admin.module.business.bill.domain.form.BillDetailQueryForm;
+import cn.morefocus.admin.module.business.bill.domain.vo.BillDetailVO;
+import cn.morefocus.admin.module.business.bill.service.BillDetailService;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import io.swagger.v3.oas.annotations.Operation;

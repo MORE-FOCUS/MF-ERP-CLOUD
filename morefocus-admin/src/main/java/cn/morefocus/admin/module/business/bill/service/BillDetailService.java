@@ -1,11 +1,11 @@
-package cn.morefocus.admin.module.business.billdetail.service;
+package cn.morefocus.admin.module.business.bill.service;
 
-import cn.morefocus.admin.module.business.billdetail.domain.entity.BillDetailEntity;
-import cn.morefocus.admin.module.business.billdetail.domain.form.BillDetailAddForm;
-import cn.morefocus.admin.module.business.billdetail.domain.form.BillDetailQueryForm;
-import cn.morefocus.admin.module.business.billdetail.domain.form.BillDetailUpdateForm;
-import cn.morefocus.admin.module.business.billdetail.domain.vo.BillDetailVO;
-import cn.morefocus.admin.module.business.billdetail.mapper.BillDetailMapper;
+import cn.morefocus.admin.module.business.bill.domain.entity.BillDetailEntity;
+import cn.morefocus.admin.module.business.bill.domain.form.BillDetailAddForm;
+import cn.morefocus.admin.module.business.bill.domain.form.BillDetailQueryForm;
+import cn.morefocus.admin.module.business.bill.domain.form.BillDetailUpdateForm;
+import cn.morefocus.admin.module.business.bill.domain.vo.BillDetailVO;
+import cn.morefocus.admin.module.business.bill.mapper.BillDetailMapper;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import cn.morefocus.base.common.util.LocalBeanUtil;

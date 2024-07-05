@@ -1,4 +1,4 @@
-package cn.morefocus.admin.module.business.billdetail.domain.form;
+package cn.morefocus.admin.module.business.bill.domain.form;
 
 import lombok.Data;
 

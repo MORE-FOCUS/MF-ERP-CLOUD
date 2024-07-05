@@ -1,8 +1,8 @@
-package cn.morefocus.admin.module.business.billdetail.mapper;
+package cn.morefocus.admin.module.business.bill.mapper;
 
-import cn.morefocus.admin.module.business.billdetail.domain.entity.BillDetailEntity;
-import cn.morefocus.admin.module.business.billdetail.domain.form.BillDetailQueryForm;
-import cn.morefocus.admin.module.business.billdetail.domain.vo.BillDetailVO;
+import cn.morefocus.admin.module.business.bill.domain.entity.BillDetailEntity;
+import cn.morefocus.admin.module.business.bill.domain.form.BillDetailQueryForm;
+import cn.morefocus.admin.module.business.bill.domain.vo.BillDetailVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Mapper;
