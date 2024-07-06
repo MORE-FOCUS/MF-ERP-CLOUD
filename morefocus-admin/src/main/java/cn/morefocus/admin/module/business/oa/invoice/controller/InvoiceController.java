@@ -31,19 +31,19 @@ public class InvoiceController {
     @Resource
     private InvoiceService invoiceService;
 
-    @Operation(summary = "分页查询发票信息 @author 善逸")
+    @Operation(summary = "分页查询发票信息")
     @PostMapping("/oa/invoice/page/query")
     public R<PageResult<InvoiceVO>> queryByPage(@RequestBody @Valid InvoiceQueryForm queryForm) {
         return invoiceService.queryByPage(queryForm);
     }
 
-    @Operation(summary = "查询发票信息详情 @author 善逸")
+    @Operation(summary = "查询发票信息详情")
     @GetMapping("/oa/invoice/get/{invoiceId}")
     public R<InvoiceVO> getDetail(@PathVariable Long invoiceId) {
         return invoiceService.getDetail(invoiceId);
     }
 
-    @Operation(summary = "新建发票信息 @author 善逸")
+    @Operation(summary = "新建发票信息")
     @PostMapping("/oa/invoice/create")
     public R<String> createInvoice(@RequestBody @Valid InvoiceAddForm createVO) {
         RequestUser requestUser = SecurityContextHolder.getRequestUser();
@@ -52,14 +52,14 @@ public class InvoiceController {
         return invoiceService.createInvoice(createVO);
     }
 
-    @Operation(summary = "编辑发票信息 @author 善逸")
+    @Operation(summary = "编辑发票信息")
     @PostMapping("/oa/invoice/update")
     @OperateLog
     public R<String> updateInvoice(@RequestBody @Valid InvoiceUpdateForm updateVO) {
         return invoiceService.updateInvoice(updateVO);
     }
 
-    @Operation(summary = "删除发票信息 @author 善逸")
+    @Operation(summary = "删除发票信息")
     @GetMapping("/invoice/delete/{invoiceId}")
     public R<String> deleteInvoice(@PathVariable Long invoiceId) {
         return invoiceService.deleteInvoice(invoiceId);

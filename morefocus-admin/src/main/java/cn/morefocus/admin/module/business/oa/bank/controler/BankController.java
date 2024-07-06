@@ -28,25 +28,25 @@ public class BankController {
     @Resource
     private BankService bankService;
 
-    @Operation(summary = "分页查询银行信息 @author 善逸")
+    @Operation(summary = "分页查询银行信息")
     @PostMapping("/oa/bank/page/query")
     public R<PageResult<BankVO>> queryByPage(@RequestBody @Valid BankQueryForm queryForm) {
         return bankService.queryByPage(queryForm);
     }
 
-    @Operation(summary = "根据企业ID查询银行信息列表 @author 善逸")
+    @Operation(summary = "根据企业ID查询银行信息列表")
     @GetMapping("/oa/bank/query/list/{enterpriseId}")
     public R<List<BankVO>> queryList(@PathVariable Long enterpriseId) {
         return bankService.queryList(enterpriseId);
     }
 
-    @Operation(summary = "查询银行信息详情 @author 善逸")
+    @Operation(summary = "查询银行信息详情")
     @GetMapping("/oa/bank/get/{bankId}")
     public R<BankVO> getDetail(@PathVariable Long bankId) {
         return bankService.getDetail(bankId);
     }
 
-    @Operation(summary = "新建银行信息 @author 善逸")
+    @Operation(summary = "新建银行信息")
     @PostMapping("/oa/bank/create")
     public R<String> createBank(@RequestBody @Valid BankCreateForm createVO) {
         RequestUser requestUser = SecurityContextHolder.getRequestUser();
@@ -55,13 +55,13 @@ public class BankController {
         return bankService.createBank(createVO);
     }
 
-    @Operation(summary = "编辑银行信息 @author 善逸")
+    @Operation(summary = "编辑银行信息")
     @PostMapping("/oa/bank/update")
     public R<String> updateBank(@RequestBody @Valid BankUpdateForm updateVO) {
         return bankService.updateBank(updateVO);
     }
 
-    @Operation(summary = "删除银行信息 @author 善逸")
+    @Operation(summary = "删除银行信息")
     @GetMapping("/oa/bank/delete/{bankId}")
     public R<String> deleteBank(@PathVariable Long bankId) {
         return bankService.deleteBank(bankId);

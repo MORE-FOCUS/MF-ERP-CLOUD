@@ -93,7 +93,7 @@ public class BrandController {
         return brandService.delete(id);
     }
 
-    /**
+    /**i
      * 更新禁用/启用状态
      */
     @Operation(summary = "更新禁用/启用状态")

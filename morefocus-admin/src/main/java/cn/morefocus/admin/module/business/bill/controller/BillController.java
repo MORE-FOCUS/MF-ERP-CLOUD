@@ -6,7 +6,6 @@ import cn.morefocus.admin.module.business.bill.service.BillService;
 import cn.morefocus.base.common.domain.PageResult;
 import cn.morefocus.base.common.domain.R;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +19,6 @@ import javax.validation.Valid;
  * @author loki
  * @date 2024-07-04 23:20:21
  */
-@Tag(name = "")
 @RestController
 public class BillController {
 
