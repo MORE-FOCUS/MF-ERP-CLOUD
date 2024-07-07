@@ -35,7 +35,7 @@ public class BillDetailVO extends BaseVO {
     private Long spuId;
 
     /**
-     * 购货数量/销售数量/退货数量
+     * 购货数量/销货数量/退货数量
      */
     private BigDecimal quantity;
 

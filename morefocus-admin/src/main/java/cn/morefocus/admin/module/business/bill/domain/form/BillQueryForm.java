@@ -13,5 +13,14 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class BillQueryForm extends PageParam {
-
+    /**
+     * 单据类型
+     * 101：购货订单
+     * 102：购货单
+     * 103：购货退货单
+     * 201：销货订单
+     * 202：销货单
+     * 203：销货退货单
+     */
+    private Integer billType;
 }

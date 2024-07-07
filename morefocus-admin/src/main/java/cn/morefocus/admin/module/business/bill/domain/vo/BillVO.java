@@ -27,9 +27,9 @@ public class BillVO extends BaseVO {
      * 101：购货订单
      * 102：购货单
      * 103：购货退货单
-     * 201：销售订单
-     * 202：销售单
-     * 203：销售退货单
+     * 201：销货订单
+     * 202：销货单
+     * 203：销货退货单
      */
     private Integer billType;
 
@@ -46,7 +46,7 @@ public class BillVO extends BaseVO {
     /**
      * 单据状态
      * 购货订单：101-未入库 102-部分入库 103-全部入库 104-已关闭
-     * 销售订单： 201-未出库 202-部分出库 203-全部出库 204-已关闭
+     * 销货订单： 201-未出库 202-部分出库 203-全部出库 204-已关闭
      * 购货退货单：301-未退款 302-部分退款 303-全部退款
      * 销货退货单：401-未退款 402-部分退款 403-全部退款
      */
@@ -103,7 +103,7 @@ public class BillVO extends BaseVO {
     private BigDecimal discountAmount;
 
     /**
-     * 审核状态0-未审核 1-待审核
+     * 审核状态0-未审核 1-已审核
      */
     private Integer auditState;
 

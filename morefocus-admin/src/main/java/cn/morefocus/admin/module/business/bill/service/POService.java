@@ -1,8 +1,8 @@
 package cn.morefocus.admin.module.business.bill.service;
 
 import cn.morefocus.admin.module.business.bill.domain.form.BillQueryForm;
-import cn.morefocus.admin.module.business.bill.domain.form.POAddForm;
-import cn.morefocus.admin.module.business.bill.domain.form.POEditForm;
+import cn.morefocus.admin.module.business.bill.domain.form.po.POAddForm;
+import cn.morefocus.admin.module.business.bill.domain.form.po.POEditForm;
 import cn.morefocus.admin.module.business.bill.domain.vo.BillVO;
 import cn.morefocus.admin.module.business.bill.mapper.BillMapper;
 import cn.morefocus.base.common.domain.PageResult;
@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * 采购订单逻辑处理
+ * 购货订单逻辑处理
  */
 @Slf4j
 @Service
@@ -42,14 +42,14 @@ public class POService {
     }
 
     /**
-     * 新增采购订单
+     * 新增购货订单
      */
     public R add(POAddForm poAddForm) {
         return R.ok();
     }
 
     /**
-     * 编辑采购订单
+     * 编辑购货订单
      */
     public R edit(POEditForm poEditForm) {
         return R.ok();

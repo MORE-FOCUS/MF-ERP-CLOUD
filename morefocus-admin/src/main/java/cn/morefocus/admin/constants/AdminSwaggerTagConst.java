@@ -49,9 +49,9 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
 
         public static final String STORE = "门店";
 
-        public static final String PURCHASE_ORDER = "采购订单";
+        public static final String PURCHASE_ORDER = "购货订单";
 
-        public static final String SALES_ORDER = "销售订单";
+        public static final String SALES_ORDER = "销货订单";
     }
 
     /**
