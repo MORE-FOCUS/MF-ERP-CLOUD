@@ -1,6 +1,7 @@
 package cn.morefocus.admin.module.business.supplier.mapper;
 
 import cn.morefocus.admin.module.business.supplier.domain.entity.SupplierEntity;
+import cn.morefocus.admin.module.business.supplier.domain.form.SupplierPageQueryForm;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierQueryForm;
 import cn.morefocus.admin.module.business.supplier.domain.vo.SupplierVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -24,7 +25,12 @@ public interface SupplierMapper extends BaseMapper<SupplierEntity> {
     /**
      * 分页 查询
      */
-    List<SupplierVO> queryPage(Page page, @Param("queryForm") SupplierQueryForm queryForm);
+    List<SupplierVO> queryPage(Page page, @Param("queryForm") SupplierPageQueryForm queryForm);
+
+    /**
+     * 分页 查询
+     */
+    List<SupplierVO> queryAll(@Param("queryForm") SupplierQueryForm queryForm);
 
     /**
      * 更新禁用|启用状态

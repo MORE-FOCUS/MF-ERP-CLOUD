@@ -3,6 +3,7 @@ package cn.morefocus.admin.module.business.supplier.controller;
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.morefocus.admin.constants.AdminSwaggerTagConst;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierAddForm;
+import cn.morefocus.admin.module.business.supplier.domain.form.SupplierPageQueryForm;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierQueryForm;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierUpdateForm;
 import cn.morefocus.admin.module.business.supplier.domain.vo.SupplierVO;
@@ -39,7 +40,7 @@ public class SupplierController {
     @Operation(summary = "查询分页列表")
     @PostMapping("/supplier/queryPage")
     @SaCheckPermission("business:supplier:query")
-    public R<PageResult<SupplierVO>> queryPage(@RequestBody @Valid SupplierQueryForm queryForm) {
+    public R<PageResult<SupplierVO>> queryPage(@RequestBody @Valid SupplierPageQueryForm queryForm) {
         return R.ok(supplierService.queryPage(queryForm));
     }
 
@@ -48,8 +49,8 @@ public class SupplierController {
      */
     @PostMapping("/supplier/queryAll")
     @SaCheckPermission("business:supplier:query")
-    public R<PageResult<SupplierVO>> queryAll(@RequestBody @Valid SupplierQueryForm queryForm) {
-        return R.ok(supplierService.queryPage(queryForm));
+    public R<List<SupplierVO>> queryAll(@RequestBody @Valid SupplierQueryForm queryForm) {
+        return R.ok(supplierService.queryAll(queryForm));
     }
 
     /**

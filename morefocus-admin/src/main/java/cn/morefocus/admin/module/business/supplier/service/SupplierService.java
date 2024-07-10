@@ -2,6 +2,7 @@ package cn.morefocus.admin.module.business.supplier.service;
 
 import cn.morefocus.admin.module.business.supplier.domain.entity.SupplierEntity;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierAddForm;
+import cn.morefocus.admin.module.business.supplier.domain.form.SupplierPageQueryForm;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierQueryForm;
 import cn.morefocus.admin.module.business.supplier.domain.form.SupplierUpdateForm;
 import cn.morefocus.admin.module.business.supplier.domain.vo.SupplierVO;
@@ -33,11 +34,19 @@ public class SupplierService {
     /**
      * 分页查询
      */
-    public PageResult<SupplierVO> queryPage(SupplierQueryForm queryForm) {
+    public PageResult<SupplierVO> queryPage(SupplierPageQueryForm queryForm) {
         Page<?> page = PageUtil.convert2PageQuery(queryForm);
         List<SupplierVO> list = supplierMapper.queryPage(page, queryForm);
         PageResult<SupplierVO> pageResult = PageUtil.convert2PageResult(page, list);
         return pageResult;
+    }
+
+    /**
+     * 查询所有
+     */
+    public List<SupplierVO> queryAll(SupplierQueryForm queryForm) {
+        List<SupplierVO> list = supplierMapper.queryAll(queryForm);
+        return list;
     }
 
     /**
